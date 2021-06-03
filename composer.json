@@ -12,7 +12,6 @@
     "require": {
         "composer/installers": "^1.11.0",
         "drupal/core-composer-scaffold": "^9.1",
-        "drupal/core-project-message": "^9.1",
         "drupal/core-recommended": "^9.1",
         "drupal/redis": "^1.5",
         "drush/drush": "^10.5.0",
