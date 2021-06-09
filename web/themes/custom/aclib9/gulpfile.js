@@ -9,15 +9,15 @@ let gulp = require('gulp'),
   postcssInlineSvg = require('postcss-inline-svg'),
   //browserSync = require('browser-sync').create()
   pxtorem = require('postcss-pxtorem'),
-	postcssProcessors = [
-		postcssInlineSvg({
+  postcssProcessors = [
+    postcssInlineSvg({
       removeFill: true,
       paths: ['./node_modules/bootstrap-icons/icons']
     }),
-		pxtorem({
-			propList: ['font', 'font-size', 'line-height', 'letter-spacing', '*margin*', '*padding*'],
-			mediaQuery: true
-		})
+    pxtorem({
+      propList: ['font', 'font-size', 'line-height', 'letter-spacing', '*margin*', '*padding*'],
+      mediaQuery: true
+    })
   ];
 
 const paths = {
@@ -29,9 +29,8 @@ const paths = {
   },
   js: {
     bootstrap: './node_modules/bootstrap/dist/js/bootstrap.min.js',
-    jquery: './node_modules/jquery/dist/jquery.min.js',
-    popper: './node_modules/popper.js/dist/umd/popper.min.js',
-    poppermap: './node_modules/popper.js/dist/umd/popper.min.js.map',
+    popper: './node_modules/@popperjs/core/dist/umd/popper.min.js',
+    poppermap: './node_modules/@popperjs/core/dist/umd/popper.min.js.map',
     barrio: '../../contrib/bootstrap_barrio/js/barrio.js',
     dest: './js'
   }
@@ -70,7 +69,7 @@ function styles () {
 
 // Move the javascript files into our js folder
 function js () {
-  return gulp.src([paths.js.bootstrap, paths.js.jquery, paths.js.popper, paths.js.poppermap, paths.js.barrio])
+  return gulp.src([paths.js.bootstrap, paths.js.popper, paths.js.poppermap, paths.js.barrio])
     .pipe(gulp.dest(paths.js.dest))
     //.pipe(browserSync.stream())
 }
