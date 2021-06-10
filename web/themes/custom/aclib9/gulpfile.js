@@ -80,7 +80,7 @@ function serve () {
     //proxy: 'http://yourdomain.com',
   //})
 
-  gulp.watch([paths.scss.watch, paths.scss.bootstrap], {usePolling: true}, styles) //gulp.watch([paths.scss.watch, paths.scss.bootstrap], styles).on('change', browserSync.reload)
+  gulp.watch([paths.scss.watch, paths.scss.bootstrap], {usePolling: true}, styles)
 }
 
 const build = gulp.series(styles, gulp.parallel(js, serve))
