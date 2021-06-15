@@ -1,4 +1,4 @@
-name: aclib
+name: d8aclibus
 type: drupal9
 docroot: web
 php_version: "7.4"
@@ -15,9 +15,9 @@ composer_version: ""
 web_environment: []
 
 
-# This config.yaml was created with ddev version v1.17.2
-# webimage: drud/ddev-webserver:v1.17.2
-# dbimage: drud/ddev-dbserver-mariadb-10.3:v1.17.0
+# This config.yaml was created with ddev version v1.17.5
+# webimage: drud/ddev-webserver:v1.17.4
+# dbimage: drud/ddev-dbserver-mariadb-10.3:v1.17.3
 # dbaimage: phpmyadmin:5
 # However we do not recommend explicitly wiring these images into the
 # config.yaml as they may break future versions of ddev.
