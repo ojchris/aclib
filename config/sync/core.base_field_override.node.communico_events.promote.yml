@@ -1,0 +1,22 @@
+uuid: 43e4c015-4d84-4e41-afcf-e853f144caf0
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.communico_events
+id: node.communico_events.promote
+field_name: promote
+entity_type: node
+bundle: communico_events
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

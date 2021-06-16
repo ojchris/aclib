@@ -1,0 +1,42 @@
+uuid: c0a980ab-3846-4a4a-94b8-1d4c0f103c25
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.communico_events.body
+    - field.field.node.communico_events.field_agenda
+    - field.field.node.communico_events.field_communico_event_id
+    - field.field.node.communico_events.field_end_date
+    - field.field.node.communico_events.field_location
+    - field.field.node.communico_events.field_room
+    - field.field.node.communico_events.field_start_date
+    - node.type.communico_events
+  module:
+    - text
+    - user
+id: node.communico_events.teaser
+targetEntityType: node
+bundle: communico_events
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_agenda: true
+  field_communico_event_id: true
+  field_end_date: true
+  field_location: true
+  field_room: true
+  field_start_date: true

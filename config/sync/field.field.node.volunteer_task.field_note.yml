@@ -1,0 +1,21 @@
+uuid: 3609443c-501a-42b4-9245-ea9fe3644501
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_note
+    - node.type.volunteer_task
+  module:
+    - text
+id: node.volunteer_task.field_note
+field_name: field_note
+entity_type: node
+bundle: volunteer_task
+label: Note
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

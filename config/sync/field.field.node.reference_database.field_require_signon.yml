@@ -1,0 +1,23 @@
+uuid: f7457bbd-4957-4991-a643-b33351b721fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_require_signon
+    - node.type.reference_database
+id: node.reference_database.field_require_signon
+field_name: field_require_signon
+entity_type: node
+bundle: reference_database
+label: 'Require Signon'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

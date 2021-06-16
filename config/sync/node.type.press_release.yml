@@ -1,0 +1,17 @@
+uuid: 04c1e51b-5186-4477-8d31-f462a9d950c9
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Press Release'
+type: press_release
+description: 'Use this to create a standard ACLD press release.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

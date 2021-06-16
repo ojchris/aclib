@@ -1,0 +1,21 @@
+uuid: 449bcbc0-e7fd-470d-80ef-888af67c2f36
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_volunteer_tasks_location
+    - node.type.volunteer_task
+  module:
+    - options
+id: node.volunteer_task.field_volunteer_tasks_location
+field_name: field_volunteer_tasks_location
+entity_type: node
+bundle: volunteer_task
+label: Location
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,19 @@
+uuid: 48cab859-7ea0-409d-b3b8-ea5200644fe5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_alt_contact_name
+    - node.type.press_release
+id: node.press_release.field_alt_contact_name
+field_name: field_alt_contact_name
+entity_type: node
+bundle: press_release
+label: 'Alternate Contact'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

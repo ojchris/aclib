@@ -1,0 +1,17 @@
+uuid: 4e4915de-02fb-44a5-9b4a-d53f57d0a9e7
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Reference Database'
+type: reference_database
+description: 'Use this to create a new link to a Reference Database for ACLD. These Reference Databases require some additional configuration, so be careful when adding or editing content of this type.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

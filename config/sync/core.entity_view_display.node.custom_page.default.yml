@@ -1,0 +1,28 @@
+uuid: 8403cc66-c4cf-4adf-8aed-dd1ffd13c97e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.custom_page.body
+    - node.type.custom_page
+  module:
+    - text
+    - user
+id: node.custom_page.default
+targetEntityType: node
+bundle: custom_page
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

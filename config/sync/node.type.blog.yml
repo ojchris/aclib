@@ -1,0 +1,17 @@
+uuid: 1422841c-b6de-4de7-bcf5-cde4d692b316
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Blog
+type: blog
+description: 'A blog entry is a single post to an online journal, or <em>blog</em>.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

@@ -1,0 +1,23 @@
+uuid: ec7bf9c9-1abe-4224-9255-79c5f260779e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.reference_database
+  module:
+    - text
+id: node.reference_database.body
+field_name: body
+entity_type: node
+bundle: reference_database
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

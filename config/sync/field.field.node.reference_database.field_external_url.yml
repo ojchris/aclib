@@ -1,0 +1,23 @@
+uuid: 2f1e1484-0551-40e5-b0e1-5069aef4d8da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_external_url
+    - node.type.reference_database
+  module:
+    - link
+id: node.reference_database.field_external_url
+field_name: field_external_url
+entity_type: node
+bundle: reference_database
+label: 'External URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 1
+field_type: link

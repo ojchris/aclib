@@ -1,0 +1,23 @@
+uuid: d1f73103-0628-4bc2-8aa4-c7d0ac786ed7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.communico_events
+  module:
+    - text
+id: node.communico_events.body
+field_name: body
+entity_type: node
+bundle: communico_events
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

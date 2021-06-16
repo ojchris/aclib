@@ -1,0 +1,22 @@
+uuid: 9ca8be89-8190-4814-8fea-b5595f3a4762
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - aclib9
+_core:
+  default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
+id: aclib9_breadcrumbs
+theme: aclib9
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }

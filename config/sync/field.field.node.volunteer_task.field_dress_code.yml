@@ -1,0 +1,19 @@
+uuid: 2cc43fa3-a9b5-45cf-9ce4-417baf16ccab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dress_code
+    - node.type.volunteer_task
+id: node.volunteer_task.field_dress_code
+field_name: field_dress_code
+entity_type: node
+bundle: volunteer_task
+label: 'Dress Code'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

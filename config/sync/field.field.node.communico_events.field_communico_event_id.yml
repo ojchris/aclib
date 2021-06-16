@@ -1,0 +1,23 @@
+uuid: 628bc813-c6d7-4527-be32-ad58b21d7a1d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_communico_event_id
+    - node.type.communico_events
+id: node.communico_events.field_communico_event_id
+field_name: field_communico_event_id
+entity_type: node
+bundle: communico_events
+label: 'Communico event ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

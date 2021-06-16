@@ -1,0 +1,21 @@
+uuid: ea934ba2-1878-4f12-a313-896f9a788f04
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_key_responsibilities
+    - node.type.volunteer_task
+  module:
+    - text
+id: node.volunteer_task.field_key_responsibilities
+field_name: field_key_responsibilities
+entity_type: node
+bundle: volunteer_task
+label: 'Key Responsibilities'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,19 @@
+uuid: 3bba8fe6-2051-49b6-9d84-877a683bce49
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_start_date
+    - node.type.communico_events
+id: node.communico_events.field_start_date
+field_name: field_start_date
+entity_type: node
+bundle: communico_events
+label: 'Start Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

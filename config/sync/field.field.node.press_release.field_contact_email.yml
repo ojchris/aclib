@@ -1,0 +1,19 @@
+uuid: 58a77d7a-e915-4ff1-a349-d2aec2f047e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_email
+    - node.type.press_release
+id: node.press_release.field_contact_email
+field_name: field_contact_email
+entity_type: node
+bundle: press_release
+label: 'Contact Email'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

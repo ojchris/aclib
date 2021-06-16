@@ -1,0 +1,17 @@
+uuid: 649877e6-e7cd-41db-829c-4f851ef49eb4
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Page
+type: page_
+description: 'A page to display to users on your site.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

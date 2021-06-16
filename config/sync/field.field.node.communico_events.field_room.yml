@@ -1,0 +1,19 @@
+uuid: 3d1c4083-efc1-40a9-85f2-8a23fddeee3e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_room
+    - node.type.communico_events
+id: node.communico_events.field_room
+field_name: field_room
+entity_type: node
+bundle: communico_events
+label: Room
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,21 @@
+uuid: 23b0275b-4f30-4e76-84db-e54bed7f28b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_teaser
+    - node.type.blog
+  module:
+    - text
+id: node.blog.field_teaser
+field_name: field_teaser
+entity_type: node
+bundle: blog
+label: Teaser
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

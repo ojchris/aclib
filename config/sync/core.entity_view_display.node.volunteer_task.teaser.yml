@@ -1,0 +1,44 @@
+uuid: 0b262d6c-0b8c-4d76-8bbe-6cce1c0a069c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.volunteer_task.body
+    - field.field.node.volunteer_task.field_dress_code
+    - field.field.node.volunteer_task.field_key_responsibilities
+    - field.field.node.volunteer_task.field_note
+    - field.field.node.volunteer_task.field_qualifications
+    - field.field.node.volunteer_task.field_reports_to
+    - field.field.node.volunteer_task.field_time_commitment
+    - field.field.node.volunteer_task.field_volunteer_tasks_location
+    - node.type.volunteer_task
+  module:
+    - text
+    - user
+id: node.volunteer_task.teaser
+targetEntityType: node
+bundle: volunteer_task
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_dress_code: true
+  field_key_responsibilities: true
+  field_note: true
+  field_qualifications: true
+  field_reports_to: true
+  field_time_commitment: true
+  field_volunteer_tasks_location: true

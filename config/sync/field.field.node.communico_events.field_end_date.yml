@@ -1,0 +1,19 @@
+uuid: 763bd294-5fc0-440b-b0b1-9708203e8076
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_end_date
+    - node.type.communico_events
+id: node.communico_events.field_end_date
+field_name: field_end_date
+entity_type: node
+bundle: communico_events
+label: 'End Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

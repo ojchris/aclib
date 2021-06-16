@@ -1,0 +1,19 @@
+uuid: 8bd0b2f6-687a-442a-8b77-fa8ca2fa923f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_name
+    - node.type.press_release
+id: node.press_release.field_contact_name
+field_name: field_contact_name
+entity_type: node
+bundle: press_release
+label: Contact
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

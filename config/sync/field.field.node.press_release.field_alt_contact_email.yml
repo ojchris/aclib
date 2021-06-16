@@ -1,0 +1,19 @@
+uuid: 2fb363e9-bba0-4ea0-8c54-6b5ca13a1135
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_alt_contact_email
+    - node.type.press_release
+id: node.press_release.field_alt_contact_email
+field_name: field_alt_contact_email
+entity_type: node
+bundle: press_release
+label: alt_contact_email
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

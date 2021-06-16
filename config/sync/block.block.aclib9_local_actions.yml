@@ -1,0 +1,20 @@
+uuid: 2201b09d-9391-4575-943b-83e44355bcd6
+langcode: en
+status: true
+dependencies:
+  theme:
+    - aclib9
+_core:
+  default_config_hash: 13GQpeITIJsp1kyPniXtWZfyFH87vb1xxJCHifL4UeE
+id: aclib9_local_actions
+theme: aclib9
+region: content
+weight: -20
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

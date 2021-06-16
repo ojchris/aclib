@@ -1,0 +1,28 @@
+uuid: 12bd96ea-4c7e-4596-83b8-d96cad3db9ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.responsive_table.field_table_body
+    - node.type.responsive_table
+  module:
+    - text
+    - user
+id: node.responsive_table.default
+targetEntityType: node
+bundle: responsive_table
+mode: default
+content:
+  field_table_body:
+    weight: 101
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

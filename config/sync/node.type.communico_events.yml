@@ -1,0 +1,18 @@
+uuid: 9ef3b92a-42ac-413d-8507-f69b22f780f1
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Communico Events'
+type: communico_events
+description: 'Lists events from Communico.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

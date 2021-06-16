@@ -1,0 +1,77 @@
+uuid: b00c479c-3763-4cc8-b98c-2af039f07ce6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.reference_database.body
+    - field.field.node.reference_database.field_external_url
+    - field.field.node.reference_database.field_internal_only
+    - field.field.node.reference_database.field_internal_url
+    - field.field.node.reference_database.field_require_signon
+    - node.type.reference_database
+  module:
+    - link
+    - text
+    - user
+id: node.reference_database.default
+targetEntityType: node
+bundle: reference_database
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_external_url:
+    weight: 103
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_internal_only:
+    weight: 105
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_internal_url:
+    weight: 102
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_require_signon:
+    weight: 104
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

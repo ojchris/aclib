@@ -1,0 +1,82 @@
+uuid: 6996bc18-6471-4326-8fb9-aa89207d08bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.communico_events.body
+    - field.field.node.communico_events.field_agenda
+    - field.field.node.communico_events.field_communico_event_id
+    - field.field.node.communico_events.field_end_date
+    - field.field.node.communico_events.field_location
+    - field.field.node.communico_events.field_room
+    - field.field.node.communico_events.field_start_date
+    - node.type.communico_events
+  module:
+    - text
+    - user
+id: node.communico_events.default
+targetEntityType: node
+bundle: communico_events
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_agenda:
+    weight: 106
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_communico_event_id:
+    weight: 107
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_end_date:
+    weight: 103
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_location:
+    weight: 104
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_room:
+    weight: 105
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_start_date:
+    weight: 102
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }
