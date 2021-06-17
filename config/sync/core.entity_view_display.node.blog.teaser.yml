@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.blog.body
     - field.field.node.blog.field_tags
     - field.field.node.blog.field_teaser
+    - field.field.node.blog.field_teaser_image
     - node.type.blog
   module:
     - text
@@ -32,3 +33,4 @@ content:
 hidden:
   field_tags: true
   field_teaser: true
+  field_teaser_image: true

@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.reference_database.body
     - field.field.node.reference_database.field_external_url
+    - field.field.node.reference_database.field_hq_only
     - field.field.node.reference_database.field_internal_only
     - field.field.node.reference_database.field_internal_url
     - field.field.node.reference_database.field_require_signon
@@ -36,6 +37,16 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
+    region: content
+  field_hq_only:
+    weight: 106
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
     region: content
   field_internal_only:
     weight: 105

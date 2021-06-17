@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.blog.body
     - field.field.node.blog.field_tags
     - field.field.node.blog.field_teaser
+    - field.field.node.blog.field_teaser_image
     - node.type.blog
   module:
     - text
@@ -31,11 +32,20 @@ content:
     type: entity_reference_label
     region: content
   field_teaser:
-    weight: 102
+    weight: 104
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    type: basic_string
+    region: content
+  field_teaser_image:
+    type: entity_reference_entity_view
+    weight: 105
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
     region: content
   links:
     weight: 100

@@ -11,7 +11,7 @@ id: node.reference_database.body
 field_name: body
 entity_type: node
 bundle: reference_database
-label: Body
+label: Description
 description: ''
 required: false
 translatable: true

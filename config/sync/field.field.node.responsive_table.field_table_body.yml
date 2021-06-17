@@ -11,7 +11,7 @@ id: node.responsive_table.field_table_body
 field_name: field_table_body
 entity_type: node
 bundle: responsive_table
-label: table_body
+label: 'Table Body'
 description: ''
 required: false
 translatable: false

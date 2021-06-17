@@ -1,0 +1,23 @@
+uuid: c86535eb-b1ef-4b55-ba37-0a1abf4c7301
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hq_only
+    - node.type.reference_database
+id: node.reference_database.field_hq_only
+field_name: field_hq_only
+entity_type: node
+bundle: reference_database
+label: 'HQ Only'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,15 +1,14 @@
-uuid: 362c91a1-2ca7-48b0-82c4-9f508f9cddd8
+uuid: 3d17e0e6-d362-4889-9c07-8c671ece916f
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_teaser
-field_name: field_teaser
+id: node.field_hq_only
+field_name: field_hq_only
 entity_type: node
-type: string_long
-settings:
-  case_sensitive: false
+type: boolean
+settings: {  }
 module: core
 locked: false
 cardinality: 1
