@@ -8,9 +8,11 @@ dependencies:
     - field.field.node.press_release.field_body
     - field.field.node.press_release.field_contact_email
     - field.field.node.press_release.field_contact_name
+    - field.field.node.press_release.field_date
     - field.field.node.press_release.field_tags
     - node.type.press_release
   module:
+    - datetime
     - text
     - user
 id: node.press_release.default
@@ -54,6 +56,15 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  field_date:
+    weight: 109
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
     region: content
   field_tags:
     weight: 101
