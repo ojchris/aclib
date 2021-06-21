@@ -6,13 +6,16 @@ dependencies:
     - field.field.node.reference_database.body
     - field.field.node.reference_database.field_external_url
     - field.field.node.reference_database.field_hq_only
+    - field.field.node.reference_database.field_image
     - field.field.node.reference_database.field_internal_only
     - field.field.node.reference_database.field_internal_url
     - field.field.node.reference_database.field_require_signon
     - node.type.reference_database
   module:
     - link
+    - media_library
     - path
+    - scheduler
     - text
 id: node.reference_database.default
 targetEntityType: node
@@ -50,6 +53,13 @@ content:
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
+  field_image:
+    type: media_library_widget
+    weight: 31
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
   field_internal_only:
     weight: 5
     settings:
@@ -85,6 +95,17 @@ content:
     weight: 9
     region: content
     third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  scheduler_settings:
+    weight: 20
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   status:
     type: boolean_checkbox
     settings:
@@ -116,5 +137,11 @@ content:
       placeholder: ''
       match_limit: 10
     region: content
+    third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 30
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden: {  }
