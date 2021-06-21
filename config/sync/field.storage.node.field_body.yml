@@ -1,15 +1,16 @@
-uuid: ef0b721d-8149-4dbb-b5d2-8598abf66db3
+uuid: 2121dce6-3acf-4fc8-a297-9fb15eb5bd44
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_alt_contact_email
-field_name: field_alt_contact_email
+    - text
+id: node.field_body
+field_name: field_body
 entity_type: node
-type: email
+type: text_long
 settings: {  }
-module: core
+module: text
 locked: false
 cardinality: 1
 translatable: true

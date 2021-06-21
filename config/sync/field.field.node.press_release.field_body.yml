@@ -1,19 +1,21 @@
-uuid: 14a03518-664d-4fc9-99df-64d33fb441c9
+uuid: a25b425e-b928-44fe-aa83-747833f25813
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_alt_contact_email
+    - field.storage.node.field_body
     - node.type.press_release
-id: node.press_release.field_alt_contact_email
-field_name: field_alt_contact_email
+  module:
+    - text
+id: node.press_release.field_body
+field_name: field_body
 entity_type: node
 bundle: press_release
-label: 'Alternate Contact Email'
+label: Body
 description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: email
+field_type: text_long

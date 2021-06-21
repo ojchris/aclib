@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.press_release.field_alt_contact_email
     - field.field.node.press_release.field_alt_contact_name
+    - field.field.node.press_release.field_body
     - field.field.node.press_release.field_contact_email
     - field.field.node.press_release.field_contact_name
     - field.field.node.press_release.field_tags
@@ -25,6 +26,7 @@ content:
 hidden:
   field_alt_contact_email: true
   field_alt_contact_name: true
+  field_body: true
   field_contact_email: true
   field_contact_name: true
   field_tags: true
