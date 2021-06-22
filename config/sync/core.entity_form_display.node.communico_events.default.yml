@@ -11,7 +11,9 @@ dependencies:
     - field.field.node.communico_events.field_start_date
     - node.type.communico_events
   module:
+    - datetime
     - path
+    - scheduler
 id: node.communico_events.default
 targetEntityType: node
 bundle: communico_events
@@ -39,12 +41,10 @@ content:
     type: number
     region: content
   field_end_date:
-    weight: 3
-    settings:
-      size: 60
-      placeholder: ''
+    weight: 4
+    settings: {  }
     third_party_settings: {  }
-    type: string_textfield
+    type: datetime_default
     region: content
   field_location:
     weight: 1
@@ -63,12 +63,10 @@ content:
     type: string_textfield
     region: content
   field_start_date:
-    weight: 4
-    settings:
-      size: 60
-      placeholder: ''
+    weight: 3
+    settings: {  }
     third_party_settings: {  }
-    type: string_textfield
+    type: datetime_default
     region: content
   path:
     type: path
@@ -82,6 +80,12 @@ content:
       display_label: true
     weight: 9
     region: content
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 13
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -114,5 +118,11 @@ content:
       placeholder: ''
       match_limit: 10
     region: content
+    third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 14
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden: {  }
