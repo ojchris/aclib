@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.reference_database.body
+    - field.field.node.reference_database.field_body
     - field.field.node.reference_database.field_external_url
     - field.field.node.reference_database.field_hq_only
     - field.field.node.reference_database.field_image
@@ -20,12 +20,12 @@ targetEntityType: node
 bundle: reference_database
 mode: default
 content:
-  body:
-    label: hidden
-    type: text_default
-    weight: 101
+  field_body:
+    weight: 108
+    label: above
     settings: {  }
     third_party_settings: {  }
+    type: text_default
     region: content
   field_external_url:
     weight: 103
