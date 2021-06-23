@@ -1,0 +1,16 @@
+footer {
+  color: $white;
+  .navbar-dark .nav-link, a {
+    color: $white;
+    font-weight: bold;
+    font-size: 1.2em;
+    &:hover, &:focus, &:active {
+      color: $white;
+      text-decoration: underline;
+    }
+  }
+  #block-footertext, #block-gtranslate {
+    text-align: right;
+    font-size: 0.8em;
+  }
+}

@@ -1,4 +1,4 @@
-uuid: cd3581b3-4b0a-4f22-9bf3-a254cd70c933
+uuid: 3e535d4b-a3a7-4f70-b6f0-03fa7ea76e21
 langcode: en
 status: true
 dependencies:
@@ -8,11 +8,9 @@ dependencies:
     - system
   theme:
     - aclib9
-_core:
-  default_config_hash: rH6PpAn7-RScha1rGkohGAYSSh_1OVeZzioJPzPw6O4
-id: aclib9_tools
+id: tools
 theme: aclib9
-region: sidebar_first
+region: secondary_menu
 weight: 0
 provider: null
 plugin: 'system_menu_block:tools'
@@ -20,7 +18,7 @@ settings:
   id: 'system_menu_block:tools'
   label: Tools
   provider: system
-  label_display: visible
+  label_display: '0'
   level: 1
   depth: 0
   expand_all_items: false

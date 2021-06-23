@@ -1,0 +1,20 @@
+uuid: b1895c8b-332f-47d8-8a78-f9be16c816ee
+langcode: en
+status: true
+dependencies:
+  module:
+    - gtranslate
+  theme:
+    - aclib9
+id: gtranslate
+theme: aclib9
+region: footer_fourth
+weight: -6
+provider: null
+plugin: gtranslate_block
+settings:
+  id: gtranslate_block
+  label: GTranslate
+  provider: gtranslate
+  label_display: '0'
+visibility: {  }

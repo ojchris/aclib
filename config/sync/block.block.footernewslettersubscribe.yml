@@ -1,0 +1,25 @@
+uuid: 6fdcdc8c-ecd2-46c8-92d3-84f409c645d2
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:91a88f0d-50c2-4441-a02c-eabdb5488f4f'
+  module:
+    - block_content
+  theme:
+    - aclib9
+id: footernewslettersubscribe
+theme: aclib9
+region: footer_first
+weight: 0
+provider: null
+plugin: 'block_content:91a88f0d-50c2-4441-a02c-eabdb5488f4f'
+settings:
+  id: 'block_content:91a88f0d-50c2-4441-a02c-eabdb5488f4f'
+  label: 'Footer - newsletter subscribe'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }
