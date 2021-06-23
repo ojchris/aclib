@@ -1,14 +1,14 @@
-uuid: 0492ddb0-370c-49e2-b66d-ddf85d1c64db
+uuid: 4877b716-d641-4a52-8a16-28ca01e18444
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
+    - field.storage.node.field_body
     - node.type.blog
   module:
     - text
-id: node.blog.body
-field_name: body
+id: node.blog.field_body
+field_name: field_body
 entity_type: node
 bundle: blog
 label: Body
@@ -17,7 +17,5 @@ required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings:
-  display_summary: true
-  required_summary: false
-field_type: text_with_summary
+settings: {  }
+field_type: text_long

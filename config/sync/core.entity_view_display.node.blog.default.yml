@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.blog.body
+    - field.field.node.blog.field_body
     - field.field.node.blog.field_tags
     - field.field.node.blog.field_teaser
     - field.field.node.blog.field_teaser_image
@@ -16,12 +16,12 @@ targetEntityType: node
 bundle: blog
 mode: default
 content:
-  body:
-    label: hidden
-    type: text_default
-    weight: 101
+  field_body:
+    weight: 106
+    label: above
     settings: {  }
     third_party_settings: {  }
+    type: text_default
     region: content
   field_tags:
     weight: 103
