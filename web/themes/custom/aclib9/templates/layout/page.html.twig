@@ -167,22 +167,24 @@
         </aside>
       </div>
     {% endif %}
-    <footer class="site-footer">
-      {% block footer %}
+    <footer class="site-footer site-footer-top">
         <div class="{{ container }}">
           <div class="row">
             {{ page.footer_first }}
             {{ page.footer_second }}
           </div>
-          <div class="row">
-            {{ page.footer_third }}
-            {{ page.footer_fourth }}
-          </div>
-          <div class="row">
-            {{ page.footer_fifth }}
-          </div>
         </div>
-      {% endblock %}
+    </footer>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          {{ page.footer_third }}
+          {{ page.footer_fourth }}
+        </div>
+        <div class="row">
+          {{ page.footer_fifth }}
+        </div>
+      </div>
     </footer>
   </div>
 </div>

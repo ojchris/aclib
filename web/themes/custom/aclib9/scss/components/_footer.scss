@@ -1,10 +1,16 @@
 footer.site-footer {
   color: $white;
+  &.site-footer-top {
+    margin-bottom: 1px;
+  }
   .row {
     .block {
       padding-bottom: 1em;
       @include media-breakpoint-up(sm) {
         padding-bottom: 0em;
+      }
+      p {
+        margin-bottom: 0;
       }
     }
     #block-footersocialmedia,

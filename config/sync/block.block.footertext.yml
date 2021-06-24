@@ -11,7 +11,7 @@ dependencies:
 id: footertext
 theme: aclib9
 region: footer_fourth
-weight: -7
+weight: -8
 provider: null
 plugin: 'block_content:b9359283-df16-4ce2-a369-f528074330b7'
 settings:

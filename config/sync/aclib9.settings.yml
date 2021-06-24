@@ -72,9 +72,9 @@ bootstrap_barrio_region_class_featured_bottom_second: row
 bootstrap_barrio_region_clean_featured_bottom_third: 0
 bootstrap_barrio_region_class_featured_bottom_third: row
 bootstrap_barrio_region_clean_footer_first: 0
-bootstrap_barrio_region_class_footer_first: col-sm-6
+bootstrap_barrio_region_class_footer_first: 'col-sm-6 my-auto'
 bootstrap_barrio_region_clean_footer_second: 0
-bootstrap_barrio_region_class_footer_second: col-sm-6
+bootstrap_barrio_region_class_footer_second: 'col-sm-6 my-auto'
 bootstrap_barrio_region_clean_footer_third: 0
 bootstrap_barrio_region_class_footer_third: col-sm-3
 bootstrap_barrio_region_clean_footer_fourth: 0

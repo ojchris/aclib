@@ -8,8 +8,8 @@ dependencies:
     - aclib9
 id: gtranslate
 theme: aclib9
-region: footer_fourth
-weight: -6
+region: footer_fifth
+weight: -8
 provider: null
 plugin: gtranslate_block
 settings:
