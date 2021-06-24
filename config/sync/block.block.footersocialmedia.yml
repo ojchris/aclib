@@ -1,0 +1,25 @@
+uuid: fba95665-92bf-487f-b366-a47d5545d438
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:13c7023f-e270-4399-a52e-319fdd578970'
+  module:
+    - block_content
+  theme:
+    - aclib9
+id: footersocialmedia
+theme: aclib9
+region: footer_second
+weight: 0
+provider: null
+plugin: 'block_content:13c7023f-e270-4399-a52e-319fdd578970'
+settings:
+  id: 'block_content:13c7023f-e270-4399-a52e-319fdd578970'
+  label: 'Footer - social media'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }
