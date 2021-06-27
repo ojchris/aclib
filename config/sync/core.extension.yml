@@ -35,6 +35,7 @@ module:
   scheduler: 0
   search: 0
   shortcut: 0
+  simple_responsive_table: 0
   system: 0
   taxonomy: 0
   text: 0
