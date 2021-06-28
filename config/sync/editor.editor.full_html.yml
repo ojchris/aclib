@@ -48,8 +48,9 @@ settings:
         -
           name: Tools
           items:
-            - ShowBlocks
+            - Accordion
             - Source
+            - ShowBlocks
   plugins:
     stylescombo:
       styles: ''
