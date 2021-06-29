@@ -33,12 +33,13 @@ features:
   comment_user_verification: true
   favicon: 1
 logo:
-  use_default: 1
+  use_default: 0
+  path: themes/custom/aclib9/images/logo/acldlogo-2019-color-horz-outlines-440x120px.png
 favicon:
   use_default: 1
 bootstrap_barrio_source: '0'
 bootstrap_barrio_region_clean_top_header: 0
-bootstrap_barrio_region_class_top_header: row
+bootstrap_barrio_region_class_top_header: 'row order-2 order-md-1'
 bootstrap_barrio_region_clean_top_header_form: 0
 bootstrap_barrio_region_class_top_header_form: row
 bootstrap_barrio_region_clean_header: 1
@@ -48,7 +49,7 @@ bootstrap_barrio_region_class_header_form: row
 bootstrap_barrio_region_clean_primary_menu: 1
 bootstrap_barrio_region_class_primary_menu: ''
 bootstrap_barrio_region_clean_secondary_menu: 0
-bootstrap_barrio_region_class_secondary_menu: row
+bootstrap_barrio_region_class_secondary_menu: 'row order-1 order-md-2'
 bootstrap_barrio_region_clean_page_top: 0
 bootstrap_barrio_region_class_page_top: row
 bootstrap_barrio_region_clean_page_bottom: 0

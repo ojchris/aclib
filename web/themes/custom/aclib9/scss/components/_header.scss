@@ -1,8 +1,54 @@
 header {
   #navbar-top {
-    .nav-link {
-      text-transform: uppercase;
-      font-weight: bold;
+    padding: 0;
+    .navbar-brand {
+      margin-right: 0;
+      img {
+        width: 300px;
+      }
+    }
+    .region-top-header {
+      flex: auto;
+      text-align: center;
+      @include media-breakpoint-up(md) {
+        flex: none;
+      }
+    }
+    .region-secondary-menu {
+      flex: auto;
+      nav {
+        padding-left: 0;
+        padding-right: 0;
+        @include media-breakpoint-up(md) {
+          padding-left: inherit;
+        }
+        ul {
+          justify-content: space-around;
+          @include media-breakpoint-up(md) {
+            justify-content: flex-end;
+          }
+          &.clearfix::after {
+            display: none;
+          }
+          .nav-link {
+            //border: 1px solid red;
+            font-weight: bold;
+            padding-left: 0;
+            padding-right: 0;
+            @include media-breakpoint-up(md) {
+              padding-left: 1em;
+            }
+            // Bootstrap Barrio adds an icon to some nav links by default. This
+            //   removes them all from the secondary menu.
+            &::before {
+              display: none;
+            }
+            &:hover, &:focus, &:active {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
     }
   }
 }
