@@ -1,0 +1,20 @@
+uuid: 25005ea7-781b-4249-8e86-7bc07c04a20b
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - node
+id: node.field_home_page_image
+field_name: field_home_page_image
+entity_type: node
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

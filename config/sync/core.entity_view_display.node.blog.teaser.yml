@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.blog.field_body
+    - field.field.node.blog.field_home_page_image
     - field.field.node.blog.field_tags
     - field.field.node.blog.field_teaser
     - field.field.node.blog.field_teaser_image
@@ -23,6 +24,7 @@ content:
     region: content
 hidden:
   field_body: true
+  field_home_page_image: true
   field_tags: true
   field_teaser: true
   field_teaser_image: true

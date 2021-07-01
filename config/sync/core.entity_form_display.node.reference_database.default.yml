@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.reference_database.field_internal_only
     - field.field.node.reference_database.field_internal_url
     - field.field.node.reference_database.field_require_signon
+    - field.field.node.reference_database.field_tags
     - node.type.reference_database
   module:
     - link
@@ -79,6 +80,16 @@ content:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
+  field_tags:
+    weight: 26
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete_tags
     region: content
   path:
     type: path

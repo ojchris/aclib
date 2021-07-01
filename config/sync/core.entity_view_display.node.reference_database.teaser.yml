@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.reference_database.field_internal_only
     - field.field.node.reference_database.field_internal_url
     - field.field.node.reference_database.field_require_signon
+    - field.field.node.reference_database.field_tags
     - node.type.reference_database
   module:
     - user
@@ -32,3 +33,4 @@ hidden:
   field_internal_only: true
   field_internal_url: true
   field_require_signon: true
+  field_tags: true
