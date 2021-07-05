@@ -11,7 +11,7 @@ field_name: field_teaser_image
 entity_type: node
 bundle: blog
 label: 'Teaser Image'
-description: ''
+description: 'Teaser Image should 300x200 px at minimum 72 dpi and a maximum file size of 500 KB.'
 required: false
 translatable: false
 default_value: {  }
