@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Provides Communico API integration.
+ */
+
+/**
+ * Implements hook_cron().
+ *
+ * Queues events from Communico via its API for auto generating appropriate nodes in our Drupal
+ */
+function aclib_communico_cron() {
+
+  $config = \Drupal::config('aclib_communico.settings')->getRawData();
+  $access_key = isset($config['access_key']) && !empty($config['access_key']) ? TRUE : FALSE;
+  $secret_key = isset($config['secret_key']) && !empty($config['secret_key']) ? TRUE : FALSE;
+  $base_uri = isset($config['guzzle_options']['base_uri']) && !empty($config['guzzle_options']['base_uri']) ? TRUE : FALSE;
+ 
+  if ($access_key && $secret_key && $base_uri ) { // We do not want this running without credentials / avoid possible fatal errors
+    $queue = \Drupal::service('queue')->get('aclib_communico_queue');
+    $events = Drupal::service('aclib_communico.connector')->getEvents(); 
+    foreach ($events as $event) {
+      $queue->createItem($event);
+    }
+  }
+  else {
+    // Warn user if no credentials set
+    \Drupal::logger('ac_credentials')->warning('Aclib communico module enabled but no credentials set on its configuration page.');
+  }
+}

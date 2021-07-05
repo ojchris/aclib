@@ -1,0 +1,5 @@
+access_key: null
+secret_key: null
+guzzle_options:
+  base_uri: 'https://api.communico.co'
+  timeout: 10

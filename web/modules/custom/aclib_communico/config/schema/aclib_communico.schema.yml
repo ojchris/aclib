@@ -1,0 +1,25 @@
+# Main config object
+aclib_communico.settings:
+  type: config_object
+  label: 'MailChimp related data'
+  mapping:
+    communico_api:
+      type: mapping
+      label: 'Communico API credentials'
+      mapping: 
+        access_key:
+          type: string
+          label: 'API access key'
+        secret_key:
+          type: string
+          label: 'API secret key'
+    guzzle_options:
+      tyoe: mapping
+      label: 'Guzzle options'
+      mapping: 
+        base_uri:
+          type: string
+          label: 'API base URI'
+        timeout:
+          type: integer
+          label: 'API timeout setting'

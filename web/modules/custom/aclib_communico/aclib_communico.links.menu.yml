@@ -1,0 +1,6 @@
+aclib_communico.admin:
+  title: 'Aclib Communico settings'
+  description: 'Add Global Communico API Settings'
+  parent: system.admin_config_development
+  route_name: aclib_communico.config
+  weight: 100

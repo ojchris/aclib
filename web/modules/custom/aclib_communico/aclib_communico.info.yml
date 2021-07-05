@@ -1,0 +1,6 @@
+name: Aclib Communico
+description: 'Enables API connections with Communico, importing events as well.'
+package: Aclib
+type: module
+core_version_requirement: ^8.8 || ^9
+configure: aclib_communico.admin
