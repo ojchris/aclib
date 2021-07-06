@@ -1,3 +1,4 @@
+<<<<<<< HEAD:config/sync/core.entity_view_display.node.blog.teaser.yml
 uuid: 43842c05-6527-44a8-8a49-95e2a142048e
 langcode: en
 status: true
@@ -28,3 +29,5 @@ hidden:
   field_tags: true
   field_teaser: true
   field_teaser_image: true
+=======
+>>>>>>> parent of 0619ea0 (recreated list view mode and enabled on Blog type):config/sync/core.entity_view_display.node.blog.list.yml
