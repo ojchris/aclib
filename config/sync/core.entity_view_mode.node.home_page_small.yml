@@ -1,0 +1,10 @@
+uuid: 726f295d-5a61-4c0b-a8a7-250fee91ccd5
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.home_page_small
+label: 'Home page small'
+targetEntityType: node
+cache: true
