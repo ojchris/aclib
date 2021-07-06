@@ -1,0 +1,34 @@
+uuid: 0265d6d7-65c6-4de6-a6ba-3b40d376d2b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.press_release.field_alt_contact_email
+    - field.field.node.press_release.field_alt_contact_name
+    - field.field.node.press_release.field_body
+    - field.field.node.press_release.field_contact_email
+    - field.field.node.press_release.field_contact_name
+    - field.field.node.press_release.field_date
+    - field.field.node.press_release.field_tags
+    - node.type.press_release
+  module:
+    - user
+id: node.press_release.teaser
+targetEntityType: node
+bundle: press_release
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_alt_contact_email: true
+  field_alt_contact_name: true
+  field_body: true
+  field_contact_email: true
+  field_contact_name: true
+  field_date: true
+  field_tags: true
