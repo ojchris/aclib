@@ -173,8 +173,10 @@ class AclibCommunicoConfigForm extends ConfigFormBase {
     else {
 
       if ($access_key && $secret_key && $config->get('types_endpoint') && !empty($base_uri)) {
+
+        $status = $this->t('Access token valid, connection with API successful.');
+        $this->messenger()->addStatus($status);
        
-        //$events_type_uri = $this->client::EVENT_TYPES_URI;
         $get_types = $this->client->get($config->get('types_endpoint'));
         if (is_array($get_types) && isset($get_types['data']) && isset($get_types['data']['entries']) && !empty($get_types['data']['entries'])) {
           foreach ($get_types['data']['entries'] as $entry) {

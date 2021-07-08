@@ -104,7 +104,6 @@ class AclibCommunicoClient {
 
     if ($token = $this->validAuthToken()) {
       $this->logger->get('aclib_communico')->notice($status);
-      $this->messenger->addStatus($status);
       return $token;
     }
     else {
@@ -134,7 +133,6 @@ class AclibCommunicoClient {
             $token['expires'] = \Drupal::time()->getCurrentTime() + $token['expires_in'];
             $this->state->set('aclib_communico.token', $token);
             $this->logger->get('aclib_communico')->notice($status);
-            $this->messenger->addStatus($status);
             return $token;
           } 
         }
