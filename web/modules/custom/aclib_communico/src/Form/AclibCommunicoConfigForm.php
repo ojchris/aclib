@@ -252,7 +252,7 @@ class AclibCommunicoConfigForm extends ConfigFormBase {
     $form['debug'] = [ 
       '#type' => 'checkbox',
       '#title' => t('Debug'),
-      '#description' => t('If this is set/checked there will be no neew nodes created. Yet, all the other operations towards API run. Also important, when this is checked any leftover (stuck) tasks in QueueWorker will be deleted.'), 
+      '#description' => t('If this is set/checked there will be no new nodes created or updated. Yet, all the other operations towards API do run. Also important, when this is checked any leftover (stuck) tasks in QueueWorker will be deleted so to start all over.'), 
       '#default_value' => $config->get('debug'),
     ];
 
