@@ -1,4 +1,4 @@
 services:
-  aclib_communico.connector:
-    class: Drupal\aclib_communico\AclibCommunicoBase
-    arguments: ['@config.factory', '@http_client', '@entity_type.manager', '@state']
+  aclib_communico.client:
+    class: Drupal\aclib_communico\AclibCommunicoClient
+    arguments: ['@config.factory', '@http_client', '@state', '@logger.factory', '@messenger']

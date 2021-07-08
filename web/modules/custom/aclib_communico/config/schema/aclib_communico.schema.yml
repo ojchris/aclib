@@ -13,6 +13,29 @@ aclib_communico.settings:
         secret_key:
           type: string
           label: 'API secret key'
+        token_endpoint:
+          type: string
+          label: 'Token endpoint'
+        types_endpoint:
+          type: string
+          label: 'Event types endpoint'
+        events_endpoint:
+          type: string
+          label: 'Events endpoint'
+        startDate:
+          type: string
+          label: 'Start date'
+        endDate:
+          type: string
+          label: 'End date'
+        types:
+          type: sequence
+          label: 'Event types'
+          sequence:
+            type: string
+        limit:
+          type: integer
+          label: 'Request limit param'
     guzzle_options:
       tyoe: mapping
       label: 'Guzzle options'
@@ -23,3 +46,6 @@ aclib_communico.settings:
         timeout:
           type: integer
           label: 'API timeout setting'
+    debug:
+      type: integer
+      label: 'Debug'

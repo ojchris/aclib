@@ -1,5 +1,14 @@
 access_key: null
 secret_key: null
+token_endpoint: 'v3/token'
+types_endpoint: 'v3/attend/types'
+events_endpoint: 'v3/attend/events'
+startDate: '2020-10-01'
+endDate: '2021-09-30'
+types:
+  -
+limit: 100
 guzzle_options:
   base_uri: 'https://api.communico.co'
   timeout: 10
+debug: false

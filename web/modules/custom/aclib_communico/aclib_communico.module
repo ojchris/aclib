@@ -5,6 +5,8 @@
  * Provides Communico API integration.
  */
 
+use Drupal\Component\Utility\Html;
+
 /**
  * Implements hook_cron().
  *
@@ -12,16 +14,56 @@
  */
 function aclib_communico_cron() {
 
-  $config = \Drupal::config('aclib_communico.settings')->getRawData();
-  $access_key = isset($config['access_key']) && !empty($config['access_key']) ? TRUE : FALSE;
-  $secret_key = isset($config['secret_key']) && !empty($config['secret_key']) ? TRUE : FALSE;
-  $base_uri = isset($config['guzzle_options']['base_uri']) && !empty($config['guzzle_options']['base_uri']) ? TRUE : FALSE;
- 
-  if ($access_key && $secret_key && $base_uri ) { // We do not want this running without credentials / avoid possible fatal errors
+
+  $config = \Drupal::config('aclib_communico.settings'); 
+  $guzzle_options = $config->get('guzzle_options');
+
+  if ($config->get('access_key') && $config->get('secret_key') && $config->get('events_endpoint') && !empty($guzzle_options['base_uri'])) { // We do not want anything to run if credentials were not stored in configuration
+
+    // Define our QueueWorker plugin
     $queue = \Drupal::service('queue')->get('aclib_communico_queue');
-    $events = Drupal::service('aclib_communico.connector')->getEvents(); 
-    foreach ($events as $event) {
-      $queue->createItem($event);
+  
+    // Base options for guzzle http request
+    $options = [
+      'query' => [
+        'status' => 'published',
+        'limit' => $config->get('limit') ? $config->get('limit') : 100, 
+      ]
+    ];
+ 
+    // Filter by event types
+    if (is_array($config->get('types')) && !empty($config->get('types'))) {
+      $types = [];
+      foreach ($config->get('types') as $type_key => $type) {
+        $types[$type_key] = Html::escape($type); // Do we want this actually? How does Communico APi works with event types names which include "&" in the string and yes, we do have it, also "/" etc.
+      }
+      $options['query']['types'] = implode(',', $types);
+    }
+
+    // Filter by start and end dates
+    if ($config->get('startDate')) {
+      $options['query']['startDate'] = $config->get('startDate');
+    }
+    if ($config->get('endDate')) {
+      $options['query']['endDate'] = $config->get('endDate');
+    }
+
+    // Run our httop request to Communico API
+    if ($response = \Drupal::service('aclib_communico.client')->get($config->get('events_endpoint'), $options)) {
+
+      // Pack retrieved data into associative array ready for Node::create
+      if (isset($response['data']) && isset($response['data']['entries']) && !empty($response['data']['entries'])) {
+        foreach ($response['data']['entries'] as $entry) {
+          // For debuging purposes we atart all over - make sure any possible remaining items in queue are deleted
+          if ($config->get('debug')) {
+            $queue->deleteItem($entry);
+          }
+          // Else create each item in the queue
+          else {
+            $queue->createItem($entry);
+          }
+        }
+      }
     }
   }
   else {
