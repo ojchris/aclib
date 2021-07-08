@@ -86,8 +86,13 @@ class AclibCommunicoConfigForm extends ConfigFormBase {
     $form['communico_api'] = [
       '#type' => 'fieldset',
       '#title' => $this->t('Communico API settings'),
-      '#description' => $this->t('Check documentation on <a href="http://api.communico.co/docs/" target="_blank">Communico API</a>'),
       '#tree' => TRUE,
+      '#prefix' => '<div id="aclib-communico-api-wrapper">',
+      '#suffix' => '</div>' 
+    ];
+
+    $form['communico_api']['info'] = [
+      '#markup' => $this->t('More info on <a href="http://api.communico.co/docs/" target="_blank">Communico API</a> page.')
     ];
 
     // Credentials
@@ -107,7 +112,7 @@ class AclibCommunicoConfigForm extends ConfigFormBase {
         'event' => 'change',
         'callback' => [get_class($this), 'getEventTypes'],
         'effect' => 'fade',
-        'wrapper' => 'aclib-communico-event-types',
+        'wrapper' => 'aclib-communico-api-wrapper',
         'progress' => [
           'type' => 'throbber',
           'message' => t('Requesting Event types from Communico...'),
@@ -218,9 +223,7 @@ class AclibCommunicoConfigForm extends ConfigFormBase {
       '#options' => $event_types,
       '#multiple' => TRUE,
       '#empty_option' => $this->t('- Select -'),
-      '#prefix' => '<div id="aclib-communico-event-types">',
-      '#suffix' => '</div>' 
-    ];
+     ];
 
     $form['communico_api']['limit'] = [
       '#type' => 'number',
@@ -307,7 +310,6 @@ class AclibCommunicoConfigForm extends ConfigFormBase {
    * Ajax callback - upon first time entering API credentials
    */
   public static function getEventTypes(&$form, FormStateInterface $form_state) {
-    $element = NestedArray::getValue($form, ['communico_api', 'types']);
-    return $element; 
+    return  NestedArray::getValue($form, ['communico_api']);
   }
 }
