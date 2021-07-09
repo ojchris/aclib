@@ -203,6 +203,12 @@ class AclibCommunicoQueueWorker extends QueueWorkerBase implements ContainerFact
 
       case 'unpublish':
         try {
+
+          $communico_event->set('status', 0);
+          if ($communico_event->save()) {
+            $status = $this->t('Existing node unpublished: @title ', ['@title' => $data['title']]);
+            $this->logger->get('aclib_communico')->notice($status);
+          }
         }
         catch (\Exception $e) {
           $error = $this->t('Unpublishing Communico event nodes failed on cron run: @message', ['@message' => $e->getMessage()]);
