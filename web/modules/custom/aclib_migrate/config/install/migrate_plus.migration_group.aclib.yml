@@ -1,0 +1,10 @@
+id: aclib
+label: ACLIB Drupal 7 migration.
+description: ACLIB content from Drupal 7 site.
+source_type: EPI Drupal 7 site
+shared_configuration:
+  source:
+    key: migrate
+  migration_tags:
+    - Drupal 7
+    - aclib

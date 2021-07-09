@@ -1,0 +1,9 @@
+name: ACLIB migrate
+type: module
+description: Defines data migrations from Drupal 7 aclib.us site.
+package: Aclib
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - migrate_tools
+  - migrate_plus

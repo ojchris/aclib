@@ -1,0 +1,16 @@
+uuid: 638b8e0f-e0ff-4762-930a-f14a9f1468f1
+langcode: en
+status: false
+dependencies: {  }
+id: local_development
+label: 'Local development'
+description: ''
+folder: ../config/config_split/local
+module:
+  config_devel: 0
+theme: {  }
+blacklist: {  }
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 0
