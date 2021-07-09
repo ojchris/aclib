@@ -53,7 +53,9 @@ function aclib_communico_cron() {
 
       // Pack retrieved data into associative array ready for Node::create
       if (isset($response['data']) && isset($response['data']['entries']) && !empty($response['data']['entries'])) {
-        
+
+        //\Drupal::logger('ac_cred')->notice('<pre>' . print_r($response['data']['entries'], 1) .'</pre>');
+
         if ($config->get('debug')) { // Debbuging mode, set some info about it
           \Drupal::logger('ac_credentials')->notice('Debugging mode on - all queued items will be deleted from cron queue. Note that depending of limit number, if high,  it may require a few rounds of cron run.');
         }

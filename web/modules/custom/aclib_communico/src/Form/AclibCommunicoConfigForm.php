@@ -241,7 +241,7 @@ class AclibCommunicoConfigForm extends ConfigFormBase {
 
     $form['guzzle_options']['base_uri'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Communico API Base URI'),
+      '#title' => $this->t('Base URI'),
       '#default_value' => $guzzle_options['base_uri'],
       '#required' => TRUE,
     ];

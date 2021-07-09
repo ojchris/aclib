@@ -2,7 +2,7 @@
 aclib_communico.settings:
   type: config_object
   label: 'MailChimp related data'
-  mapping:
+  mapping:  &aclib_communico_fields_hash_alias
     communico_api:
       type: mapping
       label: 'Communico API credentials'
@@ -49,3 +49,17 @@ aclib_communico.settings:
     debug:
       type: integer
       label: 'Debug'
+
+# Field related schema
+field.storage_settings.aclib_communico_fields_hash:
+  label: 'Aclib communico fields hash'
+  type: mapping
+
+field.field_settings.aclib_communico_fields_hash:
+  label: 'Aclib communico fields hash'
+  type: mapping
+
+field.value.aclib_communico_fields_hash:
+  type: mapping
+  label: 'Default value'
+  mapping: *aclib_communico_fields_hash_alias
