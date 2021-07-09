@@ -1,4 +1,5 @@
 module:
+  aclib_migrate: 0
   admin_toolbar: 0
   admin_toolbar_tools: 0
   automated_cron: 0
@@ -9,6 +10,8 @@ module:
   ckeditor: 0
   ckeditor_accordion: 0
   config: 0
+  config_filter: 0
+  config_split: 0
   contextual: 0
   datetime: 0
   dblog: 0
@@ -28,6 +31,10 @@ module:
   media_library: 0
   menu_link_content: 0
   menu_ui: 0
+  migrate: 0
+  migrate_drupal: 0
+  migrate_plus: 0
+  migrate_tools: 0
   node: 0
   options: 0
   page_cache: 0

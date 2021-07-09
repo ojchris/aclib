@@ -13,6 +13,10 @@ mysql_version: ""
 use_dns_when_possible: true
 composer_version: ""
 web_environment: []
+hooks:
+  post-start:
+    - exec: mysql -uroot -proot -hdb -e "CREATE DATABASE IF NOT EXISTS aclib7; GRANT
+        ALL ON aclib7.* TO 'db'@'%';"
 
 
 # This config.yaml was created with ddev version v1.17.5
@@ -158,7 +162,7 @@ web_environment: []
 # In this case the user must provide all such settings.
 
 # You can inject environment variables into the web container with:
-# web_environment: 
+# web_environment:
 # - SOMEENV=somevalue
 # - SOMEOTHERENV=someothervalue
 
