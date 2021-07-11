@@ -1,0 +1,16 @@
+id: tags
+label: Tags terms
+migration_group: aclib
+source:
+  plugin: d7_taxonomy_term
+  bundle: tags
+destination:
+  plugin: entity:taxonomy_term
+process:
+  vid:
+    plugin: default_value
+    default_value: tags
+  name: name
+  weight: weight
+  changed: timestamp
+migration_dependencies: { }
