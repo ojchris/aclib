@@ -1,0 +1,19 @@
+uuid: 5866a400-426c-4e4c-92ae-1e534a58554b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_communico_modified
+    - node.type.communico_events
+id: node.communico_events.field_communico_modified
+field_name: field_communico_modified
+entity_type: node
+bundle: communico_events
+label: 'Communico modified'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
