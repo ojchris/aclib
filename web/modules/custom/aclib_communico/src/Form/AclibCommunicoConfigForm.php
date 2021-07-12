@@ -298,6 +298,7 @@ class AclibCommunicoConfigForm extends ConfigFormBase {
       '#description' => $this->t('Select member who becomes author of our node.'), 
       '#target_type' => 'user',
       '#default_value' => $node_author,
+      '#required' => TRUE,
     ];
 
     $form['nodes']['update'] = [ 
@@ -317,7 +318,7 @@ class AclibCommunicoConfigForm extends ConfigFormBase {
     $form['debug'] = [ 
       '#type' => 'checkbox',
       '#title' => t('Debug'),
-      '#description' => $this->t('If this is checked there will be no new nodes created, updated or published. Yet, all the other operations towards API do run. Also important, when this is checked any leftover (stuck) tasks in QueueWorker will be deleted so to start all over. See <em>hook_cron</em> in aclib_communico.module.'), 
+      '#description' => $this->t('If this is checked there will be no new nodes created, updated or un-published. Yet, all the other operations towards API do run. Also important, when this is checked any leftover (stuck) tasks in QueueWorker will be deleted so to start all over. See <em>hook_cron</em> in aclib_communico.module.'), 
       '#default_value' => $config->get('debug'),
     ];
 

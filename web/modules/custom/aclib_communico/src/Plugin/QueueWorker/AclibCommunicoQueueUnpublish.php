@@ -9,7 +9,7 @@ use Drupal\node\NodeInterface;
 use Drupal\aclib_communico\AclibCommunicoClient;
 
 /**
- * Fetches data from Communico and creates appropriate nodes.
+ * Unpublish nodes that are not anymore on Communico.
  *
  * @QueueWorker(
  *   id = "aclib_communico_queue_unpublish",
@@ -17,7 +17,7 @@ use Drupal\aclib_communico\AclibCommunicoClient;
  *   cron = {"time" = 10}
  * )
  */
-class AclibCommunicoQueueUnpbulish extends AclibCommunicoQueueWorker {
+class AclibCommunicoQueueUnpublish extends AclibCommunicoQueueWorker {
   /**
    * {@inheritdoc}
    */

@@ -145,10 +145,10 @@ function aclib_communico_cron() {
       }
     }
 
-    // Our second, separate QueueWorker - it suns independently/async of previous one    
+    // Our second, separate QueueWorker - it runs independent/async of previous one    
     if (!empty($all_communico_events)) {
       
-      // Define our unpbulish QueueWorker plugin
+      // Define our unpublish QueueWorker plugin
       $unpublish_queue = \Drupal::service('queue')->get('aclib_communico_queue_unpublish'); 
       foreach ($all_communico_events as $nid => $node) {
         

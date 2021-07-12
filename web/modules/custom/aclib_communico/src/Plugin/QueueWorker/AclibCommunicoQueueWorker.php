@@ -15,7 +15,7 @@ use Drupal\Component\Utility\Crypt;
 use Drupal\node\NodeInterface;
 
 /**
- * Fetches data from Communico and creates appropriate nodes.
+ * Creates or updates nodes based on results retrived by API call/response.
  *
  * @QueueWorker(
  *   id = "aclib_communico_queue",
@@ -114,26 +114,26 @@ class AclibCommunicoQueueWorker extends QueueWorkerBase implements ContainerFact
    */
   public function processItem($data) {
   
-    
+    // Load our configuration object
     $config = $this->configFactory->get('aclib_communico.settings');
+  
     // Prepare our data for to be associative array ready for node save
     $node_data = $this->prepareItem($data, $config);
 
-    // Find possible existing equilent communico event in our (Drupal) database 
+    // Find possible existing equivalent communico event in our (Drupal) database 
     $properties = [
       'field_communico_event_id' => $node_data['field_communico_event_id']
     ];
   
     $communico_event_load = $this->entityTypeManager->getStorage('node')->loadByProperties($properties);
-
     $communico_event = is_array($communico_event_load) && !empty($communico_event_load) ? reset($communico_event_load) : NULL;
 
     if ($communico_event instanceof NodeInterface) { // This is existing node in our Drupal that matches event on communico via eventId
-      if ($config->get('update')) { // Make sure this optin is checked n configuration
+      if ($config->get('update')) { // Make sure this optin is checked on configuration
         $this->saveItem($node_data, 'update', $communico_event);
       }
     }
-    // Yet this is a communico event that we did not import yet
+    // Yet this is a communico event that we did not import so far
     else {
       $this->saveItem($node_data, 'create'); 
     }
@@ -144,6 +144,8 @@ class AclibCommunicoQueueWorker extends QueueWorkerBase implements ContainerFact
    *
    * @param array $data
    *   Associative array with values retrieved from Communico API.
+   * @param object $config
+   *   instance of \Drupal\Core\Config\ImmutableConfig
    *
    * @return array
    *   An array with values ready for Node::create method
@@ -158,7 +160,7 @@ class AclibCommunicoQueueWorker extends QueueWorkerBase implements ContainerFact
 
     foreach ($data as $field_key => $field) {
       if (in_array($field_key, array_keys($fields_map))) {
-        $drupal_field_name = $fields_map[$field_key]; //$field_key == 'type' || $field_key == 'uid' ? $field_key : $fields_map[$field_key];
+        $drupal_field_name = $fields_map[$field_key];
         if ($drupal_field_name) {
           if ($drupal_field_name == 'field_start_date' || $drupal_field_name == 'field_end_date') { // A bit of hardcode like parsing for dates that have space between date and time
             if (strpos($field, ' ') !== FALSE) {
@@ -186,9 +188,6 @@ class AclibCommunicoQueueWorker extends QueueWorkerBase implements ContainerFact
    */
   protected function saveItem(array $data, string $op, object $communico_event = NULL) {
   
-    // This is our base field that gets auto attached to communico events bundle
-    $hash_field = 'communico_fields_hash';
-
     switch ($op) {
     
       case 'update':
@@ -197,7 +196,7 @@ class AclibCommunicoQueueWorker extends QueueWorkerBase implements ContainerFact
 
           $remote_values_hash = Crypt::hashBase64(implode('__', array_values($data)));
           $drupal_values_hash = '';
-          if ($communico_event->hasField(static::HASH_FIELD)) { //$hash_field) {
+          if ($communico_event->hasField(static::HASH_FIELD)) {
             $drupal_values_hash = !empty($communico_event->get(static::HASH_FIELD)->getValue()) && isset($communico_event->get(static::HASH_FIELD)->getValue()[0]['value']) ?  $communico_event->get(static::HASH_FIELD)->getValue()[0]['value'] : '';
           }
           else {
