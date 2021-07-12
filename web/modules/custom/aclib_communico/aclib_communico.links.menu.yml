@@ -1,6 +1,6 @@
 aclib_communico.admin:
   title: 'ACLIB Communico'
-  description: 'Communico API Settings'
+  description: 'ACLIB Communico API Settings'
   parent: system.admin_config_services
   route_name: aclib_communico.config
   weight: 100
