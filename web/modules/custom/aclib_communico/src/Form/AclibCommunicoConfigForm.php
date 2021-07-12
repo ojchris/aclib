@@ -7,13 +7,13 @@
 
 namespace Drupal\aclib_communico\Form;
 
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Cache\CacheBackendInterface;
-
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
-
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Component\Utility\Html;
 
@@ -22,16 +22,23 @@ use Drupal\aclib_communico\AclibCommunicoClient;
 class AclibCommunicoConfigForm extends ConfigFormBase {
 
   /**
+   * Drupal\Core\Entity\EntityTypeManagerInterface definition.
+   * 
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
    * Drupal\Core\Config\ConfigFactoryInterface definition.
    * 
-   * @var Drupal\Core\Config\ConfigFactoryInterface
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
    */
   protected $cache;
 
   /**
    * Drupal\aclib_communico\AclibCommunicoClient definition.
    * 
-   * @var Drupal\aclib_communico\AclibCommunicoClient
+   * @var \Drupal\aclib_communico\AclibCommunicoClient
    */
   protected $client;
 
@@ -41,8 +48,9 @@ class AclibCommunicoConfigForm extends ConfigFormBase {
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The factory for configuration objects.
    */
-  public function __construct(ConfigFactoryInterface $config_factory, CacheBackendInterface $cache, AclibCommunicoClient $aclib_communico_client) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, ConfigFactoryInterface $config_factory, CacheBackendInterface $cache, AclibCommunicoClient $aclib_communico_client) {
     parent::__construct($config_factory);
+    $this->entityTypeManager = $entity_type_manager;
     $this->cache = $cache;
     $this->client = $aclib_communico_client;
   }
@@ -52,6 +60,7 @@ class AclibCommunicoConfigForm extends ConfigFormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
+      $container->get('entity_type.manager'),
       $container->get('config.factory'),
       $container->get('cache.default'),
       $container->get('aclib_communico.client')
@@ -252,10 +261,63 @@ class AclibCommunicoConfigForm extends ConfigFormBase {
       '#default_value' => $guzzle_options['timeout'],
     ];
 
+    $form['nodes'] = [
+      '#type' => 'fieldset',
+      '#title' => $this->t('Communico events nodes'),
+      '#tree' => TRUE,
+    ];
+
+    $node_types_load = $this->entityTypeManager->getStorage('node_type')->loadMultiple();
+    $node_types = [];
+    foreach ($node_types_load as $type_key => $type) {
+      $node_types[$type_key] = $type->label();
+    }    
+    
+    $form['nodes']['node_type'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Node type'),
+      '#description' => $this->t('Select node type to be a target for Communico API imports. Nodes of this type get auto created/updated/unpublished on request'), 
+      '#options' => $node_types,
+      '#default_value' =>  $config->get('node_type'),
+      '#required' => TRUE,
+    ];
+
+    $node_author = NULL;
+    if ($config->get('node_author')) {
+      $node_author = $this->entityTypeManager->getStorage('user')->load($config->get('node_author'));
+    }
+    else {
+      if ($form_state->getValue('node_author')) {
+        $node_author =  $this->entityTypeManager->getStorage('user')->load($form_state->getValue('node_author'));
+      }
+    }
+
+    $form['nodes']['node_author'] = [
+      '#type' => 'entity_autocomplete',
+      '#title' => $this->t('Node author'),
+      '#description' => $this->t('Select member who becomes author of our node.'), 
+      '#target_type' => 'user',
+      '#default_value' => $node_author,
+    ];
+
+    $form['nodes']['update'] = [ 
+      '#type' => 'checkbox',
+      '#title' => t('Update nodes'),
+      '#description' => $this->t('Un-check this to skip updating nodes based on comparison with response results (updated communico events).'), 
+      '#default_value' => $config->get('update'),
+    ];
+
+    $form['nodes']['unpublish'] = [ 
+      '#type' => 'checkbox',
+      '#title' => t('Unpublish nodes'),
+      '#description' => $this->t('Un-check this to skip un-publishing nodes based on comparison with response results (deleted communico events).'), 
+      '#default_value' => $config->get('unpublish'),
+    ];
+
     $form['debug'] = [ 
       '#type' => 'checkbox',
       '#title' => t('Debug'),
-      '#description' => t('If this is checked there will be no new nodes created, updated or published. Yet, all the other operations towards API do run. Also important, when this is checked any leftover (stuck) tasks in QueueWorker will be deleted so to start all over. See <em>hook_cron</em> in aclib_communico.module.'), 
+      '#description' => $this->t('If this is checked there will be no new nodes created, updated or published. Yet, all the other operations towards API do run. Also important, when this is checked any leftover (stuck) tasks in QueueWorker will be deleted so to start all over. See <em>hook_cron</em> in aclib_communico.module.'), 
       '#default_value' => $config->get('debug'),
     ];
 
@@ -295,6 +357,11 @@ class AclibCommunicoConfigForm extends ConfigFormBase {
           else {
             $config->set($v_key, $v);
           }
+        }
+      }
+      else if ($value_key == 'nodes') {
+        foreach ($value as $v_key => $v) {
+          $config->set($v_key, $v);
         }
       }
       else if ($value_key == 'debug') {

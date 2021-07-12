@@ -1,7 +1,7 @@
 aclib_communico.config:
-  path: '/admin/config/aclib_communico/config'
+  path: '/admin/config/services/aclib_communico/config'
   defaults:
     _form: '\Drupal\aclib_communico\Form\AclibCommunicoConfigForm'
-    _title: 'Aclib Communico Configuration'
+    _title: 'ACLIB Communico Configuration'
   requirements:
     _permission: 'administer site configuration'

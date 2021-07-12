@@ -1,8 +1,8 @@
 # Main config object
 aclib_communico.settings:
   type: config_object
-  label: 'MailChimp related data'
-  mapping:  &aclib_communico_fields_hash_alias
+  label: 'Communico API related data'
+  mapping:
     communico_api:
       type: mapping
       label: 'Communico API credentials'
@@ -46,20 +46,22 @@ aclib_communico.settings:
         timeout:
           type: integer
           label: 'API timeout setting'
+    nodes:
+      tyoe: mapping
+      label: 'Communico events nodes'
+      mapping: 
+        node_type:
+          type: string
+          label: 'Node type'
+        node_author:
+          type: integer
+          label: 'Node author'
+        update:
+          type: integer
+          label: 'Update existing nodes'
+        unpublish:
+          type: integer
+          label: 'Unpublished deleted nodes'
     debug:
       type: integer
       label: 'Debug'
-
-# Field related schema
-field.storage_settings.aclib_communico_fields_hash:
-  label: 'Aclib communico fields hash'
-  type: mapping
-
-field.field_settings.aclib_communico_fields_hash:
-  label: 'Aclib communico fields hash'
-  type: mapping
-
-field.value.aclib_communico_fields_hash:
-  type: mapping
-  label: 'Default value'
-  mapping: *aclib_communico_fields_hash_alias

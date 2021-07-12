@@ -6,6 +6,59 @@
  */
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Component\Utility\Crypt;
+
+use Drupal\aclib_communico\Plugin\QueueWorker\AclibCommunicoQueueWorker;
+
+/**
+ * Implements hook_entity_bundle_field_info().
+ *
+ * We define two computed fields for fine tuned matchnig between communico events nodes and array of results/events retrieved from communico:
+ *   "communico_fields_hash" - for hashed string based on other communico fields values
+ *   "communico_events_type" - hashed string based on events type values array imploded into hashed string
+ */
+function aclib_communico_entity_bundle_field_info(EntityTypeInterface $entity_type, $bundle, array $base_field_definitions) {
+
+  $config = \Drupal::config('aclib_communico.settings'); 
+  $node_type = $config->get('node_type') ? $config->get('node_type') : AclibCommunicoQueueWorker::NODE_TYPE;
+
+  // Add a property only to nodes of chosen bundle for communico events.
+  if ($entity_type->id() == 'node' && $bundle == $node_type) {
+    $fields = [];
+    $fields['communico_fields_hash'] = BaseFieldDefinition::create('string')
+      ->setName('communico_fields_hash')
+      ->setLabel(t('Communico hash'))
+      ->setTargetEntityTypeId('node')
+      ->setTargetBundle($node_type)
+      ->setTranslatable(FALSE)
+      ->setCardinality(1)
+      ->setReadOnly(TRUE)
+      ->setSettings([
+        'default_value' => '',
+        'max_length' => 255,
+      ])
+      ->setClass('\\Drupal\\aclib_communico\\AclibCommunicoBaseFieldItemList');
+ 
+      $fields['communico_events_type'] = BaseFieldDefinition::create('string')
+      ->setName('communico_events_type')
+      ->setLabel(t('Communico events type'))
+      ->setTargetEntityTypeId('node')
+      ->setTargetBundle($node_type)
+      ->setTranslatable(FALSE)
+      ->setCardinality(1)
+      ->setReadOnly(TRUE)
+      ->setSettings([
+        'default_value' => '',
+        'max_length' => 255,
+      ])
+      ->setClass('\\Drupal\\aclib_communico\\AclibCommunicoBaseFieldItemList');
+
+    return $fields;
+  }
+}
 
 /**
  * Implements hook_cron().
@@ -14,12 +67,19 @@ use Drupal\Component\Utility\Html;
  */
 function aclib_communico_cron() {
 
-
   $config = \Drupal::config('aclib_communico.settings'); 
+  $node_type = $config->get('node_type') ? $config->get('node_type') : AclibCommunicoQueueWorker::NODE_TYPE;
   $guzzle_options = $config->get('guzzle_options');
 
   if ($config->get('access_key') && $config->get('secret_key') && $config->get('events_endpoint') && !empty($guzzle_options['base_uri'])) { // We do not want anything to run if credentials were not stored in configuration
 
+    // Query all communico events nodes, we are interested only in published ones
+    // This all of course if "Unpublish" checkbox is checked on main configuration
+    $all_communico_events = $config->get('unpublish') ?  \Drupal::service('entity_type.manager')->getStorage('node')->loadByProperties([
+      'type' => $node_type,
+      'status' => 1
+    ]) : [];
+    
     // Define our QueueWorker plugin
     $queue = \Drupal::service('queue')->get('aclib_communico_queue');
   
@@ -48,19 +108,25 @@ function aclib_communico_cron() {
       $options['query']['endDate'] = $config->get('endDate');
     }
 
+    $communico_events = [];
+
     // Run our httop request to Communico API
     if ($response = \Drupal::service('aclib_communico.client')->get($config->get('events_endpoint'), $options)) {
 
       // Pack retrieved data into associative array ready for Node::create
-      if (isset($response['data']) && isset($response['data']['entries']) && !empty($response['data']['entries'])) {
+      if (isset($response['data']) && isset($response['data']['entries']) && !empty($response['data']['entries'])) { 
 
-        //\Drupal::logger('ac_cred')->notice('<pre>' . print_r($response['data']['entries'], 1) .'</pre>');
+        $communico_events = [];
 
         if ($config->get('debug')) { // Debbuging mode, set some info about it
           \Drupal::logger('ac_credentials')->notice('Debugging mode on - all queued items will be deleted from cron queue. Note that depending of limit number, if high,  it may require a few rounds of cron run.');
         }
+        
         foreach ($response['data']['entries'] as $entry) {
-    
+          
+          $entry['type'] = $node_type;
+          $entry['uid'] = $config->get('node_author') ? $config->get('node_author') : AclibCommunicoQueueWorker::NODE_UID;
+          
           // For debuging purposes we atart all over - make sure any possible remaining items in queue are deleted
           if ($config->get('debug')) {
              $queue->deleteItem($entry);
@@ -68,6 +134,40 @@ function aclib_communico_cron() {
           // Else create each item in the queue
           else {
             $queue->createItem($entry);
+          }
+          
+          $communico_nodes = \Drupal::service('entity_type.manager')->getStorage('node')->loadByProperties(['field_communico_event_id' => $entry['eventId']]);
+          if (is_array($communico_nodes) && !empty($communico_nodes)) {
+            $communico_node = reset($communico_nodes);
+            $communico_events[$communico_node->id()] = $communico_node;
+          }
+        }
+      }
+    }
+
+    // Our second, separate QueueWorker - it suns independently/async of previous one    
+    if (!empty($all_communico_events)) {
+      
+      // Define our unpbulish QueueWorker plugin
+      $unpublish_queue = \Drupal::service('queue')->get('aclib_communico_queue_unpublish'); 
+      foreach ($all_communico_events as $nid => $node) {
+        
+        // OK - so this noe is not in array of results retrieved from remote API, lets see if it is for un-publishing 
+        if (!in_array($nid, array_keys($communico_events))) {// && $node->get('status')->getValue()[0]['value']) {
+
+          // Match values on node fields with configuration API call filters to find out does this node belongs to such group of results
+          $match = _aclib_communico_match_filters($config, $node);
+    
+          if ($match) {
+            
+            // For debuging purposes we atart all over - make sure any possible remaining items in queue are deleted
+            if ($config->get('debug')) {
+              $unpublish_queue->deleteItem($node);
+            }
+            // Else create each item in the queue
+            else {
+              $unpublish_queue->createItem($node);
+            }
           }
         }
       }
@@ -77,4 +177,70 @@ function aclib_communico_cron() {
     // Warn user if no credentials set
     \Drupal::logger('ac_credentials')->warning('Aclib communico module enabled but no credentials set on its configuration page.');
   }
+}
+
+// A bunch of checkups based on API request filters set on configuration and field values on node itself
+// Events types need to match (computed field on node with hashed string)
+// Start date and End date node fields need to fit in between API request filters startDate and endDate range set on configuration
+function _aclib_communico_match_filters($config, $node) {
+  
+  $config_start_date = NULL;
+  $config_end_date = NULL;
+  $start_date = NULL;
+  $end_date = NULL;
+  $events_types = NULL;
+  $config_types = NULL;
+
+  $match = FALSE;
+
+   // Is startDate set as API call parameter on configuration?
+   // If yes prepare date objects for matching
+   if ($config->get('startDate')) {
+    /* @var \Drupal\Core\Datetime\DrupalDateTime */
+    $config_start_date = new DrupalDateTime($config->get('startDate'));
+    // Does not have a field_start_date field value? 
+    if ($node->hasField('field_start_date') && !empty($node->get('field_start_date')->getValue()) && !empty($node->get('field_start_date')->getValue()[0]['value'])) {
+      /* @var \Drupal\Core\Datetime\DrupalDateTime */
+      $start_date = new DrupalDateTime($node->get('field_start_date')->getValue()[0]['value']);
+    } 
+  }
+  
+  // Is endDate set as API call parameter on configuration?
+  // If yes prepare date objects for matching
+  if ($config->get('endDate')) {
+    /* @var \Drupal\Core\Datetime\DrupalDateTime */
+    $config_end_date = new DrupalDateTime($config->get('endDate'));
+    // Does not have a field_end_date field value? 
+    if ($node->hasField('field_end_date') && !empty($node->get('field_end_date')->getValue()) && !empty($node->get('field_end_date')->getValue()[0]['value'])) {
+      /* @var \Drupal\Core\Datetime\DrupalDateTime */
+      $end_date = new DrupalDateTime($node->get('field_end_date')->getValue()[0]['value']);
+    } 
+  }
+  
+   // Are events types set as API call parameter on configuration?
+   // If yes prepare hash strings for matching
+  if (is_array($config->get('types')) && !empty($config->get('types'))) {
+    $config_types = Crypt::hashBase64(implode('__', array_values($config->get('types'))));
+    $events_types = !empty($node->get('communico_events_type')->getValue()) && !empty($node->get('communico_events_type')->getValue()[0]['value']) ? $node->get('communico_events_type')->getValue()[0]['value'] : '';
+  }
+  
+  if ($config_types) {
+    if ($events_types && $config_types == $events_types) { // Hashed values of Events type set on config matches with those on node ("communico_events_type" computed field)
+      $match = 'events'; 
+    } 
+  }
+
+  if ($config_start_date && $config_end_date) {
+    if ($start_date && $end_date) { 
+       $match = $start_date >= $config_start_date && $end_date <= $config_end_date ? 'dates' : FALSE;
+    }
+    else {
+      $match = $match == 'events' ? TRUE : FALSE; // We do not have bth dates set on node so it does not match with communico filters and - we should not unpublish
+    } 
+  }
+  else {
+    $match = $match != 'events' ? TRUE : FALSE; // No filters by start and end date set on configuration for API call - we should unpublish if events filter matches too
+  } 
+
+  return $match;
 }

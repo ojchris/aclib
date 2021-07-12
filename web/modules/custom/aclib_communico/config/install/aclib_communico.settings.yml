@@ -8,6 +8,10 @@ endDate: '2021-09-30'
 types:
   -
 limit: 100
+node_type: 'communico_events'
+node_author: 1
+update: true
+unpublish: true
 guzzle_options:
   base_uri: 'https://api.communico.co'
   timeout: 10
