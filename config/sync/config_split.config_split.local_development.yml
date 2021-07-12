@@ -8,8 +8,10 @@ description: ''
 folder: ../config/config_split/local
 module:
   config_devel: 0
+  devel: 0
 theme: {  }
-blacklist: {  }
+blacklist:
+  - system.menu.devel
 graylist: {  }
 graylist_dependents: true
 graylist_skip_equal: true
