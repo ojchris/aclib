@@ -2,6 +2,9 @@ uuid: b4d7075f-2430-428b-ba2a-51dfb8b018fd
 langcode: en
 status: true
 dependencies:
+  config:
+    - core.entity_view_mode.media.full_width
+    - core.entity_view_mode.media.half_width
   module:
     - editor
     - media
@@ -50,6 +53,10 @@ filters:
     status: true
     weight: 100
     settings:
-      default_view_mode: default
-      allowed_media_types: {  }
-      allowed_view_modes: {  }
+      default_view_mode: half_width
+      allowed_media_types:
+        image: image
+        remote_video: remote_video
+      allowed_view_modes:
+        full_width: full_width
+        half_width: half_width
