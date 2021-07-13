@@ -2,11 +2,8 @@
 
 namespace Drupal\aclib_communico\Plugin\QueueWorker;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
 use Drupal\node\NodeInterface;
-
-use Drupal\aclib_communico\AclibCommunicoClient;
+use Drupal\aclib_communico\Plugin\QueueWorker\AclibCommunicoQueueWorker;
 
 /**
  * Unpublish nodes that are not anymore on Communico.

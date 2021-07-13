@@ -5,11 +5,11 @@
  * Provides Communico API integration.
  */
 
-use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Component\Utility\Crypt;
+use Drupal\Component\Utility\Html;
 use Drupal\node\NodeInterface;
 use Drupal\aclib_communico\Plugin\QueueWorker\AclibCommunicoQueueWorker;
 
@@ -18,7 +18,7 @@ use Drupal\aclib_communico\Plugin\QueueWorker\AclibCommunicoQueueWorker;
  *
  * We define two computed fields for fine tuned matchnig between communico events nodes and array of results/events retrieved from communico:
  *   "communico_fields_hash" - for hashed string based on other communico fields values
- *   "communico_events_type" - hashed string based on events type values array imploded into hashed string
+ *   "communico_events_type" - hashed string based on events type values
  */
 function aclib_communico_entity_bundle_field_info(EntityTypeInterface $entity_type, $bundle, array $base_field_definitions) {
 
@@ -235,7 +235,7 @@ function _aclib_communico_match_filters($config, $node) {
        $match = $start_date >= $config_start_date && $end_date <= $config_end_date ? 'dates' : FALSE;
     }
     else {
-      $match = $match == 'events' ? TRUE : FALSE; // We do not have bth dates set on node so it does not match with communico filters and - we should not unpublish
+      $match = $match == 'events' ? TRUE : FALSE; // We do not have both dates set on node so it does not match with communico filters and - we should not unpublish
     } 
   }
   else {
