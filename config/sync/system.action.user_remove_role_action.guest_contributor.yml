@@ -1,0 +1,14 @@
+uuid: f79eb61c-ae57-403d-88e2-b7daa7d17553
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.guest_contributor
+  module:
+    - user
+id: user_remove_role_action.guest_contributor
+label: 'Remove the Guest Contributor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: guest_contributor

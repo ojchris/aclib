@@ -1,0 +1,14 @@
+uuid: 55c6fc3e-0baa-403e-ae34-85d1ad5929c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.website_editor
+  module:
+    - user
+id: user_remove_role_action.website_editor
+label: 'Remove the Website Editor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: website_editor

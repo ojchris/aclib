@@ -1,0 +1,14 @@
+uuid: 6a8129f3-6504-4489-bb01-d10e5fc8f396
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.webform
+  module:
+    - user
+id: user_add_role_action.webform
+label: 'Add the Webform role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: webform

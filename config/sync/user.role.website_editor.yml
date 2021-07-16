@@ -1,0 +1,9 @@
+uuid: 0bb54b8d-a558-49c2-b19d-33324e0f797a
+langcode: en
+status: true
+dependencies: {  }
+id: website_editor
+label: 'Website Editor'
+weight: 7
+is_admin: null
+permissions: {  }

@@ -1,0 +1,14 @@
+uuid: b60d2051-6b56-408d-99a4-56e13a5ec054
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.marketing
+  module:
+    - user
+id: user_remove_role_action.marketing
+label: 'Remove the Marketing role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: marketing

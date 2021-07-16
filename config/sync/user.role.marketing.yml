@@ -1,0 +1,9 @@
+uuid: 597b976a-95b9-4463-af00-5de264dce2b4
+langcode: en
+status: true
+dependencies: {  }
+id: marketing
+label: Marketing
+weight: 3
+is_admin: null
+permissions: {  }

@@ -1,0 +1,14 @@
+uuid: 52a24a7a-eda5-4b58-b2dc-4021205ea480
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.guest_contributor
+  module:
+    - user
+id: user_add_role_action.guest_contributor
+label: 'Add the Guest Contributor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: guest_contributor

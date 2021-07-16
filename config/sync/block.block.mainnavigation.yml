@@ -1,0 +1,20 @@
+uuid: bde2b711-3895-45bc-b171-445732aaed81
+langcode: en
+status: true
+dependencies:
+  module:
+    - tb_megamenu
+  theme:
+    - aclib9
+id: mainnavigation
+theme: aclib9
+region: primary_menu
+weight: 0
+provider: null
+plugin: 'tb_megamenu_menu_block:main'
+settings:
+  id: 'tb_megamenu_menu_block:main'
+  label: 'TB Main navigation'
+  provider: tb_megamenu
+  label_display: '0'
+visibility: {  }

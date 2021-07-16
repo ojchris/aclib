@@ -1,0 +1,9 @@
+uuid: bff1872e-20ff-4702-8c11-7c5241953b67
+langcode: en
+status: true
+dependencies: {  }
+id: guest_contributor
+label: 'Guest Contributor'
+weight: 10
+is_admin: null
+permissions: {  }

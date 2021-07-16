@@ -1,0 +1,14 @@
+uuid: df30e818-cf0b-4ff1-9c42-7a1dc36387ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.ebranch
+  module:
+    - user
+id: user_add_role_action.ebranch
+label: 'Add the eBranch role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: ebranch

@@ -1,0 +1,14 @@
+uuid: adcf0add-1a0f-4b73-b124-19393e3c272b
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.webform
+  module:
+    - user
+id: user_remove_role_action.webform
+label: 'Remove the Webform role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: webform

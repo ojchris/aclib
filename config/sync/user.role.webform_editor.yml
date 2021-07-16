@@ -1,0 +1,9 @@
+uuid: 2d9a0845-b322-42cf-ade3-e2fa51b32109
+langcode: en
+status: true
+dependencies: {  }
+id: webform_editor
+label: 'Webform Editor'
+weight: 5
+is_admin: null
+permissions: {  }

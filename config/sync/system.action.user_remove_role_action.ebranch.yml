@@ -1,0 +1,14 @@
+uuid: 10970324-a485-4be0-8de8-b1fbc9bd2d80
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.ebranch
+  module:
+    - user
+id: user_remove_role_action.ebranch
+label: 'Remove the eBranch role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: ebranch

@@ -1,5 +1,4 @@
 module:
-  aclib_communico: 0
   aclib_migrate: 0
   admin_toolbar: 0
   admin_toolbar_tools: 0
@@ -49,6 +48,7 @@ module:
   simple_responsive_table: 0
   system: 0
   taxonomy: 0
+  tb_megamenu: 0
   text: 0
   toolbar: 0
   update: 0

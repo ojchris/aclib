@@ -1,0 +1,14 @@
+uuid: 61bd6404-853f-45f9-bead-5450c6a678a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.marketing
+  module:
+    - user
+id: user_add_role_action.marketing
+label: 'Add the Marketing role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: marketing
