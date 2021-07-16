@@ -1,0 +1,19 @@
+uuid: 339f718a-86ee-4725-ba87-5b1cc832c4bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_teaser
+    - node.type.custom_page
+id: node.custom_page.field_teaser
+field_name: field_teaser
+entity_type: node
+bundle: custom_page
+label: Teaser
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

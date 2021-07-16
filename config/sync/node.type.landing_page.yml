@@ -18,9 +18,9 @@ third_party_settings:
     publish_past_date_created: false
     publish_required: false
     publish_revision: false
-    publish_touch: false
+    publish_touch: true
     show_message_after_update: true
-    unpublish_enable: false
+    unpublish_enable: true
     unpublish_required: false
     unpublish_revision: false
 name: 'Landing Page'

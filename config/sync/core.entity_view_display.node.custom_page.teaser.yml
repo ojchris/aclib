@@ -6,6 +6,8 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.custom_page.body
     - field.field.node.custom_page.field_home_page_image
+    - field.field.node.custom_page.field_tags
+    - field.field.node.custom_page.field_teaser
     - field.field.node.custom_page.field_teaser_image
     - node.type.custom_page
   module:
@@ -31,4 +33,6 @@ content:
     region: content
 hidden:
   field_home_page_image: true
+  field_tags: true
+  field_teaser: true
   field_teaser_image: true
