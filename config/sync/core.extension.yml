@@ -1,4 +1,5 @@
 module:
+  aclib_communico: 0
   aclib_migrate: 0
   admin_toolbar: 0
   admin_toolbar_tools: 0

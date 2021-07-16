@@ -1,0 +1,20 @@
+access_key: or2nP5I9qoRXNZEGppMs
+secret_key: KRFsPcZSPkfBZypIlsY8
+token_endpoint: v3/token
+types_endpoint: v3/attend/types
+events_endpoint: v3/attend/events
+startDate: '2021-10-01'
+endDate: '2021-10-15'
+types:
+  board_meetings: 'Board Meetings'
+limit: '500'
+node_type: communico_events
+node_author: '1'
+update: 1
+unpublish: 1
+guzzle_options:
+  base_uri: 'https://api.communico.co'
+  timeout: '10'
+debug: 0
+_core:
+  default_config_hash: qvCT4hU7wFljcbuNmG9r7TLQYuSPRVc7BcAZgBoArEg
