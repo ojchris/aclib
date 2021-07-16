@@ -1,0 +1,25 @@
+uuid: eb1951db-5647-44d2-99a2-01c53bfc8986
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: top_home_page_story
+label: 'Top home page story'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: responsive_table
+queue_settings:
+  min_size: 1
+  max_size: 1
+  act_as_queue: false
+  reverse: false

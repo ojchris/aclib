@@ -1,0 +1,25 @@
+uuid: 296778b1-5b42-4b8f-a725-c0515d2513b9
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: secondary_home_page_stories
+label: 'Secondary home page stories'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: blog
+queue_settings:
+  min_size: 1
+  max_size: 10
+  act_as_queue: false
+  reverse: false
