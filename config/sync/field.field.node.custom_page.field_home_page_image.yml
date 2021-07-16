@@ -1,0 +1,29 @@
+uuid: 9063492d-ff4b-4049-aea0-f8e05cf33679
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_home_page_image
+    - media.type.image
+    - node.type.custom_page
+id: node.custom_page.field_home_page_image
+field_name: field_home_page_image
+entity_type: node
+bundle: custom_page
+label: 'Home Page Image'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

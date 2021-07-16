@@ -10,7 +10,9 @@ dependencies:
     - field.field.node.press_release.field_contact_email
     - field.field.node.press_release.field_contact_name
     - field.field.node.press_release.field_date
+    - field.field.node.press_release.field_home_page_image
     - field.field.node.press_release.field_tags
+    - field.field.node.press_release.field_teaser_image
     - node.type.press_release
   module:
     - user
@@ -31,4 +33,6 @@ hidden:
   field_contact_email: true
   field_contact_name: true
   field_date: true
+  field_home_page_image: true
   field_tags: true
+  field_teaser_image: true
