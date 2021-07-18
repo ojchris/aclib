@@ -6,6 +6,15 @@
 db:
     type: mariadb:10.4
     disk: 2048
-
+  configuration:
+    schemas:
+      - mysql
+      - drupal7
+    endpoints:
+      admin:
+        default_schema: mysql
+        privileges:
+          mysql: admin
+          drupal7: admin
 cache:
     type: redis:6.0
