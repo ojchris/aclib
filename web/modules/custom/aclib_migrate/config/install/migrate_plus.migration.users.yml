@@ -17,26 +17,17 @@ process:
     source: entity_language
     fallback_to_site_default: false
   init: init
-#  roles:
-#    -
-#      plugin: static_map
-#      source: roles
-#      bypass: TRUE
-#      map:
-#        # D7 teacher_rejected
-#        5: teacher
-#        # D7 teacher
-#        6: teacher
-#        # D7 teacher_admin
-#        8: teacher_admin
-#        # D7 teacher_onhold
-#        9: teacher
-#        # D7 teacher_placed
-#        16: teacher
-#        # D7 auditor
-#        22: auditor
-#    -
-#      plugin: dedupe_array
+  roles:
+    plugin: static_map
+    source: roles
+    bypass: TRUE
+    map:
+      # D7 Marketing/PR Admin
+      15: marketing
+      # D7 eBranch
+      5: ebranch
+      # D7 Webform admin
+      21: webform_editor
   'field_about/format':
     plugin: default_value
     default_value: 'basic_html'
