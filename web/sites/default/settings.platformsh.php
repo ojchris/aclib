@@ -23,7 +23,7 @@ if ($platformsh->hasRelationship('database')) {
 
   // Drupal 7 source database for migrations.
   $databases['migrate']['default'] = array (
-    'database'  => 'aclib7',
+    'database'  => 'drupal7',
     'driver' => $creds['scheme'],
     'username' => $creds['username'],
     'password' => $creds['password'],
