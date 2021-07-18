@@ -8,13 +8,13 @@ db:
     disk: 2048
     configuration:
       schemas:
-        - mysql
+        - main
         - drupal7
       endpoints:
-        admin:
-          default_schema: mysql
+        mysql:
+          default_schema: main
           privileges:
-            mysql: admin
+            main: admin
             drupal7: admin
 cache:
     type: redis:6.0
