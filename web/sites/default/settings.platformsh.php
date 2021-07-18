@@ -20,6 +20,17 @@ if ($platformsh->hasRelationship('database')) {
     'port' => $creds['port'],
     'pdo' => [PDO::MYSQL_ATTR_COMPRESS => !empty($creds['query']['compression'])]
   ];
+
+  // Drupal 7 source database for migrations.
+  $databases['migrate']['default'] = array (
+    'database'  => 'aclib7',
+    'driver' => $creds['scheme'],
+    'username' => $creds['username'],
+    'password' => $creds['password'],
+    'host' => $creds['host'],
+    'port' => $creds['port'],
+    'pdo' => [PDO::MYSQL_ATTR_COMPRESS => !empty($creds['query']['compression'])]
+  );
 }
 
 // Enable verbose error messages on development branches, but not on the production branch.
