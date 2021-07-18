@@ -25,6 +25,14 @@ process:
     source: entity_language
     fallback_to_site_default: false
   init: init
+  roles:
+    plugin: static_map
+    source: roles
+    bypass: true
+    map:
+      15: marketing
+      5: ebranch
+      21: webform_editor
   field_about/format:
     plugin: default_value
     default_value: basic_html

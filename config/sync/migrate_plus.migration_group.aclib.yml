@@ -5,7 +5,7 @@ dependencies: {  }
 id: aclib
 label: 'ACLIB Drupal 7 migration.'
 description: 'ACLIB content from Drupal 7 site.'
-source_type: 'EPI Drupal 7 site'
+source_type: 'ACLIB Drupal 7 site'
 module: null
 shared_configuration:
   source:
