@@ -51,6 +51,7 @@ module:
   system: 0
   taxonomy: 0
   tb_megamenu: 0
+  termcase: 0
   text: 0
   toolbar: 0
   update: 0

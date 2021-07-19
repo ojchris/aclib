@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "99c80ab4a7ccdb30bf939db960f44184",
+    "content-hash": "5cf8ee44d60e06dd709a4a17cf54368c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3874,6 +3874,59 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/tb_megamenu",
                 "issues": "https://www.drupal.org/project/issues/tb_megamenu"
+            }
+        },
+        {
+            "name": "drupal/termcase",
+            "version": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/termcase.git",
+                "reference": "f5aa1eb2c1a5467c1eba8c7ae9d2d5a84ee91dfc"
+            },
+            "require": {
+                "drupal/core": "^8.7.7 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0+8-dev",
+                    "datestamp": "1590389157",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "BarisW",
+                    "homepage": "https://www.drupal.org/user/107229"
+                },
+                {
+                    "name": "Sutharsan",
+                    "homepage": "https://www.drupal.org/user/73854"
+                },
+                {
+                    "name": "scuba_fly",
+                    "homepage": "https://www.drupal.org/user/953390"
+                },
+                {
+                    "name": "sonamsingh",
+                    "homepage": "https://www.drupal.org/user/3146961"
+                }
+            ],
+            "description": "Enable text case settings per taxonomy (lowercase, uppercase, propercase or only the first character uppercase)",
+            "homepage": "https://www.drupal.org/project/termcase",
+            "support": {
+                "source": "https://git.drupalcode.org/project/termcase"
             }
         },
         {

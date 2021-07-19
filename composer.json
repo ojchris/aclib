@@ -44,6 +44,7 @@
         "drupal/site_verify": "1.x-dev",
         "drupal/smtp": "^1.0",
         "drupal/tb_megamenu": "^1.2",
+        "drupal/termcase": "^1.0",
         "drupal/webform": "^6.0",
         "drupal/xmlsitemap": "^1.0",
         "drush/drush": "^10.5.0",
