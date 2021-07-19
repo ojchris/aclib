@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.press_release.field_date
     - field.field.node.press_release.field_home_page_image
     - field.field.node.press_release.field_tags
+    - field.field.node.press_release.field_teaser
     - field.field.node.press_release.field_teaser_image
     - node.type.press_release
   module:
@@ -35,4 +36,5 @@ hidden:
   field_date: true
   field_home_page_image: true
   field_tags: true
+  field_teaser: true
   field_teaser_image: true
