@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.blog.field_teaser_image
     - node.type.blog
   module:
+    - maxlength
     - media_library
     - path
     - scheduler
@@ -55,7 +56,12 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      maxlength:
+        maxlength_js: 140
+        maxlength_js_label: 'Teaser limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
     type: string_textarea
     region: content
   field_teaser_image:
@@ -110,7 +116,10 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      maxlength:
+        maxlength_js: 50
+        maxlength_js_label: 'Title limited to @limit characters, remaining: <strong>@remaining</strong>'
   uid:
     type: entity_reference_autocomplete
     weight: 6
