@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12b8857ac0c698eb72c64121fc98acb4",
+    "content-hash": "7c4bf1ca33deecb1bcfbd9acfadb5f0f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3101,6 +3101,78 @@
             }
         },
         {
+            "name": "drupal/media_migration",
+            "version": "1.0.0-alpha11",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/media_migration.git",
+                "reference": "8.x-1.0-alpha11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/media_migration-8.x-1.0-alpha11.zip",
+                "reference": "8.x-1.0-alpha11",
+                "shasum": "2a320f0766997164a24c35e609763a88ef3e1062"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9",
+                "drupal/migrate_plus": "^4.2 || ^5",
+                "drupal/smart_sql_idmap": "^1.0-beta1"
+            },
+            "require-dev": {
+                "drupal/entity_embed": "^1",
+                "drupal/linkit": "^5.0.0-beta11 || ^6.0.0-beta2",
+                "drupal/migrate_tools": "^4.1 || ^5",
+                "drupal/migrate_upgrade": "^3",
+                "drush/drush": "^9 || ^10"
+            },
+            "suggest": {
+                "drupal/entity_embed": "Allows entities to be embedded using a text editor.",
+                "drupal/file_entity": "Extends Drupal file entities to be fieldable and viewable.",
+                "drupal/linkit": "Provides an easy interface for internal and external linking with wysiwyg editors.",
+                "drupal/linkit_media_library": "Create links from media library.",
+                "drupal/media_migration_tools": "Media Migration supporting module for Migrate Tools"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.0-alpha11",
+                    "datestamp": "1620037344",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "huzooka",
+                    "homepage": "https://www.drupal.org/user/281301"
+                },
+                {
+                    "name": "juampynr",
+                    "homepage": "https://www.drupal.org/user/682736"
+                },
+                {
+                    "name": "slv_",
+                    "homepage": "https://www.drupal.org/user/826088"
+                }
+            ],
+            "description": "Provides a Drupal 7 to 8 media migration.",
+            "homepage": "https://www.drupal.org/project/media_migration",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/media_migration",
+                "issues": "https://www.drupal.org/project/issues/media_migration"
+            }
+        },
+        {
             "name": "drupal/metatag",
             "version": "1.16.0",
             "source": {
@@ -3867,6 +3939,56 @@
             "homepage": "https://www.drupal.org/project/site_verify",
             "support": {
                 "source": "https://git.drupalcode.org/project/site_verify"
+            }
+        },
+        {
+            "name": "drupal/smart_sql_idmap",
+            "version": "1.0.0-beta1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/smart_sql_idmap.git",
+                "reference": "1.0.0-beta1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/smart_sql_idmap-1.0.0-beta1.zip",
+                "reference": "1.0.0-beta1",
+                "shasum": "89bdc8bffd84f2e94bcfee6072d17089e4c403dd"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9",
+                "drupal/migrate": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0-beta1",
+                    "datestamp": "1600891687",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "huzooka",
+                    "homepage": "https://www.drupal.org/user/281301"
+                }
+            ],
+            "description": "A SQL id map for migrations with long plugin IDs",
+            "homepage": "https://www.drupal.org/project/smart_sql_idmap",
+            "keywords": [
+                "Drupal",
+                "Migration"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/smart_sql_idmap",
+                "issues": "https://www.drupal.org/project/issues/smart_sql_idmap"
             }
         },
         {
@@ -9867,6 +9989,7 @@
         "drupal/better_formats": 20,
         "drupal/linkit": 10,
         "drupal/maxlength": 5,
+        "drupal/media_migration": 15,
         "drupal/site_verify": 20
     },
     "prefer-stable": true,

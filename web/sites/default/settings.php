@@ -32,6 +32,9 @@ $settings['file_scan_ignore_directories'] = [
 // This is defined inside the read-only "config" directory, deployed via Git.
 $settings['config_sync_directory'] = '../config/sync';
 
+// Used by media_migration module. See its README.
+$settings['media_migration_embed_token_transform_destination_filter_plugin'] = 'media_embed';
+
 // Automatic Platform.sh settings.
 if (file_exists($app_root . '/' . $site_path . '/settings.platformsh.php')) {
   include $app_root . '/' . $site_path . '/settings.platformsh.php';
