@@ -4,6 +4,6 @@ status: true
 dependencies: {  }
 id: webform
 label: Webform
-weight: 6
+weight: -2
 is_admin: null
 permissions: {  }

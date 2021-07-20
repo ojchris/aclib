@@ -4,6 +4,6 @@ status: true
 dependencies: {  }
 id: marketing
 label: Marketing
-weight: 3
+weight: -8
 is_admin: null
 permissions: {  }

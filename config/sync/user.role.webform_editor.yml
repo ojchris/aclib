@@ -4,6 +4,6 @@ status: true
 dependencies: {  }
 id: webform_editor
 label: 'Webform Editor'
-weight: 5
+weight: -3
 is_admin: null
 permissions: {  }
