@@ -1,0 +1,23 @@
+uuid: f78c6fcf-f88b-4c59-9583-68212c1de0e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cover_image_url
+    - paragraphs.paragraphs_type.book
+  module:
+    - link
+id: paragraph.book.field_cover_image_url
+field_name: field_cover_image_url
+entity_type: paragraph
+bundle: book
+label: 'Cover image URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

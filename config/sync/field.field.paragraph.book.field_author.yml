@@ -1,0 +1,19 @@
+uuid: 6dd4301e-caba-42ad-bf1c-029ba7b36605
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_author
+    - paragraphs.paragraphs_type.book
+id: paragraph.book.field_author
+field_name: field_author
+entity_type: paragraph
+bundle: book
+label: Author
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

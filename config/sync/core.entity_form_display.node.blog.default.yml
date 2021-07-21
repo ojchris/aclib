@@ -4,17 +4,36 @@ status: true
 dependencies:
   config:
     - field.field.node.blog.field_body
+    - field.field.node.blog.field_book
     - field.field.node.blog.field_home_page_image
     - field.field.node.blog.field_tags
     - field.field.node.blog.field_teaser
     - field.field.node.blog.field_teaser_image
     - node.type.blog
   module:
+    - field_group
     - maxlength
     - media_library
+    - paragraphs
     - path
     - scheduler
     - text
+third_party_settings:
+  field_group:
+    group_book_list:
+      children:
+        - field_book
+      parent_name: ''
+      weight: 6
+      format_type: details
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+        open: false
+      label: 'Book List'
 id: node.blog.default
 targetEntityType: node
 bundle: blog
@@ -22,7 +41,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -34,6 +53,24 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
+  field_book:
+    type: paragraphs
+    weight: 10
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
   field_home_page_image:
     type: media_library_widget
     weight: 3
@@ -73,7 +110,7 @@ content:
     region: content
   path:
     type: path
-    weight: 10
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -81,23 +118,23 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 8
+    weight: 9
     region: content
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 13
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 12
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 11
+    weight: 13
     region: content
     settings:
       display_label: true
@@ -106,7 +143,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 9
+    weight: 11
     region: content
     third_party_settings: {  }
   title:
@@ -122,7 +159,7 @@ content:
         maxlength_js_label: 'Title limited to @limit characters, remaining: <strong>@remaining</strong>'
   uid:
     type: entity_reference_autocomplete
-    weight: 6
+    weight: 7
     settings:
       match_operator: CONTAINS
       size: 60
@@ -132,7 +169,7 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 14
+    weight: 16
     region: content
     settings: {  }
     third_party_settings: {  }

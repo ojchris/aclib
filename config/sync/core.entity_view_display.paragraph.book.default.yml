@@ -1,0 +1,54 @@
+uuid: edafe1c4-6f62-42b8-ba06-092ac210a7b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.book.field_author
+    - field.field.paragraph.book.field_cover_image_url
+    - field.field.paragraph.book.field_description
+    - field.field.paragraph.book.field_title
+    - paragraphs.paragraphs_type.book
+  module:
+    - link
+    - text
+id: paragraph.book.default
+targetEntityType: paragraph
+bundle: book
+mode: default
+content:
+  field_author:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_cover_image_url:
+    weight: 0
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_description:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_title:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

@@ -1,0 +1,31 @@
+uuid: 91c05db1-5704-4823-af09-53911f465907
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_book
+    - node.type.blog
+    - paragraphs.paragraphs_type.book
+  module:
+    - entity_reference_revisions
+id: node.blog.field_book
+field_name: field_book
+entity_type: node
+bundle: blog
+label: Book
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      book: book
+    target_bundles_drag_drop:
+      book:
+        enabled: true
+        weight: 2
+field_type: entity_reference_revisions

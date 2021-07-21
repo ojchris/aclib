@@ -4,12 +4,14 @@ status: true
 dependencies:
   config:
     - field.field.node.blog.field_body
+    - field.field.node.blog.field_book
     - field.field.node.blog.field_home_page_image
     - field.field.node.blog.field_tags
     - field.field.node.blog.field_teaser
     - field.field.node.blog.field_teaser_image
     - node.type.blog
   module:
+    - entity_reference_revisions
     - text
     - user
 id: node.blog.default
@@ -23,6 +25,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
+  field_book:
+    type: entity_reference_revisions_entity_view
+    weight: 108
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
     region: content
   field_home_page_image:
     type: entity_reference_entity_view

@@ -1,0 +1,21 @@
+uuid: 18859c09-5d35-4787-ade8-6172636360f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description
+    - paragraphs.paragraphs_type.book
+  module:
+    - text
+id: paragraph.book.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: book
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
