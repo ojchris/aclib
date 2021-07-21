@@ -4,6 +4,7 @@ namespace Drupal\aclib_communico\Plugin\QueueWorker;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
@@ -13,6 +14,7 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Component\Utility\Crypt;
 
 use Drupal\node\NodeInterface;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 
 /**
  * Creates or updates nodes based on results retrived by API call/response.
@@ -38,6 +40,7 @@ class AclibCommunicoQueueWorker extends QueueWorkerBase implements ContainerFact
   const NODE_UID = 1;
   const HASH_FIELD = 'communico_fields_hash';
   const EVENTS_TYPE_FIELD = 'communico_events_type';
+  const DEFAULT_TIMEZONE = 'America/New_York';
 
   /**
    * Fields mapping
@@ -158,14 +161,18 @@ class AclibCommunicoQueueWorker extends QueueWorkerBase implements ContainerFact
       'uid' => $config->get('node_author') ? $config->get('node_author') : static::NODE_UID
     ];
 
+    // Fetch default timezone from the main Drupal's configuration at "/admin/config/regional/settings"
+    $default_timezone = $this->configFactory->get('system.date')->get('timezone');
+    $timezone = isset($default_timezone['default']) && !empty($default_timezone['default']) ? $default_timezone['default'] : static::DEFAULT_TIMEZONE;
+    
     foreach ($data as $field_key => $field) {
       if (in_array($field_key, array_keys($fields_map))) {
         $drupal_field_name = $fields_map[$field_key];
         if ($drupal_field_name) {
-          if ($drupal_field_name == 'field_start_date' || $drupal_field_name == 'field_end_date') { // A bit of hardcode like parsing for dates that have space between date and time
-            if (strpos($field, ' ') !== FALSE) {
-              $field = str_replace(' ', 'T', $field);
-            }
+          
+          // Dates need a special care, we need to assign our timezone 
+          if ($drupal_field_name == 'field_start_date' || $drupal_field_name == 'field_end_date') {
+            $field = $this->prepareDates($drupal_field_name, $node_data['type'], $field, $timezone);
           }
           $node_data[$drupal_field_name] = $field;
         }
@@ -244,4 +251,114 @@ class AclibCommunicoQueueWorker extends QueueWorkerBase implements ContainerFact
      
     }
   } 
+
+  /**
+   * Operation callback, prepare dates and convert into UTC string to be saved in database
+   *   Note that Communico API returns date strin in ET timezone while Drupal saves all in database considering UTC
+   *
+   * @param string $field_name
+   *   Machine name of a datetime field.
+   * @param string $bundle
+   *   Node type where date field is attached.
+   * @param string $field_value
+   *   Date string value returned from Communico API.
+   * @param string $timezone
+   *   Default timezone string
+   *
+   * @return string
+   *   Formatted date string with time converted to UTC
+   */
+  protected function prepareDates(string $field_name, string $bundle, string $field_value = 'now', string $timezone = '') {
+  
+    $date_field_storage = $this->entityTypeManager->getStorage('entity_view_display')->load('node.' . $bundle . '.default');
+    
+    // First check if there is timezone override on Manage display for a field
+    // Fallback to default timezone settings in Drupal at "/admin/config/regional/settings"
+    if (is_object($date_field_storage) && !empty($date_field_storage->getRenderer($field_name)->getSettings())) {
+      $timezone = isset($date_field_storage->getRenderer('field_start_date')->getSettings()['timezone_override']) && !empty($date_field_storage->getRenderer('field_start_date')->getSettings()['timezone_override']) ? $$date_field_storage->getRenderer('field_start_date')->getSettings()['timezone_override'] : $timezone;
+    }
+    if (strpos($field_value, ' ') !== FALSE) { // A bit of hardcode like parsing for dates that have space between date and time
+      $field_value = str_replace(' ', 'T', $field_value);
+    }
+    // Create Datetime object with configuration timezone, then return formatted date string with time converted to UTC
+    $date = new DrupalDateTime($field_value, $timezone);
+    return $date->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, ['timezone' => 'UTC']);
+  }
+
+  /**
+   * Custom static method for matching a range of local Drupal nodes to compare with response from Communico - for unpublishing action
+   *  A bunch of checkups based on API request filters set on configuration and field values on node itself
+   *  Events types need to match (computed field on node with hashed string)
+   *  Start date and End date node fields need to fit in between API request filters startDate and endDate range set on configuration
+   *
+   * @param object $config
+   *   Machine name of a datetime field.
+   * @param object $node
+   *   An instance of \Drupal\node\NodeInterface
+   *
+   * @return bool
+   *   Based on this value we find mathing node in Drupal (does not exist anymore on Communico), for unpublishing
+   */
+  public static function matchRequestFilters(object $config, NodeInterface $node) {
+  
+    $config_start_date = NULL;
+    $config_end_date = NULL;
+    $start_date = NULL;
+    $end_date = NULL;
+    $events_types = NULL;
+    $config_types = NULL;
+
+    $match = FALSE;
+
+    // Is startDate set as API call parameter on configuration?
+    // If yes prepare date objects for matching
+    if ($config->get('startDate')) {
+      /* @var \Drupal\Core\Datetime\DrupalDateTime */
+      $config_start_date = new DrupalDateTime($config->get('startDate'));
+      // Does node have a field_start_date field value? 
+      if ($node->hasField('field_start_date') && !empty($node->get('field_start_date')->getValue()) && !empty($node->get('field_start_date')->getValue()[0]['value'])) {
+        /* @var \Drupal\Core\Datetime\DrupalDateTime */
+        $start_date = new DrupalDateTime($node->get('field_start_date')->getValue()[0]['value']);
+      } 
+    }
+  
+    // Is endDate set as API call parameter on configuration?
+    // If yes prepare date objects for matching
+    if ($config->get('endDate')) {
+      /* @var \Drupal\Core\Datetime\DrupalDateTime */
+      $config_end_date = new DrupalDateTime($config->get('endDate'));
+      // Does node have a field_end_date field value? 
+      if ($node->hasField('field_end_date') && !empty($node->get('field_end_date')->getValue()) && !empty($node->get('field_end_date')->getValue()[0]['value'])) {
+        /* @var \Drupal\Core\Datetime\DrupalDateTime */
+        $end_date = new DrupalDateTime($node->get('field_end_date')->getValue()[0]['value']);
+      } 
+    }
+  
+    // Are events types set as API call parameter on configuration?
+    // If yes prepare hash strings for matching
+    if (is_array($config->get('types')) && !empty($config->get('types'))) {
+      $config_types = Crypt::hashBase64(implode('__', array_values($config->get('types'))));
+      $events_types = !empty($node->get('communico_events_type')->getValue()) && !empty($node->get('communico_events_type')->getValue()[0]['value']) ? $node->get('communico_events_type')->getValue()[0]['value'] : '';
+    }
+  
+    if ($config_types) {
+      if ($events_types && $config_types == $events_types) { // Hashed values of Events type set on config matches with those on node ("communico_events_type" computed field)
+        $match = 'events'; 
+      } 
+    }
+
+    if ($config_start_date && $config_end_date) {
+      if ($start_date && $end_date) { 
+        $match = $start_date >= $config_start_date && $end_date <= $config_end_date ? 'dates' : FALSE;
+      }
+      else {
+        $match = $match == 'events' ? TRUE : FALSE; // We do not have both dates set on node so it does not match with communico filters and - we should not unpublish
+      } 
+    }
+    else {
+      $match = $match != 'events' ? TRUE : FALSE; // No filters by start and end date set on configuration for API call - we should unpublish if events filter matches too
+    } 
+
+    return $match;
+  }
 }

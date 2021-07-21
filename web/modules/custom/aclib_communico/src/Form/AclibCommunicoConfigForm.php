@@ -92,12 +92,56 @@ class AclibCommunicoConfigForm extends ConfigFormBase {
 
     $config = $this->config('aclib_communico.settings');
     
+    // Communico API credentials were entered for the first time (or from previously blank), store it in our config object
+    $guzzle_options = $config->get('guzzle_options');
+    $save = FALSE;
+    $access_key = $config->get('access_key');
+    $secret_key = $config->get('secret_key');
+    $base_uri = isset($guzzle_options['base_uri']) ? $guzzle_options['base_uri'] : [];
+
+    if (!$access_key && !empty($form_state->getValue(['communico_api', 'access_key']))) {
+      $access_key = $form_state->getValue(['communico_api', 'access_key']);
+      $config->set('access_key', $access_key);
+      $save = TRUE;
+    }    
+    if (!$secret_key && !empty($form_state->getValue(['communico_api', 'secret_key']))) {
+      $secret_key = $form_state->getValue(['communico_api', 'secret_key']);
+      $config->set('secret_key', $secret_key);
+      $save = TRUE; 
+    } 
+    if (empty($base_uri) && !empty($form_state->getValue(['guzzle_options', 'base_uri']))) {
+      $base_uri = $form_state->getValue(['guzzle_options', 'base_uri']);
+      $config->set('base_uri', $base_uri);
+      $save = TRUE; 
+    } 
+    // So save it "on the fly" after ajax api call response
+    if ($save) {
+      $config->save();
+    }
+
+    // Dates, from-to period filter for Communico API request
+    // These get first in the form so that all the other advanced features do not bother "regular" user
+    $form['startDate'] = [
+      '#type' => 'date',
+      '#title' => $this->t('Start date'),
+      '#description' => $this->t('Select start date here. It is equivalent to "startDate" field for Communico API request.'),
+      '#default_value' => $config->get('startDate'),
+    ];
+
+    $form['endDate'] = [
+      '#type' => 'date',
+      '#title' => $this->t('End date'),
+      '#description' => $this->t('Select end date. It is equivalent to "endDate" field for Communico API request.'),
+      '#default_value' => $config->get('endDate'),
+    ];
+
     $form['communico_api'] = [
-      '#type' => 'fieldset',
+      '#type' => 'details',
       '#title' => $this->t('Communico API settings'),
+      '#open' => $save,
       '#tree' => TRUE,
       '#prefix' => '<div id="aclib-communico-api-wrapper">',
-      '#suffix' => '</div>' 
+      '#suffix' => '</div>',
     ];
 
     $form['communico_api']['info'] = [
@@ -150,33 +194,7 @@ class AclibCommunicoConfigForm extends ConfigFormBase {
       '#required' => TRUE,
     ];
 
-    // Communico API credentials were entered for the first time (or from previously blank), store it in our config object
-    $guzzle_options = $config->get('guzzle_options');
-    $save = FALSE;
-    $access_key = $config->get('access_key');
-    $secret_key = $config->get('secret_key');
-    $base_uri = $guzzle_options['base_uri'];
-
-    if (!$access_key && !empty($form_state->getValue(['communico_api', 'access_key']))) {
-      $access_key = $form_state->getValue(['communico_api', 'access_key']);
-      $config->set('access_key', $access_key);
-      $save = TRUE;
-    }    
-    if (!$secret_key && !empty($form_state->getValue(['communico_api', 'secret_key']))) {
-      $secret_key = $form_state->getValue(['communico_api', 'secret_key']);
-      $config->set('secret_key', $secret_key);
-      $save = TRUE; 
-    } 
-    if (empty($base_uri) && !empty($form_state->getValue(['guzzle_options', 'base_uri']))) {
-      $base_uri = $form_state->getValue(['guzzle_options', 'base_uri']);
-      $config->set('base_uri', $base_uri);
-      $save = TRUE; 
-    } 
-    // So save it "on the fly" after ajax api call response
-    if ($save) {
-      $config->save();
-    }
-
+    
     // Get values (options) for Event type select field
     // Note, it's intentional to not call saved values $config->get('types') as first because we indeed may want to refresh this list coming from Remote API, for changes made there
     // Then, we set this in default Drupal cache to avoid request every time - for refreshed list from remote API - drush cr and reload page
@@ -206,21 +224,6 @@ class AclibCommunicoConfigForm extends ConfigFormBase {
       }
     } 
     
-    // Dates, from-to period filter for Communico API request
-    $form['communico_api']['startDate'] = [
-      '#type' => 'date',
-      '#title' => $this->t('Start date'),
-      '#description' => $this->t('Select start date here. It is equivalent to "startDate" field for Communico API request.'),
-      '#default_value' => $config->get('startDate'),
-    ];
-
-    $form['communico_api']['endDate'] = [
-      '#type' => 'date',
-      '#title' => $this->t('End date'),
-      '#description' => $this->t('Select end date. It is equivalent to "endDate" field for Communico API request.'),
-      '#default_value' => $config->get('endDate'),
-    ];
-
     // First check for default values for event types
     $types_default_value = $config->get('types') ? array_keys($config->get('types')) : NULL;
 
@@ -242,16 +245,17 @@ class AclibCommunicoConfigForm extends ConfigFormBase {
     ];
 
     $form['guzzle_options'] = [
-      '#type' => 'fieldset',
+      '#type' => 'details',
       '#title' => $this->t('Guzzle options'),
       '#description' => $this->t('A possible options for GuzzleHttp. See it on <a href="https://docs.guzzlephp.org/en/stable/request-options.html" target="_blank">Guzzle docs</a> for more info.'),
       '#tree' => TRUE,
+      '#collapsible' => TRUE,
     ];
 
     $form['guzzle_options']['base_uri'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Base URI'),
-      '#default_value' => $guzzle_options['base_uri'],
+      '#default_value' => isset($guzzle_options['base_uri']) ? $guzzle_options['base_uri'] : NULL,
       '#required' => TRUE,
     ];
   
@@ -262,7 +266,7 @@ class AclibCommunicoConfigForm extends ConfigFormBase {
     ];
 
     $form['nodes'] = [
-      '#type' => 'fieldset',
+      '#type' => 'details',
       '#title' => $this->t('Communico events nodes'),
       '#tree' => TRUE,
     ];
@@ -315,7 +319,7 @@ class AclibCommunicoConfigForm extends ConfigFormBase {
       '#default_value' => $config->get('unpublish'),
     ];
 
-    $form['debug'] = [ 
+    $form['nodes']['debug'] = [ 
       '#type' => 'checkbox',
       '#title' => t('Debug'),
       '#description' => $this->t('If this is checked there will be no new nodes created, updated or un-published. Yet, all the other operations towards API do run. Also important, when this is checked any leftover (stuck) tasks in QueueWorker will be deleted so to start all over. See <em>hook_cron</em> in aclib_communico.module.'), 
@@ -331,46 +335,48 @@ class AclibCommunicoConfigForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
 
     $config = $this->config('aclib_communico.settings');
-    
+    $config_keys = array_keys($config->getRawData()); 
+
     $event_types = NULL;
     if ($cache = $this->cache->get('aclib_communico_event_types')) {
       $event_types = $cache->data;
     }
 
     foreach ($form_state->getValues() as $value_key => $value) {
-      if ($value_key == 'guzzle_options') {
-        $guzzle_options = [];
-        foreach ($value as $v_key => $v) {
-          $guzzle_options[$v_key] = $v; 
-          $config->set($value_key, $guzzle_options);
+    
+      if (is_array($value)) { // Fieldsets
+        
+        if ($value_key == 'guzzle_options') { // Guzzle options we intentionally save as mapping so that we can call array of values directly for Guzzle client constructor
+          $config->set($value_key, $value);
         }
-      }
-      else if ($value_key == 'communico_api') {
-        foreach ($value as $v_key => $v) {
-          // We need to save the actual label for event type too
-          if ($v_key == 'types') {
-            $types = [];
-            foreach ($v as $type) {
-              $types[$type] = $event_types ? $event_types[$type] : $type;
+        else {
+          foreach ($value as $v_key => $v) {
+            if (in_array($v_key, $config_keys)) {
+              if (is_array($v)) { // Field with multiple values (i.e. Event types multiple select)
+                $values = [];
+                foreach ($v as $item) {
+                  $values[$item] = $v_key == 'types' && $event_types ? $event_types[$item] : $item;
+                }
+                $config->set($v_key, $values);
+              }
+              // Other fields
+              else {
+                $config->set($v_key, $v);  
+              }
             }
-            $config->set($v_key, $types);
-          }
-          else {
-            $config->set($v_key, $v);
           }
         }
       }
-      else if ($value_key == 'nodes') {
-        foreach ($value as $v_key => $v) {
-          $config->set($v_key, $v);
+      // Other "standalone" fields (i.e. startDate and endDate)
+      else {
+        if (in_array($value_key, $config_keys)) {
+          $config->set($value_key, $value);
         }
-      }
-      else if ($value_key == 'debug') {
-        $config->set($value_key, $value);
       }
     }
+ 
+    // Save our configuration with values ready
     $config->save();
-
     return parent::submitForm($form, $form_state);
   }
 

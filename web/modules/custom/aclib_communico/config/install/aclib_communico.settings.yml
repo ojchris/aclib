@@ -3,8 +3,8 @@ secret_key: null
 token_endpoint: 'v3/token'
 types_endpoint: 'v3/attend/types'
 events_endpoint: 'v3/attend/events'
-startDate: '2020-10-01'
-endDate: '2021-09-30'
+startDate: '2021-10-01'
+endDate: '2021-10-15'
 types:
   -
 limit: 100
