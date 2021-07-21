@@ -12,7 +12,397 @@ id: suggest_materials
 title: 'Suggest Materials'
 description: 'Library patron purchase suggestions.'
 category: ''
-elements: null
+elements: |-
+  summary_markup:
+    '#type': webform_markup
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#markup': |-
+      <ul>
+      	<li>All decisions for purchases are in accordance with the library&rsquo;s <a href="https://www.aclib.us/collection-development-policy#selection_process">Collection Development policy</a>, including the <a href="/collection-development-policy#selection_process">Materials Selection Process</a>.</li>
+      	<li><strong>Please <a href="http://catalog.aclib.us/">check the&nbsp;catalog</a>&nbsp;to be sure we don&rsquo;t own the title before you request it.</strong></li>
+      	<li>Each library card holder may suggest up to five titles each week (Monday through Sunday).</li>
+      </ul>
+  item_format:
+    '#type': radios
+    '#title': Format
+    '#description': 'Please select one.'
+    '#description_display': before
+    '#options':
+      Book: Book
+      eBook: 'eBook (Downloadable)'
+      'Large Print Book': 'Large Print Book'
+      Audiobook: 'Audiobook (Book on CD)'
+      eAudiobook: 'eAudiobook (Downloadable)'
+      DVD: DVD
+      'Music CD': 'Music CD'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  note_about_books:
+    '#type': webform_markup
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#markup': |-
+      <strong>Note about release date:</strong><br />
+      Suggestions for physical books and books on CD will only be considered <strong>one month prior to the release date or later.</strong>
+  note_about_music:
+    '#type': webform_markup
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#markup': |-
+      <strong>Note about Music CD suggestions:</strong><br />
+      Suggestions for music CDs will be considered <strong>after the release date</strong>.
+  note_about_ebooks_and_eaudiobooks:
+    '#type': webform_markup
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#markup': |-
+      <strong>Note about eBooks and eAudiobooks</strong>
+      <ul>
+      	<li>Suggestions for eBooks and eAudiobooks will be considered <strong>after the release date</strong>.</li>
+      	<li>Note that some publishers do not make items available to libraries on the release date, or at all.</li>
+      </ul>
+  note_about_dvds:
+    '#type': webform_markup
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#markup': |-
+      <strong>Note about DVDs:</strong><br />
+      Suggestions for DVDs will be considered <strong>after the release date</strong>.
+  note_about_older_books:
+    '#type': webform_markup
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#markup': |-
+      <strong>Note about older books:</strong><br />
+      For older print titles, published for six months or more, an <a href="/ill">inter-library loan request</a> is often a better option.
+  item_title:
+    '#type': textfield
+    '#title': Title
+    '#description': 'Please request only one title per submission.'
+    '#description_display': before
+    '#maxlength': 100
+    '#required': true
+    '#required_error': 'Title is required.'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  item_author:
+    '#type': textfield
+    '#title': Author
+    '#description': 'Enter name of author (for book), or performer or group (for music), or director or stars (for video).'
+    '#description_display': before
+    '#maxlength': 100
+    '#required': true
+    '#required_error': 'Author is required.'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  item_audience:
+    '#type': radios
+    '#title': Audience
+    '#description': 'What age group is this title&#39;s intended audience? Please select the closest match.'
+    '#description_display': before
+    '#options':
+      Adult: Adult
+      Child: Child
+      Teen: Teen
+    '#required': true
+    '#required_error': 'Audience is required.'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  item_type:
+    '#type': radios
+    '#title': Type
+    '#description_display': before
+    '#options':
+      'Fiction (stories)': 'Fiction (stories)'
+      'Non-fiction (facts)': 'Non-fiction (facts)'
+    '#required': true
+    '#required_error': 'Type is required.'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  item_date:
+    '#type': textfield
+    '#title': Date
+    '#description': 'Publication date for books or release date for other formats. Please only suggest materials scheduled for release within the next month or that are already released.'
+    '#description_display': before
+    '#maxlength': 50
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  isbn:
+    '#type': textfield
+    '#title': ISBN/UPC
+    '#description': 'The ISBN (for books) or UPC (for DVDs and music CDs) is the best identifier to make certain the Library purchases the correct item.&nbsp;'
+    '#description_display': before
+    '#maxlength': 100
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  other_notes:
+    '#type': textfield
+    '#title': Notes
+    '#description': 'Any additional info to help identify this item or your desired format. Please be brief (200-character limit).'
+    '#description_display': before
+    '#maxlength': 200
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  name:
+    '#type': textfield
+    '#title': 'Your name'
+    '#description_display': before
+    '#required': true
+    '#required_error': 'Your name is required.'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  library_card_number:
+    '#type': number
+    '#title': 'Library card number'
+    '#description': 'A 14-digit number with no spaces or dashes. (Limit five requests per week per library card.)'
+    '#description_display': before
+    '#required': true
+    '#required_error': 'Library card number is required.'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#max': 14
+  contact_method:
+    '#type': radios
+    '#title': 'How should we contact you?'
+    '#description_display': before
+    '#options':
+      Email: Email
+      Post: Post
+    '#required': true
+    '#required_error': 'Contact method is required.'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  email_address_downloadable_confirm:
+    '#type': webform_email_confirm
+    '#title': 'Email Address'
+    '#description_display': before
+    '#required': true
+    '#required_error': 'Email address is required.'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#confirm__title': 'Confirm Email Address'
+    '#confirm__placeholder': 'Enter email address again to confirm.'
+  email_address:
+    '#type': webform_email_confirm
+    '#title': 'Email Address'
+    '#description_display': before
+    '#required': true
+    '#required_error': 'Email address is required.'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#confirm__title': 'Confirm Email Address'
+    '#confirm__placeholder': 'Enter email address again to confirm.'
+  email_a_copy_checkbox:
+    '#type': checkboxes
+    '#title': 'Email a copy'
+    '#description_display': before
+    '#options':
+      'Email this request to me': 'Email this request to me'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  email_a_copy_checkbox_downloadable:
+    '#type': checkboxes
+    '#title': 'Email a copy'
+    '#description_display': before
+    '#options':
+      'Email this request to me': 'Email this request to me'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  mailing_address_element:
+    '#type': webform_address
+    '#title': 'Mailing Address'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#address__required': true
+    '#city__required': true
+    '#state_province__required': true
+    '#postal_code__required': true
+  pickup_location:
+    '#type': radios
+    '#title': 'Pickup location'
+    '#description': 'If item is acquired, where would you like to pick it up?'
+    '#description_display': before
+    '#options':
+      'Headquarters Library': 'Headquarters Library'
+      'Alachua Branch': 'Alachua Branch'
+      'Archer Branch': 'Archer Branch'
+      'Bookmobile & Homebound': 'Bookmobile & Homebound'
+      'Cone Park Branch': 'Cone Park Branch'
+      Hawthorne: 'Hawthorne Branch'
+      'High Springs Branch': 'High Springs Branch'
+      'Library Partnership Branch': 'Library Partnership Branch'
+      'Micanopy Branch': 'Micanopy Branch'
+      'Millhopper Branch': 'Millhopper Branch'
+      'Newberry Branch': 'Newberry Branch'
+      'Tower Road Branch': 'Tower Road Branch'
+      'Waldo Branch': 'Waldo Branch'
+    '#required': true
+    '#required_error': 'Pickup location is required.'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
 css: ''
 javascript: ''
 settings:

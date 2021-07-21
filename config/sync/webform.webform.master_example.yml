@@ -67,6 +67,24 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
+  autocomplete_advanced_:
+    '#type': webform_autocomplete
+    '#title': 'Autocomplete (Advanced)'
+    '#help': 'Try &quot;Value...&quot;'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#autocomplete_items':
+      - 'Value 1'
+      - 'Value 2'
+    '#autocomplete_match': 1
+    '#autocomplete_match_operator': STARTS_WITH
 css: ''
 javascript: ''
 settings:

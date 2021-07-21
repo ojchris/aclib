@@ -12,7 +12,78 @@ id: homebound_delivery
 title: 'Homebound Delivery'
 description: 'Library patrons applying for homebound delivery.'
 category: ''
-elements: null
+elements: |-
+  name:
+    '#type': webform_name
+    '#title': Name
+    '#description_display': before
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#title__access': false
+    '#first__required': true
+    '#middle__access': false
+    '#last__required': true
+    '#suffix__access': false
+    '#degree__access': false
+    '#required': true
+  phone:
+    '#type': tel
+    '#title': Phone
+    '#description_display': before
+    '#required': true
+    '#required_error': 'Phone is required.'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  mailing_address:
+    '#type': webform_address
+    '#title': 'Mailing Address'
+    '#description': 'We&#39;ll complete the registration process by sending a postcard to this address. &nbsp;Future checkouts will also be sent to this address until/unless you need it changed.'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#address__required': true
+    '#city__required': true
+    '#state_province__required': true
+    '#postal_code__required': true
+    '#country__access': false
+    '#required': true
+  date_of_birth:
+    '#type': date
+    '#title': 'Date of Birth'
+    '#description_display': before
+    '#required': true
+    '#required_error': 'Date of birth is required.'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#date_date_min': '-105 years'
+    '#date_date_max': '0 years'
 css: ''
 javascript: ''
 settings:
