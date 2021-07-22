@@ -2,17 +2,18 @@
 
 namespace Drupal\aclib_migrate\Plugin\migrate\source;
 
-use Drupal\file\Plugin\migrate\source\d7\File;
+use Drupal\media_migration\Plugin\migrate\source\d7\FileEntityItem;
+use Drupal\migrate\Row;
 
 /**
- * Custom ACLIB Drupal 7 source for files.
+ * Custom ACLIB Drupal 7 source for file entities.
  *
  * @MigrateSource(
- *   id = "aclib_files",
- *   source_module = "file"
+ *   id = "aclib_file_entity",
+ *   source_module = "file_entity"
  * )
  */
-class AclibFiles extends File {
+class AclibFileEntity extends FileEntityItem {
 
   /**
    * {@inheritdoc}
@@ -41,4 +42,5 @@ class AclibFiles extends File {
     }
     return $query;
   }
+
 }

@@ -3,7 +3,7 @@ label: ACLIB files
 migration_group: aclib
 source:
   plugin: aclib_files
-  aclib_file_identifier: test_latest_files
+  aclib_file_identifier: blog_images
   scheme: public
   constants:
     # The tool configuring this migration must set source_base_path. It
