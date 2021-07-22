@@ -1,0 +1,5 @@
+acld_refdb.system_settings_form:
+  route_name: acld_refdb.system_settings_form
+  title: 'ACLD Reference Database Settings'
+  description: 'Settings for accessing and displaying ACLD Reference Databases'
+  parent: system.admin_config

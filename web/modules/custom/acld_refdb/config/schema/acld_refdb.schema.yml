@@ -1,0 +1,16 @@
+acld_refdb.settings:
+  type: mapping
+  label: Settings
+  mapping:
+    acld_refdb_internalips:
+      type: 'NULL'
+    acld_refdb_hqips:
+      type: 'NULL'
+    acld_refdb_failurenodeid:
+      type: 'NULL'
+    acld_refdb_cardformtext:
+      type: 'NULL'
+    acld_refdb_card_accept:
+      type: string
+    acld_refdb_card_accept_alternate:
+      type: string

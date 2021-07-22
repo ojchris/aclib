@@ -1,0 +1,67 @@
+<?php 
+
+function acld_refdb_schema() {
+  $schema['refdb_access_log'] = array(
+    'description' => 'Reference database access logs.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'Primary identifier for reference db logs table.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'nid' => array(
+        'description' => 'Identifier for a node.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'length' => 10,
+      ),
+      'timestamp' => array(
+        'description' => 'Ref DB access timestamp.',
+        'type' => 'int',
+        'length' => 10,
+        'unsigned' => TRUE,
+        'default' => NULL,
+      ),
+      'location' => array(
+        'description' => 'Internal or external visit.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'default' => NULL,
+        'unsigned' => TRUE,
+        'length' => 10,
+      ),
+      'remote_addr' => array(
+        'description' => 'IP address of the reference DB visitor.',
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => NULL,
+      ),
+      'pattern_matched' => array(
+        'description' => 'The library card pattern that was matched.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'length' => 10,
+        'default' => NULL,
+      ),
+    ),
+    'unique keys' => array(
+      'id' => array('id'),
+    ),
+    'primary key' => array('id'),
+  );
+  return $schema;
+}
+/**
+ * Adds the "pattern_matched" field to track which type of card was used.
+ */
+function acld_refdb_update_7001() {
+  $definition = array(
+    'type' => 'int',
+    'length' => 10,
+    'default' => NULL,
+    'unsigned' => TRUE,
+    'description' => 'The library card pattern that was matched.',
+  );
+  db_add_field('refdb_access_log', 'pattern_matched', $definition);
+}

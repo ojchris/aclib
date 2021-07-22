@@ -1,0 +1,11 @@
+; $Id$
+name = ACLD Reference Database
+description = Allows for access to external Reference Databases.
+core = 7.x
+package = ACLD
+dependencies[] = views
+files[]=views/acld_refdb_handler_field_refdbcount_external.inc
+files[]=views/acld_refdb_handler_field_refdbcount_internal.inc
+files[]=views/acld_refdb_handler_field_refdbcount_overall.inc
+files[]=views/acld_refdb_handler_field_refdbcount_pattern_1.inc
+files[]=views/acld_refdb_handler_field_refdbcount_pattern_2.inc
