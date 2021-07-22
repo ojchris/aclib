@@ -1,14 +1,14 @@
-uuid: c6beecce-62fb-4240-ac05-e3d91232a2d9
+uuid: 3cc64962-d187-47e5-82d0-0b611c4dfc10
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
+    - field.storage.node.field_body
     - node.type.landing_page
   module:
     - text
-id: node.landing_page.body
-field_name: body
+id: node.landing_page.field_body
+field_name: field_body
 entity_type: node
 bundle: landing_page
 label: Body
@@ -17,7 +17,5 @@ required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings:
-  display_summary: true
-  required_summary: false
-field_type: text_with_summary
+settings: {  }
+field_type: text_long

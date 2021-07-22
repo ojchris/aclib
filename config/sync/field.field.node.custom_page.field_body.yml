@@ -1,14 +1,14 @@
-uuid: a1f5d845-629b-4b27-a6e3-b1d9741a21b8
+uuid: 6399f088-b5f0-4555-8f39-68f7b95c5986
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.body
+    - field.storage.node.field_body
     - node.type.custom_page
   module:
     - text
-id: node.custom_page.body
-field_name: body
+id: node.custom_page.field_body
+field_name: field_body
 entity_type: node
 bundle: custom_page
 label: Body
@@ -17,7 +17,5 @@ required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings:
-  display_summary: true
-  required_summary: false
-field_type: text_with_summary
+settings: {  }
+field_type: text_long

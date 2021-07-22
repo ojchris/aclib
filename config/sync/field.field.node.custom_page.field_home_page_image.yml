@@ -11,7 +11,7 @@ field_name: field_home_page_image
 entity_type: node
 bundle: custom_page
 label: 'Home Page Image'
-description: ''
+description: 'Home Page Image should be 625x234 px at a minimum 72 dpi and maximum file size of 500 KB. One media item remaining.'
 required: false
 translatable: true
 default_value: {  }

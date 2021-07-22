@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.custom_page.body
+    - field.field.node.custom_page.field_body
     - field.field.node.custom_page.field_home_page_image
     - field.field.node.custom_page.field_tags
     - field.field.node.custom_page.field_teaser
@@ -20,22 +20,20 @@ targetEntityType: node
 bundle: custom_page
 mode: default
 content:
-  body:
-    type: text_textarea_with_summary
-    weight: 4
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings: {  }
-    region: content
   created:
     type: datetime_timestamp
     weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_body:
+    weight: 4
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
   field_home_page_image:
     weight: 3
     settings:
