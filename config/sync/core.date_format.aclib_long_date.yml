@@ -1,0 +1,8 @@
+uuid: ad4d3b21-c9ce-4bb8-8f0e-678e37bacbf4
+langcode: en
+status: true
+dependencies: {  }
+id: aclib_long_date
+label: 'ACLIB long date'
+locked: false
+pattern: 'l, F j, Y, g:i a'
