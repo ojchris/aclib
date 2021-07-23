@@ -7,6 +7,8 @@ dependencies:
     - field.field.paragraph.book.field_cover_image_url
     - field.field.paragraph.book.field_description
     - field.field.paragraph.book.field_title
+    - field.field.paragraph.book.field_url_linking_author_catalog
+    - field.field.paragraph.book.field_url_linking_to_catalog
     - paragraphs.paragraphs_type.book
   module:
     - link
@@ -17,7 +19,7 @@ bundle: book
 mode: default
 content:
   field_author:
-    weight: 2
+    weight: 3
     settings:
       size: 60
       placeholder: ''
@@ -33,7 +35,7 @@ content:
     type: link_default
     region: content
   field_description:
-    weight: 3
+    weight: 5
     settings:
       rows: 5
       placeholder: ''
@@ -47,6 +49,22 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  field_url_linking_author_catalog:
+    weight: 4
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_url_linking_to_catalog:
+    weight: 2
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
     region: content
 hidden:
   created: true

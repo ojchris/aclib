@@ -7,6 +7,8 @@ dependencies:
     - field.field.paragraph.book.field_cover_image_url
     - field.field.paragraph.book.field_description
     - field.field.paragraph.book.field_title
+    - field.field.paragraph.book.field_url_linking_author_catalog
+    - field.field.paragraph.book.field_url_linking_to_catalog
     - paragraphs.paragraphs_type.book
   module:
     - link
@@ -50,5 +52,29 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  field_url_linking_author_catalog:
+    weight: 5
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_url_linking_to_catalog:
+    weight: 4
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
     region: content
 hidden: {  }

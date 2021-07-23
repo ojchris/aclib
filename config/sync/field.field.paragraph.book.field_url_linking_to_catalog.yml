@@ -1,17 +1,17 @@
-uuid: f78c6fcf-f88b-4c59-9583-68212c1de0e5
+uuid: b1a76cb7-c625-4a5d-a7af-66cfd765e721
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_cover_image_url
+    - field.storage.paragraph.field_url_linking_to_catalog
     - paragraphs.paragraphs_type.book
   module:
     - link
-id: paragraph.book.field_cover_image_url
-field_name: field_cover_image_url
+id: paragraph.book.field_url_linking_to_catalog
+field_name: field_url_linking_to_catalog
 entity_type: paragraph
 bundle: book
-label: 'Cover image URL'
+label: 'URL linking to title in the catalog'
 description: ''
 required: false
 translatable: false

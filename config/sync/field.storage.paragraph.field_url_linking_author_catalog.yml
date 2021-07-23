@@ -1,0 +1,19 @@
+uuid: f1364f06-7ef3-4cc7-9e66-7667563251a0
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - paragraphs
+id: paragraph.field_url_linking_author_catalog
+field_name: field_url_linking_author_catalog
+entity_type: paragraph
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

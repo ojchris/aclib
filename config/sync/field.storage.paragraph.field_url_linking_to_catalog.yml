@@ -1,0 +1,19 @@
+uuid: 5af2b740-75e9-4cf7-b8b4-77775e07a8c7
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - paragraphs
+id: paragraph.field_url_linking_to_catalog
+field_name: field_url_linking_to_catalog
+entity_type: paragraph
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
