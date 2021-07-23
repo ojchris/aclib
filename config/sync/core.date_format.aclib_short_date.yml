@@ -1,0 +1,8 @@
+uuid: 760781e7-3b28-467e-957e-3f39a03e4b93
+langcode: en
+status: true
+dependencies: {  }
+id: aclib_short_date
+label: 'ACLIB short date'
+locked: false
+pattern: 'n/j/y g:i a'
