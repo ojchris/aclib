@@ -1,0 +1,6 @@
+search_block:
+  version: VERSION
+  js:
+    js/aclib_plugins.search_block.js: {}
+  dependencies:
+    - core/jquery.once

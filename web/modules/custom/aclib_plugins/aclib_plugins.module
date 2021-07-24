@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Aclib plugins module, various implementations and features
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function aclib_plugins_theme() {
+  return [
+    'aclib_plugins_search_block' => [
+      'variables' => [
+        'button' => NULL,
+        'tabs' => NULL,
+      ],
+    ],
+  ];
+}

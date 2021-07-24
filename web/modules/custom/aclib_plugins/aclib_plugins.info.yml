@@ -1,0 +1,5 @@
+name: ACLIB Plugins
+description: 'Custom plugins defintions.'
+package: Aclib
+type: module
+core_version_requirement: ^8.8 || ^9
