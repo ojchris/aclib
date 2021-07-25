@@ -3,6 +3,7 @@
 namespace Drupal\aclib_plugins\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Render\Element\RenderCallbackInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Cache\Cache;
 use Drupal\Component\Utility\NestedArray;
@@ -17,7 +18,16 @@ use Drupal\Component\Utility\Html;
  *   category = @Translation("ACLIB")
  * )
  */
-class AclibSearchInputBlock extends BlockBase {
+class AclibSearchInputBlock extends BlockBase implements RenderCallbackInterface {
+
+  const KEYWORD_TOKEN = '%keyword';
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function trustedCallbacks() {
+    return ['preRenderSearchElement'];
+  }
 
   /**
    * {@inheritdoc}
@@ -56,6 +66,7 @@ class AclibSearchInputBlock extends BlockBase {
     // Container for our tabs related items
     $form['tabs_items'] = [
       '#type' => 'fieldset',
+      '#title' => $this->t('Search tabs'),
       '#attributes' => [
         'id' => 'aclib-plugins-tabs-wrapper',
       ]
@@ -68,10 +79,9 @@ class AclibSearchInputBlock extends BlockBase {
       $form['tabs_items'][$index]['labels'] = [
         '#type' => 'textfield',
         '#title' => $this->t('Tab label'),
-        '#description' => $this->t('Set label for a tab, leave blank for empty (i.e. one search input - no tabs situation.'),
+        '#description' => $this->t('Set label for a tab.'),
         '#default_value' => isset($config['labels'][$index]) ? $config['labels'][$index] : NULL,
-       ];
-
+      ];
 
       $form['tabs_items'][$index]['actions'] = [
         '#type' => 'textfield',
@@ -79,21 +89,21 @@ class AclibSearchInputBlock extends BlockBase {
         '#description' => $this->t('A full formatted absolute URL, for any possible external service/page, or a path to a designated search page. In this format: <em>/search/%1</em> or with url query params like <em>/search?key=%1</em>, or combined url argument and query params. Same for both, absolute URLs and local paths.'),
         '#default_value' => isset($config['actions'][$index]) ? $config['actions'][$index] : NULL,
         '#required' => TRUE,
-       ];
+      ];
 
-       $form['tabs_items'][$index]['placeholders'] = [
-         '#type' => 'textfield',
-         '#title' => $this->t('Placeholder'),
-         '#description' => $this->t('A placeholder attribute for search input, leave empty for none.'), 
-         '#default_value' => isset($config['placeholders'][$index]) ? $config['placeholders'][$index] : NULL,
-       ];
-     }
+      $form['tabs_items'][$index]['placeholders'] = [
+        '#type' => 'textfield',
+        '#title' => $this->t('Placeholder'),
+        '#description' => $this->t('A placeholder attribute for search input, leave empty for none.'), 
+        '#default_value' => isset($config['placeholders'][$index]) ? $config['placeholders'][$index] : NULL,
+      ];
+    }
 
-     $form['tabs_items']['add_tab'] = [
+    $form['tabs_items']['add_tab'] = [
       '#type' => 'submit',
       '#value' => $this->t('Add tab'),
       '#limit_validation_errors' => [],
-       '#submit' => [
+      '#submit' => [
         [get_class($this), 'addTabSubmit'],
       ],
       '#weight' => 20, 
@@ -136,6 +146,8 @@ class AclibSearchInputBlock extends BlockBase {
     
     parent::blockSubmit($form, $form_state);
   
+    $this->configuration = $this->defaultConfiguration();
+     
     if (!empty($form_state->getValue('tabs_items'))) {
       foreach ($form_state->getValue('tabs_items') as $index => $tabs_item) {
         $this->configuration['labels'][$index] = $tabs_item['labels'];
@@ -160,24 +172,40 @@ class AclibSearchInputBlock extends BlockBase {
     ];
 
     // If we are on some kind of search page route - set default value (keyword) on search input
-    $has_query = \Drupal::request()->query->get('keyword'); 
-    $route = \Drupal::service('current_route_match');
-    $is_view = $route->getParameters()->has('view_id') ? $route->getParameter('view_id') : NULL;
-    $has_argument = $is_view && $route->getParameters()->has('arg_0') ? $route->getParameter('arg_0') : NULL;
+    $params = \Drupal::request()->query->all();
+    
+    $has_query = NULL;
+    $config_path = NULL;
 
+    if (!empty($params)) {
+      $param_keys = array_keys($params);
+      $param_name = reset($param_keys); // We support only first query param for now
+      $has_query = \Drupal::request()->query->get($param_name);
+      $path = \Drupal::request()->getPathInfo();
+      $config_path = $path . '?' . $param_name .'=' . static::KEYWORD_TOKEN;
+    }
+    else {
+      $route = \Drupal::service('current_route_match');
+      $path = $route->getRouteObject()->getPath();
+      $is_view = $route->getParameters()->has('view_id') ? $route->getParameter('view_id') : NULL;
+      $has_argument = $is_view && $route->getParameters()->has('arg_0') ? $route->getParameter('arg_0') : NULL;
+      $config_path = $has_argument && strpos($path, '{arg_0}') !== FALSE ? str_replace('{arg_0}', static::KEYWORD_TOKEN, $path) : $path;
+    }
+    
+    // Loop over configured tabs 
     foreach ($config['actions'] as $index => $action) {
       if (!empty($action)) {
 
         // Check on default value for search input
         $default_value = $has_query ? $has_query : $has_argument;
    
-        $label = !empty($config['labels'][$index]) ? $config['labels'][$index] : $this->t('Missing tab label');
+        $label = !empty($config['labels'][$index]) ? $config['labels'][$index] : $this->t('Missing tab label'); 
           
         $build['#tabs'][$index] = [
           'search_input' => [
             '#type' => 'search',
             '#theme_wrappers' => [],
-            '#default_value' =>$default_value,
+            '#default_value' => $default_value,
             '#attributes' => [
               'id' => 'aclib-plugins-search-input-wrapper-' . $index,
               'placeholder' => !empty($config['placeholders'][$index]) ? $config['placeholders'][$index] : NULL
@@ -187,13 +215,36 @@ class AclibSearchInputBlock extends BlockBase {
           'action' => $action,
           'label' => $label,
         ];
+
+        // Check if we are on "active" search page
+        // If so add value attribute to search input and define active tab index (to have it open by default)
+        if ($default_value && $action ==  $config_path) {
+          $build['#tabs'][$index]['search_input']['#pre_render'][] = [get_class($this), 'preRenderSearchElement'];
+          $build['#active_tab'] = $index;
+        }
       }
     }
-
+    
     // Attach that jQuery code too
     $build['#attached']['library'][] = 'aclib_plugins/search_block'; 
 
     return $build;
+  }
+
+  /**
+   * Add value to search input based on argument or parameter in URL. seems like #default_value set to it above on build() does not work
+   *
+   * @param array $element
+   *   An associative array containing the properties of the element.
+   *
+   * @return array
+   *   The $element with prepared variables ready for input.html.twig.
+   */
+  public static function preRenderSearchElement($element) {
+    if ($element['#default_value']) {
+      $element['#attributes']['value'] = $element['#default_value'];
+    }
+    return $element;
   }
 
   /**
@@ -228,11 +279,10 @@ class AclibSearchInputBlock extends BlockBase {
     $form_state->setRebuild(TRUE);
   }
 
-  /*
   public function getCacheContexts() {
     // If we depend on \Drupal::routeMatch() we should set context of this block with 'route' context tag.
     // Every new route this block will rebuild
     return Cache::mergeContexts(parent::getCacheContexts(), ['route', 'url']);
   }
-  */
+ 
 }

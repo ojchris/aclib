@@ -13,6 +13,7 @@ function aclib_plugins_theme() {
     'aclib_plugins_search_block' => [
       'variables' => [
         'button' => NULL,
+        'active_tab' => 0,
         'tabs' => NULL,
       ],
     ],

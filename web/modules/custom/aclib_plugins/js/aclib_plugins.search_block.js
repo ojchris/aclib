@@ -7,7 +7,7 @@
 
   'use strict';
 
-  Drupal.behaviors.nkToolsSearchToggle = {
+  Drupal.behaviors.aclibSearchBlock = {
    
     attach: function(context, settings) { 
     
