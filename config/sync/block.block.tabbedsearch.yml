@@ -1,0 +1,30 @@
+uuid: 7b6b08b0-3945-459f-9b5f-3dbfe3c6720a
+langcode: en
+status: true
+dependencies:
+  module:
+    - aclib_plugins
+  theme:
+    - aclib9
+id: tabbedsearch
+theme: aclib9
+region: header_form
+weight: 0
+provider: null
+plugin: aclib_plugins_search_block
+settings:
+  id: aclib_plugins_search_block
+  label: 'Tabbed search'
+  provider: aclib_plugins
+  label_display: '0'
+  labels:
+    - Catalog
+    - Website
+  actions:
+    - 'https://catalog.aclib.us/view.aspx?keyword=%keyword'
+    - /search/node/%keyword
+  placeholders:
+    - 'Search catalog'
+    - 'Search website'
+  button: ''
+visibility: {  }
