@@ -1,0 +1,67 @@
+id: nodes_blog
+label: Blog nodes
+migration_group: aclib
+source:
+  plugin: aclib_d7_node
+  node_type: blog_entry
+process:
+  title: title
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  uid:
+    -
+      plugin: migration_lookup
+      migration: users
+      no_stub: true
+      source: node_uid
+    -
+      plugin: default_value
+      default_value: 1
+  type:
+    plugin: default_value
+    default_value: blog
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: 'und'
+  path/pathauto:
+    plugin: default_value
+    default_value: 0 # Disable pathauto.
+  path/alias: alias
+  # TODO: Handle embedded file entities as well as raw <img> tags.
+  # Test with blog post titled: "Braille Literacy Awareness Month"
+  field_body/value: 'body/0/value'
+  # TODO: Some D7 blog posts have field_body/summary data - what do we do with that?
+  field_body/format:
+    plugin: static_map
+    source: 'body/0/format'
+    map:
+      panopoly_wysiwyg_text: full_html
+      panopoly_wysiwyg_html: basic_html
+      full_html: full_html
+  field_teaser/value: 'field_teaser/0/value'
+  # TODO: Handle cropping data?
+  field_teaser_image/target_id:
+    -
+      plugin: migration_lookup
+      migration: file_entity
+      no_stub: true
+      source: 'field_teaser_image/0/fid'
+    -
+      plugin: default_value
+      default_value: 505
+  field_tags:
+    plugin: migration_lookup
+    migration: tags
+    no_stub: true
+    source: field_tags
+destination:
+  plugin: entity:node
+migration_dependencies:
+  optional:
+    - users
+    - file_entity
+    - tags

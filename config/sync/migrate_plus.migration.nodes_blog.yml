@@ -1,0 +1,71 @@
+uuid: 2978c24a-3caf-4351-a0c9-9f76396f1653
+langcode: en
+status: true
+dependencies: {  }
+id: nodes_blog
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: aclib
+label: 'Blog nodes'
+source:
+  plugin: aclib_d7_node
+  node_type: blog_entry
+process:
+  title: title
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  uid:
+    -
+      plugin: migration_lookup
+      migration: users
+      no_stub: true
+      source: node_uid
+    -
+      plugin: default_value
+      default_value: 1
+  type:
+    plugin: default_value
+    default_value: blog
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  path/pathauto:
+    plugin: default_value
+    default_value: 0
+  path/alias: alias
+  field_body/value: body/0/value
+  field_body/format:
+    plugin: static_map
+    source: body/0/format
+    map:
+      panopoly_wysiwyg_text: full_html
+      panopoly_wysiwyg_html: basic_html
+      full_html: full_html
+  field_teaser/value: field_teaser/0/value
+  field_teaser_image/target_id:
+    -
+      plugin: migration_lookup
+      migration: file_entity
+      no_stub: true
+      source: field_teaser_image/0/fid
+    -
+      plugin: default_value
+      default_value: 505
+  field_tags:
+    plugin: migration_lookup
+    migration: tags
+    no_stub: true
+    source: field_tags
+destination:
+  plugin: 'entity:node'
+migration_dependencies:
+  optional:
+    - users
+    - file_entity
+    - tags
