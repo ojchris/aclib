@@ -9,6 +9,9 @@ auto_import:
     filename: modules/custom/aclib_migrate/config/install/migrate_plus.migration.tags.yml
     hash: ''
   -
+    filename: modules/custom/aclib_migrate/config/install/migrate_plus.migration.files.yml
+    hash: ''
+  -
     filename: modules/custom/aclib_migrate/config/install/migrate_plus.migration.file_entity.yml
     hash: ''
   -

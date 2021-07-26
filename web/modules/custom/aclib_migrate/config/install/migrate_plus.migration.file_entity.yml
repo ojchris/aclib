@@ -10,19 +10,20 @@ source:
   type: image
 process:
   uuid:
-#    plugin: media_migrate_uuid
-#    source: fid
-    -
-      plugin: migration_lookup
-      migration: files
-      source: fid
-      no_stub: true
-    -
-      plugin: skip_on_empty
-      method: row
-      message: 'File entity not found in map table (uuid).'
-    -
-      plugin: media_migrate_uuid
+    plugin: media_migrate_uuid
+    source: fid
+#    -
+#      plugin: migration_lookup
+#      migration: files
+#      source: fid
+#      no_stub: true
+#    -
+#      plugin: skip_on_empty
+#      method: row
+#      message: 'File entity not found in map table (uuid).'
+#    -
+#      plugin: media_migrate_uuid
+  mid: fid
 #  mid:
 #    -
 #      plugin: migration_lookup

@@ -30,13 +30,13 @@ class AclibFileEntity extends FileEntityItem {
           break;
         case 'blog_images':
           $query->condition('type', 'image');
-          // Past week.
-          $query->condition('timestamp', (time() - 60*60*24*7), '>');
-          // Past month.
-          //$query->condition('timestamp', (time() - 60*60*24*31), '>');
+          // Last 100
+          $query->range(0, 100);
+          // Last 1000.
+          //$query->range(0, 1000);
           // Past year.
           //$query->condition('timestamp', (time() - 60*60*24*365), '>');
-          $query->orderBy('fid', 'ASC');
+          $query->orderBy('fid', 'DESC');
           break;
       }
     }

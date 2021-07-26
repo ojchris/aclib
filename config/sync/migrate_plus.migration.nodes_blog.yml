@@ -39,7 +39,20 @@ process:
     plugin: default_value
     default_value: 0
   path/alias: alias
-  field_body/value: body/0/value
+  field_body/value:
+    plugin: media_wysiwyg_filter
+    source: body/0/value
+    view_mode_matching:
+      default: full
+      quarter_right: full
+      original_left: full
+      original_right: full
+      book_cover_image: full
+      teaser: full
+    media_migrations:
+      - file_entity
+    file_migrations:
+      - files
   field_body/format:
     plugin: static_map
     source: body/0/format

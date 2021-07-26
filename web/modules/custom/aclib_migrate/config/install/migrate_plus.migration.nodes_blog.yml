@@ -33,7 +33,21 @@ process:
   path/alias: alias
   # TODO: Handle embedded file entities as well as raw <img> tags.
   # Test with blog post titled: "Braille Literacy Awareness Month"
-  field_body/value: 'body/0/value'
+  field_body/value:
+    plugin: media_wysiwyg_filter
+    source: 'body/0/value'
+    # TODO: Update this mapping!
+    view_mode_matching:
+      default: full
+      quarter_right: full
+      original_left: full
+      original_right: full
+      book_cover_image: full
+      teaser: full
+    media_migrations:
+      - file_entity
+    file_migrations:
+      - files
   # TODO: Some D7 blog posts have field_body/summary data - what do we do with that?
   field_body/format:
     plugin: static_map

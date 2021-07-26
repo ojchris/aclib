@@ -30,6 +30,9 @@ class AclibNodes extends Node {
     // Only migrate nodes created since 1/1/2020.
     $query->condition('n.created', 1577833200, '>=');
 
+    // Order by NID descending for easier testing.
+    $query->orderBy('n.nid', 'DESC');
+
     return $query;
   }
 
