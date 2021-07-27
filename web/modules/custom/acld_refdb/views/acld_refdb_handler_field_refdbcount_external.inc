@@ -1,11 +1,15 @@
 <?php
 
-// $Id$
-
+/**
+ * $Id$
+ */
 class acld_refdb_handler_field_refdbcount_external extends views_handler_field_custom {
-  
-  function render($values) {
-    
+
+  /**
+   *
+   */
+  public function render($values) {
+
     $result = db_select('refdb_access_log', 'thecount')
       ->fields('thecount')
       ->condition('nid', $values->nid, '=')
@@ -13,11 +17,11 @@ class acld_refdb_handler_field_refdbcount_external extends views_handler_field_c
 
     $min = strtotime($this->view->filter['timestamp']->value['min']);
     $max = strtotime($this->view->filter['timestamp']->value['max']);
-    
+
     if ($min && $max) {
-      $result->condition('timestamp', array($min, $max), 'BETWEEN');
+      $result->condition('timestamp', [$min, $max], 'BETWEEN');
     }
-     
+
     $count = $result->execute()->rowCount();
     return $count;
   }

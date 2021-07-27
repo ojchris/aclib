@@ -1,10 +1,14 @@
 <?php
 
-// $Id$
-
+/**
+ * $Id$
+ */
 class acld_refdb_handler_field_refdbcount_pattern_1 extends views_handler_field_custom {
 
-  function render($values) {
+  /**
+   *
+   */
+  public function render($values) {
 
     $or = db_or();
     $or->isNull('pattern_matched');
@@ -19,7 +23,7 @@ class acld_refdb_handler_field_refdbcount_pattern_1 extends views_handler_field_
     $max = strtotime($this->view->filter['timestamp']->value['max']);
 
     if ($min && $max) {
-      $result->condition('timestamp', array($min, $max), 'BETWEEN');
+      $result->condition('timestamp', [$min, $max], 'BETWEEN');
     }
 
     $count = $result->execute()->rowCount();

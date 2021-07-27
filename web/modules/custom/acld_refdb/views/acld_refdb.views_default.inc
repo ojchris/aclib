@@ -9,7 +9,7 @@
  * Implements hook_views_default_views().
  */
 function acld_refdb_views_default_views() {
-  $views = array();
+  $views = [];
 
   $view = new view();
   $view->name = 'reference_database_access_log';
@@ -38,31 +38,31 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['grouping'] = '';
-  $handler->display->display_options['style_options']['columns'] = array(
+  $handler->display->display_options['style_options']['columns'] = [
     'title' => 'title',
     'access_count_external' => 'access_count_external',
     'access_count_internal' => 'access_count_internal',
     'access_count_overall' => 'access_count_overall',
-  );
+  ];
   $handler->display->display_options['style_options']['default'] = 'title';
-  $handler->display->display_options['style_options']['info'] = array(
-    'title' => array(
+  $handler->display->display_options['style_options']['info'] = [
+    'title' => [
       'sortable' => 1,
       'separator' => '',
-    ),
-    'access_count_external' => array(
+    ],
+    'access_count_external' => [
       'sortable' => 1,
       'separator' => '',
-    ),
-    'access_count_internal' => array(
+    ],
+    'access_count_internal' => [
       'sortable' => 1,
       'separator' => '',
-    ),
-    'access_count_overall' => array(
+    ],
+    'access_count_overall' => [
       'sortable' => 1,
       'separator' => '',
-    ),
-  );
+    ],
+  ];
   /* Relationship: OG membership: OG membership from Content */
   $handler->display->display_options['relationships']['og_membership_rel']['id'] = 'og_membership_rel';
   $handler->display->display_options['relationships']['og_membership_rel']['table'] = 'node';
@@ -108,9 +108,9 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
+  $handler->display->display_options['filters']['type']['value'] = [
     'referencedb' => 'referencedb',
-  );
+  ];
   $handler->display->display_options['filters']['type']['group'] = '0';
   $handler->display->display_options['filters']['type']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -123,65 +123,65 @@ function acld_refdb_views_default_views() {
   $handler = $view->new_display('page', 'RefDB Access Log', 'page_1');
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
+  $handler->display->display_options['access']['role'] = [
     3 => '3',
     5 => '5',
-  );
+  ];
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['columns'] = array(
+  $handler->display->display_options['style_options']['columns'] = [
     'title' => 'title',
     'access_count_overall' => 'access_count_overall',
     'access_count_internal' => 'access_count_internal',
     'access_count_external' => 'access_count_external',
     'access_count_pattern_1' => 'access_count_pattern_1',
     'access_count_pattern_2' => 'access_count_pattern_2',
-  );
+  ];
   $handler->display->display_options['style_options']['default'] = 'title';
-  $handler->display->display_options['style_options']['info'] = array(
-    'title' => array(
+  $handler->display->display_options['style_options']['info'] = [
+    'title' => [
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
-    ),
-    'access_count_overall' => array(
+    ],
+    'access_count_overall' => [
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
-    ),
-    'access_count_internal' => array(
+    ],
+    'access_count_internal' => [
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
-    ),
-    'access_count_external' => array(
+    ],
+    'access_count_external' => [
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
-    ),
-    'access_count_pattern_1' => array(
+    ],
+    'access_count_pattern_1' => [
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
-    ),
-    'access_count_pattern_2' => array(
+    ],
+    'access_count_pattern_2' => [
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
-    ),
-  );
+    ],
+  ];
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
@@ -229,9 +229,9 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
+  $handler->display->display_options['filters']['type']['value'] = [
     'referencedb' => 'referencedb',
-  );
+  ];
   $handler->display->display_options['filters']['type']['group'] = '0';
   $handler->display->display_options['filters']['type']['expose']['operator'] = FALSE;
   /* Filter criterion: Reference DB: Between dates (YYYY-MM-DD) */
@@ -245,7 +245,7 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['filters']['timestamp']['expose']['description'] = '***NOTE: Hits on the 2nd date are NOT included in the report unless you include " 23:59:59" after it, or enter the day after.';
   $handler->display->display_options['filters']['timestamp']['expose']['operator'] = 'timestamp_op';
   $handler->display->display_options['filters']['timestamp']['expose']['identifier'] = 'timestamp';
-  $handler->display->display_options['filters']['timestamp']['expose']['remember_roles'] = array(
+  $handler->display->display_options['filters']['timestamp']['expose']['remember_roles'] = [
     2 => '2',
     1 => 0,
     3 => 0,
@@ -263,7 +263,7 @@ function acld_refdb_views_default_views() {
     16 => 0,
     17 => 0,
     19 => 0,
-  );
+  ];
   $handler->display->display_options['path'] = 'admin/reports/refdb';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'ACLD RefDB Log';
@@ -317,16 +317,16 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['allow']['title_override'] = 'title_override';
   $handler->display->display_options['allow']['exposed_form'] = 0;
   $handler->display->display_options['allow']['fields_override'] = 0;
-  $handler->display->display_options['argument_input'] = array(
-    'gid' => array(
+  $handler->display->display_options['argument_input'] = [
+    'gid' => [
       'type' => 'context',
       'context' => 'entity:node.nid',
       'context_optional' => 0,
       'panel' => '0',
       'fixed' => '',
       'label' => 'OG membership: Group ID',
-    ),
-  );
+    ],
+  ];
 
   /* Display: RefDBs - Arts & Culture */
   $handler = $view->new_display('panel_pane', 'RefDBs - Arts & Culture', 'panel_pane_2');
@@ -376,9 +376,9 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
+  $handler->display->display_options['filters']['type']['value'] = [
     'referencedb' => 'referencedb',
-  );
+  ];
   $handler->display->display_options['filters']['type']['group'] = '0';
   $handler->display->display_options['filters']['type']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Groups audience (og_group_ref) */
@@ -451,9 +451,9 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
+  $handler->display->display_options['filters']['type']['value'] = [
     'referencedb' => 'referencedb',
-  );
+  ];
   $handler->display->display_options['filters']['type']['group'] = '0';
   $handler->display->display_options['filters']['type']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Groups audience (og_group_ref) */
@@ -484,11 +484,11 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
+  $handler->display->display_options['access']['role'] = [
     3 => '3',
     1 => '1',
     2 => '2',
-  );
+  ];
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Filter';
@@ -540,9 +540,9 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
+  $handler->display->display_options['filters']['type']['value'] = [
     'referencedb' => 'referencedb',
-  );
+  ];
   $handler->display->display_options['filters']['type']['group'] = '0';
   $handler->display->display_options['filters']['type']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -560,7 +560,7 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['label'] = 'Filter results to eSources on:';
   $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['operator'] = 'field_refdb_tags_value_op';
   $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['identifier'] = 'field_refdb_tags_value';
-  $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['remember_roles'] = array(
+  $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['remember_roles'] = [
     2 => '2',
     1 => 0,
     13 => 0,
@@ -579,7 +579,7 @@ function acld_refdb_views_default_views() {
     5 => 0,
     20 => 0,
     21 => 0,
-  );
+  ];
   $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['autocomplete_items'] = '10';
   $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['autocomplete_min_chars'] = '0';
   $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['autocomplete_raw_suggestion'] = 1;
@@ -646,9 +646,9 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
+  $handler->display->display_options['filters']['type']['value'] = [
     'referencedb' => 'referencedb',
-  );
+  ];
   $handler->display->display_options['filters']['type']['group'] = '0';
   $handler->display->display_options['filters']['type']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Groups audience (og_group_ref) */
@@ -721,9 +721,9 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
+  $handler->display->display_options['filters']['type']['value'] = [
     'referencedb' => 'referencedb',
-  );
+  ];
   $handler->display->display_options['filters']['type']['group'] = '0';
   $handler->display->display_options['filters']['type']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Groups audience (og_group_ref) */
@@ -796,9 +796,9 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
+  $handler->display->display_options['filters']['type']['value'] = [
     'referencedb' => 'referencedb',
-  );
+  ];
   $handler->display->display_options['filters']['type']['group'] = '0';
   $handler->display->display_options['filters']['type']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Groups audience (og_group_ref) */
@@ -871,9 +871,9 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
+  $handler->display->display_options['filters']['type']['value'] = [
     'referencedb' => 'referencedb',
-  );
+  ];
   $handler->display->display_options['filters']['type']['group'] = '0';
   $handler->display->display_options['filters']['type']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Groups audience (og_group_ref) */
@@ -946,9 +946,9 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
+  $handler->display->display_options['filters']['type']['value'] = [
     'referencedb' => 'referencedb',
-  );
+  ];
   $handler->display->display_options['filters']['type']['group'] = '0';
   $handler->display->display_options['filters']['type']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Groups audience (og_group_ref) */
@@ -1021,9 +1021,9 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
+  $handler->display->display_options['filters']['type']['value'] = [
     'referencedb' => 'referencedb',
-  );
+  ];
   $handler->display->display_options['filters']['type']['group'] = '0';
   $handler->display->display_options['filters']['type']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Groups audience (og_group_ref) */
@@ -1096,9 +1096,9 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
+  $handler->display->display_options['filters']['type']['value'] = [
     'referencedb' => 'referencedb',
-  );
+  ];
   $handler->display->display_options['filters']['type']['group'] = '0';
   $handler->display->display_options['filters']['type']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Groups audience (og_group_ref) */
@@ -1175,9 +1175,9 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
+  $handler->display->display_options['filters']['type']['value'] = [
     'referencedb' => 'referencedb',
-  );
+  ];
   $handler->display->display_options['filters']['type']['group'] = '0';
   $handler->display->display_options['filters']['type']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -1195,7 +1195,7 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['label'] = 'Show eSources on:';
   $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['operator'] = 'field_refdb_tags_value_op';
   $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['identifier'] = 'field_refdb_tags_value';
-  $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['remember_roles'] = array(
+  $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['remember_roles'] = [
     2 => '2',
     1 => 0,
     13 => 0,
@@ -1214,7 +1214,7 @@ function acld_refdb_views_default_views() {
     5 => 0,
     20 => 0,
     21 => 0,
-  );
+  ];
   $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['autocomplete_items'] = '10';
   $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['autocomplete_min_chars'] = '0';
   $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['autocomplete_raw_suggestion'] = 1;
@@ -1231,16 +1231,16 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['allow']['title_override'] = 'title_override';
   $handler->display->display_options['allow']['exposed_form'] = 0;
   $handler->display->display_options['allow']['fields_override'] = 0;
-  $handler->display->display_options['argument_input'] = array(
-    'gid' => array(
+  $handler->display->display_options['argument_input'] = [
+    'gid' => [
       'type' => 'context',
       'context' => 'entity:node.nid',
       'context_optional' => 0,
       'panel' => '0',
       'fixed' => '',
       'label' => 'OG membership: Group ID',
-    ),
-  );
+    ],
+  ];
   $handler->display->display_options['inherit_panels_path'] = '1';
 
   /* Display: RefDBs - Business */
@@ -1291,9 +1291,9 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
+  $handler->display->display_options['filters']['type']['value'] = [
     'referencedb' => 'referencedb',
-  );
+  ];
   $handler->display->display_options['filters']['type']['group'] = '0';
   $handler->display->display_options['filters']['type']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Groups audience (og_group_ref) */
@@ -1366,9 +1366,9 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
+  $handler->display->display_options['filters']['type']['value'] = [
     'referencedb' => 'referencedb',
-  );
+  ];
   $handler->display->display_options['filters']['type']['group'] = '0';
   $handler->display->display_options['filters']['type']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Groups audience (og_group_ref) */
@@ -1399,11 +1399,11 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
+  $handler->display->display_options['access']['role'] = [
     3 => '3',
     1 => '1',
     2 => '2',
-  );
+  ];
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'input_required';
   $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Search';
@@ -1458,9 +1458,9 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
+  $handler->display->display_options['filters']['type']['value'] = [
     'referencedb' => 'referencedb',
-  );
+  ];
   $handler->display->display_options['filters']['type']['group'] = '0';
   $handler->display->display_options['filters']['type']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -1478,7 +1478,7 @@ function acld_refdb_views_default_views() {
   $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['label'] = 'Search our eSources:';
   $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['operator'] = 'field_refdb_tags_value_op';
   $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['identifier'] = 'field_refdb_tags_value';
-  $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['remember_roles'] = array(
+  $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['remember_roles'] = [
     2 => '2',
     1 => 0,
     13 => 0,
@@ -1497,7 +1497,7 @@ function acld_refdb_views_default_views() {
     5 => 0,
     20 => 0,
     21 => 0,
-  );
+  ];
   $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['autocomplete_items'] = '10';
   $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['autocomplete_min_chars'] = '0';
   $handler->display->display_options['filters']['field_refdb_tags_value']['expose']['autocomplete_raw_suggestion'] = 1;

@@ -1,16 +1,14 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\acld_refdb\Form\AcldRefdbSystemSettingsForm.
- */
-
 namespace Drupal\acld_refdb\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 
+/**
+ *
+ */
 class AcldRefdbSystemSettingsForm extends ConfigFormBase {
 
   /**
@@ -31,10 +29,9 @@ class AcldRefdbSystemSettingsForm extends ConfigFormBase {
     }
     $config->save();
 
-//    if (method_exists($this, '_submitForm')) {
-//      $this->_submitForm($form, $form_state);
-//    }
-
+    // If (method_exists($this, '_submitForm')) {
+    //      $this->_submitForm($form, $form_state);
+    //    }.
     parent::submitForm($form, $form_state);
   }
 
@@ -45,6 +42,9 @@ class AcldRefdbSystemSettingsForm extends ConfigFormBase {
     return ['acld_refdb.settings'];
   }
 
+  /**
+   *
+   */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = \Drupal::config('acld_refdb.settings');
 

@@ -1,9 +1,16 @@
 <?php
+
 namespace Drupal\acld_refdb;
 
+/**
+ *
+ */
 class acld_refdb_handler_field_refdbcount_pattern_2 extends views_handler_field_custom {
 
-  function render($values) {
+  /**
+   *
+   */
+  public function render($values) {
 
     $result = db_select('refdb_access_log', 'thecount')
       ->fields('thecount')
@@ -14,7 +21,7 @@ class acld_refdb_handler_field_refdbcount_pattern_2 extends views_handler_field_
     $max = strtotime($this->view->filter['timestamp']->value['max']);
 
     if ($min && $max) {
-      $result->condition('timestamp', array($min, $max), 'BETWEEN');
+      $result->condition('timestamp', [$min, $max], 'BETWEEN');
     }
 
     $count = $result->execute()->rowCount();
