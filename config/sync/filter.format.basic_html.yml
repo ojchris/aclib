@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.media.full_width
     - core.entity_view_mode.media.half_width
+    - core.entity_view_mode.media.quarter_width
   module:
     - editor
     - media
@@ -60,3 +61,4 @@ filters:
       allowed_view_modes:
         full_width: full_width
         half_width: half_width
+        quarter_width: quarter_width

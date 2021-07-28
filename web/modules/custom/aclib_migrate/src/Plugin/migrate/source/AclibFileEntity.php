@@ -23,17 +23,12 @@ class AclibFileEntity extends FileEntityItem {
 
     if (isset($this->configuration['aclib_file_identifier'])) {
       switch ($this->configuration['aclib_file_identifier']) {
-        case 'test_latest_images':
-          $query->condition('type', 'image');
-          $query->orderBy('fid', 'DESC');
-          $query->range(0, 10);
-          break;
         case 'blog_images':
           $query->condition('type', 'image');
           // Last 100
-          $query->range(0, 100);
+          //$query->range(0, 100);
           // Last 1000.
-          //$query->range(0, 1000);
+          $query->range(0, 1000);
           // Past year.
           //$query->condition('timestamp', (time() - 60*60*24*365), '>');
           $query->orderBy('fid', 'DESC');

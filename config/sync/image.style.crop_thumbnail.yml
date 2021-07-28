@@ -1,0 +1,27 @@
+uuid: 043236a1-8fe2-4959-a490-fea370c9c486
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.teaser_image_crop
+  module:
+    - crop
+_core:
+  default_config_hash: N1S0PHZeyxfFqgzB-sDeGPaxi0dDOL8NUiP_d6WXSV0
+name: crop_thumbnail
+label: 'Crop teaser (200x200)'
+effects:
+  fff59c28-52ec-433d-9ff3-8eeef2b34759:
+    uuid: fff59c28-52ec-433d-9ff3-8eeef2b34759
+    id: crop_crop
+    weight: 2
+    data:
+      crop_type: teaser_image_crop
+  6df2ccaa-501d-4fe0-b8f7-fec786e56e84:
+    uuid: 6df2ccaa-501d-4fe0-b8f7-fec786e56e84
+    id: image_scale
+    weight: 2
+    data:
+      width: 200
+      height: 200
+      upscale: false

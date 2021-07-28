@@ -43,12 +43,15 @@ process:
     plugin: media_wysiwyg_filter
     source: body/0/value
     view_mode_matching:
-      default: full
-      quarter_right: full
-      original_left: full
-      original_right: full
-      book_cover_image: full
-      teaser: full
+      default: full_width
+      quarter_right: quarter_width
+      original_left: full_width
+      original_right: full_width
+      book_cover_image: quarter_width
+      quarter_size: quarter_width
+      thumbnail: quarter_width
+      wysiwyg: full_width
+      teaser: quarter_width
     media_migrations:
       - file_entity
     file_migrations:
@@ -57,8 +60,8 @@ process:
     plugin: static_map
     source: body/0/format
     map:
-      panopoly_wysiwyg_text: full_html
-      panopoly_wysiwyg_html: basic_html
+      panopoly_wysiwyg_text: basic_html
+      panopoly_html_text: basic_html
       full_html: full_html
   field_teaser/value: field_teaser/0/value
   field_teaser_image/target_id:

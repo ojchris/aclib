@@ -1,0 +1,15 @@
+uuid: 3721f010-453e-4d72-a59c-24dc6394f7a8
+langcode: en
+status: true
+dependencies: {  }
+name: quarter_width_embedded
+label: 'Quarter-width embedded'
+effects:
+  e93b1618-e6fd-4e5c-8601-4e388de27745:
+    uuid: e93b1618-e6fd-4e5c-8601-4e388de27745
+    id: image_scale
+    weight: 1
+    data:
+      width: 175
+      height: null
+      upscale: false

@@ -1,24 +1,25 @@
-uuid: 8000c8d8-2a3c-4e23-8a57-31da9fdcd992
+uuid: 335198d8-15c6-4768-99de-834f0ced01b3
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.media.half_width
     - field.field.media.image.field_media_image
-    - image.style.crop_thumbnail
+    - image.style.half_width_embedded
     - media.type.image
   module:
     - image
 _core:
   default_config_hash: B1a2aBHmUulUZN6HrxITEH1tSResuVjXMBEv1lUBtOo
-id: media.image.default
+id: media.image.half_width
 targetEntityType: media
 bundle: image
-mode: default
+mode: half_width
 content:
   field_media_image:
     label: visually_hidden
     settings:
-      image_style: crop_thumbnail
+      image_style: half_width_embedded
       image_link: ''
     third_party_settings: {  }
     type: image

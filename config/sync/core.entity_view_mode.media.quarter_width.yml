@@ -1,0 +1,10 @@
+uuid: 33969d20-a16e-4205-b31e-0775bafe1765
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.quarter_width
+label: Quarter-width
+targetEntityType: media
+cache: true
