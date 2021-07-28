@@ -21,6 +21,9 @@ class AclibFileEntity extends FileEntityItem {
   public function query() {
     $query = parent::query();
 
+    // Remove the orderby from the parent.
+    unset($query->getOrderBy()['fm.timestamp']);
+
     if (isset($this->configuration['aclib_file_identifier'])) {
       switch ($this->configuration['aclib_file_identifier']) {
         case 'blog_images':
