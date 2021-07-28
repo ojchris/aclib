@@ -30,9 +30,15 @@ process:
     source: roles
     bypass: true
     map:
+      3: administrator
       15: marketing
-      5: ebranch
-      21: webform_editor
+      5: website_editor
+      21: webform
+      26: webform_editor
+      25: ebranch
+      23: content_editor
+      24: content_contributor
+      22: guest_contributor
   field_about/format:
     plugin: default_value
     default_value: basic_html

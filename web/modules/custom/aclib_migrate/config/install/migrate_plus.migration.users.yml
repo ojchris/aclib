@@ -22,12 +22,24 @@ process:
     source: roles
     bypass: TRUE
     map:
+      # D7 administrator
+      3: administrator
       # D7 Marketing/PR Admin
       15: marketing
       # D7 eBranch
-      5: ebranch
+      5: website_editor
       # D7 Webform admin
-      21: webform_editor
+      21: webform
+      # D7 Webform Editor
+      26: webform_editor
+      # D7 eBranch Admin
+      25: ebranch
+      # D7 Content Editor
+      23: content_editor
+      # D7 Content Contributor > Content Contributor
+      24: content_contributor
+      # D7 Guest Contributor > Guest Contributor
+      22: guest_contributor
   'field_about/format':
     plugin: default_value
     default_value: 'basic_html'
