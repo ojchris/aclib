@@ -26,8 +26,7 @@ class AclibFileEntity extends FileEntityItem {
 
     if (isset($this->configuration['aclib_file_identifier'])) {
       switch ($this->configuration['aclib_file_identifier']) {
-        case 'blog_images':
-          $query->condition('type', 'image');
+        case 'subset':
           // Last 100
           //$query->range(0, 100);
           // Last 1000.

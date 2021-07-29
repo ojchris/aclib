@@ -1,5 +1,5 @@
-id: file_entity
-label: Import ACLIB Media - images
+id: file_entity_youtube
+label: Import ACLIB Media - Youtube.
 migration_group: aclib
 #deriver: Drupal\media_migration\Plugin\migrate\D7FileEntityDeriver
 idMap:
@@ -7,7 +7,7 @@ idMap:
 source:
   plugin: aclib_file_entity
   aclib_file_identifier: subset
-  type: image
+  type: video
 process:
   uuid:
     plugin: media_migrate_uuid
@@ -47,21 +47,11 @@ process:
   name: filename
   created: timestamp
   status: status
-  field_media_image/target_id:
-    -
-      plugin: migration_lookup
-      migration: files
-      source: fid
-      no_stub: true
-    -
-      plugin: skip_on_empty
-      method: row
-      message: 'File entity not found in map table (field_media_image).'
-  field_media_image/alt: 'field_file_image_alt_text/0/value'
-  field_media_image/title: 'field_file_image_title_text/0/value'
+  field_media_oembed_video/value:
+    plugin: media_internet_field_value
+    source: uri
 destination:
   plugin: entity:media
 migration_dependencies:
   required:
     - users
-    - files

@@ -1,18 +1,18 @@
-uuid: 58dd253d-86a9-4a03-be55-1db34a46fe89
+uuid: dedae804-e547-4ef4-9a2c-e1bad5b19858
 langcode: en
 status: true
 dependencies: {  }
-id: file_entity
+id: file_entity_youtube
 class: null
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags: null
 migration_group: aclib
-label: 'Import ACLIB Media - images'
+label: 'Import ACLIB Media - Youtube.'
 source:
   plugin: aclib_file_entity
   aclib_file_identifier: subset
-  type: image
+  type: video
 process:
   uuid:
     plugin: media_migrate_uuid
@@ -31,21 +31,11 @@ process:
   name: filename
   created: timestamp
   status: status
-  field_media_image/target_id:
-    -
-      plugin: migration_lookup
-      migration: files
-      source: fid
-      no_stub: true
-    -
-      plugin: skip_on_empty
-      method: row
-      message: 'File entity not found in map table (field_media_image).'
-  field_media_image/alt: field_file_image_alt_text/0/value
-  field_media_image/title: field_file_image_title_text/0/value
+  field_media_oembed_video/value:
+    plugin: media_internet_field_value
+    source: uri
 destination:
   plugin: 'entity:media'
 migration_dependencies:
   required:
     - users
-    - files

@@ -27,11 +27,12 @@ process:
     plugin: default_value
     source: language
     default_value: 'und'
+  # Disable pathauto during migrations.
   path/pathauto:
     plugin: default_value
-    default_value: 0 # Disable pathauto.
+    default_value: 0
   path/alias: alias
-  # TODO: Handle embedded file entities as well as raw <img> tags.
+  # TODO: Handle raw <img> tags?
   field_body/value:
     plugin: media_wysiwyg_filter
     source: 'body/0/value'
@@ -48,6 +49,7 @@ process:
       teaser: quarter_width
     media_migrations:
       - file_entity
+      - file_entity_youtube
     file_migrations:
       - files
   # See OA5736 for info about D7 blog posts that have/had field_body/summary data.

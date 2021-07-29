@@ -15,6 +15,9 @@ auto_import:
     filename: modules/custom/aclib_migrate/config/install/migrate_plus.migration.file_entity.yml
     hash: ''
   -
+    filename: modules/custom/aclib_migrate/config/install/migrate_plus.migration.file_entity_youtube.yml
+    hash: ''
+  -
     filename: modules/custom/aclib_migrate/config/install/migrate_plus.migration.nodes_blog.yml
     hash: ''
 auto_export: {  }
