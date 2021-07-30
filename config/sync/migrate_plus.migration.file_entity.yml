@@ -8,10 +8,10 @@ field_plugin_method: null
 cck_plugin_method: null
 migration_tags: null
 migration_group: aclib
-label: 'Import ACLIB Media - images'
+label: 'Import ACLIB File Entities'
 source:
   plugin: aclib_file_entity
-  aclib_file_identifier: subset
+  aclib_file_identifier: blog_images
   type: image
 process:
   uuid:

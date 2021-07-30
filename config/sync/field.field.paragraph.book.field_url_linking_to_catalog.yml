@@ -12,7 +12,7 @@ field_name: field_url_linking_to_catalog
 entity_type: paragraph
 bundle: book
 label: 'URL linking to title in the catalog'
-description: 'This must be an external URL such as https://catalog.aclib.us/view.aspx?author=Author+of+Item'
+description: 'This must be an external URL such as: https://catalog.aclib.us/view.aspx?title=Title+of+Item'
 required: false
 translatable: false
 default_value: {  }

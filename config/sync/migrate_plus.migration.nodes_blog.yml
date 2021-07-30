@@ -54,7 +54,6 @@ process:
       teaser: quarter_width
     media_migrations:
       - file_entity
-      - file_entity_youtube
     file_migrations:
       - files
   field_body/format:
