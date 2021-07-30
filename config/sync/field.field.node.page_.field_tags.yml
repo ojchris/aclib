@@ -11,7 +11,7 @@ field_name: field_tags
 entity_type: node
 bundle: page_
 label: Tags
-description: ''
+description: 'Please separate single and multiple word tags with commas.'
 required: false
 translatable: true
 default_value: {  }
