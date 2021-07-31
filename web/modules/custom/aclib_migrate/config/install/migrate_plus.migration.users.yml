@@ -10,7 +10,8 @@ process:
   created: created
   access: access
   login: login
-  status: status
+  # Otto asked to ignore user status in OA5722.
+  #status: status
   timezone: timezone
   langcode:
     plugin: user_langcode

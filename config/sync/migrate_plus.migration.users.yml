@@ -18,7 +18,6 @@ process:
   created: created
   access: access
   login: login
-  status: status
   timezone: timezone
   langcode:
     plugin: user_langcode
