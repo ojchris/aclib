@@ -11,7 +11,7 @@ dependencies:
     - media
 _core:
   default_config_hash: WNeK5FbcY8pXgEpbD_KgRzlF1-5PL3BJXwqaBctPTqw
-name: 'Full HTML'
+name: Advanced
 format: full_html
 weight: 2
 filters:
