@@ -1,6 +1,8 @@
-name: 'ACLD Reference Database'
+name: 'ACLIB Reference Database'
 description: 'Allows for access to external Reference Databases.'
 package: ACLIB
 type: module
 core_version_requirement: ^8.8 || ^9
-configure: aclib_refdb.system_settings_form
+configure: aclib_refdb.config_form
+dependencies:
+  - core:views

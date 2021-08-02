@@ -17,14 +17,3 @@ aclib_refdb.page:
     parameters:
       node:
         type: entity:node
-#aclib_refdb.library_card_form:
-#  path: '/refdb/some/other/path/{node}'
-#  defaults:
-#    _title: 'ACLD Reference Database Access'
-#    _form: 'Drupal\aclib_refdb\Form\LibraryCardForm'
-#  requirements:
-#    _permission: 'access content'
-#  options:
-#    parameters:
-#      node:
-#        type: entity:node
