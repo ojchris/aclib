@@ -28,8 +28,8 @@ class AclibNodes extends Node {
     $query = parent::query();
 
     if (isset($this->configuration['node_type'])) {
-      if ($this->configuration['node_type'] == 'blog_entry') {
-        // Only migrate blog entry nodes created since 1/1/2020.
+      if (in_array($this->configuration['node_type'], ['pressrelease', 'blog_entry'])) {
+        // Only migrate nodes created since 1/1/2020.
         $query->condition('n.created', 1577833200, '>=');
       }
     }
