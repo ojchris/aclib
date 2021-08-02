@@ -7,9 +7,14 @@ dependencies:
     - field.field.node.communico_events.field_communico_event_id
     - field.field.node.communico_events.field_communico_modified
     - field.field.node.communico_events.field_end_date
+    - field.field.node.communico_events.field_external_description
+    - field.field.node.communico_events.field_external_location
+    - field.field.node.communico_events.field_external_room
     - field.field.node.communico_events.field_location
+    - field.field.node.communico_events.field_private_event
     - field.field.node.communico_events.field_room
     - field.field.node.communico_events.field_start_date
+    - field.field.node.communico_events.field_venue_type
     - node.type.communico_events
   module:
     - datetime
@@ -22,27 +27,19 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 9
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_agenda:
-    weight: 2
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textarea
-    region: content
   field_communico_event_id:
-    weight: 7
+    weight: 12
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_communico_modified:
-    weight: 6
+    weight: 11
     settings:
       size: 60
       placeholder: ''
@@ -50,18 +47,49 @@ content:
     type: string_textfield
     region: content
   field_end_date:
-    weight: 4
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
     region: content
-  field_location:
-    weight: 1
+  field_external_description:
+    weight: 7
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  field_external_location:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_external_room:
+    weight: 8
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_location:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_private_event:
+    weight: 9
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
     region: content
   field_room:
     weight: 5
@@ -72,14 +100,22 @@ content:
     type: string_textfield
     region: content
   field_start_date:
-    weight: 3
+    weight: 1
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
     region: content
+  field_venue_type:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   path:
     type: path
-    weight: 12
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -87,12 +123,12 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 10
+    weight: 15
     region: content
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 14
+    weight: 18
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -100,14 +136,14 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 13
+    weight: 10
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 11
+    weight: 16
     region: content
     third_party_settings: {  }
   title:
@@ -120,7 +156,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 8
+    weight: 13
     settings:
       match_operator: CONTAINS
       size: 60
@@ -130,8 +166,9 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 15
+    weight: 19
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_agenda: true

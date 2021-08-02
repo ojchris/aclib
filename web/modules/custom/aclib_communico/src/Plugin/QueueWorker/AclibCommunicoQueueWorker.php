@@ -56,6 +56,11 @@ class AclibCommunicoQueueWorker extends QueueWorkerBase implements ContainerFact
     'locationName' => 'field_location',
     'roomName' => 'field_room',
     'modified' => 'field_communico_modified',
+    'privateEvent' => 'field_private_event',
+    'venueType' => 'field_venue_type',
+    'externalVenueName' => 'field_external_location',
+    'externalVenueDescription' => 'field_external_description',
+    'externalVenueRoom' => 'field_external_room',
     // Other available fields that we do not use yet
     'published' => NULL,
     'roomId' => NULL,
@@ -174,6 +179,17 @@ class AclibCommunicoQueueWorker extends QueueWorkerBase implements ContainerFact
           if ($drupal_field_name == 'field_start_date' || $drupal_field_name == 'field_end_date') {
             $field = $this->prepareDates($drupal_field_name, $node_data['type'], $field, $timezone);
           }
+          
+          // Strip html tags on this field
+          if ($drupal_field_name == 'field_external_description') {
+            $field = trim(strip_tags($field));
+          }
+
+          // Checkbox needs extra handling
+          if ($drupal_field_name == 'field_private_event') {
+            $field = $field == NULL ? '0' : $field;
+          }
+
           $node_data[$drupal_field_name] = $field;
         }
       }    

@@ -1,0 +1,21 @@
+uuid: 96f0cb65-ec72-4beb-94bb-d81076ef46df
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_external_location
+field_name: field_external_location
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

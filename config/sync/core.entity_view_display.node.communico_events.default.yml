@@ -7,9 +7,14 @@ dependencies:
     - field.field.node.communico_events.field_communico_event_id
     - field.field.node.communico_events.field_communico_modified
     - field.field.node.communico_events.field_end_date
+    - field.field.node.communico_events.field_external_description
+    - field.field.node.communico_events.field_external_location
+    - field.field.node.communico_events.field_external_room
     - field.field.node.communico_events.field_location
+    - field.field.node.communico_events.field_private_event
     - field.field.node.communico_events.field_room
     - field.field.node.communico_events.field_start_date
+    - field.field.node.communico_events.field_venue_type
     - node.type.communico_events
   module:
     - datetime
@@ -52,6 +57,30 @@ content:
     third_party_settings: {  }
     type: datetime_default
     region: content
+  field_external_description:
+    weight: 113
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_external_location:
+    weight: 112
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_external_room:
+    weight: 114
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   field_location:
     weight: 104
     label: above
@@ -59,6 +88,16 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  field_private_event:
+    weight: 115
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
     region: content
   field_room:
     weight: 105
@@ -76,6 +115,14 @@ content:
       timezone_override: ''
     third_party_settings: {  }
     type: datetime_default
+    region: content
+  field_venue_type:
+    weight: 111
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
   links:
     weight: 100

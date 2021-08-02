@@ -98,6 +98,8 @@ function aclib_communico_cron() {
       $options['query']['types'] = implode(',', $types);
     }
 
+    $options['query']['fields'] = implode(',', array_keys(AclibCommunicoQueueWorker::FIELDS_MAP));
+
     // Filter by start and end dates
     if ($config->get('startDate')) {
       $options['query']['startDate'] = $config->get('startDate');
@@ -117,9 +119,9 @@ function aclib_communico_cron() {
         if ($config->get('debug')) { // Debbuging mode, set some info about it
           \Drupal::logger('ac_credentials')->notice('Debugging mode on - all queued items will be deleted from cron queue. Note that depending of limit number, if high, it may require a few rounds of cron run.');
         }
-   
+       
         foreach ($response['data']['entries'] as $entry) {
-
+        
           $entry['type'] = $node_type;
           $entry['uid'] = $config->get('node_author') ? $config->get('node_author') : AclibCommunicoQueueWorker::NODE_UID;
       

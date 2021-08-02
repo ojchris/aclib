@@ -1,0 +1,19 @@
+uuid: ff9ffbc0-55e0-4472-8a13-6658d8358091
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_external_room
+    - node.type.communico_events
+id: node.communico_events.field_external_room
+field_name: field_external_room
+entity_type: node
+bundle: communico_events
+label: 'External Room'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

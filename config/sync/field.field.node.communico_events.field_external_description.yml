@@ -1,0 +1,19 @@
+uuid: a21624fc-83df-4df9-b66c-eda9d8504d15
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_external_description
+    - node.type.communico_events
+id: node.communico_events.field_external_description
+field_name: field_external_description
+entity_type: node
+bundle: communico_events
+label: 'External Description'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

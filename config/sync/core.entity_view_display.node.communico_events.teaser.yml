@@ -8,9 +8,14 @@ dependencies:
     - field.field.node.communico_events.field_communico_event_id
     - field.field.node.communico_events.field_communico_modified
     - field.field.node.communico_events.field_end_date
+    - field.field.node.communico_events.field_external_description
+    - field.field.node.communico_events.field_external_location
+    - field.field.node.communico_events.field_external_room
     - field.field.node.communico_events.field_location
+    - field.field.node.communico_events.field_private_event
     - field.field.node.communico_events.field_room
     - field.field.node.communico_events.field_start_date
+    - field.field.node.communico_events.field_venue_type
     - node.type.communico_events
   module:
     - user
@@ -29,6 +34,11 @@ hidden:
   field_communico_event_id: true
   field_communico_modified: true
   field_end_date: true
+  field_external_description: true
+  field_external_location: true
+  field_external_room: true
   field_location: true
+  field_private_event: true
   field_room: true
   field_start_date: true
+  field_venue_type: true

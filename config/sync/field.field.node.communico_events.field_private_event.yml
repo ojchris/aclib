@@ -1,0 +1,23 @@
+uuid: 2e09d338-fd01-49c0-9a37-1e8d7ef77a45
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_private_event
+    - node.type.communico_events
+id: node.communico_events.field_private_event
+field_name: field_private_event
+entity_type: node
+bundle: communico_events
+label: 'Private Event'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
