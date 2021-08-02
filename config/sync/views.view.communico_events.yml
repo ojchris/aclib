@@ -92,26 +92,19 @@ display:
           description: ''
           columns:
             title: title
-            field_communico_event_id: field_communico_event_id
-            field_communico_modified: field_communico_modified
             field_start_date: field_start_date
+            field_venue_type: field_venue_type
+            field_location: field_location
+            field_room: field_room
+            field_external_location: field_external_location
+            field_external_description: field_external_description
+            field_external_room: field_external_room
+            field_private_event: field_private_event
             status: status
+            field_communico_modified: field_communico_modified
+            field_communico_event_id: field_communico_event_id
           info:
             title:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_communico_event_id:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_communico_modified:
               sortable: true
               default_sort_order: asc
               align: ''
@@ -125,7 +118,70 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
+            field_venue_type:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_location:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_room:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_external_location:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_external_description:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_external_room:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_private_event:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
             status:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_communico_modified:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_communico_event_id:
               sortable: true
               default_sort_order: asc
               align: ''
@@ -677,7 +733,7 @@ display:
           click_sort_column: value
           type: boolean
           settings:
-            format: default
+            format: yes-no
             format_custom_true: ''
             format_custom_false: ''
           group_column: value
