@@ -27,8 +27,12 @@ class AclibNodes extends Node {
   public function query() {
     $query = parent::query();
 
-    // Only migrate nodes created since 1/1/2020.
-    $query->condition('n.created', 1577833200, '>=');
+    if (isset($this->configuration['node_type'])) {
+      if ($this->configuration['node_type'] == 'blog_entry') {
+        // Only migrate blog entry nodes created since 1/1/2020.
+        $query->condition('n.created', 1577833200, '>=');
+      }
+    }
 
     // Order by NID descending for easier testing.
     $query->orderBy('n.nid', 'DESC');

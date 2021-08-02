@@ -1,0 +1,90 @@
+uuid: 43aa68a9-6289-4813-82ca-eda6cd5f5bd4
+langcode: en
+status: true
+dependencies: {  }
+id: nodes_refdb
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: aclib
+label: 'Reference database nodes'
+source:
+  plugin: aclib_d7_node
+  node_type: referencedb
+process:
+  title: title
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  uid:
+    -
+      plugin: migration_lookup
+      migration: users
+      no_stub: true
+      source: node_uid
+    -
+      plugin: default_value
+      default_value: 1
+  type:
+    plugin: default_value
+    default_value: reference_database
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  path/pathauto:
+    plugin: default_value
+    default_value: 0
+  path/alias: alias
+  field_body/value:
+    plugin: media_wysiwyg_filter
+    source: body/0/value
+    view_mode_matching:
+      default: full_width
+      quarter_right: quarter_width
+      original_left: full_width
+      original_right: full_width
+      book_cover_image: quarter_width
+      quarter_size: quarter_width
+      thumbnail: quarter_width
+      wysiwyg: full_width
+      teaser: quarter_width
+    media_migrations:
+      - file_entity
+      - file_entity_youtube
+    file_migrations:
+      - files
+  field_body/format:
+    plugin: static_map
+    source: body/0/format
+    map:
+      panopoly_wysiwyg_text: basic_html
+      panopoly_html_text: basic_html
+      full_html: full_html
+  field_image/target_id:
+    -
+      plugin: migration_lookup
+      migration: file_entity
+      no_stub: true
+      source: field_image/0/fid
+    -
+      plugin: default_value
+      default_value: 505
+  field_external_url:
+    plugin: field_link
+    source: field_external_url
+  field_internal_url:
+    plugin: field_link
+    source: field_internal_url
+  field_hq_only: field_hq_only
+  field_internal_only: field_internal_only
+  field_require_signon: field_require_signon
+destination:
+  plugin: 'entity:node'
+migration_dependencies:
+  optional:
+    - users
+    - file_entity
