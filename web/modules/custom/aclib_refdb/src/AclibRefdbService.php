@@ -262,17 +262,20 @@ class AclibRefdbService {
       if ($is_user_on_site && $internal_url_value) {
         $data['location'] = 0;
         // Create instance of our custom logging entity 
+        $this->logAccess($data);  
+        // Return redirect
         return new TrustedRedirectResponse($internal_url_value->toString());
       }
       else {
         if ($external_url_value) {
           // Create instance of our custom logging entity 
           $data['location'] = 1;
+          $this->logAccess($data);  
+          // Return redirect
           return new TrustedRedirectResponse($external_url_value->toString());
         }
       }
-      // Create instance of our custom logging entity 
-      $this->logAccess($data);  
+     
     }
 
     // If the user is on_site, send them on their way
@@ -280,6 +283,7 @@ class AclibRefdbService {
       $data['location'] = 0;
       // Create instance of our custom logging entity 
       $this->logAccess($data);  
+      // Return redirect
       return new TrustedRedirectResponse($internal_url_value->toString());
     }
   
@@ -289,6 +293,7 @@ class AclibRefdbService {
       // Create instance of our custom logging entity 
       $data['location'] = 1;
       $this->logAccess($data);  
+      // Return redirect
       return new TrustedRedirectResponse($external_url_value->toString());
     }
   }
