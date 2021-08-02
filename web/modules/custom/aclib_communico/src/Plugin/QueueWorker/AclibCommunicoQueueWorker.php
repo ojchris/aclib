@@ -275,7 +275,7 @@ class AclibCommunicoQueueWorker extends QueueWorkerBase implements ContainerFact
     // First check if there is timezone override on Manage display for a field
     // Fallback to default timezone settings in Drupal at "/admin/config/regional/settings"
     if (is_object($date_field_storage) && !empty($date_field_storage->getRenderer($field_name)->getSettings())) {
-      $timezone = isset($date_field_storage->getRenderer('field_start_date')->getSettings()['timezone_override']) && !empty($date_field_storage->getRenderer('field_start_date')->getSettings()['timezone_override']) ? $$date_field_storage->getRenderer('field_start_date')->getSettings()['timezone_override'] : $timezone;
+      $timezone = isset($date_field_storage->getRenderer('field_start_date')->getSettings()['timezone_override']) && !empty($date_field_storage->getRenderer('field_start_date')->getSettings()['timezone_override']) ? $date_field_storage->getRenderer('field_start_date')->getSettings()['timezone_override'] : $timezone;
     }
     if (strpos($field_value, ' ') !== FALSE) { // A bit of hardcode like parsing for dates that have space between date and time
       $field_value = str_replace(' ', 'T', $field_value);

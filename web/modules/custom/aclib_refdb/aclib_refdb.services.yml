@@ -1,0 +1,4 @@
+services:
+  aclib_refdb.main:
+    class: Drupal\aclib_refdb\AclibRefdbService
+    arguments: ['@request_stack', '@config.factory', '@entity_type.manager', '@tempstore.private', '@logger.factory', '@messenger']

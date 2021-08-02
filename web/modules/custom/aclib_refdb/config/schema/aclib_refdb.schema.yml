@@ -1,0 +1,22 @@
+aclib_refdb.settings:
+  type: mapping
+  label: Settings
+  mapping:
+    aclib_refdb_internalips:
+      type: 'NULL'
+      label: 'ACLIB Internal IP Addresses'
+    aclib_refdb_hqips:
+      type: 'NULL'
+      label: 'ACLIB Headquarters IP Addresses'
+    aclib_refdb_failurenodeid:
+      type: 'NULL'
+      label: 'Failure Node ID'
+    aclib_refdb_cardformtext:
+      type: 'NULL'
+      label: 'Database Access Form Help Text'
+    aclib_refdb_card_accept:
+      type: string
+      label: 'Card Number Accept Pattern'
+    aclib_refdb_card_accept_alternate:
+      type: string
+      label: 'Card Number Accept Pattern-alternate'
