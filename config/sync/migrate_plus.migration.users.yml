@@ -38,6 +38,7 @@ process:
       23: content_editor
       24: content_contributor
       22: guest_contributor
+      27: website_contributor
   field_about/format:
     plugin: default_value
     default_value: basic_html

@@ -1,0 +1,14 @@
+uuid: 3544563d-e509-431e-b039-98eb1def56cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.website_contributor
+  module:
+    - user
+id: user_remove_role_action.website_contributor
+label: 'Remove the Website contributor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: website_contributor
