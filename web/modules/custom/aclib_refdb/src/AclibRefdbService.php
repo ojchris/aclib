@@ -108,7 +108,7 @@ class AclibRefdbService {
   }
 
   /**
-   * Create and save instance of our custom content entity for storing access logs.
+   * Create and save custom content entity for storing access logs.
    *
    * @param array $data
    *   Associative array with keys and values matching entity's fields.
@@ -119,10 +119,12 @@ class AclibRefdbService {
   }
 
   /**
-   * Determines if card number given matches pattern set in form aclib_refdb_librarycardform.
+   * Determines if card number given matches allowed pattern.
    *
    * @param int $card_number
-   * @param int $original
+   *   The entered card number.
+   * @param int $value
+   * @param int $setting
    *
    * @return bool
    */
