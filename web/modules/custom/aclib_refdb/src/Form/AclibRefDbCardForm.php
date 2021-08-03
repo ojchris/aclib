@@ -20,7 +20,7 @@ class AclibRefDbCardForm extends FormBase {
   /**
    * AclibRefdbService definition.
    *
-   * @var \Drupal\aclib_refdb\AclibRefdbService;    
+   * @var \Drupal\aclib_refdb\AclibRefdbService;
    */
   protected $aclib_service;
 
@@ -51,7 +51,6 @@ class AclibRefDbCardForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state, NodeInterface $node = NULL) {
-    
     $config = $this->aclib_service->config->get('aclib_refdb.settings');
     $session = $this->aclib_service->privateTempStore->get('aclib_refdb');
     $session_data = $session && is_array($session->get('aclib_refdb')) ? $session->get('aclib_refdb') : [];
@@ -117,9 +116,9 @@ class AclibRefDbCardForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    
+
     $node = \Drupal::entityTypeManager()->getStorage('node')->load($form_state->getValue('aclib_refdb_nid'));
-    
+
     // Redirect to external URL
     if ($node instanceof NodeInterface) {
       $session = $this->aclib_service->privateTempStore->get('aclib_refdb');
@@ -132,7 +131,7 @@ class AclibRefDbCardForm extends FormBase {
 
       $session->set('aclib_refdb', $session_update);
 
-      // Create instance of our custom logging entity 
+      // Create instance of our custom logging entity
       $data = [
         'nid' => $node->id(),
         'datetime' => $this->aclib_service->prepareDate(),
@@ -141,7 +140,7 @@ class AclibRefDbCardForm extends FormBase {
         'pattern_matched' => $form_state->getValue('aclid_refdb_pattern_matched'),
       ];
 
-      $this->aclib_service->logAccess($data);  
+      $this->aclib_service->logAccess($data);
       $external_url =  $this->aclib_service::EXTERNAL_URL;
 
       if ($node->hasField($external_url) && !empty($node->get($external_url)->getValue())) {
@@ -149,7 +148,7 @@ class AclibRefDbCardForm extends FormBase {
         $url = $node->get($external_url)->getValue()[0]['uri'];
         $response = new TrustedRedirectResponse(Url::fromUri($url)->toString());
 
-        // Take care of some cache here 
+        // Take care of some cache here
         $metadata = $response->getCacheableMetadata();
         $metadata->setCacheMaxAge(0);
 

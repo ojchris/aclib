@@ -27,18 +27,18 @@ class AclibRefdbService {
   const HQ_FIELD = 'field_hq_only';
   const INTERNAL_URL = 'field_internal_url';
   const EXTERNAL_URL = 'field_external_url';
-  const SIGN_ON_FIELD = 'field_require_signon'; 
+  const SIGN_ON_FIELD = 'field_require_signon';
 
   /**
    * The current request
    *
-   * @var \Symfony\Component\HttpFoundation\RequestStack;    
+   * @var \Symfony\Component\HttpFoundation\RequestStack;
    */
   public $requestStack;
 
   /**
    * Drupal\Core\Config\ConfigFactoryInterface definition.
-   * 
+   *
    * @var \Drupal\Core\Config\ConfigFactoryInterface
    */
   public $config;
@@ -128,7 +128,7 @@ class AclibRefdbService {
     $card_pattern = $this->config->get('aclib_refdb.settings')->get($setting);
     $card_prefix = str_replace('*', '', $card_pattern);
     if (!empty($card_pattern) && is_numeric($card_number)) {
-      
+
       if ((mb_strlen($card_number) == mb_strlen($card_pattern)) && (mb_substr($card_number, 0, mb_strlen($card_prefix)) == $card_prefix)) {
         $match = $value;
       }
@@ -188,7 +188,7 @@ class AclibRefdbService {
     }
     return FALSE;
   }
- 
+
   /**
    * Prepare a current time for standard drupal's date db field format
    *
@@ -215,7 +215,7 @@ class AclibRefdbService {
    *   TrustedRedirectResponse redirection
   */
   public function redirection(NodeInterface $node, object $config, array $session) {
-  
+
     // Check to make sure the nid passed in belongs to a node of type REFDB_BUNDLE
     if ($node->bundle() != static::REFDB_BUNDLE) {
       $front_page = Url::fromRoute('<front>')->toString();
@@ -234,16 +234,16 @@ class AclibRefdbService {
     // Determine if the user is internal or external to the ACLD network
     $hq_only_field = $node->hasField(static::HQ_FIELD) && !empty($node->get(static::HQ_FIELD)->getValue()) ? $node->get(static::HQ_FIELD)->getValue()[0] : [];
     $hq_only_field_value = isset($hq_only_field['value']) && !empty($hq_only_field['value']) ? TRUE : FALSE;
-    
+
     $is_user_on_site = $this->location($config->get('aclib_refdb_internalips'), $config->get('aclib_refdb_hqips'), $user_ip, $hq_only_field_value);
-    
+
     $external_url = $node->hasField(static::EXTERNAL_URL) && !empty($node->get(static::EXTERNAL_URL)->getValue()) ? $node->get(static::EXTERNAL_URL)->getValue()[0] : [];
     $external_url_value = isset($external_url['uri']) && !empty($external_url['uri']) ? Url::fromUri($external_url['uri'], ['absolute' => TRUE]) : NULL;
-    
+
     $internal_url = $node->hasField(static::INTERNAL_URL) && !empty($node->get(static::INTERNAL_URL)->getValue()) ? $node->get(static::INTERNAL_URL)->getValue()[0] : [];
     $internal_url_value = isset($internal_url['uri']) && !empty($internal_url['uri']) ? Url::fromUri($internal_url['uri']) : NULL;
 
-    $sign_on = $node->hasField(static::SIGN_ON_FIELD) && !empty($node->get(static::SIGN_ON_FIELD)->getValue()) ? $node->get(static::SIGN_ON_FIELD)->getValue()[0] : []; 
+    $sign_on = $node->hasField(static::SIGN_ON_FIELD) && !empty($node->get(static::SIGN_ON_FIELD)->getValue()) ? $node->get(static::SIGN_ON_FIELD)->getValue()[0] : [];
 
     $data = [
       'nid' => $node->id(),
@@ -258,41 +258,41 @@ class AclibRefdbService {
     }
 
     // Determine if the DB requires sign on and handle appropriately
-    if (isset($sign_on['value']) && !empty($sign_on['value'])) {
+    if (isset($sign_on['value']) && ($sign_on['value'] != 1)) {
       if ($is_user_on_site && $internal_url_value) {
         $data['location'] = 0;
-        // Create instance of our custom logging entity 
-        $this->logAccess($data);  
+        // Create instance of our custom logging entity
+        $this->logAccess($data);
         // Return redirect
         return new TrustedRedirectResponse($internal_url_value->toString());
       }
       else {
         if ($external_url_value) {
-          // Create instance of our custom logging entity 
+          // Create instance of our custom logging entity
           $data['location'] = 1;
-          $this->logAccess($data);  
+          $this->logAccess($data);
           // Return redirect
           return new TrustedRedirectResponse($external_url_value->toString());
         }
       }
-     
+
     }
 
     // If the user is on_site, send them on their way
     if ($is_user_on_site && $internal_url_value) {
       $data['location'] = 0;
-      // Create instance of our custom logging entity 
-      $this->logAccess($data);  
+      // Create instance of our custom logging entity
+      $this->logAccess($data);
       // Return redirect
       return new TrustedRedirectResponse($internal_url_value->toString());
     }
-  
+
     // See if they have already been verified previously
     // Send them to the external url if they've logged in before and their cookie is still valid, otherwise give them the library card form.
     if (isset($session['cardVerified']) && $session['cardVerified'] > 0 && $external_url_value) {
-      // Create instance of our custom logging entity 
+      // Create instance of our custom logging entity
       $data['location'] = 1;
-      $this->logAccess($data);  
+      $this->logAccess($data);
       // Return redirect
       return new TrustedRedirectResponse($external_url_value->toString());
     }

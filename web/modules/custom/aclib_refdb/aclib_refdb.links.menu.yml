@@ -1,5 +1,5 @@
 aclib_refdb.config_form:
   route_name: aclib_refdb.config_form
-  title: 'ACLD Reference Database Settings'
-  description: 'Settings for accessing and displaying ACLD Reference Databases'
+  title: 'ACLIB Reference Database Settings'
+  description: 'Settings for accessing and displaying ACLIB Reference Databases'
   parent: system.admin_config_search

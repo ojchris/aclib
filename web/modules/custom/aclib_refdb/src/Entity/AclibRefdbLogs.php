@@ -70,4 +70,3 @@ class AclibRefdbLogs extends ContentEntityBase implements ContentEntityInterface
     return $fields;
   }
 }
-?>
