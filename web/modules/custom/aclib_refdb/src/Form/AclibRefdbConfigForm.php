@@ -1,15 +1,13 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\aclib_refdb\Form\AclibRefdbConfigForm.
- */
-
 namespace Drupal\aclib_refdb\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
+/**
+ *
+ */
 class AclibRefdbConfigForm extends ConfigFormBase {
 
   /**
@@ -30,14 +28,14 @@ class AclibRefdbConfigForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    
+
     $config = $this->config('aclib_refdb.settings');
-    $config_keys = array_keys($config->getRawData()); 
+    $config_keys = array_keys($config->getRawData());
 
     foreach ($form_state->getValues() as $value_key => $value) {
-       // We do want only our keys/values that are defined in config
-       // Else other form properties such as "form_id" and "form_build_id" get saved too
-       if (in_array($value_key, $config_keys) && !empty($value)) {
+      // We do want only our keys/values that are defined in config
+      // Else other form properties such as "form_id" and "form_build_id" get saved too.
+      if (in_array($value_key, $config_keys) && !empty($value)) {
         $config->set($value_key, $value);
       }
     }
@@ -50,7 +48,7 @@ class AclibRefdbConfigForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    
+
     $config = $this->config('aclib_refdb.settings');
 
     $form['aclib_refdb_internalips'] = [
@@ -107,4 +105,5 @@ class AclibRefdbConfigForm extends ConfigFormBase {
     ];
     return parent::buildForm($form, $form_state);
   }
+
 }

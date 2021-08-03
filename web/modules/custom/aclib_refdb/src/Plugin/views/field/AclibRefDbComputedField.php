@@ -1,25 +1,20 @@
 <?php
- 
-/**
- * @file
- * Definition of Views plugin field - Drupal\aclib_refdb\Plugin\views\field\AclibRefDbComputedField
- */
- 
+
 namespace Drupal\aclib_refdb\Plugin\views\field;
- 
+
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\Plugin\views\field\FieldPluginBase;
 use Drupal\views\ResultRow;
- 
+
 /**
- * Field handler for properties calculations
+ * Field handler for properties calculations.
  *
  * @ingroup views_field_handlers
  *
  * @ViewsField("aclib_refdb_computed_field")
  */
 class AclibRefDbComputedField extends FieldPluginBase {
- 
+
   const PROPERTIES = [
     'location'  => [
       'internal' => [
@@ -51,7 +46,7 @@ class AclibRefDbComputedField extends FieldPluginBase {
       ],
     ],
   ];
-  
+
   /**
    * @{inheritdoc}
    *
@@ -72,13 +67,13 @@ class AclibRefDbComputedField extends FieldPluginBase {
     $options['property'] = ['default' => 'internal'];
     return $options;
   }
- 
+
   /**
    * Provide the options form.
    */
   public function buildOptionsForm(&$form, FormStateInterface $form_state) {
 
-    // Prepare options for property type dropdown
+    // Prepare options for property type dropdown.
     $properties = [];
     foreach (static::PROPERTIES as $base_field => $property) {
       foreach ($property as $property_value => $property_data) {
@@ -94,30 +89,33 @@ class AclibRefDbComputedField extends FieldPluginBase {
     ];
     parent::buildOptionsForm($form, $form_state);
   }
- 
+
   /**
    * @{inheritdoc}
    */
   public function render(ResultRow $values) {
-      
+
     $aclib_refdb_storage = \Drupal::service('entity_type.manager')->getStorage('aclib_refdb_logs');
     foreach (static::PROPERTIES as $base_field => $property) {
       foreach ($property as $property_value => $property_data) {
         if ($this->options['property'] == $property_value) {
-          switch($base_field) {
-  
-          case 'location':
+          switch ($base_field) {
+
+            case 'location':
               $aclib_refdb_storage_count = is_numeric($property_data['value']) ? $aclib_refdb_storage->getQuery()->condition($base_field, $property_data['value'])->count() : $aclib_refdb_storage->getQuery()->count();
               return $aclib_refdb_storage_count->execute();
+
             break;
 
             case 'pattern_matched':
               $aclib_refdb_storage_count = $aclib_refdb_storage->getQuery()->condition($base_field, $property_data['value'])->count()->execute();
-              return $aclib_refdb_storage_count; 
+              return $aclib_refdb_storage_count;
+
             break;
           }
         }
       }
     }
   }
+
 }

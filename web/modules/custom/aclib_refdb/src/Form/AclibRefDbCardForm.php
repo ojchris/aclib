@@ -20,13 +20,13 @@ class AclibRefDbCardForm extends FormBase {
   /**
    * AclibRefdbService definition.
    *
-   * @var \Drupal\aclib_refdb\AclibRefdbService;
+   * @var \Drupal\aclib_refdb\AclibRefdbService
    */
   protected $aclib_service;
 
   /**
-   * Constructor for AclibRefDbCardForm form
-  */
+   * Constructor for AclibRefDbCardForm form.
+   */
   public function __construct(AclibRefdbService $aclib_service) {
     $this->aclib_service = $aclib_service;
   }
@@ -54,7 +54,7 @@ class AclibRefDbCardForm extends FormBase {
     $config = $this->aclib_service->config->get('aclib_refdb.settings');
     $session = $this->aclib_service->privateTempStore->get('aclib_refdb');
     $session_data = $session && is_array($session->get('aclib_refdb')) ? $session->get('aclib_refdb') : [];
-    // Check on any necessary redirections
+    // Check on any necessary redirections.
     if ($redirect = $this->aclib_service->redirection($node, $config, $session_data)) {
       return $redirect;
     }
@@ -76,7 +76,7 @@ class AclibRefDbCardForm extends FormBase {
     ];
     $form['submit'] = [
       '#type' => 'submit',
-      '#value' => $this->t('Submit')
+      '#value' => $this->t('Submit'),
     ];
     return $form;
   }
@@ -94,7 +94,7 @@ class AclibRefDbCardForm extends FormBase {
     // Remove any non-digit characters entered (usually spaces).
     $card_number = is_string($card_number) ? preg_replace("/[^0-9]/", "", $card_number) : $card_number;
 
-    // Check to make sure $card_number matches pattern
+    // Check to make sure $card_number matches pattern.
     $pattern_matched = $this->aclib_service->cardMemberMatch($card_number, 1) ? $this->aclib_service->cardMemberMatch($card_number, 1) : $this->aclib_service->cardMemberMatch($card_number, 2, 'aclib_refdb_card_accept_alternate');
 
     if (!$pattern_matched) {
@@ -119,10 +119,10 @@ class AclibRefDbCardForm extends FormBase {
 
     $node = \Drupal::entityTypeManager()->getStorage('node')->load($form_state->getValue('aclib_refdb_nid'));
 
-    // Redirect to external URL
+    // Redirect to external URL.
     if ($node instanceof NodeInterface) {
       $session = $this->aclib_service->privateTempStore->get('aclib_refdb');
-      // Set current state values
+      // Set current state values.
       $session_update = [
         'cardVerified' => 1,
         'aclib_refdb_cardtries' => 0,
@@ -131,7 +131,7 @@ class AclibRefDbCardForm extends FormBase {
 
       $session->set('aclib_refdb', $session_update);
 
-      // Create instance of our custom logging entity
+      // Create instance of our custom logging entity.
       $data = [
         'nid' => $node->id(),
         'datetime' => $this->aclib_service->prepareDate(),
@@ -141,14 +141,14 @@ class AclibRefDbCardForm extends FormBase {
       ];
 
       $this->aclib_service->logAccess($data);
-      $external_url =  $this->aclib_service::EXTERNAL_URL;
+      $external_url = $this->aclib_service::EXTERNAL_URL;
 
       if ($node->hasField($external_url) && !empty($node->get($external_url)->getValue())) {
-        // Define our redirect
+        // Define our redirect.
         $url = $node->get($external_url)->getValue()[0]['uri'];
         $response = new TrustedRedirectResponse(Url::fromUri($url)->toString());
 
-        // Take care of some cache here
+        // Take care of some cache here.
         $metadata = $response->getCacheableMetadata();
         $metadata->setCacheMaxAge(0);
 
@@ -156,4 +156,5 @@ class AclibRefDbCardForm extends FormBase {
       }
     }
   }
+
 }

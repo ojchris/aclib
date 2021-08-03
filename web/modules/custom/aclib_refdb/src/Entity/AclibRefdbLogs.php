@@ -27,6 +27,9 @@ use Drupal\Core\Entity\ContentEntityInterface;
  */
 class AclibRefdbLogs extends ContentEntityBase implements ContentEntityInterface {
 
+  /**
+   *
+   */
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
 
     // Standard field, used as unique if primary index.
@@ -41,7 +44,7 @@ class AclibRefdbLogs extends ContentEntityBase implements ContentEntityInterface
       ->setDescription(t('UUID identifier for reference db logs table.'))
       ->setReadOnly(TRUE);
 
-    // The other fields
+    // The other fields.
     $fields['nid'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Nid'))
       ->setDescription(t('Identifier for a related node.'))
@@ -69,4 +72,5 @@ class AclibRefdbLogs extends ContentEntityBase implements ContentEntityInterface
 
     return $fields;
   }
+
 }

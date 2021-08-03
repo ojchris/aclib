@@ -18,6 +18,9 @@ use Drupal\Core\Routing\TrustedRedirectResponse;
 use Drupal\node\NodeInterface;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 
+/**
+ *
+ */
 class AclibRefdbService {
 
   use StringTranslationTrait;
@@ -30,9 +33,9 @@ class AclibRefdbService {
   const SIGN_ON_FIELD = 'field_require_signon';
 
   /**
-   * The current request
+   * The current request.
    *
-   * @var \Symfony\Component\HttpFoundation\RequestStack;
+   * @var \Symfony\Component\HttpFoundation\RequestStack
    */
   public $requestStack;
 
@@ -44,7 +47,7 @@ class AclibRefdbService {
   public $config;
 
   /**
-   * Drupal\Core\Entity\EntityTypeManager definition
+   * Drupal\Core\Entity\EntityTypeManager definition.
    *
    * @var \Drupal\Core\Entity\EntityTypeManager
    */
@@ -105,24 +108,24 @@ class AclibRefdbService {
   }
 
   /**
-   * Create and save instance of our custom content entity for storing access logs
+   * Create and save instance of our custom content entity for storing access logs.
    *
    * @param array $data
-   *   Associative array with keys and values matching entity's fields
-  */
+   *   Associative array with keys and values matching entity's fields.
+   */
   public function logAccess(array $data) {
     $refdb_log_entity = $this->entityTypeManager->getStorage('aclib_refdb_logs')->create($data);
     $refdb_log_entity->save();
   }
 
   /**
-   * Determines if card number given matches pattern set in form aclib_refdb_librarycardform
+   * Determines if card number given matches pattern set in form aclib_refdb_librarycardform.
    *
-   * @param integer $card_number
-   * @param integer $original
+   * @param int $card_number
+   * @param int $original
    *
-   * @return boolean
-  */
+   * @return bool
+   */
   public function cardMemberMatch(int $card_number, int $value, string $setting = 'aclib_refdb_card_accept') {
     $match = FALSE;
     $card_pattern = $this->config->get('aclib_refdb.settings')->get($setting);
@@ -140,18 +143,18 @@ class AclibRefdbService {
    * Returns array depending on if the user is on-site or not.
    *
    * @param string $aclib_ips
-   *  IP address range for ACLD branches.
+   *   IP address range for ACLD branches.
    * @param string $aclib_hqips
-   *  IP address range for ACLD headquarters branch.
+   *   IP address range for ACLD headquarters branch.
    * @param string $user_ip
-   *  The current user's IP address.
+   *   The current user's IP address.
    * @param bool $hq_only
-   *  True if reference database is only available from ACLD HQ.
+   *   True if reference database is only available from ACLD HQ.
    *
    * @return bool
    */
   public function location(string $aclib_ips, string $aclib_hqips, string $user_ip, bool $hq_only = FALSE) {
-    // On-site is true, else false
+    // On-site is true, else false.
     if ($hq_only) {
       return $this->checkips($aclib_hqips, $user_ip);
     }
@@ -170,7 +173,7 @@ class AclibRefdbService {
    */
   public function checkips(string $allowed_ips, string $user_ip) {
     $ip_lines = preg_split('/\r\n|[\r\n]/', $allowed_ips);
-    $match_base ='';
+    $match_base = '';
     foreach ($ip_lines as $ip_value) {
       if (!empty($ip_value)) {
         $subnet_pos = strpos($ip_value, "*");
@@ -190,48 +193,49 @@ class AclibRefdbService {
   }
 
   /**
-   * Prepare a current time for standard drupal's date db field format
+   * Prepare a current time for standard drupal's date db field format.
    *
    * @return string
    *   A formatted date string
    */
   public function prepareDate() {
-    // Fetch default timezone from the main Drupal's configuration at "/admin/config/regional/settings"
+    // Fetch default timezone from the main Drupal's configuration at "/admin/config/regional/settings".
     $default_timezone = $this->config->get('system.date')->get('timezone');
     $timezone = isset($default_timezone['default']) && !empty($default_timezone['default']) ? $default_timezone['default'] : static::DEFAULT_TIMEZONE;
-    // Create Datetime object with configuration timezone, then return formatted date string with time converted to UTC
+    // Create Datetime object with configuration timezone, then return formatted date string with time converted to UTC.
     $date = new DrupalDateTime('now', $timezone);
     return $date->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, ['timezone' => 'UTC']);
   }
 
   /**
-   * Custom method for redirections logic
+   * Custom method for redirections logic.
    *
    * @param object $node
    * @param object $config
    * @param array $session
-
+   *
    * @return object
    *   TrustedRedirectResponse redirection
-  */
+   */
   public function redirection(NodeInterface $node, object $config, array $session) {
 
-    // Check to make sure the nid passed in belongs to a node of type REFDB_BUNDLE
+    // Check to make sure the nid passed in belongs to a node of type REFDB_BUNDLE.
     if ($node->bundle() != static::REFDB_BUNDLE) {
       $front_page = Url::fromRoute('<front>')->toString();
       return new TrustedRedirectResponse($front_page);
     }
 
-    // React on too many wrong entries by user
+    // React on too many wrong entries by user.
     if (isset($session['acld_refdb_cardtries']) && $session['acld_refdb_cardtries'] > 3) {
       $nid = $config->get('aclib_refdb_failurenodeid');
       $fallback_node = Url::fromRoute('entity.node.canonical', ['node' => $nid]);
       return new TrustedRedirectResponse($fallback_node->toString());
     }
 
-    $user_ip = $this->requestStack->getClientIp(); //'192.168.1.5';
+    // '192.168.1.5';
+    $user_ip = $this->requestStack->getClientIp();
 
-    // Determine if the user is internal or external to the ACLD network
+    // Determine if the user is internal or external to the ACLD network.
     $hq_only_field = $node->hasField(static::HQ_FIELD) && !empty($node->get(static::HQ_FIELD)->getValue()) ? $node->get(static::HQ_FIELD)->getValue()[0] : [];
     $hq_only_field_value = isset($hq_only_field['value']) && !empty($hq_only_field['value']) ? TRUE : FALSE;
 
@@ -252,49 +256,50 @@ class AclibRefdbService {
       'pattern_matched' => isset($session['aclib_refdb_pattern']) ? $session['aclib_refdb_pattern'] : NULL,
     ];
 
-    // Send off-site users to the external URL for HQ-only DBs
+    // Send off-site users to the external URL for HQ-only DBs.
     if (!$is_user_on_site && $hq_only_field_value && $external_url_value) {
       return new TrustedRedirectResponse($external_url_value->toString());
     }
 
-    // Determine if the DB requires sign on and handle appropriately
+    // Determine if the DB requires sign on and handle appropriately.
     if (isset($sign_on['value']) && ($sign_on['value'] != 1)) {
       if ($is_user_on_site && $internal_url_value) {
         $data['location'] = 0;
-        // Create instance of our custom logging entity
+        // Create instance of our custom logging entity.
         $this->logAccess($data);
-        // Return redirect
+        // Return redirect.
         return new TrustedRedirectResponse($internal_url_value->toString());
       }
       else {
         if ($external_url_value) {
-          // Create instance of our custom logging entity
+          // Create instance of our custom logging entity.
           $data['location'] = 1;
           $this->logAccess($data);
-          // Return redirect
+          // Return redirect.
           return new TrustedRedirectResponse($external_url_value->toString());
         }
       }
 
     }
 
-    // If the user is on_site, send them on their way
+    // If the user is on_site, send them on their way.
     if ($is_user_on_site && $internal_url_value) {
       $data['location'] = 0;
-      // Create instance of our custom logging entity
+      // Create instance of our custom logging entity.
       $this->logAccess($data);
-      // Return redirect
+      // Return redirect.
       return new TrustedRedirectResponse($internal_url_value->toString());
     }
 
     // See if they have already been verified previously
     // Send them to the external url if they've logged in before and their cookie is still valid, otherwise give them the library card form.
     if (isset($session['cardVerified']) && $session['cardVerified'] > 0 && $external_url_value) {
-      // Create instance of our custom logging entity
+      // Create instance of our custom logging entity.
       $data['location'] = 1;
       $this->logAccess($data);
-      // Return redirect
+      // Return redirect.
       return new TrustedRedirectResponse($external_url_value->toString());
     }
   }
+
 }
