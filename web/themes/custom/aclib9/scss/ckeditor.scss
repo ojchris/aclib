@@ -1,0 +1,33 @@
+table {
+  caption {
+  }
+  thead {
+    th {
+      padding: 0.5em;
+      border: 1px solid #b1d6f3;
+      background-color: #e9ecef;
+      font-weight: normal;
+      color: #000000;
+    }
+  }
+  tbody {
+    tr {
+      background-color: #ffffff;
+    }
+    tr:nth-of-type(2n) {
+      background-color: #f3f9fd;
+    }
+    td {
+      padding: 0.5em;
+      border: 1px solid #b1d6f3;
+    }
+  }
+}
+
+.aclib-half-width {
+  width: 50%;
+  iframe.media-oembed-content {
+    width: auto;
+    height: auto;
+  }
+}
