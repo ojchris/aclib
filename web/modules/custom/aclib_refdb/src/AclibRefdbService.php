@@ -246,7 +246,7 @@ class AclibRefdbService {
     }
 
     // Determine if the DB requires sign on and handle appropriately.
-    if (isset($sign_on['value']) && $sign_on['value'] > 0) {
+    if (isset($sign_on['value']) && ($sign_on['value'] != 1)) {
       if ($is_user_on_site && $internal_url_value) {
         $data['location'] = 0;
         // Create instance of our custom logging entity.
