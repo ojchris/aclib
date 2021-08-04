@@ -28,7 +28,7 @@ use Drupal\Core\Entity\ContentEntityInterface;
 class AclibRefdbLogs extends ContentEntityBase implements ContentEntityInterface {
 
   /**
-   *
+   * {@inheritdoc}
    */
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
 
@@ -65,7 +65,7 @@ class AclibRefdbLogs extends ContentEntityBase implements ContentEntityInterface
       ->setDescription(t('IP address of the reference DB visitor.'))
       ->setReadOnly(TRUE);
 
-    $fields['pattern_matched'] = BaseFieldDefinition::create('integer')
+    $fields['pattern_matched'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Pattern matched'))
       ->setDescription(t('The library card pattern that was matched.'))
       ->setReadOnly(TRUE);

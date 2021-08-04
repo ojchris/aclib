@@ -39,28 +39,20 @@ class AclibRefDbComputedField extends FieldPluginBase {
         'label' => 'Pattern count',
         'value' => '1',
       ],
-      'alternate' => [
-        'key' => 'pattern_alternate',
-        'value' => '2',
-        'label' => 'Pattern alternate count',
-      ],
     ],
   ];
 
   /**
-   * @{inheritdoc}
+   * Leave empty to avoid a query on this field.
    *
-   * If we turn on views query debugging we should see these clauses applied.
+   * @{inheritdoc}
    */
-  public function query() {
-    // Leave empty to avoid a query on this field.
-  }
+  public function query() {}
 
   /**
-   * @{inheritdoc}
+   * Define the available options.
    *
-   * Define the available options
-   * @return array
+   * @{inheritdoc}
    */
   protected function defineOptions() {
     $options = parent::defineOptions();
@@ -70,6 +62,8 @@ class AclibRefDbComputedField extends FieldPluginBase {
 
   /**
    * Provide the options form.
+   *
+   * @{inheritdoc}
    */
   public function buildOptionsForm(&$form, FormStateInterface $form_state) {
 
@@ -77,7 +71,7 @@ class AclibRefDbComputedField extends FieldPluginBase {
     $properties = [];
     foreach (static::PROPERTIES as $base_field => $property) {
       foreach ($property as $property_value => $property_data) {
-        $properties[$property_value] = $this->t($property_data['label']);
+        $properties[$property_value] = $this->t('@label', ['@label' => $property_data['label']]);
       }
     }
 
@@ -91,6 +85,8 @@ class AclibRefDbComputedField extends FieldPluginBase {
   }
 
   /**
+   * Render row/result.
+   *
    * @{inheritdoc}
    */
   public function render(ResultRow $values) {
@@ -103,16 +99,13 @@ class AclibRefDbComputedField extends FieldPluginBase {
 
             case 'location':
               $aclib_refdb_storage_count = is_numeric($property_data['value']) ? $aclib_refdb_storage->getQuery()->condition($base_field, $property_data['value'])->count() : $aclib_refdb_storage->getQuery()->count();
-              return $aclib_refdb_storage_count->execute();
-
-            break;
+              break;
 
             case 'pattern_matched':
-              $aclib_refdb_storage_count = $aclib_refdb_storage->getQuery()->condition($base_field, $property_data['value'])->count()->execute();
-              return $aclib_refdb_storage_count;
-
-            break;
+              $aclib_refdb_storage_count = $aclib_refdb_storage->getQuery()->condition($base_field, $property_data['value'])->count();
+              break;
           }
+          return $aclib_refdb_storage_count->execute();
         }
       }
     }

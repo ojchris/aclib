@@ -2,15 +2,21 @@
 
 /**
  * @file
- * ACLIB Ref DB module
+ * ACLIB Ref DB module.
  */
 
+/**
+ * Implements hook_views_data_alter().
+ *
+ * Add our special computed field in the aclib_refdb_logs entity's table group.
+ */
 function aclib_refdb_views_data_alter(array &$data) {
   $data['aclib_refdb_logs']['computed'] = [
     'title' => t('Count access records'),
     'help' => t('A sum of records for various Ref DB fields.'),
     'field' => [
-      // ID of the field handler to use - \Drupal\aclib_refdb\Entity\AclibRefdbLogs
+      // ID of the field handler to use
+      // \Drupal\aclib_refdb\Entity\AclibRefdbLogs.
       'id' => 'aclib_refdb_computed_field',
     ],
   ];

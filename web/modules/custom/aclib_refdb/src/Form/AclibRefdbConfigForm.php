@@ -6,7 +6,7 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- *
+ * Provides a ACLIB Reference Database configuration form.
  */
 class AclibRefdbConfigForm extends ConfigFormBase {
 
@@ -22,26 +22,6 @@ class AclibRefdbConfigForm extends ConfigFormBase {
    */
   protected function getEditableConfigNames() {
     return ['aclib_refdb.settings'];
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
-
-    $config = $this->config('aclib_refdb.settings');
-    $config_keys = array_keys($config->getRawData());
-
-    foreach ($form_state->getValues() as $value_key => $value) {
-      // We do want only our keys/values that are defined in config
-      // Else other form properties such as "form_id" and "form_build_id" get saved too.
-      if (in_array($value_key, $config_keys) && !empty($value)) {
-        $config->set($value_key, $value);
-      }
-    }
-    $config->save();
-
-    parent::submitForm($form, $form_state);
   }
 
   /**
@@ -85,25 +65,64 @@ class AclibRefdbConfigForm extends ConfigFormBase {
       '#required' => TRUE,
       '#description' => $this->t('Enter the help text that explains entering the Library Card Number.'),
     ];
+
     $form['aclib_refdb_card_accept'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Library Card Number Accept Pattern'),
+      '#type' => 'textarea',
+      '#title' => $this->t('Library Card Number Accept Patterns'),
       '#default_value' => $config->get('aclib_refdb_card_accept'),
-      '#size' => 20,
-      '#maxlength' => 20,
       '#required' => TRUE,
-      '#description' => $this->t('Enter the pattern that users can use for their Library Card Number.  For all spaces that can be any character put a "*"'),
+      '#rows' => 3,
+      '#description' => $this->t('Enter the pattern that users can use for their Library Card Number. For all spaces that can be any character put a "*" and please enter one per line'),
     ];
-    $form['aclib_refdb_card_accept_alternate'] = [
+
+    $form['aclib_refdb_debug'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Debug'),
+      '#default_value' => $config->get('aclib_refdb_debug'),
+      '#description' => $this->t('When enabled first a current user session is cleared (on submit). Then provided testing IP address is used.'),
+      '#id' => 'aclib-refdb-debug',
+    ];
+
+    $form['aclib_refdb_debug_ip'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Library Card Number Accept Pattern (alternate)'),
-      '#default_value' => $config->get('aclib_refdb_card_accept_alternate'),
+      '#title' => $this->t('Debug IP Address'),
+      '#default_value' => $config->get('aclib_refdb_debug_ip'),
       '#size' => 20,
-      '#maxlength' => 20,
-      '#required' => TRUE,
-      '#description' => $this->t('Enter an alternate pattern that users can use for their Library Card Number.  For all spaces that can be any character put a "*"'),
+      '#maxlength' => 100,
+      '#description' => $this->t('Set the address here to use a fixed, for example useful when we want to be in the range of IPs provided above.'),
+      '#states' => [
+        'visible' => [
+          ':input[id="aclib-refdb-debug"]' => ['checked' => TRUE],
+        ],
+      ],
     ];
     return parent::buildForm($form, $form_state);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function submitForm(array &$form, FormStateInterface $form_state) {
+
+    $config = $this->config('aclib_refdb.settings');
+    $config_keys = array_keys($config->getRawData());
+
+    foreach ($form_state->getValues() as $value_key => $value) {
+      // We do want only our keys/values that are defined in config
+      // Else form properties such as "form_id", "form_build_id" get saved too.
+      if (in_array($value_key, $config_keys)) {
+        $config->set($value_key, $value);
+      }
+    }
+    $config->save();
+
+    // If Debug is checked we clear previous session,
+    // to start testing all over.
+    if ($form_state->getValue('aclib_refdb_debug')) {
+      \Drupal::service('aclib_refdb.main')->sessionDelete();
+    }
+
+    parent::submitForm($form, $form_state);
   }
 
 }

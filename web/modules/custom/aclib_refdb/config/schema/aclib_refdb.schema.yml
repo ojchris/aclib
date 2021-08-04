@@ -15,8 +15,11 @@ aclib_refdb.settings:
       type: 'NULL'
       label: 'Database Access Form Help Text'
     aclib_refdb_card_accept:
-      type: string
+      type: 'NULL'
       label: 'Card Number Accept Pattern'
-    aclib_refdb_card_accept_alternate:
+    aclib_refdb_debug:
+      type: integer
+      label: 'Debug'
+    aclib_refdb_debug_ip:
       type: string
-      label: 'Card Number Accept Pattern-alternate'
+      label: 'Debug IP address'

@@ -19,7 +19,7 @@ use Drupal\node\NodeInterface;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 
 /**
- *
+ * A definition of AclibRefdbService class.
  */
 class AclibRefdbService {
 
@@ -119,76 +119,42 @@ class AclibRefdbService {
   }
 
   /**
-   * Determines if card number given matches allowed pattern.
+   * Compares card number or user's ip address with allowed pattern.
    *
-   * @param int $card_number
-   *   The entered card number.
-   * @param int $value
-   * @param int $setting
-   *
-   * @return bool
-   */
-  public function cardMemberMatch(int $card_number, int $value, string $setting = 'aclib_refdb_card_accept') {
-    $match = FALSE;
-    $card_pattern = $this->config->get('aclib_refdb.settings')->get($setting);
-    $card_prefix = str_replace('*', '', $card_pattern);
-    if (!empty($card_pattern) && is_numeric($card_number)) {
-
-      if ((mb_strlen($card_number) == mb_strlen($card_pattern)) && (mb_substr($card_number, 0, mb_strlen($card_prefix)) == $card_prefix)) {
-        $match = $value;
-      }
-    }
-    return $match;
-  }
-
-  /**
-   * Returns array depending on if the user is on-site or not.
-   *
-   * @param string $aclib_ips
-   *   IP address range for ACLD branches.
-   * @param string $aclib_hqips
-   *   IP address range for ACLD headquarters branch.
-   * @param string $user_ip
-   *   The current user's IP address.
-   * @param bool $hq_only
-   *   True if reference database is only available from ACLD HQ.
+   * @param string $config_pattern_value
+   *   Any multiline value set in textareas on configuration page.
+   * @param string|int $match_value
+   *   The "active" value to match with $config_pattern_value.
+   * @param bool $match_length
+   *   Whether to involve string lenghts in matching logic as well.
    *
    * @return bool
+   *   Whether the matching was found.
    */
-  public function location(string $aclib_ips, string $aclib_hqips, string $user_ip, bool $hq_only = FALSE) {
-    // On-site is true, else false.
-    if ($hq_only) {
-      return $this->checkips($aclib_hqips, $user_ip);
-    }
-    return $this->checkips($aclib_ips, $user_ip);
-  }
+  public function multilineMatch(string $config_pattern_value, $match_value, bool $match_length = FALSE) {
+    $patterns = preg_split('/\r\n|[\r\n]/', $config_pattern_value);
+    $match = '';
 
-  /**
-   * Checks to see if the user IP address is allowed to view database.
-   *
-   * @param string $allowed_ips
-   *   Allowed IP addresses for a particular reference database.
-   * @param string $user_ip
-   *   The current user's IP address.
-   *
-   * @return bool
-   */
-  public function checkips(string $allowed_ips, string $user_ip) {
-    $ip_lines = preg_split('/\r\n|[\r\n]/', $allowed_ips);
-    $match_base = '';
-    foreach ($ip_lines as $ip_value) {
-      if (!empty($ip_value)) {
-        $subnet_pos = strpos($ip_value, "*");
-        if ($subnet_pos) {
-          $match_base = mb_substr($ip_value, 0, $subnet_pos);
+    foreach ($patterns as $pattern) {
+      if (!empty($pattern)) {
+        $sub_pos = strpos($pattern, "*");
+        if ($sub_pos) {
+          $match = mb_substr($pattern, 0, $sub_pos);
         }
         else {
-          $match_base = $ip_value;
+          $match = $pattern;
         }
       }
 
-      if (mb_substr($user_ip, 0, mb_strlen($match_base)) == trim($match_base)) {
-        return TRUE;
+      if (mb_substr($match_value, 0, mb_strlen($match)) == trim($match)) {
+        // If we have additional matching per lenght of input
+        // (user input for card number can be longer).
+        if ($match_length) {
+          return mb_strlen($pattern) == mb_strlen($match_value) ? $pattern : FALSE;
+        }
+        else {
+          return $pattern;
+        }
       }
     }
     return FALSE;
@@ -201,27 +167,43 @@ class AclibRefdbService {
    *   A formatted date string
    */
   public function prepareDate() {
-    // Fetch default timezone from the main Drupal's configuration at "/admin/config/regional/settings".
+    // Fetch default timezone from the main Drupal's configuration
+    // at "/admin/config/regional/settings".
     $default_timezone = $this->config->get('system.date')->get('timezone');
     $timezone = isset($default_timezone['default']) && !empty($default_timezone['default']) ? $default_timezone['default'] : static::DEFAULT_TIMEZONE;
-    // Create Datetime object with configuration timezone, then return formatted date string with time converted to UTC.
+    // Create Datetime object with configuration timezone,
+    // then return formatted date string with time converted to UTC.
     $date = new DrupalDateTime('now', $timezone);
     return $date->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, ['timezone' => 'UTC']);
   }
 
   /**
+   * Delete user's session to start over.
+   */
+  public function sessionDelete() {
+    $session = $this->privateTempStore->get('aclib_refdb');
+    $session->delete('aclib_refdb');
+  }
+
+  /**
    * Custom method for redirections logic.
    *
-   * @param object $node
+   * @param \Drupal\node\NodeInterface $node
+   *   An instance of Node entity, Reference database node type in question.
    * @param object $config
+   *   A config object containing our specific settings.
    * @param array $session
+   *   Associative array with session values:
+   *   - cardVerified
+   *   - aclib_refdb_cardtries
+   *   - aclib_refdb_pattern.
    *
    * @return object
    *   TrustedRedirectResponse redirection
    */
   public function redirection(NodeInterface $node, object $config, array $session) {
 
-    // Check to make sure the nid passed in belongs to a node of type REFDB_BUNDLE.
+    // Check to make sure the nid passed in belongs to REFDB_BUNDLE.
     if ($node->bundle() != static::REFDB_BUNDLE) {
       $front_page = Url::fromRoute('<front>')->toString();
       return new TrustedRedirectResponse($front_page);
@@ -234,14 +216,14 @@ class AclibRefdbService {
       return new TrustedRedirectResponse($fallback_node->toString());
     }
 
-    // '192.168.1.5';
-    $user_ip = $this->requestStack->getClientIp();
+    // If debugging is on use that ip, otherwise get current user's ip.
+    $user_ip = $config->get('aclib_refdb_debug') && !empty($config->get('aclib_refdb_debug_ip')) ? $config->get('aclib_refdb_debug_ip') : $this->requestStack->getClientIp();
 
-    // Determine if the user is internal or external to the ACLD network.
+    // Determine if the user is internal or external to the ACLIB network.
     $hq_only_field = $node->hasField(static::HQ_FIELD) && !empty($node->get(static::HQ_FIELD)->getValue()) ? $node->get(static::HQ_FIELD)->getValue()[0] : [];
-    $hq_only_field_value = isset($hq_only_field['value']) && !empty($hq_only_field['value']) ? TRUE : FALSE;
+    $hq_only_field_value = isset($hq_only_field['value']) && $hq_only_field['value'] > 0 ? TRUE : FALSE;
 
-    $is_user_on_site = $this->location($config->get('aclib_refdb_internalips'), $config->get('aclib_refdb_hqips'), $user_ip, $hq_only_field_value);
+    $is_user_on_site = $hq_only_field_value ? $this->multilineMatch($config->get('aclib_refdb_hqips'), $user_ip) : $this->multilineMatch($config->get('aclib_refdb_internalips'), $user_ip);
 
     $external_url = $node->hasField(static::EXTERNAL_URL) && !empty($node->get(static::EXTERNAL_URL)->getValue()) ? $node->get(static::EXTERNAL_URL)->getValue()[0] : [];
     $external_url_value = isset($external_url['uri']) && !empty($external_url['uri']) ? Url::fromUri($external_url['uri'], ['absolute' => TRUE]) : NULL;
@@ -264,7 +246,7 @@ class AclibRefdbService {
     }
 
     // Determine if the DB requires sign on and handle appropriately.
-    if (isset($sign_on['value']) && ($sign_on['value'] != 1)) {
+    if (isset($sign_on['value']) && $sign_on['value'] > 0) {
       if ($is_user_on_site && $internal_url_value) {
         $data['location'] = 0;
         // Create instance of our custom logging entity.
@@ -281,7 +263,6 @@ class AclibRefdbService {
           return new TrustedRedirectResponse($external_url_value->toString());
         }
       }
-
     }
 
     // If the user is on_site, send them on their way.
@@ -294,7 +275,8 @@ class AclibRefdbService {
     }
 
     // See if they have already been verified previously
-    // Send them to the external url if they've logged in before and their cookie is still valid, otherwise give them the library card form.
+    // Send them to the external url if they've logged in before and
+    // their cookie is still valid, otherwise give them the library card form.
     if (isset($session['cardVerified']) && $session['cardVerified'] > 0 && $external_url_value) {
       // Create instance of our custom logging entity.
       $data['location'] = 1;

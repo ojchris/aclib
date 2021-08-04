@@ -1,5 +1,5 @@
 name: 'ACLIB Reference Database'
-description: 'Allows for access to external Reference Databases.'
+description: 'Allows access to external Reference Databases.'
 package: ACLIB
 type: module
 core_version_requirement: ^8.8 || ^9
