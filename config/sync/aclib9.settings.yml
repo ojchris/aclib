@@ -84,7 +84,7 @@ bootstrap_barrio_region_clean_footer_fifth: 0
 bootstrap_barrio_region_class_footer_fifth: ''
 bootstrap_barrio_sidebar_collapse: 0
 bootstrap_barrio_image_fluid: 0
-bootstrap_barrio_navbar_top_navbar: 0
+bootstrap_barrio_navbar_top_navbar: 1
 bootstrap_barrio_navbar_top_class: ''
 bootstrap_barrio_navbar_class: ''
 bootstrap_barrio_navbar_flyout: 0

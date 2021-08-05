@@ -9,7 +9,7 @@ dependencies:
 id: tabbedsearch
 theme: aclib9
 region: header_form
-weight: 0
+weight: -8
 provider: null
 plugin: aclib_plugins_search_block
 settings:

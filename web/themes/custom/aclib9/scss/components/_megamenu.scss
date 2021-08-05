@@ -1,0 +1,22 @@
+.block-tb-megamenu {
+  width: 100%;
+  @include media-breakpoint-up(md) {
+    width: auto;
+  }
+
+  .tb-megamenu {
+    .nav-collapse .nav > li {
+      width: 100%;
+      @include media-breakpoint-up(md) {
+        width: auto;
+      }
+    }
+
+    .mega.open > .mega-dropdown-menu {
+      @include media-breakpoint-up(md) {
+        width: 100%;
+      }
+    }
+  }
+
+}

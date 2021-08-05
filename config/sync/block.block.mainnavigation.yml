@@ -8,8 +8,8 @@ dependencies:
     - aclib9
 id: mainnavigation
 theme: aclib9
-region: primary_menu
-weight: 0
+region: header
+weight: -8
 provider: null
 plugin: 'tb_megamenu_menu_block:main'
 settings:
