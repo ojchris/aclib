@@ -2,6 +2,7 @@ module:
   aclib_communico: 0
   aclib_migrate: 0
   aclib_plugins: 0
+  aclib_refdb: 0
   admin_toolbar: 0
   admin_toolbar_tools: 0
   automated_cron: 0
