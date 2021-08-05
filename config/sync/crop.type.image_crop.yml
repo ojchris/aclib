@@ -1,10 +1,10 @@
-uuid: 3ef3d0b2-28de-48fa-93be-47588b534572
+uuid: 82547d12-874c-4901-b5f1-31181aef8fa6
 langcode: en
 status: true
 dependencies: {  }
-id: teaser_image_crop
-label: 'Teaser image crop'
-description: 'Used by "Teaser Image" fields.'
+id: image_crop
+label: 'Image crop'
+description: 'Used by embedded media in WYSIWYG fields.'
 aspect_ratio: '3:2'
 soft_limit_width: null
 soft_limit_height: null

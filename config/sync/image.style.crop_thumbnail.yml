@@ -9,7 +9,7 @@ dependencies:
 _core:
   default_config_hash: N1S0PHZeyxfFqgzB-sDeGPaxi0dDOL8NUiP_d6WXSV0
 name: crop_thumbnail
-label: 'Crop teaser (300x200)'
+label: 'Crop teaser image (300x200)'
 effects:
   fff59c28-52ec-433d-9ff3-8eeef2b34759:
     uuid: fff59c28-52ec-433d-9ff3-8eeef2b34759

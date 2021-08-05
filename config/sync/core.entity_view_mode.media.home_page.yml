@@ -1,0 +1,10 @@
+uuid: 96086b8a-2bb7-4ea1-981d-df877c70df03
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.home_page
+label: 'Home page'
+targetEntityType: media
+cache: true

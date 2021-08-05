@@ -13,7 +13,6 @@ dependencies:
     - field.field.node.reference_database.field_tags
     - node.type.reference_database
   module:
-    - link
     - text
     - user
 id: node.reference_database.default
@@ -22,77 +21,23 @@ bundle: reference_database
 mode: default
 content:
   field_body:
-    weight: 108
-    label: above
+    weight: 1
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
-  field_external_url:
-    weight: 103
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    type: link
-    region: content
-  field_hq_only:
-    weight: 106
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    type: boolean
-    region: content
   field_image:
     type: entity_reference_entity_view
-    weight: 107
-    label: above
+    weight: 0
+    label: hidden
     settings:
-      view_mode: default
+      view_mode: teaser
       link: false
     third_party_settings: {  }
     region: content
-  field_internal_only:
-    weight: 105
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    type: boolean
-    region: content
-  field_internal_url:
-    weight: 102
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    type: link
-    region: content
-  field_require_signon:
-    weight: 104
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    type: boolean
-    region: content
   field_tags:
-    weight: 109
+    weight: 2
     label: above
     settings:
       link: true
@@ -100,8 +45,13 @@ content:
     type: entity_reference_label
     region: content
   links:
-    weight: 100
+    weight: 3
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
-hidden: {  }
+hidden:
+  field_external_url: true
+  field_hq_only: true
+  field_internal_only: true
+  field_internal_url: true
+  field_require_signon: true

@@ -1,0 +1,25 @@
+uuid: 395e57b9-99b7-4fb7-b3e8-df218eb25742
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.home_page_image_crop
+  module:
+    - crop
+name: crop_home_page_image
+label: 'Crop home page image (625x234)'
+effects:
+  c89ffd19-b0b2-4873-8a38-dbbc53fd1e93:
+    uuid: c89ffd19-b0b2-4873-8a38-dbbc53fd1e93
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: home_page_image_crop
+  8ab9708f-d3ac-4684-ab99-3fbec797b06f:
+    uuid: 8ab9708f-d3ac-4684-ab99-3fbec797b06f
+    id: image_scale_and_crop
+    weight: 2
+    data:
+      width: 625
+      height: 234
+      anchor: center-center

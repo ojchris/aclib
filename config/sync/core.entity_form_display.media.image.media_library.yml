@@ -5,10 +5,10 @@ dependencies:
   config:
     - core.entity_form_mode.media.media_library
     - field.field.media.image.field_media_image
-    - image.style.crop_thumbnail
+    - image.style.media_library
     - media.type.image
   module:
-    - image_widget_crop
+    - image
 _core:
   default_config_hash: BMLrK4zKp8-FFnMseBdT_6h6YipUsKRfbDf_3WUB5HA
 id: media.image.media_library
@@ -17,20 +17,12 @@ bundle: image
 mode: media_library
 content:
   field_media_image:
-    type: image_widget_crop
+    type: image_image
     weight: 1
     region: content
     settings:
-      show_default_crop: true
-      warn_multiple_usages: true
-      preview_image_style: crop_thumbnail
-      crop_preview_image_style: large
+      preview_image_style: media_library
       progress_indicator: throbber
-      crop_list:
-        - teaser_image_crop
-      crop_types_required:
-        - teaser_image_crop
-      show_crop_area: false
     third_party_settings: {  }
 hidden:
   created: true

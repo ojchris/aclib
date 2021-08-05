@@ -1,8 +1,9 @@
-uuid: 8403cc66-c4cf-4adf-8aed-dd1ffd13c97e
+uuid: 8ab9ebd8-61b2-4333-a5b3-53f4c02a4cff
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.home_page_large
     - field.field.node.custom_page.field_body
     - field.field.node.custom_page.field_home_page_image
     - field.field.node.custom_page.field_tags
@@ -10,34 +11,30 @@ dependencies:
     - field.field.node.custom_page.field_teaser_image
     - node.type.custom_page
   module:
-    - text
     - user
-id: node.custom_page.default
+id: node.custom_page.home_page_large
 targetEntityType: node
 bundle: custom_page
-mode: default
+mode: home_page_large
 content:
-  field_body:
+  field_home_page_image:
     weight: 0
+    label: hidden
+    settings:
+      view_mode: home_page
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_teaser:
+    weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    type: basic_string
     region: content
-  field_tags:
-    weight: 1
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  links:
-    weight: 2
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
-  field_home_page_image: true
-  field_teaser: true
+  field_body: true
+  field_tags: true
   field_teaser_image: true
+  links: true

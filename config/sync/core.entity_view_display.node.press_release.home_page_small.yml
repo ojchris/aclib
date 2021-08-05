@@ -1,0 +1,50 @@
+uuid: 1a47cb03-0912-48a6-b9b1-3b8d8bc0ccd5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.home_page_small
+    - field.field.node.press_release.field_alt_contact_email
+    - field.field.node.press_release.field_alt_contact_name
+    - field.field.node.press_release.field_body
+    - field.field.node.press_release.field_contact_email
+    - field.field.node.press_release.field_contact_name
+    - field.field.node.press_release.field_date
+    - field.field.node.press_release.field_home_page_image
+    - field.field.node.press_release.field_tags
+    - field.field.node.press_release.field_teaser
+    - field.field.node.press_release.field_teaser_image
+    - node.type.press_release
+  module:
+    - user
+id: node.press_release.home_page_small
+targetEntityType: node
+bundle: press_release
+mode: home_page_small
+content:
+  field_teaser:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_teaser_image:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden:
+  field_alt_contact_email: true
+  field_alt_contact_name: true
+  field_body: true
+  field_contact_email: true
+  field_contact_name: true
+  field_date: true
+  field_home_page_image: true
+  field_tags: true
+  links: true
