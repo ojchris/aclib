@@ -1,21 +1,19 @@
-uuid: a0768350-d78c-49f0-8624-0b76abf05da9
+uuid: fc13e29d-0caf-418e-8e0a-a5e315c6eb94
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_body
+    - field.storage.node.field_teaser
     - node.type.reference_database
-  module:
-    - text
-id: node.reference_database.field_body
-field_name: field_body
+id: node.reference_database.field_teaser
+field_name: field_teaser
 entity_type: node
 bundle: reference_database
-label: Description
+label: Teaser
 description: ''
-required: false
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: text_long
+field_type: string_long

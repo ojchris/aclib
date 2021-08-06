@@ -3,14 +3,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.reference_database.field_body
+    - field.field.node.reference_database.body
     - field.field.node.reference_database.field_external_url
+    - field.field.node.reference_database.field_home_page_image
     - field.field.node.reference_database.field_hq_only
-    - field.field.node.reference_database.field_image
     - field.field.node.reference_database.field_internal_only
     - field.field.node.reference_database.field_internal_url
     - field.field.node.reference_database.field_require_signon
     - field.field.node.reference_database.field_tags
+    - field.field.node.reference_database.field_teaser
+    - field.field.node.reference_database.field_teaser_image
     - node.type.reference_database
   module:
     - text
@@ -20,24 +22,15 @@ targetEntityType: node
 bundle: reference_database
 mode: default
 content:
-  field_body:
-    weight: 1
+  body:
+    weight: 0
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
-  field_image:
-    type: entity_reference_entity_view
-    weight: 0
-    label: hidden
-    settings:
-      view_mode: teaser
-      link: false
-    third_party_settings: {  }
-    region: content
   field_tags:
-    weight: 2
+    weight: 1
     label: above
     settings:
       link: true
@@ -45,13 +38,16 @@ content:
     type: entity_reference_label
     region: content
   links:
-    weight: 3
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
   field_external_url: true
+  field_home_page_image: true
   field_hq_only: true
   field_internal_only: true
   field_internal_url: true
   field_require_signon: true
+  field_teaser: true
+  field_teaser_image: true

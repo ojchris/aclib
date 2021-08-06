@@ -1,19 +1,19 @@
-uuid: a37a7f76-a91b-4188-a6c9-650e986e4bbe
+uuid: 2cbacb14-567a-4ada-9af4-43e324daf1c0
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_image
+    - field.storage.node.field_home_page_image
     - media.type.image
     - node.type.reference_database
-id: node.reference_database.field_image
-field_name: field_image
+id: node.reference_database.field_home_page_image
+field_name: field_home_page_image
 entity_type: node
 bundle: reference_database
-label: Image
-description: 'Image should be 300x200px at a minimum 72ppi and a maximum file size of 500 KB.'
+label: 'Home Page Image'
+description: 'Home Page Image should be 625x234px at a minimum 72dpi and maximum file size of 500 KB.'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
