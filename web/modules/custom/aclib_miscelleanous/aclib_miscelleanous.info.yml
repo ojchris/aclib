@@ -1,0 +1,6 @@
+name: ACLIB Miscelleanous
+type: module
+description: Miscelleanous tweaks for ACLIB.
+package: ACLIB
+core: 8.x
+core_version_requirement: ^8 || ^9

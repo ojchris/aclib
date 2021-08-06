@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for ACLIB Miscelleanous module.
+ */
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function aclib_miscelleanous_form_editor_media_dialog_alter(&$form, &$form_state, $form_id) {
+  // Add note about not using captions with embedded video due to a display
+  // issue. See OA5724.
+  $form['caption']['#description'] = t('Do not use with embedded video.');
+}
