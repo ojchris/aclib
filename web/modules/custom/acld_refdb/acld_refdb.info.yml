@@ -1,7 +1,0 @@
-name: 'ACLD Reference Database'
-description: 'Allows for access to external Reference Databases.'
-core: 8.x
-package: ACLD
-dependencies:
-  views: 'drupal:views'
-type: module

@@ -1,5 +1,6 @@
 aclib_refdb.config_form:
   route_name: aclib_refdb.config_form
-  title: 'ACLIB Reference Database Settings'
+  title: 'ACLIB Reference Databases'
   description: 'Settings for accessing and displaying ACLIB Reference Databases'
-  parent: system.admin_config_search
+  parent: system.admin_config_services
+  weight: 110

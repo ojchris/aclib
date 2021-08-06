@@ -1,7 +1,7 @@
 aclib_refdb.config_form:
-  path: '/admin/config/search/aclib_refdb/config'
+  path: '/admin/config/services/aclib_refdb/config'
   defaults:
-    _title: 'ACLIB Reference Database Settings'
+    _title: 'ACLIB Reference Database Configuration'
     _form: \Drupal\aclib_refdb\Form\AclibRefdbConfigForm
   requirements:
     _permission: 'administer site configuration'
@@ -9,7 +9,6 @@ aclib_refdb.page:
   path: '/refdb/{node}'
   defaults:
     _title: 'ACLIB Reference Database Page'
-    # _controller: '\Drupal\aclib_refdb\Controller\DefaultController::page'
     _form: \Drupal\aclib_refdb\Form\AclibRefDbCardForm
   requirements:
     _permission: 'access content'
