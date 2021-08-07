@@ -1,0 +1,6 @@
+ckeditor_settings_modifier:
+  version: 1.x
+  js:
+    js/ckeditor_settings_modifier.js: {}
+  dependencies:
+    - core/ckeditor

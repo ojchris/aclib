@@ -2,7 +2,7 @@ table {
   caption {
   }
   thead {
-    th {
+    th {  // Header row.
       padding: 0.5em;
       border: 1px solid #b1d6f3;
       background-color: #e9ecef;
@@ -20,6 +20,13 @@ table {
     td {
       padding: 0.5em;
       border: 1px solid #b1d6f3;
+    }
+    th { // Header column
+      padding: 0.5em;
+      border: 1px solid #b1d6f3;
+      background-color: #e9ecef;
+      font-weight: normal;
+      color: #000000;
     }
   }
 }

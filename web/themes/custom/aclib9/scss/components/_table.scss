@@ -7,7 +7,7 @@
     caption {
     }
     thead {
-      th {
+      th { // Header row.
         padding: 0.5em;
         border: 1px solid lighten($primary-shade, 40%);
         background-color: $gray-200;
@@ -21,6 +21,12 @@
       td {
         padding: 0.5em;
         border: 1px solid lighten($primary-shade, 40%);
+      }
+      th { // Header column
+        padding: 0.5em;
+        border: 1px solid lighten($primary-shade, 40%);
+        background-color: $gray-200;
+        font-weight: normal;
       }
     }
   }

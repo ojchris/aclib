@@ -13,3 +13,11 @@ function aclib_miscelleanous_form_editor_media_dialog_alter(&$form, &$form_state
   // issue. See OA5724.
   $form['caption']['#description'] = t('Do not use with embedded video.');
 }
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function aclib_miscelleanous_preprocess_page(&$variables) {
+  // Add library to modify default CKEditor settings.
+  $variables['#attached']['library'][] = 'aclib_miscelleanous/ckeditor_settings_modifier';
+}
