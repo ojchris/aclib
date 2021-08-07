@@ -13,6 +13,7 @@ mysql_version: ""
 use_dns_when_possible: true
 composer_version: ""
 web_environment: []
+host_db_port: "59999"
 hooks:
   post-start:
     - exec: mysql -uroot -proot -hdb -e "CREATE DATABASE IF NOT EXISTS aclib7; GRANT
