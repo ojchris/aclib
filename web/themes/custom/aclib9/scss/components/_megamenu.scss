@@ -5,6 +5,7 @@
   }
 
   .tb-megamenu {
+    background-color: $accent-shade;
     .nav-collapse .nav > li {
       width: 100%;
       @include media-breakpoint-up(md) {
@@ -17,6 +18,24 @@
         width: 100%;
       }
     }
+
+    .nav {
+      li {
+        a:hover {
+          color: $white;
+        }
+        &.dropdown.open {
+          > .dropdown-toggle {
+            color: $accent-shade;
+          }
+        }
+      }
+    }
+
+    .dropdown-menu {
+      border: 0;
+    }
   }
 
 }
+
