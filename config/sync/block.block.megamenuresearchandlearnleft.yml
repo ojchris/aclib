@@ -1,0 +1,25 @@
+uuid: 7fde0476-0c9c-4e12-af44-ab24ecbd61f2
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:41e73038-92c4-44f0-9970-a058b9b9cca0'
+  module:
+    - block_content
+  theme:
+    - aclib9
+id: megamenuresearchandlearnleft
+theme: aclib9
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:41e73038-92c4-44f0-9970-a058b9b9cca0'
+settings:
+  id: 'block_content:41e73038-92c4-44f0-9970-a058b9b9cca0'
+  label: 'Megamenu - Research and Learn left'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

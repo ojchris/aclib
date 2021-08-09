@@ -1,0 +1,25 @@
+uuid: 8d646e57-bfca-4648-adfa-7d0547fe60b2
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:257416aa-2fa0-4e43-a641-89f1218ae6b0'
+  module:
+    - block_content
+  theme:
+    - aclib9
+id: megamenueventsleft
+theme: aclib9
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:257416aa-2fa0-4e43-a641-89f1218ae6b0'
+settings:
+  id: 'block_content:257416aa-2fa0-4e43-a641-89f1218ae6b0'
+  label: 'Megamenu - Events left'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

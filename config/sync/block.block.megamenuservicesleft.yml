@@ -1,0 +1,25 @@
+uuid: 41fdaae6-5218-4d22-94fe-feaea5b7dc0d
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:c23c0560-159b-41e7-ac55-e4df94071d8a'
+  module:
+    - block_content
+  theme:
+    - aclib9
+id: megamenuservicesleft
+theme: aclib9
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:c23c0560-159b-41e7-ac55-e4df94071d8a'
+settings:
+  id: 'block_content:c23c0560-159b-41e7-ac55-e4df94071d8a'
+  label: 'Megamenu - Services left'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }
