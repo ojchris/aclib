@@ -6,36 +6,61 @@
 
   .tb-megamenu {
     background-color: $accent-shade;
-    .nav-collapse .nav > li {
-      width: 100%;
-      @include media-breakpoint-up(md) {
-        width: auto;
-      }
+
+    .tb-megamenu-button {
+      position: absolute;
+      right: 0;
+      top: -70px;
+      background-color: $accent-shade;
+      background-image: none;
     }
 
-    .mega.open > .mega-dropdown-menu {
+    .nav-collapse {
+      background: $white;
+      top: -40px;
       @include media-breakpoint-up(md) {
+        top: 27px;
+        background: $accent-shade;
+      }
+      .nav > li {  // Top level links on mobile.
         width: 100%;
-      }
-    }
-
-    .nav {
-      li {
+        a,
         a:hover {
-          color: $white;
+          color: $accent-shade;
+          &:after {
+            display: none;  // Hide the dropdown caret.
+          }
+        }
+        @include media-breakpoint-up(md) {  // Align menu to left in desktop.
+          &:nth-child(1) {
+            a {
+              //padding-left: 0;
+            }
+          }
         }
         &.dropdown.open {
           > .dropdown-toggle {
             color: $accent-shade;
           }
         }
+        @include media-breakpoint-up(md) {  // Top level links on desktop.
+          width: auto;
+          a,
+          a:hover{
+            color: $white;
+          }
+        }
+
+        .dropdown-menu {  // Submenu links in all responsive modes.
+          border: 0;
+          background-color: $white;
+          a,
+          a:hover {
+            color: $accent-shade;
+          }
+        }
       }
     }
-
-    .dropdown-menu {
-      border: 0;
-    }
   }
-
 }
 

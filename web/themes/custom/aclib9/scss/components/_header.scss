@@ -9,9 +9,10 @@ header {
     }
     .region-top-header {
       flex: auto;
-      text-align: center;
+      text-align: left;
       @include media-breakpoint-up(md) {
         flex: none;
+        text-align: center;
       }
     }
     .region-secondary-menu {
