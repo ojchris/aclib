@@ -7,6 +7,10 @@ CKEDITOR.on('dialogDefinition', function(ev) {
     // Set the default table width.
     info.get('txtWidth')['default'] = '';
 
+    // Modify field labels.
+    info.get('txtWidth')['label'] = 'Width (px or %)';
+    info.get('txtHeight')['label'] = 'Height (px or %)';
+
     // Remove the "Both" option for table headers.
     info.get("selHeaders")["items"].pop();
     // Remove the "First column" option for table headers.
