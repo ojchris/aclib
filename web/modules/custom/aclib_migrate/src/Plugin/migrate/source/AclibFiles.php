@@ -30,9 +30,9 @@ class AclibFiles extends File {
           // Last 100
           //$query->range(0, 100);
           // Last 1000.
-          $query->range(0, 1000);
+          //$query->range(0, 1000);
           // Past year.
-          //$query->condition('timestamp', (time() - 60*60*24*365), '>');
+          $query->condition('timestamp', (time() - 60*60*24*365), '>');
           $query->orderBy('fid', 'DESC');
           break;
       }
