@@ -23,7 +23,6 @@ process:
   source_full_path:
     -
       plugin: concat
-      delimiter: /
       source:
         - constants/source_base_path
         - filepath
