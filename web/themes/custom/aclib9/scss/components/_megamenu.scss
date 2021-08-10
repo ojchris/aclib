@@ -24,22 +24,24 @@
       }
       .nav > li {  // Top level links on mobile.
         width: 100%;
-        a,
-        a:hover {
+        > a,
+        > a:hover {
           color: $accent-shade;
+          background-color: $white;
+          border: none;
+          border-top: 1px solid darken($gray-100, 10%);
           &:after {
             display: none;  // Hide the dropdown caret.
           }
         }
-        > a:focus-visible {
+        > a:focus-visible {  // Provide a visual indicator when using keyboard.
           outline: 2px auto -webkit-focus-ring-color;
           text-decoration: underline;
         }
-        @include media-breakpoint-up(md) {  // Align menu to left in desktop.
-          &:nth-child(1) {
-            a {
-              //padding-left: 0;
-            }
+        @include media-breakpoint-up(md) {  // Desktop.
+          > a {
+            background: none;
+            border: none;
           }
         }
         &.dropdown.open {
@@ -52,15 +54,32 @@
           a,
           a:hover{
             color: $white;
+            border-radius: 3px 3px 0 0;
           }
         }
 
         .dropdown-menu {  // Submenu links in all responsive modes.
           border: 0;
           background-color: $white;
-          a,
+          border-radius: 0 0 3px 3px;
+          box-shadow: none;
+          a {
+            text-decoration: underline;
+            color: $accent-shade;
+          }
           a:hover {
             color: $accent-shade;
+            text-decoration: none;
+          }
+          li > a {
+            border-top: none;
+            margin-left: -5px;
+          }
+          @include media-breakpoint-up(md) {
+            box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.175);
+            li > a {
+              margin-left: 5px;
+            }
           }
         }
       }
