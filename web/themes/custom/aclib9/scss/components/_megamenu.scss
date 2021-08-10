@@ -31,6 +31,10 @@
             display: none;  // Hide the dropdown caret.
           }
         }
+        > a:focus-visible {
+          outline: 2px auto -webkit-focus-ring-color;
+          text-decoration: underline;
+        }
         @include media-breakpoint-up(md) {  // Align menu to left in desktop.
           &:nth-child(1) {
             a {
