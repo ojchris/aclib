@@ -56,6 +56,7 @@ process:
   field_body/format:
     plugin: static_map
     source: 'body/0/format'
+    bypass: TRUE
     map:
       panopoly_wysiwyg_text: basic_html
       panopoly_html_text: basic_html
@@ -82,4 +83,5 @@ migration_dependencies:
   optional:
     - users
     - file_entity
+    - file_entity_youtube
     - tags

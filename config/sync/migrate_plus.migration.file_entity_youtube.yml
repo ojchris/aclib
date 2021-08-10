@@ -37,5 +37,5 @@ process:
 destination:
   plugin: 'entity:media'
 migration_dependencies:
-  required:
+  optional:
     - users

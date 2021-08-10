@@ -90,3 +90,4 @@ migration_dependencies:
   optional:
     - users
     - file_entity
+    - file_entity_youtube

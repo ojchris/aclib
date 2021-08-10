@@ -44,3 +44,6 @@ process:
   changed: timestamp
 destination:
   plugin: entity:file
+migration_dependencies:
+  optional:
+    - users
