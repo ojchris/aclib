@@ -5,7 +5,7 @@ CKEDITOR.on('dialogDefinition', function(ev) {
   if(dialogName === 'table') {
     var info = dialogDefinition.getContents('info');
     // Set the default table width.
-    info.get('txtWidth')['default'] = '';
+    info.get('txtWidth')['default'] = '100%';
 
     // Modify field labels.
     info.get('txtWidth')['label'] = 'Width (px or %)';
