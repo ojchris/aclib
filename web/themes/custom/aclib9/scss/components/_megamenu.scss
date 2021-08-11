@@ -66,19 +66,33 @@
           a {
             text-decoration: underline;
             color: $accent-shade;
+            border-top: none;
           }
           a:hover {
             color: $accent-shade;
             text-decoration: none;
           }
           li > a {
-            border-top: none;
+            //border-top: none;
             margin-left: -5px;
+          }
+          li.active a {
+            background: none;
           }
           @include media-breakpoint-up(md) {
             box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.175);
             li > a {
               margin-left: 5px;
+            }
+          }
+          .mega-inner { // Padding between columns.
+            padding-top: 3px;
+            padding-bottom: 3px;
+          }
+          @include media-breakpoint-up(md) {
+            .mega-inner {
+              padding-top: 10px;
+              padding-bottom: 10px;
             }
           }
         }
