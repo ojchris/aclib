@@ -58,6 +58,18 @@
           }
         }
 
+        // Shift the dropdown for each top-level item to the left a little.
+        // Borrow and Download dropdown doesn't need to be shifted.
+        &:nth-of-type(2) .dropdown-menu {  // Research and Learn
+          left: -100px;
+        }
+        &:nth-of-type(3) .dropdown-menu {  // Services
+          left: -200px;
+        }
+        &:nth-of-type(4) .dropdown-menu {  // Events
+          left: -300px;
+        }
+
         .dropdown-menu {  // Submenu links in all responsive modes.
           border: 0;
           background-color: $white;
@@ -73,7 +85,6 @@
             text-decoration: none;
           }
           li > a {
-            //border-top: none;
             margin-left: -5px;
           }
           li.active a {
