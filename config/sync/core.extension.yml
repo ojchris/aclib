@@ -14,12 +14,14 @@ module:
   ckeditor: 0
   ckeditor_accordion: 0
   config: 0
+  config_devel: 0
   config_filter: 0
   config_split: 0
   contextual: 0
   crop: 0
   datetime: 0
   dblog: 0
+  devel: 0
   dynamic_page_cache: 0
   editor: 0
   entity_reference_revisions: 0
