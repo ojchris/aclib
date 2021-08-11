@@ -45,3 +45,11 @@ $comment-spacer-y: 1.25em;
 $enable-responsive-font-sizes: true;
 $enable-shadows: false;
 $enable-gradients: false;
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 980px,  // Mike modified from 992px because TB Megamenu's breakpoint is hard-coded at 980px;
+  xl: 1200px,
+  xxl: 1400px
+);

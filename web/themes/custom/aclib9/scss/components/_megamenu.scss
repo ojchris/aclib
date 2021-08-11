@@ -1,6 +1,6 @@
 .block-tb-megamenu {
   width: 100%;
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(lg) {
     width: auto;
   }
 
@@ -13,14 +13,24 @@
       top: -70px;
       background-color: $accent-shade;
       background-image: none;
+      border: 1px solid $white;
+      z-index: 100;
+      @include media-breakpoint-up(md) {
+        top: 15px;
+      }
     }
 
     .nav-collapse {
       background: $white;
       top: -40px;
+      box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.175);
       @include media-breakpoint-up(md) {
+        top: 45px;
+      }
+      @include media-breakpoint-up(lg) {
         top: 27px;
         background: $accent-shade;
+        box-shadow: none;
       }
       .nav > li {  // Top level links on mobile.
         width: 100%;
@@ -29,7 +39,7 @@
           color: $accent-shade;
           background-color: $white;
           border: none;
-          border-top: 1px solid darken($gray-100, 10%);
+          border-top: 1px solid $gray-800;
           &:after {
             display: none;  // Hide the dropdown caret.
           }
@@ -38,7 +48,7 @@
           outline: 2px auto -webkit-focus-ring-color;
           text-decoration: underline;
         }
-        @include media-breakpoint-up(md) {  // Desktop.
+        @include media-breakpoint-up(lg) {  // Desktop.
           > a {
             background: none;
             border: none;
@@ -49,7 +59,7 @@
             color: $accent-shade;
           }
         }
-        @include media-breakpoint-up(md) {  // Top level links on desktop.
+        @include media-breakpoint-up(lg) {  // Top level links on desktop.
           width: auto;
           a,
           a:hover{
@@ -90,21 +100,35 @@
           li.active a {
             background: none;
           }
-          @include media-breakpoint-up(md) {
+          @include media-breakpoint-up(lg) {
             box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.175);
             li > a {
               margin-left: 5px;
+            }
+          }
+          .tb-megamenu-no-link {
+            font-weight: bold;
+            padding: 0;
+            margin: 0;
+            margin-left: -5px;
+            color: $accent-shade;
+            border: none;
+            @include media-breakpoint-up(lg) {
+              margin-left: 0;
             }
           }
           .mega-inner { // Padding between columns.
             padding-top: 3px;
             padding-bottom: 3px;
           }
-          @include media-breakpoint-up(md) {
+          @include media-breakpoint-up(lg) {
             .mega-inner {
               padding-top: 10px;
               padding-bottom: 10px;
             }
+          }
+          .tb-megamenu-row {
+            border-top: 1px solid darken($gray-100, 10%);
           }
         }
       }
