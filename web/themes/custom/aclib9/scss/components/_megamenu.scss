@@ -34,15 +34,15 @@
       }
       .nav > li {  // Top level links on mobile.
         width: 100%;
+        span.dropdown-toggle:after {
+          display: none;  // Hide the dropdown caret.
+        }
         > a,
         > a:hover {
           color: $accent-shade;
           background-color: $white;
           border: none;
           border-top: 1px solid $gray-800;
-          &:after {
-            display: none;  // Hide the dropdown caret.
-          }
         }
         > a:focus-visible {  // Provide a visual indicator when using keyboard.
           outline: 2px auto -webkit-focus-ring-color;
@@ -70,15 +70,15 @@
 
         // Shift the dropdown for each top-level item to the left a little.
         // Borrow and Download dropdown doesn't need to be shifted.
-        &:nth-of-type(2) .dropdown-menu {  // Research and Learn
-          left: -100px;
-        }
-        &:nth-of-type(3) .dropdown-menu {  // Services
-          left: -200px;
-        }
-        &:nth-of-type(4) .dropdown-menu {  // Events
-          left: -300px;
-        }
+        //&:nth-of-type(2) .dropdown-menu {  // Research and Learn
+        //  left: -100px;
+        //}
+        //&:nth-of-type(3) .dropdown-menu {  // Services
+        //  left: -200px;
+        //}
+        //&:nth-of-type(4) .dropdown-menu {  // Events
+        //  left: -300px;
+        //}
 
         .dropdown-menu {  // Submenu links in all responsive modes.
           border: 0;
@@ -89,6 +89,17 @@
             text-decoration: underline;
             color: $accent-shade;
             border-top: none;
+            &.aclib-megamenu-bold {
+              font-weight: bold;
+              padding: 0;
+              margin: 0;
+              margin-left: -5px;
+              color: $accent-shade;
+              border: none;
+              @include media-breakpoint-up(lg) {
+                margin-left: 0;
+              }
+            }
           }
           a:hover {
             color: $accent-shade;
@@ -104,17 +115,6 @@
             box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.175);
             li > a {
               margin-left: 5px;
-            }
-          }
-          .tb-megamenu-no-link {
-            font-weight: bold;
-            padding: 0;
-            margin: 0;
-            margin-left: -5px;
-            color: $accent-shade;
-            border: none;
-            @include media-breakpoint-up(lg) {
-              margin-left: 0;
             }
           }
           .mega-inner { // Padding between columns.
