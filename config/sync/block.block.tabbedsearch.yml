@@ -14,17 +14,17 @@ provider: null
 plugin: aclib_plugins_search_block
 settings:
   id: aclib_plugins_search_block
-  label: 'Tabbed search'
+  label: ''
   provider: aclib_plugins
-  label_display: '0'
+  label_display: visible
   labels:
     - Catalog
-    - Website
+    - Site
   actions:
     - 'https://catalog.aclib.us/view.aspx?keyword=%keyword'
     - /search/node/%keyword
   placeholders:
-    - 'Search catalog'
-    - 'Search website'
+    - ''
+    - ''
   button: ''
 visibility: {  }

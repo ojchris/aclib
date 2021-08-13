@@ -37,6 +37,9 @@
         span.dropdown-toggle:after {
           display: none;  // Hide the dropdown caret.
         }
+        span.tb-megamenu-no-link:hover {
+          color: $accent-shade; // Gets rid of a flash of red when animating.
+        }
         > a,
         > a:hover {
           color: $accent-shade;

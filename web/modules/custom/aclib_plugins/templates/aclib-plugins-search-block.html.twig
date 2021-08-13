@@ -4,13 +4,13 @@
 {#
   Define search input and icon/button block
   Share the same between all tabs, what changes is only redirect URL set in tab.action property
-#} 
+#}
 {% macro tabContent(tab) %}
   {% spaceless %}
     <div class="aclib-plugins search-form container d-flex align-items-baseline align-content-between px-0">
-      
+
       {{ tab.search_input }}
-      
+
       {# If we have Bootstrap icon fonts we can set Icon/Button property on block configuration #}
       {% if button %}
         {% set button_class = 'bi-' ~ button %}
@@ -29,42 +29,43 @@
     <ul class="aclib-plugins nav nav-tabs" id="search-tabs" role="tablist">
       {% for tab in tabs %}
 
-        {# Set active tab, based on "active" URL or else just a first tab #}  
+        {# Set active tab, based on "active" URL or else just a first tab #}
         {% set active_tab_class = active_tab == loop.index0 ? 'active' %}
-        
+
         <li class="nav-item" role="presentation">
           <button class="nav-link text-info {{ active_tab_class }}" data-bs-toggle="tab" data-bs-target="#search-tab-{{ tab.id }}" type="button" role="tab" aria-controls="{{ tab.id }}" aria-selected="true">{{ tab.label }}</button>
        </li>
 
       {% endfor %}
     </ul>
-    
+
     <div class="aclib-plugins tab-content" id="search-tabs-content">
       {% for tab in tabs %}
-   
-        {# Set active tab, based on "active" URL or else just a first tab #}  
+
+        {# Set active tab, based on "active" URL or else just a first tab #}
         {%
           set show_classes = [
             'tab-pane',
+            'fade',
             active_tab == loop.index0 ? 'show' : 'hide',
-            active_tab == loop.index0 ? 'active' : 'fade'
+            active_tab == loop.index0 ? 'active',
           ]
         %}
-   
+
         {# Here we use our macro function #}
         {% set tab_content = searchTabs.tabContent(tab, search_input) %}
-        
+
         <div {{ create_attribute({'class': show_classes}) }} id="search-tab-{{ tab.id }}" role="tabpanel" aria-labelledby="{{ tab.id }}-tab">{{ tab_content }}</div>
 
       {% endfor %}
     </div>
-  
+
   {# NO Tabs (just one tab set on block config) so render only search input and icon #}
   {% else %}
-    
+
     {# Here we use our macro function #}
     {% set tab_content = searchTabs.tabContent(tabs[0], search_input) %}
-   
+
     {% set active = loop.index == 1 ? 'active' : '' %}
     <div class="tab-pane fade show {{ active }}" id="{{ tab.id }}" role="tabpanel" aria-labelledby="{{ tab.id }}-tab">{{ tab_content }}</div>
   {% endif %}
