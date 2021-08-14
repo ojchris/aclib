@@ -32,8 +32,7 @@ process:
     plugin: default_value
     default_value: 0
   path/alias: alias
-  # TODO: Handle raw <img> tags?
-  field_body/value:
+  body/value:
     plugin: media_wysiwyg_filter
     source: 'body/0/value'
     # Mapping details in OA5736.
@@ -52,7 +51,7 @@ process:
       - file_entity_youtube
     file_migrations:
       - files
-  field_body/format:
+  body/format:
     plugin: static_map
     source: 'body/0/format'
     map:

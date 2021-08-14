@@ -3,9 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.press_release.body
     - field.field.node.press_release.field_alt_contact_email
     - field.field.node.press_release.field_alt_contact_name
-    - field.field.node.press_release.field_body
     - field.field.node.press_release.field_contact_email
     - field.field.node.press_release.field_contact_name
     - field.field.node.press_release.field_date
@@ -23,6 +23,13 @@ targetEntityType: node
 bundle: press_release
 mode: default
 content:
+  body:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
   field_alt_contact_email:
     weight: 5
     label: above
@@ -37,13 +44,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-    region: content
-  field_body:
-    weight: 1
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: text_default
     region: content
   field_contact_email:
     weight: 3
