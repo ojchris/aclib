@@ -36,9 +36,26 @@
         width: 100%;
         span.dropdown-toggle:after {
           display: none;  // Hide the dropdown caret.
+          @include media-breakpoint-up(lg) { // Desktop.
+            display: inline-block;
+          }
         }
-        span.tb-megamenu-no-link:hover {
-          color: $accent-shade; // Gets rid of a flash of red when animating.
+
+        span.tb-megamenu-no-link {
+          border: none;
+          color: $accent-shade;
+          padding: 15px;
+          font-size: 1.1rem;
+          @include media-breakpoint-up(lg) { // Desktop.
+            color: $white;
+            padding: 15px 20px;
+            font-size: 1rem;
+          }
+          &:focus,
+          &:hover {
+            background-color: $white;
+            color: $accent-shade; // Gets rid of a flash of red when animating.
+          }
         }
         > a,
         > a:hover {
@@ -84,9 +101,12 @@
         //}
 
         .dropdown-menu {  // Submenu links in all responsive modes.
-          border: 0;
+          border-bottom: 1px solid $black;
+          @include media-breakpoint-up(lg) {
+            border: 0;
+            border-radius: 0 0 3px 3px;
+          }
           background-color: $white;
-          border-radius: 0 0 3px 3px;
           box-shadow: none;
           a {
             text-decoration: underline;
@@ -119,6 +139,9 @@
             li > a {
               margin-left: 5px;
             }
+          }
+          .span12.mega-col-nav .mega-inner {
+            padding: 20px;  // Fixes left-margin issue on tablet.
           }
           .mega-inner { // Padding between columns.
             padding-top: 3px;
