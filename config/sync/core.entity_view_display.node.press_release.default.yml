@@ -32,10 +32,11 @@ content:
     region: content
   field_contact_email:
     weight: 3
-    label: hidden
-    settings: {  }
+    label: above
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
-    type: basic_string
+    type: string
     region: content
   field_contact_name:
     weight: 1
