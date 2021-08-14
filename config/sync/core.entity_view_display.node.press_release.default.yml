@@ -24,7 +24,7 @@ bundle: press_release
 mode: default
 content:
   body:
-    weight: 5
+    weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
