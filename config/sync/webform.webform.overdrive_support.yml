@@ -12,7 +12,245 @@ id: overdrive_support
 title: 'OverDrive Support'
 description: 'Library patron OverDrive questions submitted from&nbsp;https://help.overdrive.com/en-us/support.htm#'
 category: ''
-elements: null
+elements: |-
+  processed_text:
+    '#type': processed_text
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#text': |
+      <p>If you're having trouble using OverDrive, you can fill out this form below to email us information about the problem.&nbsp;</p>
+
+      <p>If you'd like to ask us to add a downloadable eBook or audiobook (in EPUB, Kindle, and/or mp3 format), please fill out <a href="books/purchasesuggestion">our suggest materials form</a> to submit the suggestion to our collections development team.</p>
+
+      <p><strong>Please note:</strong> under Florida law, emails sent to government accounts are public records.</p>
+
+      <p>If you're uncomfortable emailing any of this info below, please feel free to call us at (352) 334-3939 during <a href="/node/1972">Headquarters Library business hours</a> instead.</p>
+    '#format': basic_html
+  your_name:
+    '#type': textfield
+    '#title': 'Your name'
+    '#description_display': before
+    '#required': true
+    '#required_error': 'Your name is required.'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  your_email:
+    '#type': webform_email_confirm
+    '#title': 'Your email'
+    '#description_display': before
+    '#required': true
+    '#required_error': 'Your email address is required.'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#confirm__title': 'Confirm your email'
+    '#confirm__placeholder': 'Enter your email address again to confirm.'
+  issue:
+    '#type': webform_select_other
+    '#title': Issue
+    '#description': 'What kind of trouble are you having?'
+    '#description_display': before
+    '#options':
+      Account: Account
+      Download: Download
+      Holds: Holds
+      'OverDrive site': 'OverDrive site'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  library_card_number:
+    '#type': number
+    '#title': 'Library card number'
+    '#description': 'A 14-digit number with no spaces or dashes.'
+    '#description_display': before
+    '#required': true
+    '#required_error': 'Library card number is required.'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#max': 14
+  library_card_number_other:
+    '#type': number
+    '#title': 'Library card number'
+    '#description': 'A 14-digit number with no spaces or dashes.'
+    '#description_display': before
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#max': 14
+  format:
+    '#type': select
+    '#title': Format
+    '#description_display': before
+    '#options':
+      'eAudiobook - MP3': 'eAudiobook - MP3'
+      'eBook - EPUB': 'eBook - EPUB'
+      'eBook - Kindle format': 'eBook - Kindle format'
+      'eBook - OverDrive Read': 'eBook - OverDrive Read'
+      'eBook - PDF': 'eBook - PDF'
+    '#required': true
+    '#required_error': 'Format is required.'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  description:
+    '#type': textarea
+    '#title': Description
+    '#description': 'Please describe the problem you&#39;ve run into.'
+    '#description_display': before
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  titles:
+    '#type': textarea
+    '#title': Titles
+    '#description_display': before
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  error_message:
+    '#type': textfield
+    '#title': 'Error message'
+    '#description': 'If you got an error message, please include it here.'
+    '#description_display': before
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  device:
+    '#type': webform_select_other
+    '#title': Device
+    '#description_display': before
+    '#options':
+      Android: Android
+      'iPad/iPhone/iPod Touch': 'iPad/iPhone/iPod Touch'
+      Kindle: Kindle
+      Nook: Nook
+      Desktop/laptop: Desktop/laptop
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  is_your_device_a_tablet_:
+    '#type': select
+    '#title': 'Is your device a tablet?'
+    '#description': 'Is your device a Kindle Fire, Nook Color or Nook Tablet? (Can it run apps?)'
+    '#description_display': before
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  software_app:
+    '#type': webform_select_other
+    '#title': 'Software / app'
+    '#description_display': before
+    '#options':
+      'Libby App': 'Libby App'
+      'Kindle App': 'Kindle App'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  browser:
+    '#type': webform_select_other
+    '#title': Browser
+    '#description_display': before
+    '#options':
+      Chrome: Chrome
+      Firefox: Firefox
+      Safari: Safari
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
 css: ''
 javascript: ''
 settings:
