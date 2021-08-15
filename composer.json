@@ -100,7 +100,8 @@
                 "Mobile TB Megamenu not working with Bootstrap Barrio (Bootstrap 5)": "https://www.drupal.org/files/issues/2021-08-05/bootstrap5-3219876-5.patch"
             },
             "drupal/termcase": {
-                "Drupal 9 compatibility issues": "https://www.drupal.org/files/issues/2021-08-11/3227648-2.patch"
+                "Drupal 9 compatibility issues": "https://www.drupal.org/files/issues/2021-08-11/3227648-2.patch",
+                "Does not properly save terms": "https://www.drupal.org/files/issues/2021-08-15/does_not_properly_save_terms-3228215-3.patch"
             }
         }
     },
