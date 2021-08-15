@@ -1,5 +1,17 @@
 // Tabbed search block.
+.region-header-form {
+  @include media-breakpoint-up(lg) {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+  }
+}
+
 .block-aclib-plugins-search-block {
+  width: 100%;
+  @include media-breakpoint-up(lg) {
+    width: 75%;
+  }
   .nav-tabs {
     border: none;
     .nav-link {
