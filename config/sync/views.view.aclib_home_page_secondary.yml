@@ -9,6 +9,7 @@ dependencies:
     - entityqueue
     - node
     - user
+    - views_bootstrap
 id: aclib_home_page_secondary
 label: 'ACLIB home page secondary'
 module: views
@@ -54,16 +55,16 @@ display:
           items_per_page: 3
           offset: 0
       style:
-        type: grid
+        type: views_bootstrap_grid
         options:
+          row_class: ''
+          default_row_class: true
           uses_fields: false
-          columns: 3
-          automatic_width: true
-          alignment: horizontal
-          col_class_default: true
-          col_class_custom: ''
-          row_class_default: true
-          row_class_custom: ''
+          col_xs: none
+          col_sm: none
+          col_md: col-md-4
+          col_lg: none
+          col_xl: none
       row:
         type: 'entity:node'
         options:
@@ -163,7 +164,7 @@ display:
           expose:
             label: ''
           granularity: second
-      title: 'ACLIB home page large'
+      title: 'ACLIB home page secondary'
       header: {  }
       footer: {  }
       empty: {  }
