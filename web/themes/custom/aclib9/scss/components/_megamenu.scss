@@ -79,6 +79,11 @@
             color: $accent-shade;
           }
         }
+        &.dropdown.active {
+          > .dropdown-toggle {
+            background-color: $accent-shade;
+          }
+        }
         @include media-breakpoint-up(lg) {  // Top level links on desktop.
           width: auto;
           a,

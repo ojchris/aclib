@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.landing_page.field_tags
     - field.field.node.landing_page.field_teaser
     - field.field.node.landing_page.field_teaser_image
+    - field.field.node.landing_page.layout_builder__layout
     - node.type.landing_page
   module:
     - maxlength
@@ -136,4 +137,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  layout_builder__layout: true
