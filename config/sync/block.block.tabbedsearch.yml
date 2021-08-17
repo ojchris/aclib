@@ -22,7 +22,7 @@ settings:
     - Site
   actions:
     - 'https://catalog.aclib.us/view.aspx?keyword=%keyword'
-    - /search/node/%keyword
+    - '/search/node/?keys=%keyword'
   placeholders:
     - ''
     - ''
