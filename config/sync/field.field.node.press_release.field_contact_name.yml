@@ -9,7 +9,7 @@ id: node.press_release.field_contact_name
 field_name: field_contact_name
 entity_type: node
 bundle: press_release
-label: Contact
+label: 'Contact:'
 description: ''
 required: true
 translatable: false
