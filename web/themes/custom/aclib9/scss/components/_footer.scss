@@ -44,12 +44,13 @@ footer.site-footer {
     font-weight: bold;
     font-size: 1.2em;
     text-align: center;
+    text-decoration: underline;
     @include media-breakpoint-up(sm) {
       text-align: inherit;
     }
     &:hover, &:focus, &:active {
       color: $white;
-      text-decoration: underline;
+      text-decoration: none;
     }
   }
   svg.bi {
