@@ -38,6 +38,11 @@ content:
     third_party_settings: {  }
     type: entity_reference_entity_view
     region: content
+  links:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   body: true
   field_alt_contact_email: true
@@ -47,4 +52,3 @@ hidden:
   field_date: true
   field_home_page_image: true
   field_tags: true
-  links: true
