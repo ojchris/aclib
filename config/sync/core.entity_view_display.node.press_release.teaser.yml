@@ -29,19 +29,14 @@ content:
     region: content
     label: hidden
     settings:
-      format_type: medium
       timezone_override: ''
+      format_type: aclib_date_only
     third_party_settings: {  }
   field_teaser:
     type: basic_string
     weight: 1
     region: content
     label: hidden
-    settings: {  }
-    third_party_settings: {  }
-  links:
-    weight: 2
-    region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
@@ -53,3 +48,4 @@ hidden:
   field_home_page_image: true
   field_tags: true
   field_teaser_image: true
+  links: true

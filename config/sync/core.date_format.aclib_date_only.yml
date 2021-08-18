@@ -1,0 +1,8 @@
+uuid: 3f3ab04a-6ed6-4240-8c64-48005fd2c0ba
+langcode: en
+status: true
+dependencies: {  }
+id: aclib_date_only
+label: 'ACLIB date only'
+locked: false
+pattern: 'l, F j, Y'
