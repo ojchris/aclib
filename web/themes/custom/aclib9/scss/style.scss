@@ -1,4 +1,4 @@
-/* 
+/*
 Theme Name: Bootstrap 4 Sass
 Description: Bootstrap 4 with Sass
 */
@@ -14,11 +14,15 @@ body {
 }
 
 
-/* COLORS 
+/* COLORS
 --------------------------------------------------*/
 
 a {
-    color: $accent-shade;
+  color: $accent-shade;
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .bg-inverse {
