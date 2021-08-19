@@ -30,16 +30,9 @@ content:
     third_party_settings: {  }
     type: text_default
     region: content
-  field_contact_email:
-    weight: 3
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: basic_string
-    region: content
   field_contact_name:
     weight: 1
-    label: hidden
+    label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
@@ -57,6 +50,7 @@ content:
 hidden:
   field_alt_contact_email: true
   field_alt_contact_name: true
+  field_contact_email: true
   field_home_page_image: true
   field_tags: true
   field_teaser: true

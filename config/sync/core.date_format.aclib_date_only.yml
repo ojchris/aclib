@@ -5,4 +5,4 @@ dependencies: {  }
 id: aclib_date_only
 label: 'ACLIB date only'
 locked: false
-pattern: 'l, F j, Y'
+pattern: 'F j, Y'
