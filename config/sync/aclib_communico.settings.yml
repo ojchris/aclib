@@ -4,7 +4,7 @@ token_endpoint: v3/token
 types_endpoint: v3/attend/types
 events_endpoint: v3/attend/events
 startDate: '2021-07-01'
-endDate: '2021-10-22'
+endDate: '2022-09-30'
 types:
   board_meetings: 'Board Meetings'
 limit: '500'
