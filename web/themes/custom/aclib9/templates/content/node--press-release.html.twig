@@ -81,6 +81,11 @@
       </h2>
     {% endif %}
     {{ title_suffix }}
+  </header>
+  <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
+    {{ content.field_date }}
+    Contact: <a href="mailto:{{ content.field_contact_email.0 }}?subject=ACLD Press Release">{{ content.field_contact_name.0 }}</a>
+    {{ content|without('field_date', 'field_contact_email', 'field_contact_name') }}
     {% if display_submitted %}
       <div class="node__meta">
         {{ author_picture }}
@@ -92,10 +97,5 @@
         {{ metadata }}
       </div>
     {% endif %}
-  </header>
-  <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
-    {{ content.field_date }}
-    Contact: <a href="mailto:{{ content.field_contact_email.0 }}?subject=ACLD Press Release">{{ content.field_contact_name }}</a>
-    {{ content|without('field_date', 'field_contact_email', 'field_contact_name') }}
   </div>
 </article>
