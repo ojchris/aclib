@@ -1,0 +1,22 @@
+.aclib-icon-bar {
+  color: $accent_shade;
+  margin: 1em 0;
+  .aclib-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .bi {
+      height: 4em;
+      width: 4em;
+      margin-right: 1em;
+    }
+    .aclib-icon-text {
+      font-size: 1.25em;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    a:hover {
+      color: $accent_shade;
+    }
+  }
+}
