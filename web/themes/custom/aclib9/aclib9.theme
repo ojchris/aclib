@@ -30,3 +30,34 @@ function aclib9_form_system_theme_settings_alter(&$form, FormStateInterface $for
     'bg-transparent' => t('Transparent'),
   );
 }
+
+/*
+ * Implement hook_preprocess_search_result.
+ *
+ * The whole point of this is to change the date format. Everything else is
+ * the same as template_preprocess_search_result().
+ */
+function aclib9_preprocess_search_result(&$variables) {
+  $result = $variables['result'];
+
+  $info = [];
+  if (!empty($result['plugin_id'])) {
+    $info['plugin_id'] = $result['plugin_id'];
+  }
+  if (!empty($result['user'])) {
+    $info['user'] = $result['user'];
+  }
+  if (!empty($result['date'])) {
+    $info['date'] = \Drupal::service('date.formatter')->format($result['date'], 'aclib_date_only');
+  }
+  if (isset($result['extra']) && is_array($result['extra'])) {
+    $info = array_merge($info, $result['extra']);
+  }
+  // Provide separated and grouped meta information.
+  $variables['info_split'] = $info;
+  $variables['info'] = [
+    '#type' => 'inline_template',
+    '#template' => '{{ info|safe_join(" - ") }}',
+    '#context' => ['info' => $info],
+  ];
+}

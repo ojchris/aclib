@@ -56,3 +56,15 @@
     }
   }
 }
+
+.path-search .main-content {
+  .search-form {
+    //display: none; // Hide the search form on the search results page.
+  }
+  h2 {
+    display: none; // Hide "Search results".
+  }
+  .node_search_results {
+
+  }
+}
