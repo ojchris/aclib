@@ -9,6 +9,7 @@
     width: 100%;
     .field--type-image {
       float: none;
+      margin: 0;
       img {
         width: 100%;
         height: auto;
@@ -22,6 +23,8 @@
       right: 0;
       top: 50%;
       transform: translateY(-50%);
+      max-width: 50%;
+      border-radius: 3px;
     }
     background-color: $accent-shade;
     color: $white;
