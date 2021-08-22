@@ -1,0 +1,43 @@
+.node--view-mode-home-page-large {
+  position: relative;
+  .field--name-field-home-page-image {
+    position: relative;
+    margin: 0;
+    @include media-breakpoint-up(lg) {
+      margin-bottom: 1em;
+    }
+    width: 100%;
+    .field--type-image {
+      float: none;
+      img {
+        width: 100%;
+        height: auto;
+        margin: 0;
+      }
+    }
+  }
+  .aclib-title-teaser {
+    @include media-breakpoint-up(lg) {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    background-color: $accent-shade;
+    color: $white;
+    padding: 1em;
+    text-align: center;
+    .field--name-title {
+      font-size: 1.4em;
+      @include media-breakpoint-up(lg) {
+        font-size: 2em;
+      }
+    }
+    .field--name-field-teaser {
+      font-size: 1em;
+      @include media-breakpoint-up(lg) {
+        font-size: 1.2em;
+      }
+    }
+  }
+}
