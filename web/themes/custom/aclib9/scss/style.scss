@@ -66,3 +66,12 @@ h1 {
 .slick>div {
     margin: 0 15px;
 }
+
+.path-frontpage {
+  .node__content {
+    margin-top: 0;
+  }
+  #block-aclib9-page-title {
+    display: none;
+  }
+}
