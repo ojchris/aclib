@@ -3,8 +3,13 @@
   margin: 1em 0;
   .aclib-icon {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: start;
+    justify-content: left;
+    margin: 0.5em 0;
+    @include media-breakpoint-up(md) {
+      align-items: center;
+      justify-content: center;
+    }
     .bi {
       height: 4em;
       width: 4em;
@@ -13,10 +18,16 @@
     .aclib-icon-text {
       font-size: 1.25em;
       font-weight: bold;
-      text-transform: uppercase;
     }
-    a:hover {
-      color: $accent_shade;
+    a {
+      width: 50%;
+      text-align: right;
+      @include media-breakpoint-up(md) {
+        width: auto;
+      }
+      &:hover {
+        color: $accent_shade;
+      }
     }
   }
 }

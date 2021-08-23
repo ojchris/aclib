@@ -8,5 +8,5 @@ description: 'Used by "Home page image" fields.'
 aspect_ratio: '8:3'
 soft_limit_width: null
 soft_limit_height: null
-hard_limit_width: 625
-hard_limit_height: 234
+hard_limit_width: 1280
+hard_limit_height: 479
