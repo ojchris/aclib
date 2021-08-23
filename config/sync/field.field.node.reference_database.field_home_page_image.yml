@@ -11,7 +11,7 @@ field_name: field_home_page_image
 entity_type: node
 bundle: reference_database
 label: 'Home Page Image'
-description: 'Home Page Image should be 625x234px at a minimum 72dpi and maximum file size of 500 KB.'
+description: 'Home Page Image should be 1280×479px at a minimum 72dpi and maximum file size of 500 KB.'
 required: false
 translatable: true
 default_value: {  }
