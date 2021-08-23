@@ -5,6 +5,7 @@
     display: flex;
     align-items: start;
     justify-content: left;
+    margin: 0.5em 0;
     @include media-breakpoint-up(md) {
       align-items: center;
       justify-content: center;
@@ -18,8 +19,15 @@
       font-size: 1.25em;
       font-weight: bold;
     }
-    a:hover {
-      color: $accent_shade;
+    a {
+      width: 50%;
+      text-align: right;
+      @include media-breakpoint-up(md) {
+        width: auto;
+      }
+      &:hover {
+        color: $accent_shade;
+      }
     }
   }
 }
