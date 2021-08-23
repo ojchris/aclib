@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_home_page_image
-    - media.type.image
+    - media.type.home_page_large_image
     - node.type.blog
 id: node.blog.field_home_page_image
 field_name: field_home_page_image
@@ -20,7 +20,7 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
-      image: image
+      home_page_large_image: home_page_large_image
     sort:
       field: _none
       direction: ASC

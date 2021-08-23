@@ -1,0 +1,13 @@
+uuid: d6bdc0d0-5708-4a21-93aa-192036f6bb77
+langcode: en
+status: true
+dependencies: {  }
+id: teaser_image
+label: 'Teaser image'
+description: 'Teaser image'
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image
+field_map: {  }

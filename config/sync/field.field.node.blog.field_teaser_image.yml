@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_teaser_image
-    - media.type.image
+    - media.type.teaser_image
     - node.type.blog
 id: node.blog.field_teaser_image
 field_name: field_teaser_image
@@ -20,7 +20,7 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
-      image: image
+      teaser_image: teaser_image
     sort:
       field: _none
       direction: ASC
