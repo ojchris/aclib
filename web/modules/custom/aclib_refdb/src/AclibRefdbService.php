@@ -9,6 +9,7 @@ use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Entity\EntityFieldManagerInterface;
 use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Messenger\MessengerInterface;
@@ -32,6 +33,12 @@ class AclibRefdbService {
   const EXTERNAL_URL = 'field_external_url';
   const SIGN_ON_FIELD = 'field_require_signon';
 
+  const LOGGING_VIEWS = [
+    'aclib_ref_db' => [
+      'display_id' => 'page_1',
+    ],
+  ];
+
   /**
    * The current request.
    *
@@ -52,6 +59,13 @@ class AclibRefdbService {
    * @var \Drupal\Core\Entity\EntityTypeManager
    */
   public $entityTypeManager;
+
+  /**
+   * Drupal\Core\Entity\EntityTypeManagerInterface definition.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  public $entityFieldManager;
 
   /**
    * Drupal\Core\TempStore\PrivateTempStoreFactory definition.
@@ -84,10 +98,11 @@ class AclibRefdbService {
   /**
    * {@inheritdoc}
    */
-  public function __construct(RequestStack $request_stack, ConfigFactoryInterface $config_factory, EntityTypeManagerInterface $entity_type_manager, PrivateTempStoreFactory $private_temp_store, LoggerChannelFactoryInterface $logger, MessengerInterface $messenger) {
+  public function __construct(RequestStack $request_stack, ConfigFactoryInterface $config_factory, EntityTypeManagerInterface $entity_type_manager, EntityFieldManagerInterface $entity_field_manager, PrivateTempStoreFactory $private_temp_store, LoggerChannelFactoryInterface $logger, MessengerInterface $messenger) {
     $this->requestStack = $request_stack->getCurrentRequest();
     $this->config = $config_factory;
     $this->entityTypeManager = $entity_type_manager;
+    $this->entityFieldManager = $entity_field_manager;
     $this->privateTempStore = $private_temp_store;
     $this->logger = $logger;
     $this->messenger = $messenger;
@@ -101,6 +116,7 @@ class AclibRefdbService {
       $container->get('request_stack'),
       $container->get('config.factory'),
       $container->get('entity_type.manager'),
+      $container->get('entity_field.manager'),
       $container->get('tempstore.private'),
       $container->get('logger.factory'),
       $container->get('messenger')
@@ -284,6 +300,178 @@ class AclibRefdbService {
       // Return redirect.
       return new TrustedRedirectResponse($external_url_value->toString());
     }
+  }
+
+  /**
+   * Fetch card patterns from main config and return as array.
+   *
+   * @param mixed $parent_label
+   *   Mostly a string for creation <optiongroup> on field config.
+   *
+   * @return array
+   *   An associative array with card patterns,
+   *   optionally nested within a parent $option_label array.
+   */
+  public function getPatterns($parent_label = NULL) {
+    $config = $this->config->get('aclib_refdb.settings');
+    $patterns_matched = $config->get('aclib_refdb_card_accept');
+    $patterns = [];
+    if (!empty($patterns_matched)) {
+      $patterns_matched_array = preg_split('/\r\n|[\r\n]/', $patterns_matched);
+      if (!empty($patterns_matched_array)) {
+        // ksm($parent_label);
+        if ($parent_label) {
+          $patterns[$parent_label] = [];
+        }
+        foreach ($patterns_matched_array as $pattern) {
+          if ($parent_label) {
+            $patterns[$parent_label][$pattern] = $pattern;
+          }
+          else {
+            $patterns[$pattern] = $pattern;
+          }
+        }
+      }
+    }
+    return $patterns;
+  }
+
+  /**
+   * Programmatically update Aclib RefDb views.
+   *
+   * @param array $patterns
+   *   Contains an array with card patterns.
+   */
+  public function updateViews(array $patterns = []) {
+
+    if (empty($patterns)) {
+      $patterns = $this->getPatterns();
+    }
+
+    foreach (static::LOGGING_VIEWS as $view_id => $data) {
+
+      $view_storage = $this->entityTypeManager->getStorage('view')->load($view_id);
+      $view = $view_storage->getExecutable();
+      $view->setDisplay($data['display_id']);
+      $style = $view->display_handler->getPlugin('style');
+
+      if (!empty($patterns)) {
+
+        $existing_patterns = $view->getHandlers('field', $data['display_id']);
+        foreach (array_keys($existing_patterns) as $existing_pattern_id) {
+          if (strpos($existing_pattern_id, 'patterns_') !== FALSE) {
+            $view->removeHandler($data['display_id'], 'field', $existing_pattern_id);
+          }
+        }
+
+        foreach ($patterns as $pattern) {
+          $alter = [
+            'text' => t('No results found or error occured'),
+          ];
+          $field_data = [
+            'id' => 'aclib_refdb_computed_field',
+            'class' => 'Drupal\aclib_refdb\Plugin\views\field\AclibRefDbComputedField',
+            'table' => 'aclib_refdb_logs',
+            'property' => $pattern,
+            'alter' => $alter,
+            'label' => $pattern,
+          ];
+          $pattern_clean = str_replace('*', '', $pattern);
+          $view->addHandler($data['display_id'], 'field', 'aclib_refdb_logs', 'computed', $field_data, 'patterns_' . $pattern_clean);
+
+          // Set sortable flag for table based display styles
+          // Does NOT work.
+          $style->options['info']['patterns_' . $pattern_clean] = [
+            'sortable' => 1,
+            'default_sort_order' => 'asc',
+            'align' => '',
+            'separator' => '',
+            'empty_column' => 0,
+            'responsive' => '',
+          ];
+        }
+
+        // Set sortable flag for table based display styles.
+        // Does NOT work.
+        $view->display_handler->options['style']['options'] = $style->options;
+
+        // Now save View entity with new handlers and options set.
+        $view->save();
+      }
+    }
+  }
+
+  /**
+   * An effort to control counting keys as dynamic.
+   *
+   * @param bool $is_form
+   *   If true we make option labels more readable.
+   *
+   * @return array
+   *   An associative array ready for <select> form element's options
+   *   in field config in a View, or as a base array for a render method.
+   */
+  public function defaultCountOptions(bool $is_form = FALSE) {
+
+    $config = $this->config->get('aclib_refdb.settings');
+    $internal = is_array($config->get('aclib_refdb_internal')) ? $config->get('aclib_refdb_internal') : [];
+    if (!empty($internal)) {
+      $base_fields = $this->entityFieldManager->getBaseFieldDefinitions('aclib_refdb_logs');
+      foreach ($internal as $base_field => $options) {
+        if (in_array($base_field, array_keys($base_fields))) {
+
+          $options_label = $is_form ? ucfirst(str_replace('_', ' ', $base_field)) : $base_field;
+          if ($options) {
+            $properties[$options_label] = [];
+            // Static map/values defined in aclib_refdb.settings.yml
+            // as"aclib_refdb_internal" property.
+            foreach ($options as $option_key => $option_label) {
+              $properties[$options_label][$option_key] = $this->t('@option_label', ['@option_label' => $option_label]);
+            }
+          }
+        }
+      }
+    }
+    return $properties;
+  }
+
+  /**
+   * Counting aclib refdb logs properties entityQuery.
+   *
+   * @param string $base_field
+   *   Base field name.
+   * @param int $nid
+   *   Reference DB node node.
+   * @param mixed $value
+   *   A counting value or ALL.
+   */
+  public function defaultCountQuery(string $base_field, int $nid, $value = NULL) {
+    $aclib_refdb_storage = $this->entityTypeManager->getStorage('aclib_refdb_logs');
+    $aclib_refdb_storage_count = $aclib_refdb_storage->getQuery()
+      ->condition('nid', $nid)
+      ->groupBy('nid');
+    // ->aggregate('nid', 'COUNT')->count();
+    // ->addTag('debug')
+    if ($value != NULL) {
+      $aclib_refdb_storage_count->condition($base_field, $value);
+    }
+    return $aclib_refdb_storage_count->count();
+  }
+
+  /**
+   * A query string exoression that should work for counting our properties.
+   *
+   * @param string $field_name
+   *   Base field name, a column in aclib_refdb_logs table.
+   * @param mixed $value
+   *   Matching field's value.
+   *
+   * @rerurn string - SQL query string
+   */
+  public function queryCountProperty(string $field_name, $value = NULL) {
+    $query_string = "(SELECT COUNT(aclib_refdb_logs." . $field_name . ") FROM aclib_refdb_logs WHERE aclib_refdb_logs.nid = node_field_data_aclib_refdb_logs_nid";
+    $query_string .= !$value ? ")" : " AND aclib_refdb_logs." . $field_name . " = '" . $value . "')";
+    return $query_string;
   }
 
 }

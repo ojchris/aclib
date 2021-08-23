@@ -1,0 +1,66 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for ACLIB Reference Database module.
+ */
+
+use Drupal\Core\Field\BaseFieldDefinition;
+
+/**
+ * Change "location" field type from integer to string.
+ *
+ * Then replace values accordingly '0' to 'internal' and '1' to 'external'.
+ */
+function aclib_refdb_update_9201() {
+
+  $entity_type_manager = \Drupal::entityTypeManager();
+  $bundle_of = 'aclib_refdb_logs';
+
+  $storage = $entity_type_manager->getStorage($bundle_of);
+  $bundle_definition = $entity_type_manager->getDefinition($bundle_of);
+  // Sometimes the primary key isn't 'id'. e.g. 'eid' or 'item_id'.
+  $id_key = $bundle_definition->getKey('id');
+  // If there is no data table defined then use the base table.
+  $table_name = $storage->getDataTable() ?: $storage->getBaseTable();
+  $database = \Drupal::database();
+  $definition_manager = \Drupal::entityDefinitionUpdateManager();
+
+  // Store the existing values.
+  $location_values = $database->select($table_name)
+    ->fields($table_name, [$id_key, 'location'])
+    ->execute()
+    ->fetchAllKeyed();
+
+  // Clear out the current values.
+  $database->update($table_name)
+    ->fields(['location' => NULL])
+    ->execute();
+
+  // Uninstall the field.
+  $field_storage_definition = $definition_manager->getFieldStorageDefinition('location', $bundle_of);
+  $definition_manager->uninstallFieldStorageDefinition($field_storage_definition);
+
+  // Create a new field definition.
+  $new_location = BaseFieldDefinition::create('string')
+    ->setName('location')
+    ->setLabel(t('Location'))
+    ->setDescription(t('Internal or external visit.'))
+    ->setReadOnly(TRUE);
+
+  // Install the new definition.
+  $definition_manager->installFieldStorageDefinition('location', $bundle_of, $bundle_of, $new_location);
+
+  // Restore the values.
+  $value_map = [
+    '0' => 'internal',
+    '1' => 'external',
+  ];
+
+  foreach ($location_values as $id => $value) {
+    $database->update($table_name)
+      ->fields(['location' => $value_map[$value]])
+      ->condition($id_key, $id)
+      ->execute();
+  }
+}

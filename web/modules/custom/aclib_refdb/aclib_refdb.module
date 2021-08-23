@@ -5,19 +5,51 @@
  * ACLIB Ref DB module.
  */
 
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_views_pre_render().
+ *
+ * Basically just group our records by NID and avoid duplicates.
+ *
+ * No aggregation and distinct settings in viwes
+ * or action on hook_views_query_alter() would help in our case.
+ */
+function aclib_refdb_views_pre_render(ViewExecutable $view) {
+
+  $logging_views = \Drupal::service('aclib_refdb.main')::LOGGING_VIEWS;
+
+  if (in_array($view->id(), array_keys($logging_views))) {
+    $results = [];
+    foreach ($view->result as $result) {
+      $nid = is_object($result->_entity) && $result->_entity->hasField('nid') && !empty($result->_entity->get('nid')->getValue()) ? $result->_entity->get('nid')->getValue()[0]['value'] : NULL;
+      if ($nid) {
+        $results[$nid] = $result;
+      }
+    }
+    $view->result = !empty($results) ? array_values($results) : $view->result;
+  }
+}
+
+// Uncomment this to add our table available for "Content" based View.
 /**
  * Implements hook_views_data_alter().
  *
- * Add our special computed field in the aclib_refdb_logs entity's table group.
+ * Add our table as a relationship to node_field_data base table.
  */
+/*
 function aclib_refdb_views_data_alter(array &$data) {
-  $data['aclib_refdb_logs']['computed'] = [
-    'title' => t('Count access records'),
-    'help' => t('A sum of records for various Ref DB fields.'),
-    'field' => [
-      // ID of the field handler to use
-      // \Drupal\aclib_refdb\Entity\AclibRefdbLogs.
-      'id' => 'aclib_refdb_computed_field',
-    ],
-  ];
+$data['node_field_data']['aclib_refdb_logs']['relationship'] = [
+'id' => 'aclib_refdb_logs',
+'title' => t('ACLIB RefDb logs'),
+'label' => t('ACLIB RefDb logs'),
+'group' => t('ACLIB'),
+'help' => t('Create a relationship from Content to ACLIB RefDb logs'),
+'base' => 'aclib_refdb_logs',
+'entity_type' => 'aclib_refdb_logs',
+'base field' => 'nid',
+'field' => 'nid',
+'id' => 'standard',
+];
 }
+ */

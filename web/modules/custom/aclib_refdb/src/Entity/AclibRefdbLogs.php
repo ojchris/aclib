@@ -21,7 +21,7 @@ use Drupal\Core\Entity\ContentEntityInterface;
  *     "uuid" = "uuid",
  *   },
  *   handlers = {
- *     "views_data" = "Drupal\views\EntityViewsData",
+ *     "views_data" = "Drupal\aclib_refdb\Plugin\views\AclibRefDbViewsData",
  *   }
  * )
  */
@@ -44,18 +44,19 @@ class AclibRefdbLogs extends ContentEntityBase implements ContentEntityInterface
       ->setDescription(t('UUID identifier for reference db logs table.'))
       ->setReadOnly(TRUE);
 
-    // The other fields.
+    // The other fields below.
     $fields['nid'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('Nid'))
       ->setDescription(t('Identifier for a related node.'))
       ->setReadOnly(TRUE);
 
-    $fields['location'] = BaseFieldDefinition::create('integer')
+    $fields['location'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Location'))
       ->setDescription(t('Internal or external visit.'))
       ->setReadOnly(TRUE);
 
     $fields['datetime'] = BaseFieldDefinition::create('datetime')
+      ->setName('datetime')
       ->setLabel(t('Date'))
       ->setDescription(t('Ref DB access date and time.'))
       ->setReadOnly(TRUE);

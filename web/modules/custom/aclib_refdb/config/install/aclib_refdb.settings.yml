@@ -2,6 +2,13 @@ aclib_refdb_internalips: null
 aclib_refdb_hqips: null
 aclib_refdb_failurenodeid: null
 aclib_refdb_cardformtext: null
-aclib_refdb_card_accept: "2205400*******\r\n3305400*******"
+aclib_refdb_card_accept: "2205400*******\r\n3305400*******\r\n7205400*******"
 aclib_refdb_debug: null
 aclib_refdb_debug_ip: null
+# Note that below are the values for internal usage (in code). 
+aclib_refdb_internal:
+  location:
+    internal: 'Internal'
+    external: 'External'
+    overall: 'Overall'
+  pattern_matched: null

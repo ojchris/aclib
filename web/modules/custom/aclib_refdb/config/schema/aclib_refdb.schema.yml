@@ -23,3 +23,13 @@ aclib_refdb.settings:
     aclib_refdb_debug_ip:
       type: string
       label: 'Debug IP address'
+    aclib_refdb_location:
+      type: mapping
+      label: 'Location'
+      mapping:
+        internal:
+          type: string
+          label: 'Internal'
+        external:
+          type: string
+          label: 'External'

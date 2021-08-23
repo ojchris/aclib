@@ -3,7 +3,10 @@
 namespace Drupal\aclib_refdb\Plugin\views\field;
 
 use Drupal\Core\Form\FormStateInterface;
+
 use Drupal\views\Plugin\views\field\FieldPluginBase;
+use Drupal\views\ViewExecutable;
+use Drupal\views\Plugin\views\display\DisplayPluginBase;
 use Drupal\views\ResultRow;
 
 /**
@@ -15,39 +18,29 @@ use Drupal\views\ResultRow;
  */
 class AclibRefDbComputedField extends FieldPluginBase {
 
-  const PROPERTIES = [
-    'location'  => [
-      'internal' => [
-        'key' => 'internal',
-        'value' => '0',
-        'label' => 'Internal access count',
-      ],
-      'external' => [
-        'key' => 'external',
-        'value' => '1',
-        'label' => 'External access count',
-      ],
-      'overall' => [
-        'key' => 'overall',
-        'value' => 'all',
-        'label' => 'Overall access count',
-      ],
-    ],
-    'pattern_matched' => [
-      'default' => [
-        'key' => 'pattern',
-        'label' => 'Pattern count',
-        'value' => '1',
-      ],
-    ],
-  ];
+  /**
+   * Our own service instance.
+   *
+   * @var \Drupal\aclib_refdb\AclibRefdbService
+   */
+  protected $aclibService;
 
   /**
-   * Leave empty to avoid a query on this field.
+   * {@inheritdoc}
+   */
+  public function init(ViewExecutable $view, DisplayPluginBase $display, array &$options = NULL) {
+    parent::init($view, $display, $options);
+    $this->aclibService = \Drupal::service('aclib_refdb.main');
+  }
+
+  /**
+   * Leave empty to avoid a query on this field that is fully computed.
    *
    * @{inheritdoc}
    */
-  public function query() {}
+  public function query() {
+    $this->addAdditionalFields('nid');
+  }
 
   /**
    * Define the available options.
@@ -56,7 +49,7 @@ class AclibRefDbComputedField extends FieldPluginBase {
    */
   protected function defineOptions() {
     $options = parent::defineOptions();
-    $options['property'] = ['default' => 'internal'];
+    $options['property'] = ['default' => NULL];
     return $options;
   }
 
@@ -67,19 +60,15 @@ class AclibRefDbComputedField extends FieldPluginBase {
    */
   public function buildOptionsForm(&$form, FormStateInterface $form_state) {
 
-    // Prepare options for property type dropdown.
-    $properties = [];
-    foreach (static::PROPERTIES as $base_field => $property) {
-      foreach ($property as $property_value => $property_data) {
-        $properties[$property_value] = $this->t('@label', ['@label' => $property_data['label']]);
-      }
-    }
+    $options = $this->aclibService->defaultCountOptions(TRUE);
+    $patterns = $this->aclibService->getPatterns('Pattern matched');
 
     $form['property'] = [
-      '#title' => $this->t('Choose property'),
+      '#title' => $this->t('Counting property'),
       '#type' => 'select',
       '#default_value' => $this->options['property'],
-      '#options' => $properties,
+      '#options' => $options + $patterns,
+      '#empty_option' => $this->t('- Select -'),
     ];
     parent::buildOptionsForm($form, $form_state);
   }
@@ -91,23 +80,60 @@ class AclibRefDbComputedField extends FieldPluginBase {
    */
   public function render(ResultRow $values) {
 
-    $aclib_refdb_storage = \Drupal::service('entity_type.manager')->getStorage('aclib_refdb_logs');
-    foreach (static::PROPERTIES as $base_field => $property) {
-      foreach ($property as $property_value => $property_data) {
-        if ($this->options['property'] == $property_value) {
-          switch ($base_field) {
+    $nid = is_object($values->_entity) && $values->_entity->hasField('nid') && !empty($values->_entity->get('nid')->getValue()) ? $values->_entity->get('nid')->getValue()[0]['value'] : NULL;
+    if (!$nid) {
+      return $this->t('Please add NID field for aclib_refdb_logs');
+    }
 
-            case 'location':
-              $aclib_refdb_storage_count = is_numeric($property_data['value']) ? $aclib_refdb_storage->getQuery()->condition($base_field, $property_data['value'])->count() : $aclib_refdb_storage->getQuery()->count();
-              break;
+    $query_count = NULL;
+    $default_count_options = $this->aclibService->defaultCountOptions();
+    $patterns = $this->aclibService->getPatterns('pattern_matched');
+    $count_data = $default_count_options + $patterns;
 
-            case 'pattern_matched':
-              $aclib_refdb_storage_count = $aclib_refdb_storage->getQuery()->condition($base_field, $property_data['value'])->count();
-              break;
-          }
-          return $aclib_refdb_storage_count->execute();
+    foreach ($count_data as $base_field => $options) {
+      foreach ($options as $option_key => $option_label) {
+        if ($this->options['property'] == $option_key) {
+          $value = $option_key == 'overall' ? NULL : $option_key;
+          $query_count = $this->aclibService->defaultCountQuery($base_field, $nid, $value);
         }
       }
+    }
+    return $query_count ? $query_count->execute() : $this->t('No results found || Error');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function clickSort($order) {
+    if (isset($this->field_alias) && isset($this->options['property'])) {
+
+      $params = $this->options['group_type'] != 'group' ? ['function' => $this->options['group_type']] : [];
+
+      // Set first logic for Pattern matched type of fields, a special case.
+      if (strpos($this->options['property'], '*') !== FALSE) {
+        $patterns = $this->aclibService->getPatterns();
+        if (!empty($patterns)) {
+          foreach ($patterns as $pattern) {
+            if ($pattern == $this->options['property']) {
+              $formula = $this->aclibService->queryCountProperty('pattern_matched', $pattern);
+              $pattern_clean = 'patterns_' . str_replace('*', '', $pattern);
+              $this->query->addOrderBy(NULL, $formula, $order, $pattern_clean, $params);
+            }
+          }
+        }
+      }
+      // Here are the other "standard" fields, like location.
+      else {
+        $internals = $this->aclibService->defaultCountOptions();
+        foreach ($internals as $property_key => $property) {
+          if (in_array($this->options['property'], array_keys($property))) {
+            $value = $this->options['property'] == 'overall' ? NULL : $this->options['property'];
+            $formula = $this->aclibService->queryCountProperty($property_key, $value);
+            $this->query->addOrderBy(NULL, $formula, $order, $this->options['property'], $params);
+          }
+        }
+      }
+      // $this->query->addTag('debug');
     }
   }
 

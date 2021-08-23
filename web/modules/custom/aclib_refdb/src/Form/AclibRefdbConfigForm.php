@@ -114,12 +114,21 @@ class AclibRefdbConfigForm extends ConfigFormBase {
         $config->set($value_key, $value);
       }
     }
-    $config->save();
 
-    // If Debug is checked we clear previous session,
-    // to start testing all over.
-    if ($form_state->getValue('aclib_refdb_debug')) {
-      \Drupal::service('aclib_refdb.main')->sessionDelete();
+    if ($config->save()) {
+
+      // Automatically update specified Aclib RefDb views
+      // removes current card pattern counting fields
+      // and adds a new ones based on 'aclib_refdb_card_accept' values.
+      \Drupal::service('aclib_refdb.main')->updateViews();
+
+      // If Debug is checked we clear previous session,
+      // to start testing all over.
+      if ($form_state->getValue('aclib_refdb_debug')) {
+        \Drupal::service('aclib_refdb.main')->sessionDelete();
+        // Clear all cache.
+        drupal_flush_all_caches();
+      }
     }
 
     parent::submitForm($form, $form_state);

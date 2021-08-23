@@ -5,4 +5,5 @@ type: module
 core_version_requirement: ^8.8 || ^9
 configure: aclib_refdb.config_form
 dependencies:
-  - core:views
+  - drupal:views
+  - drupal:datetime

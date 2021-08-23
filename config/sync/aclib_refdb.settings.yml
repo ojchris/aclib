@@ -3,7 +3,13 @@ aclib_refdb_hqips: "192.42.92.98\r\n192.42.92.99"
 aclib_refdb_failurenodeid: '42'
 aclib_refdb_cardformtext: 'Please enter your 14-digit card number. Need a library card? See <a href="http://www.aclib.us/cards">www.aclib.us/cards</a> for info.'
 aclib_refdb_card_accept: "2205400*******\r\n5205400*******\r\n7205400*******"
-aclib_refdb_debug: 1
-aclib_refdb_debug_ip: '1'
+aclib_refdb_debug: 0
+aclib_refdb_debug_ip: ''
+aclib_refdb_internal:
+  location:
+    internal: Internal
+    external: External
+    overall: Overall
+  pattern_matched: null
 _core:
   default_config_hash: LjELcK2eMZARzx9CBETvU6iCzbonEsa965liCaib7Mg
