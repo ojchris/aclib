@@ -141,7 +141,7 @@ class AclibRefDbCardForm extends FormBase {
       $data = [
         'nid' => $node->id(),
         'datetime' => $this->aclibService->prepareDate(),
-        'location' => 1,
+        'location' => 'external',
         'remote_addr' => $this->aclibService->requestStack->getClientIp(),
         'pattern_matched' => $form_state->getValue('aclid_refdb_pattern_matched'),
       ];

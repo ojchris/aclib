@@ -264,7 +264,7 @@ class AclibRefdbService {
     // Determine if the DB requires sign on and handle appropriately.
     if (isset($sign_on['value']) && ($sign_on['value'] != 1)) {
       if ($is_user_on_site && $internal_url_value) {
-        $data['location'] = 0;
+        $data['location'] = 'internal';
         // Create instance of our custom logging entity.
         $this->logAccess($data);
         // Return redirect.
@@ -273,7 +273,7 @@ class AclibRefdbService {
       else {
         if ($external_url_value) {
           // Create instance of our custom logging entity.
-          $data['location'] = 1;
+          $data['location'] = 'external';
           $this->logAccess($data);
           // Return redirect.
           return new TrustedRedirectResponse($external_url_value->toString());
@@ -283,7 +283,7 @@ class AclibRefdbService {
 
     // If the user is on_site, send them on their way.
     if ($is_user_on_site && $internal_url_value) {
-      $data['location'] = 0;
+      $data['location'] = 'internal';
       // Create instance of our custom logging entity.
       $this->logAccess($data);
       // Return redirect.
@@ -295,7 +295,7 @@ class AclibRefdbService {
     // their cookie is still valid, otherwise give them the library card form.
     if (isset($session['cardVerified']) && $session['cardVerified'] > 0 && $external_url_value) {
       // Create instance of our custom logging entity.
-      $data['location'] = 1;
+      $data['location'] = 'external';
       $this->logAccess($data);
       // Return redirect.
       return new TrustedRedirectResponse($external_url_value->toString());
@@ -469,7 +469,7 @@ class AclibRefdbService {
    * @rerurn string - SQL query string
    */
   public function queryCountProperty(string $field_name, $value = NULL) {
-    $query_string = "(SELECT COUNT(aclib_refdb_logs." . $field_name . ") FROM aclib_refdb_logs WHERE aclib_refdb_logs.nid = node_field_data_aclib_refdb_logs_nid";
+    $query_string = "(SELECT COUNT(aclib_refdb_logs." . $field_name . ") FROM aclib_refdb_logs WHERE aclib_refdb_logs.nid = node_field_data_aclib_refdb_logs.nid";
     $query_string .= !$value ? ")" : " AND aclib_refdb_logs." . $field_name . " = '" . $value . "')";
     return $query_string;
   }

@@ -5,32 +5,6 @@
  * ACLIB Ref DB module.
  */
 
-use Drupal\views\ViewExecutable;
-
-/**
- * Implements hook_views_pre_render().
- *
- * Basically just group our records by NID and avoid duplicates.
- *
- * No aggregation and distinct settings in viwes
- * or action on hook_views_query_alter() would help in our case.
- */
-function aclib_refdb_views_pre_render(ViewExecutable $view) {
-
-  $logging_views = \Drupal::service('aclib_refdb.main')::LOGGING_VIEWS;
-
-  if (in_array($view->id(), array_keys($logging_views))) {
-    $results = [];
-    foreach ($view->result as $result) {
-      $nid = is_object($result->_entity) && $result->_entity->hasField('nid') && !empty($result->_entity->get('nid')->getValue()) ? $result->_entity->get('nid')->getValue()[0]['value'] : NULL;
-      if ($nid) {
-        $results[$nid] = $result;
-      }
-    }
-    $view->result = !empty($results) ? array_values($results) : $view->result;
-  }
-}
-
 // Uncomment this to add our table available for "Content" based View.
 /**
  * Implements hook_views_data_alter().

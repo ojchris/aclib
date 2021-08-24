@@ -94,6 +94,7 @@ display:
             patterns_2205400: patterns_2205400
             patterns_5205400: patterns_5205400
             patterns_7205400: patterns_7205400
+            datetime: datetime
           info:
             title:
               sortable: 1
@@ -144,7 +145,14 @@ display:
               separator: ''
               empty_column: 0
               responsive: ''
-          default: title
+            datetime:
+              sortable: 0
+              default_sort_order: desc
+              align: ''
+              separator: ''
+              empty_column: 0
+              responsive: ''
+          default: '-1'
           empty_table: 0
           responsive: 0
           bootstrap_styles:
@@ -430,22 +438,22 @@ display:
           admin_label: ''
           operator: between
           value:
-            min: ''
-            max: ''
-            value: ''
-            type: date
+            min: '-1 month'
+            max: now
+            value: now
+            type: offset
           group: 1
           exposed: true
           expose:
             operator_id: datetime_op
             label: 'Filter by dates'
-            description: 'Select start and end date. Results are all the entries with dates in-between.'
+            description: 'Select start and end date. End date should be the day after you wish to include.  For example the month of January should be 1/1/2021 to 2/1/2021.'
             use_operator: false
             operator: datetime_op
             operator_limit_selection: false
             operator_list: {  }
             identifier: datetime
-            required: false
+            required: true
             remember: false
             multiple: false
             remember_roles:
@@ -479,7 +487,21 @@ display:
           entity_type: aclib_refdb_logs
           entity_field: datetime
           plugin_id: datetime
-      sorts: {  }
+      sorts:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: nid
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
       title: 'ACLIB Ref DB'
       header: {  }
       footer: {  }
@@ -499,7 +521,7 @@ display:
       arguments: {  }
       display_extenders: {  }
       use_ajax: true
-      group_by: false
+      group_by: true
     cache_metadata:
       max-age: -1
       contexts:
