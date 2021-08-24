@@ -20,6 +20,6 @@ entity_settings:
     auto_create_bundle: responsive_table
 queue_settings:
   min_size: 1
-  max_size: 1
+  max_size: 3
   act_as_queue: true
   reverse: false
