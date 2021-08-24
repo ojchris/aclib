@@ -8,7 +8,7 @@ dependencies:
     - image.style.thumbnail
     - media.type.teaser_image
   module:
-    - image
+    - image_widget_crop
 id: media.teaser_image.media_library
 targetEntityType: media
 bundle: teaser_image
@@ -17,10 +17,17 @@ content:
   field_media_image:
     weight: 5
     settings:
-      progress_indicator: throbber
+      show_default_crop: true
+      warn_multiple_usages: true
       preview_image_style: thumbnail
+      crop_preview_image_style: crop_thumbnail
+      progress_indicator: throbber
+      crop_list:
+        - teaser_image_crop
+      crop_types_required: {  }
+      show_crop_area: false
     third_party_settings: {  }
-    type: image_image
+    type: image_widget_crop
     region: content
   name:
     type: string_textfield

@@ -1,15 +1,25 @@
 uuid: 3721f010-453e-4d72-a59c-24dc6394f7a8
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - crop.type.image_crop
+  module:
+    - crop
 name: quarter_width_embedded
 label: 'Quarter-width embedded'
 effects:
   e93b1618-e6fd-4e5c-8601-4e388de27745:
     uuid: e93b1618-e6fd-4e5c-8601-4e388de27745
     id: image_scale
-    weight: 1
+    weight: -9
     data:
       width: 175
       height: null
       upscale: false
+  541abacf-1e45-4a2b-a69e-27112d6717db:
+    uuid: 541abacf-1e45-4a2b-a69e-27112d6717db
+    id: crop_crop
+    weight: -10
+    data:
+      crop_type: image_crop

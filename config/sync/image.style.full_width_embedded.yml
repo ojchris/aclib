@@ -1,15 +1,25 @@
 uuid: b3771364-a457-485d-80a3-aae3472393f0
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - crop.type.image_crop
+  module:
+    - crop
 name: full_width_embedded
 label: 'Full-width embedded'
 effects:
   b2c21b1a-32e5-4ba8-8175-1c7197833130:
     uuid: b2c21b1a-32e5-4ba8-8175-1c7197833130
     id: image_scale
-    weight: 1
+    weight: -9
     data:
       width: 1280
       height: null
       upscale: false
+  eb1366cb-6c8f-4175-859f-c669965b3305:
+    uuid: eb1366cb-6c8f-4175-859f-c669965b3305
+    id: crop_crop
+    weight: -10
+    data:
+      crop_type: image_crop
