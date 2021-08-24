@@ -6,4 +6,9 @@ id: website_contributor
 label: 'Website Contributor'
 weight: 1
 is_admin: null
-permissions: {  }
+permissions:
+  - 'create custom_page content'
+  - 'delete own custom_page content'
+  - 'delete own page_ content'
+  - 'edit own custom_page content'
+  - 'edit own page_ content'
