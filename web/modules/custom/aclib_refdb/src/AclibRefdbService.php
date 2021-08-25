@@ -221,15 +221,15 @@ class AclibRefdbService {
 
     // Check to make sure the nid passed in belongs to REFDB_BUNDLE.
     if ($node->bundle() != static::REFDB_BUNDLE) {
-      $front_page = Url::fromRoute('<front>')->toString();
-      return new TrustedRedirectResponse($front_page);
+      $front_page = Url::fromRoute('<front>');
+      return $this->doRedirect($front_page);
     }
 
     // React on too many wrong entries by user.
     if (isset($session['acld_refdb_cardtries']) && $session['acld_refdb_cardtries'] > 3) {
       $nid = $config->get('aclib_refdb_failurenodeid');
       $fallback_node = Url::fromRoute('entity.node.canonical', ['node' => $nid]);
-      return new TrustedRedirectResponse($fallback_node->toString());
+      return $this->doRedirect($fallback_node);
     }
 
     // If debugging is on use that ip, otherwise get current user's ip.
@@ -258,7 +258,7 @@ class AclibRefdbService {
 
     // Send off-site users to the external URL for HQ-only DBs.
     if (!$is_user_on_site && $hq_only_field_value && $external_url_value) {
-      return new TrustedRedirectResponse($external_url_value->toString());
+      return $this->doRedirect($external_url_value);
     }
 
     // Determine if the DB requires sign on and handle appropriately.
@@ -268,7 +268,7 @@ class AclibRefdbService {
         // Create instance of our custom logging entity.
         $this->logAccess($data);
         // Return redirect.
-        return new TrustedRedirectResponse($internal_url_value->toString());
+        return $this->doRedirect($internal_url_value);
       }
       else {
         if ($external_url_value) {
@@ -276,7 +276,7 @@ class AclibRefdbService {
           $data['location'] = 'external';
           $this->logAccess($data);
           // Return redirect.
-          return new TrustedRedirectResponse($external_url_value->toString());
+          return $this->doRedirect($external_url_value);
         }
       }
     }
@@ -287,7 +287,7 @@ class AclibRefdbService {
       // Create instance of our custom logging entity.
       $this->logAccess($data);
       // Return redirect.
-      return new TrustedRedirectResponse($internal_url_value->toString());
+      return $this->doRedirect($internal_url_value);
     }
 
     // See if they have already been verified previously
@@ -297,9 +297,34 @@ class AclibRefdbService {
       // Create instance of our custom logging entity.
       $data['location'] = 'external';
       $this->logAccess($data);
+
       // Return redirect.
-      return new TrustedRedirectResponse($external_url_value->toString());
+      return $this->doRedirect($external_url_value);
     }
+  }
+
+  /**
+   * Invalidate Drupal cache for card form and redirections.
+   *
+   * @param \Drupal\Core\Url $url
+   *   Internal or External redirection URL object.
+   * @param bool $cache
+   *   Set to TRUE to involve Drupal's cache.
+   *
+   * @return \Drupal\Core\Routing\TrustedRedirectResponse
+   *   TrustedRedirectResponse object to execure actual redirection.
+   */
+  public function doRedirect($url, bool $cache = FALSE) {
+
+    // Define our redirect.
+    $response = new TrustedRedirectResponse($url->toString());
+
+    // Take care of some cache here.
+    if (!$cache) {
+      $metadata = $response->getCacheableMetadata();
+      $metadata->setCacheMaxAge(0);
+    }
+    return $response;
   }
 
   /**
