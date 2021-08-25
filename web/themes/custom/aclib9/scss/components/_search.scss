@@ -16,6 +16,7 @@
     border: none;
     .nav-link {
       border: 1px solid $white;
+      padding: 0 1em;
       &.text-info {
         color: $white !important;
         &.active {

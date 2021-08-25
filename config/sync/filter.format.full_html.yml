@@ -27,12 +27,6 @@ filters:
     status: true
     weight: 9
     settings: {  }
-  filter_htmlcorrector:
-    id: filter_htmlcorrector
-    provider: filter
-    status: true
-    weight: 10
-    settings: {  }
   editor_file_reference:
     id: editor_file_reference
     provider: editor
@@ -68,3 +62,9 @@ filters:
         full_width: full_width
         half_width: half_width
         quarter_width: quarter_width
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: true
+    weight: 10
+    settings: {  }

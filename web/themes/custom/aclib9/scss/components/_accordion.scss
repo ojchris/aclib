@@ -1,0 +1,33 @@
+.ckeditor-accordion-container {
+  > dl {
+    border-color: $accent-shade;
+    dt {
+      &.active {
+        a {
+          background-color: $white;
+          color: $accent-shade;
+          text-decoration: none;
+          transition: none;
+          > .ckeditor-accordion-toggle:before,
+          > .ckeditor-accordion-toggle:after, {
+            background-color: $accent-shade;
+            transition: none;
+          }
+        }
+      }
+      a {
+        background-color: $accent-shade;
+        border-color: $accent-shade;
+        text-decoration: none;
+        &:hover {
+          background-color: $white;
+          color: $accent-shade;
+          > .ckeditor-accordion-toggle:before,
+          > .ckeditor-accordion-toggle:after, {
+            background-color: $accent-shade;
+          }
+        }
+      }
+    }
+  }
+}

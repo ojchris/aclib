@@ -17,11 +17,11 @@ effects:
     weight: 2
     data:
       crop_type: teaser_image_crop
-  badf1dc1-f632-439a-aaa6-191b8d948ba7:
-    uuid: badf1dc1-f632-439a-aaa6-191b8d948ba7
-    id: image_scale_and_crop
+  70324e67-fe95-4fd1-9a42-eda31765759a:
+    uuid: 70324e67-fe95-4fd1-9a42-eda31765759a
+    id: image_scale
     weight: 3
     data:
       width: 300
       height: 200
-      anchor: center-center
+      upscale: false

@@ -1,30 +1,25 @@
-uuid: eb1951db-5647-44d2-99a2-01c53bfc8986
+uuid: c90c5b26-0181-4be8-8a9e-58333b7cca4f
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: top_home_page_story
-label: 'Top home page story'
+id: services_teasers
+label: 'Services teasers'
 handler: simple
 handler_configuration: {  }
 entity_settings:
   target_type: node
   handler: 'default:node'
   handler_settings:
-    target_bundles:
-      blog: blog
-      custom_page: custom_page
-      landing_page: landing_page
-      page_: page_
-      press_release: press_release
+    target_bundles: null
     sort:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: blog
+    auto_create_bundle: ''
 queue_settings:
-  min_size: 1
-  max_size: 3
+  min_size: 0
+  max_size: 8
   act_as_queue: true
   reverse: false
