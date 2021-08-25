@@ -8,9 +8,11 @@ dependencies:
     - field.field.node.landing_page.field_tags
     - field.field.node.landing_page.field_teaser
     - field.field.node.landing_page.field_teaser_image
+    - field.field.node.landing_page.layout_builder__layout
     - node.type.landing_page
   module:
     - layout_builder
+    - layout_discovery
     - text
     - user
 third_party_settings:

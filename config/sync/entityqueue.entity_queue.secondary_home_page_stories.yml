@@ -12,7 +12,12 @@ entity_settings:
   target_type: node
   handler: 'default:node'
   handler_settings:
-    target_bundles: null
+    target_bundles:
+      blog: blog
+      custom_page: custom_page
+      landing_page: landing_page
+      page_: page_
+      press_release: press_release
     sort:
       field: _none
       direction: ASC
