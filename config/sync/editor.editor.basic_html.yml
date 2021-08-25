@@ -41,6 +41,7 @@ settings:
           items:
             - Table
             - Accordion
+            - Styles
         -
           name: Tools
           items:
@@ -53,7 +54,7 @@ settings:
             - Source
   plugins:
     stylescombo:
-      styles: ''
+      styles: 'p.clear-float|Clear floats'
     language:
       language_list: un
 image_upload:
