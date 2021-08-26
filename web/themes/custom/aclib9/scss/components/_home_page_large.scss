@@ -44,6 +44,8 @@
       }
       .field--name-title {
         font-size: 1.4em;
+        padding-bottom: 0.25em;
+        display: block;
         @include media-breakpoint-up(lg) {
           font-size: 2em;
         }
