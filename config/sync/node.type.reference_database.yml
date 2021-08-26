@@ -28,4 +28,4 @@ description: 'Use this to create a new link to a Reference Database for ACLD. Th
 help: ''
 new_revision: false
 preview_mode: 1
-display_submitted: true
+display_submitted: false
