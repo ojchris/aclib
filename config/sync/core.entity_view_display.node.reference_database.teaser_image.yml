@@ -1,9 +1,9 @@
-uuid: 4f3731a3-6c77-420b-9c9c-6c8c1515e21f
+uuid: f54b2bd1-7460-4b75-8f5c-9424eb262c1d
 langcode: en
-status: false
+status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.teaser_image
     - field.field.node.reference_database.body
     - field.field.node.reference_database.field_external_url
     - field.field.node.reference_database.field_home_page_image
@@ -16,27 +16,35 @@ dependencies:
     - field.field.node.reference_database.field_teaser_image
     - node.type.reference_database
   module:
-    - text
+    - layout_builder
     - user
-id: node.reference_database.teaser
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: node.reference_database.teaser_image
 targetEntityType: node
 bundle: reference_database
-mode: teaser
+mode: teaser_image
 content:
-  body:
-    type: text_summary_or_trimmed
+  field_teaser:
+    type: basic_string
+    weight: 1
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_teaser_image:
+    type: entity_reference_entity_view
     weight: 0
     region: content
     label: hidden
     settings:
-      trim_length: 600
-    third_party_settings: {  }
-  links:
-    weight: 1
-    region: content
-    settings: {  }
+      view_mode: teaser
+      link: false
     third_party_settings: {  }
 hidden:
+  body: true
   field_external_url: true
   field_home_page_image: true
   field_hq_only: true
@@ -44,5 +52,4 @@ hidden:
   field_internal_url: true
   field_require_signon: true
   field_tags: true
-  field_teaser: true
-  field_teaser_image: true
+  links: true

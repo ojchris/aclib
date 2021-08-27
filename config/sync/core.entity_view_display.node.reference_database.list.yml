@@ -1,9 +1,9 @@
-uuid: 4f3731a3-6c77-420b-9c9c-6c8c1515e21f
+uuid: 93198835-8f8c-42c2-b727-871c88c64148
 langcode: en
-status: false
+status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.list
     - field.field.node.reference_database.body
     - field.field.node.reference_database.field_external_url
     - field.field.node.reference_database.field_home_page_image
@@ -16,12 +16,17 @@ dependencies:
     - field.field.node.reference_database.field_teaser_image
     - node.type.reference_database
   module:
+    - layout_builder
     - text
     - user
-id: node.reference_database.teaser
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: node.reference_database.list
 targetEntityType: node
 bundle: reference_database
-mode: teaser
+mode: list
 content:
   body:
     type: text_summary_or_trimmed
@@ -30,11 +35,6 @@ content:
     label: hidden
     settings:
       trim_length: 600
-    third_party_settings: {  }
-  links:
-    weight: 1
-    region: content
-    settings: {  }
     third_party_settings: {  }
 hidden:
   field_external_url: true
@@ -46,3 +46,4 @@ hidden:
   field_tags: true
   field_teaser: true
   field_teaser_image: true
+  links: true

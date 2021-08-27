@@ -1,0 +1,26 @@
+uuid: 8a0614c7-c569-4952-b6fe-3ebdf6c8872f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: featured_refdb
+label: 'Featured RefDb'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      reference_database: reference_database
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+queue_settings:
+  min_size: 1
+  max_size: 1
+  act_as_queue: true
+  reverse: false

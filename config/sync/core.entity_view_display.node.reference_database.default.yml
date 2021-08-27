@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.basic
     - field.field.node.reference_database.body
     - field.field.node.reference_database.field_external_url
     - field.field.node.reference_database.field_home_page_image
@@ -14,33 +15,127 @@ dependencies:
     - field.field.node.reference_database.field_teaser
     - field.field.node.reference_database.field_teaser_image
     - node.type.reference_database
+    - views.view.aclib_refdb_you_may_also_like
   module:
+    - layout_builder
+    - layout_discovery
     - text
     - user
+    - views
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          798ae643-19cc-423a-8298-c2848a8620aa:
+            uuid: 798ae643-19cc-423a-8298-c2848a8620aa
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:reference_database:field_teaser_image'
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: quarter_width
+                  link: false
+                third_party_settings: {  }
+            additional: {  }
+            weight: 0
+          93a0eece-40f4-4eb6-9d41-818c5bd477f3:
+            uuid: 93a0eece-40f4-4eb6-9d41-818c5bd477f3
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:reference_database:body'
+              formatter:
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+                type: text_default
+            additional: {  }
+            weight: 1
+          bc0e28c2-41fa-4646-ad2c-152baf694d10:
+            uuid: bc0e28c2-41fa-4646-ad2c-152baf694d10
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:reference_database:field_tags'
+              formatter:
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+                type: entity_reference_label
+            additional: {  }
+            weight: 2
+          b34eac60-b5f4-45d8-99d3-b6819fb6b112:
+            uuid: b34eac60-b5f4-45d8-99d3-b6819fb6b112
+            region: content
+            configuration:
+              id: 'views_block:aclib_refdb_you_may_also_like-block_1'
+              label: 'You may also like'
+              provider: views
+              label_display: visible
+              views_label: 'You may also like'
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 4
+          e8d7c37a-df5a-423b-ba99-3bea386c3f44:
+            uuid: e8d7c37a-df5a-423b-ba99-3bea386c3f44
+            region: content
+            configuration:
+              id: 'inline_block:basic'
+              label: 'View all eSources'
+              provider: layout_builder
+              label_display: '0'
+              view_mode: full
+              block_revision_id: 10
+              block_serialized: null
+              context_mapping: {  }
+            additional: {  }
+            weight: 3
+        third_party_settings: {  }
 id: node.reference_database.default
 targetEntityType: node
 bundle: reference_database
 mode: default
 content:
   body:
-    weight: 0
+    weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_tags:
-    weight: 1
+    weight: 2
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  links:
-    weight: 2
+  field_teaser_image:
+    type: entity_reference_entity_view
+    weight: 0
     region: content
-    settings: {  }
+    label: hidden
+    settings:
+      view_mode: quarter_width
+      link: false
     third_party_settings: {  }
 hidden:
   field_external_url: true
@@ -50,4 +145,4 @@ hidden:
   field_internal_url: true
   field_require_signon: true
   field_teaser: true
-  field_teaser_image: true
+  links: true
