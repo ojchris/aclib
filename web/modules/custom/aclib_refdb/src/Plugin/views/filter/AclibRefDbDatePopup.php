@@ -49,7 +49,7 @@ class AclibRefDbDatePopup extends Date {
         $this->buildDateProperties($element['max'], $this->value['max'], 'End date');
 
         if (isset($element['value'])) {
-          $this->buildDateProperties($element['value'], $element['value']['value']);
+          $this->buildDateProperties($element['value'], $this->value['value']);
         }
       }
       else {
