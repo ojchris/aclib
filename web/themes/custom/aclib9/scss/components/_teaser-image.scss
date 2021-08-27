@@ -1,34 +1,34 @@
-.aclib-teaser-images {
+.aclib-teaser-images { // Use this class on Views.
   .col-md-3 {
     display: flex;
-    .node--view-mode-teaser-image {
-      padding: 1em;
-      margin-bottom: 1.5em;
-      box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1), -3px -3px 3px 3px rgba(0, 0, 0, 0.1), 3px -3px 3px 3px rgba(0, 0, 0, 0.1), -3px 3px 3px 3px rgba(0, 0, 0, 0.1);
-      .field--name-field-teaser-image {
+  }
+  .node--view-mode-teaser-image {
+    padding: 1em;
+    margin-bottom: 1.5em;
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1), -3px -3px 3px 3px rgba(0, 0, 0, 0.1), 3px -3px 3px 3px rgba(0, 0, 0, 0.1), -3px 3px 3px 3px rgba(0, 0, 0, 0.1);
+    .field--name-field-teaser-image {
+      margin: 0;
+      width: 100%;
+      height: auto;
+      background-color: $white;
+      .field--type-image {
+        float: none;
         margin: 0;
-        width: 100%;
-        height: auto;
-        background-color: $white;
-        .field--type-image {
-          float: none;
+        img {
+          width: 100%;
+          height: auto;
           margin: 0;
-          img {
-            width: 100%;
-            height: auto;
-            margin: 0;
-          }
         }
       }
-      .field--name-title {
-        display: block;
+    }
+    .field--name-title {
+      display: block;
+      font-size: 1.2em;
+      text-align: center;
+      font-weight: bold;
+      padding: 0.75em;
+      @include media-breakpoint-up(lg) {
         font-size: 1.2em;
-        text-align: center;
-        font-weight: bold;
-        padding: 0.75em;
-        @include media-breakpoint-up(lg) {
-          font-size: 1.2em;
-        }
       }
     }
   }
