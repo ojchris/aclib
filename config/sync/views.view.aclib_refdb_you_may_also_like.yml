@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser_image
+    - core.entity_view_mode.node.teaser
     - node.type.reference_database
     - taxonomy.vocabulary.tags
   module:
@@ -69,7 +69,7 @@ display:
         type: 'entity:node'
         options:
           relationship: none
-          view_mode: teaser_image
+          view_mode: teaser
       fields:
         title:
           id: title

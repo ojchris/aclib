@@ -27,13 +27,6 @@ targetEntityType: node
 bundle: reference_database
 mode: teaser_image
 content:
-  field_teaser:
-    type: basic_string
-    weight: 1
-    region: content
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
   field_teaser_image:
     type: entity_reference_entity_view
     weight: 0
@@ -52,4 +45,5 @@ hidden:
   field_internal_url: true
   field_require_signon: true
   field_tags: true
+  field_teaser: true
   links: true

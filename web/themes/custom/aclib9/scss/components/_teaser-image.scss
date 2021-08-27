@@ -2,7 +2,8 @@
   .col-md-3 {
     display: flex;
   }
-  .node--view-mode-teaser-image {
+  .node--view-mode-teaser-image,
+  .node--view-mode-teaser {
     padding: 1em;
     margin-bottom: 1.5em;
     box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1), -3px -3px 3px 3px rgba(0, 0, 0, 0.1), 3px -3px 3px 3px rgba(0, 0, 0, 0.1), -3px 3px 3px 3px rgba(0, 0, 0, 0.1);
@@ -30,6 +31,9 @@
       @include media-breakpoint-up(lg) {
         font-size: 1.2em;
       }
+    }
+    .field--name-field-teaser {
+      text-align: center;
     }
   }
 }

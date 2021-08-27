@@ -3,15 +3,15 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser_image
+    - core.entity_view_mode.node.teaser
     - node.type.blog
   module:
     - node
     - user
 id: news
-label: News
+label: 'ACLIB News'
 module: views
-description: 'Provides the large home page content via the Top home page story queue.'
+description: 'Provides recent blog posts.'
 tag: ''
 base_table: node_field_data
 base_field: nid
@@ -58,7 +58,7 @@ display:
         type: 'entity:node'
         options:
           relationship: none
-          view_mode: teaser_image
+          view_mode: teaser
       fields:
         title:
           id: title
@@ -202,6 +202,7 @@ display:
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
+      css_class: aclib-teaser-images
     cache_metadata:
       max-age: -1
       contexts:

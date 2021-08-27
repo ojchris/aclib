@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser_image
+    - core.entity_view_mode.node.teaser
     - entityqueue.entity_queue.featured_refdb
   module:
     - entityqueue
@@ -59,7 +59,7 @@ display:
         type: 'entity:node'
         options:
           relationship: none
-          view_mode: teaser_image
+          view_mode: teaser
       fields:
         title:
           id: title
@@ -170,6 +170,7 @@ display:
           plugin_id: entity_queue
       arguments: {  }
       display_extenders: {  }
+      css_class: aclib-teaser-images
     cache_metadata:
       max-age: -1
       contexts:
