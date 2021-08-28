@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - block_content.type.basic
     - field.field.node.reference_database.body
     - field.field.node.reference_database.field_external_url
     - field.field.node.reference_database.field_home_page_image
@@ -93,20 +92,6 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: 4
-          e8d7c37a-df5a-423b-ba99-3bea386c3f44:
-            uuid: e8d7c37a-df5a-423b-ba99-3bea386c3f44
-            region: content
-            configuration:
-              id: 'inline_block:basic'
-              label: 'View all eSources'
-              provider: layout_builder
-              label_display: '0'
-              view_mode: full
-              block_revision_id: 10
-              block_serialized: null
-              context_mapping: {  }
-            additional: {  }
-            weight: 3
         third_party_settings: {  }
 id: node.reference_database.default
 targetEntityType: node
