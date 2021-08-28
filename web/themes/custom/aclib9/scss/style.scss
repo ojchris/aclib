@@ -80,6 +80,23 @@ h1 {
   margin-bottom: 1em;
 }
 
+img.image-style-full-width-embedded {
+  max-width: 100%;
+  height: auto;
+}
+
 .clear-float {
   clear: both;
+}
+
+// Layout builder tweaks to match Bootstrap breakpoints.
+//@media screen and (min-width: 40em) {
+.layout--twocol-section {
+  &.layout--twocol-section--33-67 > .layout__region--first,
+  &.layout--twocol-section--67-33 > .layout__region--second {
+    flex: 0 1 100%;
+    @include media-breakpoint-up(md) {
+      flex: 0 1 33%;
+    }
+  }
 }

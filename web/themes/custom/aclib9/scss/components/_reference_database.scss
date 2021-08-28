@@ -1,0 +1,18 @@
+.node--type-reference-database {
+  .node--view-mode-full {
+    .field--type-image {
+      float: none;
+      width: 100%;
+      @include media-breakpoint-up(md) {
+        width: auto;
+        float: right;
+      }
+    }
+  }
+  &.node--view-mode-list {
+    margin-bottom: 1rem;
+    .node__content {
+      margin-top: 0;
+    }
+  }
+}
