@@ -1,0 +1,10 @@
+uuid: 2eedcd1e-390c-41c6-ad1e-bbf71bf2128b
+langcode: en
+status: true
+dependencies:
+  module:
+    - aclib_refdb
+id: aclib_refdb_logs.token
+label: Token
+targetEntityType: aclib_refdb_logs
+cache: true

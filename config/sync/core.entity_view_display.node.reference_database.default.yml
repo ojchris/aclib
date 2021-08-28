@@ -92,9 +92,9 @@ third_party_settings:
               items_per_page: none
               context_mapping: {  }
             additional: {  }
-            weight: 4
-          e8d7c37a-df5a-423b-ba99-3bea386c3f44:
-            uuid: e8d7c37a-df5a-423b-ba99-3bea386c3f44
+            weight: 5
+          33e358a8-a524-4cd4-856b-5d834435124b:
+            uuid: 33e358a8-a524-4cd4-856b-5d834435124b
             region: content
             configuration:
               id: 'inline_block:basic'
@@ -106,7 +106,7 @@ third_party_settings:
               block_serialized: null
               context_mapping: {  }
             additional: {  }
-            weight: 3
+            weight: 4
         third_party_settings: {  }
 id: node.reference_database.default
 targetEntityType: node

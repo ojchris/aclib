@@ -83,7 +83,7 @@
     {{ title_suffix }}
   </header>
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
-    <h3><a href="/refdb/{{ node.id }}">Access {{ label }}</a></h3>
+    <h2 class="btn btn-lg btn-primary"><a href="/refdb/{{ node.id }}">Access {{ label }}</a></h2>
     {{ content }}
     {% if display_submitted %}
       <div class="node__meta">
