@@ -34,7 +34,7 @@ display:
             administrator: administrator
             ebranch: ebranch
       cache:
-        type: tag
+        type: none
         options: {  }
       query:
         type: views_query
@@ -45,7 +45,7 @@ display:
           query_comment: ''
           query_tags: {  }
       exposed_form:
-        type: basic
+        type: input_required
         options:
           submit_button: Apply
           reset_button: true
@@ -54,6 +54,8 @@ display:
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: basic_html
       pager:
         type: full
         options:
@@ -439,7 +441,7 @@ display:
           operator: between
           value:
             min: '-1 month'
-            max: now
+            max: '-1 month'
             value: now
             type: offset
           group: 1
