@@ -18,6 +18,14 @@ use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 class AclibRefDbDatePopup extends Date {
 
   /**
+   * Start and end dates labels defined static and only once.
+   */
+  const MIN_MAX_LABELS = [
+    'min' => 'Start date',
+    'max' => 'End date',
+  ];
+
+  /**
    * {@inheritdoc}
    */
   public function buildOptionsForm(&$form, FormStateInterface $form_state) {
@@ -46,8 +54,8 @@ class AclibRefDbDatePopup extends Date {
       if (isset($element['min'])) {
 
         // Set our properties.
-        $this->buildDateProperties($element['min'], $this->value['min'], 'Start date');
-        $this->buildDateProperties($element['max'], $this->value['max'], 'End date');
+        $this->buildDateProperties($element['min'], $this->value['min'], static::MIN_MAX_LABELS['min']);
+        $this->buildDateProperties($element['max'], $this->value['max'], static::MIN_MAX_LABELS['max']);
 
         if (isset($element['value'])) {
           $this->buildDateProperties($element['value'], $this->value['value']);
@@ -55,7 +63,7 @@ class AclibRefDbDatePopup extends Date {
       }
       else {
         // Set our properties.
-        // Note - there may be unrelated, drupal core bug/error notice.
+        // Note - related drupal core error notice perhaps can be produced.
         // @see: https://www.drupal.org/project/drupal/issues/2825860.
         $this->buildDateProperties($element, $this->value['value']);
       }
@@ -83,7 +91,7 @@ class AclibRefDbDatePopup extends Date {
     $a = new DrupalDateTime($min, new \DateTimeZone($timezone));
     $a = $this->query->getDateFormat($this->query->getDateField("'" . $this->dateFormatter->format($a->getTimestamp() + $origin_offset, 'custom', DateTimeItemInterface::DATETIME_STORAGE_FORMAT, DateTimeItemInterface::STORAGE_TIMEZONE) . "'", TRUE, $this->calculateOffset), $this->dateFormat, TRUE);
 
-    // Here is the only change compared with the original method.
+    // **** Here is the only change compared with the original method.
     $b = new DrupalDateTime($this->value['max'] . 'T23:59:59', new \DateTimeZone($timezone));
     $b = $this->query->getDateFormat($this->query->getDateField("'" . $this->dateFormatter->format($b->getTimestamp() + $origin_offset, 'custom', DateTimeItemInterface::DATETIME_STORAGE_FORMAT, DateTimeItemInterface::STORAGE_TIMEZONE) . "'", TRUE, $this->calculateOffset), $this->dateFormat, TRUE);
 
@@ -117,10 +125,9 @@ class AclibRefDbDatePopup extends Date {
     // A special case for min/max "between" operator.
     // Note - setting on exposed view filter MUST be "-1 month"
     // for BOTH inputs Min and Max.
-    if ($title) {
+    if (in_array($title, array_values(static::MIN_MAX_LABELS)) && $value == '-1 month') {
 
       if ($date_object = new DrupalDateTime($value, new \DateTimeZone($timezone))) {
-
         $year = $this->dateFormatter->format($date_object->getTimestamp() + $origin_offset, 'custom', 'Y', DateTimeItemInterface::STORAGE_TIMEZONE);
         $month = $this->dateFormatter->format($date_object->getTimestamp() + $origin_offset, 'custom', 'm', DateTimeItemInterface::STORAGE_TIMEZONE);
         $day_in_month = '01';
@@ -132,12 +139,14 @@ class AclibRefDbDatePopup extends Date {
         $element['#default_value'] = $year . '-' . $month . '-' . $day_in_month;
       }
     }
-    // The other operators.
+    // The other operators OR "between" operator but the one that does not have
+    // both min and max "-1 month" since that is kind of a hardcode.
     else {
       if ($date_object = new DrupalDateTime($value, new \DateTimeZone($timezone))) {
         $element['#default_value'] = $this->dateFormatter->format($date_object->getTimestamp() + $origin_offset, 'custom', DateTimeItemInterface::DATE_STORAGE_FORMAT, DateTimeItemInterface::STORAGE_TIMEZONE);
       }
     }
+
   }
 
 }
