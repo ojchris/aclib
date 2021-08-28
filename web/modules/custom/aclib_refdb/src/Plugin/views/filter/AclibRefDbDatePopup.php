@@ -91,7 +91,7 @@ class AclibRefDbDatePopup extends Date {
     $a = new DrupalDateTime($min, new \DateTimeZone($timezone));
     $a = $this->query->getDateFormat($this->query->getDateField("'" . $this->dateFormatter->format($a->getTimestamp() + $origin_offset, 'custom', DateTimeItemInterface::DATETIME_STORAGE_FORMAT, DateTimeItemInterface::STORAGE_TIMEZONE) . "'", TRUE, $this->calculateOffset), $this->dateFormat, TRUE);
 
-    // **** Here is the only change compared with the original method.
+    // **** Here is the only change compared with the original method. We add custom time.
     $b = new DrupalDateTime($this->value['max'] . 'T23:59:59', new \DateTimeZone($timezone));
     $b = $this->query->getDateFormat($this->query->getDateField("'" . $this->dateFormatter->format($b->getTimestamp() + $origin_offset, 'custom', DateTimeItemInterface::DATETIME_STORAGE_FORMAT, DateTimeItemInterface::STORAGE_TIMEZONE) . "'", TRUE, $this->calculateOffset), $this->dateFormat, TRUE);
 
@@ -130,12 +130,7 @@ class AclibRefDbDatePopup extends Date {
       if ($date_object = new DrupalDateTime($value, new \DateTimeZone($timezone))) {
         $year = $this->dateFormatter->format($date_object->getTimestamp() + $origin_offset, 'custom', 'Y', DateTimeItemInterface::STORAGE_TIMEZONE);
         $month = $this->dateFormatter->format($date_object->getTimestamp() + $origin_offset, 'custom', 'm', DateTimeItemInterface::STORAGE_TIMEZONE);
-        $day_in_month = '01';
-
-        if ($title == 'End date') {
-          $day_in_month = DateHelper::daysInMonth($date_object);
-        }
-
+        $day_in_month = $title == 'End date' ? DateHelper::daysInMonth($date_object) : '01';
         $element['#default_value'] = $year . '-' . $month . '-' . $day_in_month;
       }
     }
