@@ -314,7 +314,7 @@ class AclibRefdbService {
    * @return \Drupal\Core\Routing\TrustedRedirectResponse
    *   TrustedRedirectResponse object to execure actual redirection.
    */
-  public function doRedirect($url, bool $cache = FALSE) {
+  public function doRedirect(Url $url, bool $cache = FALSE) {
 
     // Define our redirect.
     $response = new TrustedRedirectResponse($url->toString());

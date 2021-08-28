@@ -4,6 +4,7 @@ namespace Drupal\aclib_refdb\Plugin\views\filter;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Datetime\DateHelper;
 use Drupal\datetime\Plugin\views\filter\Date;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 
@@ -62,6 +63,37 @@ class AclibRefDbDatePopup extends Date {
   }
 
   /**
+   * Override parent method, which deals with dates as integers.
+   *
+   * Note - setting on exposed view filter MUST be "-1 month"
+   * for BOTH inputs Min and Max.
+   *
+   * {@inheritdoc}
+   */
+  protected function opBetween($field) {
+    $timezone = $this->getTimezone();
+    $origin_offset = $this->getOffset($this->value['min'], $timezone);
+
+    // Although both 'min' and 'max' values are required, default empty 'min'
+    // value as UNIX timestamp 0.
+    $min = (!empty($this->value['min'])) ? $this->value['min'] : '@0';
+
+    // Convert to ISO format and format for query. UTC timezone is used since
+    // dates are stored in UTC.
+    $a = new DrupalDateTime($min, new \DateTimeZone($timezone));
+    $a = $this->query->getDateFormat($this->query->getDateField("'" . $this->dateFormatter->format($a->getTimestamp() + $origin_offset, 'custom', DateTimeItemInterface::DATETIME_STORAGE_FORMAT, DateTimeItemInterface::STORAGE_TIMEZONE) . "'", TRUE, $this->calculateOffset), $this->dateFormat, TRUE);
+
+    // Here is the only change compared with the original method.
+    $b = new DrupalDateTime($this->value['max'] . 'T23:59:59', new \DateTimeZone($timezone));
+    $b = $this->query->getDateFormat($this->query->getDateField("'" . $this->dateFormatter->format($b->getTimestamp() + $origin_offset, 'custom', DateTimeItemInterface::DATETIME_STORAGE_FORMAT, DateTimeItemInterface::STORAGE_TIMEZONE) . "'", TRUE, $this->calculateOffset), $this->dateFormat, TRUE);
+
+    // This is safe because we are manually scrubbing the values.
+    $operator = strtoupper($this->operator);
+    $field = $this->query->getDateFormat($this->query->getDateField($field, TRUE, $this->calculateOffset), $this->dateFormat, TRUE);
+    $this->query->addWhereExpression($this->options['group'], "$field $operator $a AND $b");
+  }
+
+  /**
    * Set HTML5 date properties and default value on date form element.
    *
    * @param array $element
@@ -81,8 +113,30 @@ class AclibRefDbDatePopup extends Date {
 
     $timezone = $this->getTimezone();
     $origin_offset = $this->getOffset($value, $timezone);
-    if ($date_object = new DrupalDateTime($value, new \DateTimeZone($timezone))) {
-      $element['#default_value'] = $this->dateFormatter->format($date_object->getTimestamp() + $origin_offset, 'custom', DateTimeItemInterface::DATE_STORAGE_FORMAT, DateTimeItemInterface::STORAGE_TIMEZONE);
+
+    // A special case for min/max "between" operator.
+    // Note - setting on exposed view filter MUST be "-1 month"
+    // for BOTH inputs Min and Max.
+    if ($title) {
+
+      if ($date_object = new DrupalDateTime($value, new \DateTimeZone($timezone))) {
+
+        $year = $this->dateFormatter->format($date_object->getTimestamp() + $origin_offset, 'custom', 'Y', DateTimeItemInterface::STORAGE_TIMEZONE);
+        $month = $this->dateFormatter->format($date_object->getTimestamp() + $origin_offset, 'custom', 'm', DateTimeItemInterface::STORAGE_TIMEZONE);
+        $day_in_month = '01';
+
+        if ($title == 'End date') {
+          $day_in_month = DateHelper::daysInMonth($date_object);
+        }
+
+        $element['#default_value'] = $year . '-' . $month . '-' . $day_in_month;
+      }
+    }
+    // The other operators.
+    else {
+      if ($date_object = new DrupalDateTime($value, new \DateTimeZone($timezone))) {
+        $element['#default_value'] = $this->dateFormatter->format($date_object->getTimestamp() + $origin_offset, 'custom', DateTimeItemInterface::DATE_STORAGE_FORMAT, DateTimeItemInterface::STORAGE_TIMEZONE);
+      }
     }
   }
 
