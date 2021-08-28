@@ -18,6 +18,7 @@ module:
   config_split: 0
   contextual: 0
   crop: 0
+  ctools: 0
   datetime: 0
   dblog: 0
   dynamic_page_cache: 0
@@ -67,6 +68,7 @@ module:
   tb_megamenu: 0
   termcase: 0
   text: 0
+  token: 0
   toolbar: 0
   update: 0
   user: 0
@@ -74,6 +76,7 @@ module:
   views_ui: 0
   webform: 0
   webform_ui: 0
+  pathauto: 1
   views: 10
   paragraphs: 11
   standard: 1000
