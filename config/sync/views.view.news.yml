@@ -7,6 +7,7 @@ dependencies:
     - node.type.blog
   module:
     - node
+    - taxonomy
     - user
 id: news
 label: 'ACLIB News'
@@ -214,7 +215,7 @@ display:
   block_1:
     display_plugin: block
     id: block_1
-    display_title: Block
+    display_title: 'All news block'
     position: 1
     display_options:
       display_extenders: {  }
@@ -222,6 +223,146 @@ display:
       block_category: ACLIB
       allow:
         items_per_page: true
+      display_description: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  block_2:
+    display_plugin: block
+    id: block_2
+    display_title: 'esource news block'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      block_description: 'ACLIB news (esource)'
+      block_category: ACLIB
+      allow:
+        items_per_page: true
+      title: 'ACLIB news (esource)'
+      defaults:
+        title: false
+        arguments: false
+        relationships: false
+        filters: false
+        filter_groups: false
+      arguments: {  }
+      relationships:
+        field_tags:
+          id: field_tags
+          table: node__field_tags
+          field: field_tags
+          relationship: none
+          group_type: group
+          admin_label: 'field_tags: Taxonomy term'
+          required: false
+          plugin_id: standard
+      display_description: ''
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: in
+          value:
+            blog: blog
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          relationship: field_tags
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: esource
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: string
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: -1
       contexts:
