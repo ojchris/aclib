@@ -34,8 +34,12 @@ display:
             administrator: administrator
             ebranch: ebranch
       cache:
-        type: none
-        options: {  }
+        type: time
+        options:
+          results_lifespan: 0
+          results_lifespan_custom: 0
+          output_lifespan: 0
+          output_lifespan_custom: 0
       query:
         type: views_query
         options:
@@ -450,7 +454,7 @@ display:
             operator_id: datetime_op
             label: 'Filter by dates'
             description: 'Select start and end date. End date should be the day after you wish to include.  For example the month of January should be 1/1/2021 to 2/1/2021.'
-            use_operator: true
+            use_operator: false
             operator: datetime_op
             operator_limit_selection: false
             operator_list: {  }
