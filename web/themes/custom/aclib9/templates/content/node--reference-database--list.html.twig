@@ -82,7 +82,7 @@
   </header>
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
     {{ content }}
-    <a class="fw-bold" href="/refdb/{{ node.id }}">Access {{ label }}</a>
+    <a class="btn btn-primary" href="/refdb/{{ node.id }}">Access {{ label }}</a>
     {% if display_submitted %}
       <div class="node__meta">
         {{ author_picture }}
