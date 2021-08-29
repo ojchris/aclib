@@ -36,7 +36,9 @@ logo:
   use_default: 0
   path: themes/custom/aclib9/images/logo/acldlogo-2019-color-horz-outlines-440x120px.png
 favicon:
-  use_default: 1
+  use_default: 0
+  path: themes/custom/aclib9/images/favicon/favicon-32x32.png
+  mimetype: image/png
 bootstrap_barrio_source: '0'
 bootstrap_barrio_region_clean_top_header: 0
 bootstrap_barrio_region_class_top_header: 'row order-2 order-md-1'
