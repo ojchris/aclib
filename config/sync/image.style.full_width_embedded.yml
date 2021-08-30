@@ -14,7 +14,7 @@ effects:
     id: image_scale
     weight: -9
     data:
-      width: 1280
+      width: 1296
       height: null
       upscale: false
   eb1366cb-6c8f-4175-859f-c669965b3305:
