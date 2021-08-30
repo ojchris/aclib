@@ -100,3 +100,8 @@ img.image-style-full-width-embedded {
     }
   }
 }
+
+// Give a little padding on the right side of two column layouts.
+.layout__region--first {
+  padding-right: 1rem;
+}
