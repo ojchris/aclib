@@ -1,3 +1,32 @@
 .block-views-blockaclib-refdb-you-may-also-like-block-1 {
   margin-top: 1rem;
 }
+
+// Press releases views page.
+.view-id-press_release {
+  .view-content {
+    h3 {
+      margin-top: 1rem;
+    }
+    .views-row {
+      margin-top: 1rem;
+      .views-field-title {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.view {
+  //Style all "more" links.
+  .more-link {
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+  // Center all view pagers.
+  nav ul.pagination {
+    margin-top: 1rem;
+    align-content: center;
+    justify-content: center;
+  }
+}
