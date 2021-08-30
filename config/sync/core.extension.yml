@@ -58,6 +58,7 @@ module:
   porterstemmer: 0
   rdf: 0
   redirect: 0
+  responsive_favicons: 0
   scheduler: 0
   search: 0
   shortcut: 0
