@@ -1,0 +1,22 @@
+uuid: 951f041a-de02-4e97-bc56-3424ee64ce22
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: reference_databases
+label: 'Reference databases'
+type: 'canonical_entities:node'
+pattern: '/databases/[node:title]'
+selection_criteria:
+  010172ae-212f-4c8c-ba96-324366265213:
+    id: node_type
+    bundles:
+      reference_database: reference_database
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 010172ae-212f-4c8c-ba96-324366265213
+selection_logic: and
+weight: -5
+relationships: {  }

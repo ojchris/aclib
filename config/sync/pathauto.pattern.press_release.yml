@@ -7,7 +7,7 @@ dependencies:
 id: press_release
 label: 'Press releases'
 type: 'canonical_entities:node'
-pattern: '/press-release/[node:title]'
+pattern: '/news/press-releases/[node:title]'
 selection_criteria:
   40b9155d-abd2-47ef-b8e5-8b4e00f37a69:
     id: node_type
