@@ -31,9 +31,11 @@ $data['node_field_data']['aclib_refdb_logs']['relationship'] = [
 /**
  * Implements hook_form_FORM_ID_alter().
  */
+/*
 function aclib_refdb_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
   // Hide reset button on ACLIB RefDb report view (/admin/reports/aclib-refdb).
   if ($form['#id'] == 'views-exposed-form-aclib-ref-db-page-1') {
     unset($form['actions']['reset']);
   }
 }
+*/
