@@ -5,8 +5,12 @@ dependencies:
   config:
     - core.entity_view_mode.node.list
     - node.type.reference_database
+    - taxonomy.vocabulary.tags
+  content:
+    - 'taxonomy_term:tags:9aa47898-be6e-4830-849e-5f624e945c3a'
   module:
     - node
+    - taxonomy
     - user
 id: aclib_refdbs_a_z
 label: 'ACLIB RefDbs A-Z'
@@ -153,6 +157,52 @@ display:
           expose:
             operator_limit_selection: false
             operator_list: {  }
+        field_tags_target_id:
+          id: field_tags_target_id
+          table: node__field_tags
+          field: field_tags_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value:
+            - 2693
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: textfield
+          limit: true
+          vid: tags
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
       sorts:
         title:
           id: title
@@ -181,6 +231,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
+        - user
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
@@ -199,6 +250,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
+        - user
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
