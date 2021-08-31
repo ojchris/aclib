@@ -13,7 +13,7 @@ _core:
   default_config_hash: WNeK5FbcY8pXgEpbD_KgRzlF1-5PL3BJXwqaBctPTqw
 name: Advanced
 format: full_html
-weight: 2
+weight: -9
 filters:
   filter_align:
     id: filter_align
@@ -61,10 +61,10 @@ filters:
     weight: 100
     settings:
       default_view_mode: default
-      allowed_media_types:
-        image: image
-        remote_video: remote_video
       allowed_view_modes:
         full_width: full_width
         half_width: half_width
         quarter_width: quarter_width
+      allowed_media_types:
+        image: image
+        remote_video: remote_video

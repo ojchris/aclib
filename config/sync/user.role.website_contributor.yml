@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 id: website_contributor
 label: 'Website Contributor'
-weight: 1
+weight: -6
 is_admin: null
 permissions:
   - 'create custom_page content'
