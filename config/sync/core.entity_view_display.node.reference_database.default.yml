@@ -107,54 +107,6 @@ third_party_settings:
               context_mapping: {  }
             additional: {  }
             weight: 4
-          b29395ff-a216-4e74-96fd-74b9497ae1d3:
-            uuid: b29395ff-a216-4e74-96fd-74b9497ae1d3
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:reference_database:field_teaser_image'
-              formatter:
-                type: entity_reference_entity_view
-                label: hidden
-                settings:
-                  view_mode: quarter_width
-                  link: false
-                third_party_settings: {  }
-            additional: {  }
-            weight: 6
-          c68430f3-e6c2-479b-b49e-7f29200f8f3e:
-            uuid: c68430f3-e6c2-479b-b49e-7f29200f8f3e
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:reference_database:body'
-              formatter:
-                label: hidden
-                settings: {  }
-                third_party_settings: {  }
-                type: text_default
-            additional: {  }
-            weight: 7
-          d7b69eba-bf7d-43eb-9be4-eaf3d9f17722:
-            uuid: d7b69eba-bf7d-43eb-9be4-eaf3d9f17722
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:reference_database:field_tags'
-              formatter:
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-                type: entity_reference_label
-            additional: {  }
-            weight: 8
         third_party_settings: {  }
 id: node.reference_database.default
 targetEntityType: node
