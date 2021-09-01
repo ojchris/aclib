@@ -1,0 +1,7 @@
+<div class="book_component" {{ attributes }}> {{ title_prefix }}{{ title_suffix }}
+    <div  class="book_cover"><img src="{{ content.field_cover_image_url[0]['#url'] }}" /></div>
+    <div class="book_detail">
+    <h3><a href="{{ content.field_url_linking_to_catalog[0]['#url'] }}">{{ content.field_title }}</a> by <a href="{{ content.field_url_linking_author_catalog[0]['#url'] }}">{{ content.field_author }}</a></h3>
+    <div class="description">{{ content.field_description }}</div>
+    </div>
+</div>
