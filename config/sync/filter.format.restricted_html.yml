@@ -1,7 +1,9 @@
 uuid: a5680fad-fc64-408f-ae8a-fb46b8faf6ff
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - media
 _core:
   default_config_hash: oz6NyPDAB4HB6N9hgH2LwNVtCd-sXbMG1fbn5KsRIDI
 name: Basic
@@ -30,3 +32,12 @@ filters:
     weight: 0
     settings:
       filter_url_length: 72
+  media_embed:
+    id: media_embed
+    provider: media
+    status: false
+    weight: 100
+    settings:
+      default_view_mode: default
+      allowed_media_types: {  }
+      allowed_view_modes: {  }

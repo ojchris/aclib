@@ -6,4 +6,14 @@ id: webform_editor
 label: 'Webform Editor'
 weight: -3
 is_admin: null
-permissions: {  }
+permissions:
+  - 'access content overview'
+  - 'access webform help'
+  - 'access webform overview'
+  - 'access webform submission user'
+  - 'create webform'
+  - 'delete own webform'
+  - 'delete own webform submission'
+  - 'edit own webform'
+  - 'use text format basic_html'
+  - 'use text format restricted_html'

@@ -55,10 +55,10 @@ filters:
     weight: 100
     settings:
       default_view_mode: half_width
+      allowed_media_types:
+        image: image
+        remote_video: remote_video
       allowed_view_modes:
         full_width: full_width
         half_width: half_width
         quarter_width: quarter_width
-      allowed_media_types:
-        image: image
-        remote_video: remote_video

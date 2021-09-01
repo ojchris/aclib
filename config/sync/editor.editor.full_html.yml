@@ -15,15 +15,19 @@ settings:
     rows:
       -
         -
+          name: Edit
+          items:
+            - Undo
+            - Redo
+        -
           name: Formatting
           items:
             - Bold
             - Italic
-            - Strike
-            - Superscript
-            - Subscript
-            - '-'
+            - Blockquote
             - RemoveFormat
+            - '-'
+            - Strike
         -
           name: Linking
           items:
@@ -37,26 +41,40 @@ settings:
         -
           name: Media
           items:
-            - Blockquote
             - DrupalMediaLibrary
-            - Table
             - HorizontalRule
+            - Table
+            - Accordion
+        -
+          name: Tools
+          items:
+            - Cut
+            - Copy
+            - Paste
+            - PasteText
+            - PasteFromWord
+            - Source
+            - ShowBlocks
+            - Maximize
+            - Language
         -
           name: 'Block Formatting'
           items:
             - Format
             - Styles
         -
-          name: Tools
+          name: 'Other options'
           items:
-            - Accordion
-            - Source
-            - ShowBlocks
+            - Superscript
+            - Subscript
+            - SpecialChar
+            - Indent
+            - Outdent
   plugins:
-    stylescombo:
-      styles: 'p.clear-float|Clear floats'
     language:
       language_list: un
+    stylescombo:
+      styles: 'p.clear-float|Clear floats'
 image_upload:
   status: true
   scheme: public

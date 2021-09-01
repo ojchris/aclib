@@ -6,4 +6,7 @@ id: webform
 label: Webform
 weight: -2
 is_admin: null
-permissions: {  }
+permissions:
+  - 'access content overview'
+  - 'access webform help'
+  - 'access webform submission user'
