@@ -4,15 +4,21 @@
   justify-content: space-between;
   margin: 30px 0;
   .book_cover {
-    width: 300px;
-    @include media-breakpoint-up(sm) {
-      width: 200px;
-    }
-    @include media-breakpoint-up(xs) {
-      width: 150px;
-    }
+    min-width: 100px;
     img {
-      width: 100%;
+      width: 100px;
+    }
+    @include media-breakpoint-up(sm) {
+      min-width: 200px;
+      img {
+        width: 200px;
+      }
+    }
+    @include media-breakpoint-up(md) {
+      min-width: 300px;
+      img {
+        width: 300px;
+      }
     }
   }
   .book_detail {
