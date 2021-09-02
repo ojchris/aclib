@@ -12,7 +12,7 @@ field_name: field_cover_image_url
 entity_type: paragraph
 bundle: book
 label: 'Cover image URL'
-description: ''
+description: 'Image URLs from catalog must end with an "L" instead of "S"'
 required: false
 translatable: false
 default_value: {  }
