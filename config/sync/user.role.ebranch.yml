@@ -170,6 +170,7 @@ permissions:
   - 'use menu link attributes'
   - 'use text format basic_html'
   - 'use text format full_html'
+  - 'use text format raw_html'
   - 'use text format restricted_html'
   - 'view all media revisions'
   - 'view all revisions'
