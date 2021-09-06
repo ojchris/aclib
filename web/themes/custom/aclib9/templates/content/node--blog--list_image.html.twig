@@ -75,7 +75,7 @@
 <article{{ attributes.addClass(classes) }}>
   <div{{ content_attributes.addClass('node__content', 'clearfix', 'row') }}>
     <div class="col-md-3">
-      {{ content.field_teaser_image }}
+      <a href="{{ url }}" rel="bookmark">{{ content.field_teaser_image }}</a>
     </div>
     <div class="col-md-9">
       {{ title_prefix }}
