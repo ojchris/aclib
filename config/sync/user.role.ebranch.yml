@@ -186,5 +186,6 @@ permissions:
   - 'view press_release revisions'
   - 'view reference_database revisions'
   - 'view scheduled content'
+  - 'view the administration theme'
   - 'view user email addresses'
   - 'view webform revisions'

@@ -8,5 +8,7 @@ weight: -2
 is_admin: null
 permissions:
   - 'access content overview'
+  - 'access toolbar'
   - 'access webform help'
   - 'access webform submission user'
+  - 'view the administration theme'

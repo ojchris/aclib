@@ -8,6 +8,7 @@ weight: -7
 is_admin: null
 permissions:
   - 'access content overview'
+  - 'access toolbar'
   - 'access webform help'
   - 'access webform overview'
   - 'access webform submission user'
@@ -23,6 +24,7 @@ permissions:
   - 'create reference_database content'
   - 'create remote_video media'
   - 'create teaser_image media'
+  - 'create terms in tags'
   - 'create webform'
   - 'delete any blog content'
   - 'delete any custom_page content'
@@ -63,6 +65,7 @@ permissions:
   - 'edit own remote_video media'
   - 'edit own teaser_image media'
   - 'edit own webform'
+  - 'manipulate entityqueues'
   - 'schedule publishing of nodes'
   - 'update any media'
   - 'update featured_refdb entityqueue'
@@ -73,3 +76,4 @@ permissions:
   - 'view own unpublished content'
   - 'view own unpublished media'
   - 'view scheduled content'
+  - 'view the administration theme'

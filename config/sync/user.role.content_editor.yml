@@ -8,12 +8,14 @@ weight: -5
 is_admin: null
 permissions:
   - 'access content overview'
+  - 'access toolbar'
   - 'create blog content'
   - 'create home_page_large_image media'
   - 'create image media'
   - 'create media'
   - 'create remote_video media'
   - 'create teaser_image media'
+  - 'create terms in tags'
   - 'delete any blog content'
   - 'delete any home_page_large_image media'
   - 'delete any image media'
@@ -43,3 +45,4 @@ permissions:
   - 'use text format restricted_html'
   - 'view own unpublished content'
   - 'view own unpublished media'
+  - 'view the administration theme'

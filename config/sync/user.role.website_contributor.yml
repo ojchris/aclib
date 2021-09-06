@@ -8,6 +8,7 @@ weight: -6
 is_admin: null
 permissions:
   - 'access content overview'
+  - 'access toolbar'
   - 'access webform help'
   - 'access webform submission user'
   - 'create and edit custom blocks'
@@ -19,6 +20,7 @@ permissions:
   - 'create reference_database content'
   - 'create remote_video media'
   - 'create teaser_image media'
+  - 'create terms in tags'
   - 'create webform'
   - 'delete media'
   - 'delete own custom_page content'
@@ -35,9 +37,11 @@ permissions:
   - 'edit own remote_video media'
   - 'edit own teaser_image media'
   - 'edit own webform'
+  - 'manipulate entityqueues'
   - 'schedule publishing of nodes'
   - 'update media'
   - 'use text format basic_html'
   - 'use text format restricted_html'
   - 'view own unpublished content'
   - 'view own unpublished media'
+  - 'view the administration theme'
