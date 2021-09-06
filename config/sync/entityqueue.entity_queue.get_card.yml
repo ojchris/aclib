@@ -1,0 +1,28 @@
+uuid: ce2021e5-9a70-47b8-bf8b-e66899a963c8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: get_card
+label: 'Get a library card page'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      custom_page: custom_page
+      landing_page: landing_page
+      page_: page_
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: custom_page
+queue_settings:
+  min_size: 1
+  max_size: 6
+  act_as_queue: true
+  reverse: false

@@ -1,0 +1,28 @@
+uuid: 2b40537c-3cae-4a93-a477-34b481a06a88
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: learn_page_teasers
+label: 'Learn page teasers'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      custom_page: custom_page
+      landing_page: landing_page
+      page_: page_
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: custom_page
+queue_settings:
+  min_size: 1
+  max_size: 6
+  act_as_queue: true
+  reverse: false
