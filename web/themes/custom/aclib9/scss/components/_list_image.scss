@@ -1,0 +1,12 @@
+.node--view-mode-list-image {
+  .field--name-title {
+    font-weight: bold;
+  }
+  .field--type-image {
+    float: none;
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
