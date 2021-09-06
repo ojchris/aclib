@@ -72,12 +72,10 @@
     'clearfix',
   ]
 %}
-  <article{{ attributes.addClass(classes) }}>
-    <a href="{{ url }}">
-    {{ content.field_home_page_image }}
-    <div class="aclib-title-teaser">
-      {{ label }}
-      {{ content.field_teaser }}
-    </div>
-    </a>
-  </article>
+<article{{ attributes.addClass(classes) }}>
+  <a href="{{ url }}">{{ content.field_home_page_image }}</a>
+  <div class="aclib-title-teaser">
+    <a href="{{ url }}">{{ label }}</a>
+    {{ content.field_teaser }}
+  </div>
+</article>

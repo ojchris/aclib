@@ -52,6 +52,7 @@
       }
       .field--name-field-teaser {
         font-size: 1em;
+        color: $white;
         @include media-breakpoint-up(lg) {
           font-size: 1.2em;
         }
