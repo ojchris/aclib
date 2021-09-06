@@ -12,6 +12,7 @@ permissions:
   - 'access webform help'
   - 'access webform overview'
   - 'access webform submission user'
+  - 'administer nodes'
   - 'configure editable landing_page node layout overrides'
   - 'create and edit custom blocks'
   - 'create blog content'
