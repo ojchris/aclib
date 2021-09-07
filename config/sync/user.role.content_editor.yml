@@ -9,7 +9,6 @@ is_admin: null
 permissions:
   - 'access content overview'
   - 'access toolbar'
-  - 'administer nodes'
   - 'create blog content'
   - 'create home_page_large_image media'
   - 'create image media'
@@ -17,7 +16,6 @@ permissions:
   - 'create remote_video media'
   - 'create teaser_image media'
   - 'create terms in tags'
-  - 'delete any blog content'
   - 'delete any home_page_large_image media'
   - 'delete any image media'
   - 'delete any media'

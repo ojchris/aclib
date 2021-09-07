@@ -3,7 +3,7 @@ secret_key: KRFsPcZSPkfBZypIlsY8
 token_endpoint: v3/token
 types_endpoint: v3/attend/types
 events_endpoint: v3/attend/events
-startDate: '2021-07-01'
+startDate: '2021-09-01'
 endDate: '2022-09-30'
 types:
   board_meetings: 'Board Meetings'

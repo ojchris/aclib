@@ -27,7 +27,6 @@ permissions:
   - 'edit own image media'
   - 'edit own remote_video media'
   - 'edit own teaser_image media'
-  - 'schedule publishing of nodes'
   - 'update media'
   - 'use text format basic_html'
   - 'use text format restricted_html'

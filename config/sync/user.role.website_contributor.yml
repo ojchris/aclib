@@ -8,6 +8,7 @@ weight: -6
 is_admin: null
 permissions:
   - 'access content overview'
+  - 'access contextual links'
   - 'access toolbar'
   - 'access webform help'
   - 'access webform submission user'
@@ -23,7 +24,6 @@ permissions:
   - 'create terms in tags'
   - 'create webform'
   - 'delete media'
-  - 'delete own custom_page content'
   - 'delete own home_page_large_image media'
   - 'delete own image media'
   - 'delete own page_ content'
@@ -34,11 +34,10 @@ permissions:
   - 'edit own home_page_large_image media'
   - 'edit own image media'
   - 'edit own page_ content'
+  - 'edit own reference_database content'
   - 'edit own remote_video media'
   - 'edit own teaser_image media'
   - 'edit own webform'
-  - 'manipulate entityqueues'
-  - 'schedule publishing of nodes'
   - 'update media'
   - 'use text format basic_html'
   - 'use text format restricted_html'
