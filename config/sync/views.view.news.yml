@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.list_image
+    - core.entity_view_mode.node.teaser_image
     - node.type.blog
   module:
     - node
@@ -250,6 +251,8 @@ display:
         relationships: false
         filters: false
         filter_groups: false
+        style: false
+        row: false
       arguments: {  }
       relationships:
         field_tags:
@@ -363,6 +366,14 @@ display:
         operator: AND
         groups:
           1: AND
+      style:
+        type: default
+        options: {  }
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser_image
     cache_metadata:
       max-age: -1
       contexts:
