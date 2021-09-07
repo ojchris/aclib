@@ -36,6 +36,7 @@ module:
   image: 0
   image_widget_crop: 0
   layout_builder: 0
+  layout_builder_modal: 0
   layout_discovery: 0
   link: 0
   maxlength: 0
