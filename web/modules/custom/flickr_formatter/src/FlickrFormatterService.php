@@ -470,7 +470,7 @@ class FlickrFormatterService {
   /**
    * Consider sub-modules that may implement third-party settings.
    */
-  protected function getThirdPartySettings() {
+  public function getThirdPartySettings() {
     if (!empty($this->getSubmodules()) && empty($this->thirdPartySettings)) {
       foreach ($this->getSubmodules() as $submodule) {
         if ($submodule_settings = $this->config->get($submodule . '.settings')) {

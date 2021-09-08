@@ -15,7 +15,7 @@ use Drupal\Component\Utility\Html;
 use Drupal\flickr_formatter\FlickrFormatterService;
 
 /**
- * Plugin implementation of the 'Flickr' formatter for text fields.
+ * Plugin implementation of the 'Flickr' formatter.
  *
  * @FieldFormatter(
  *   id = "flickr_field_formatter",
@@ -83,6 +83,9 @@ class FlickrFieldFormatter extends FormatterBase implements ContainerFactoryPlug
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
 
+    // Usage of our Element plugin.
+    // It is defined as such because we may need to repeat that form
+    // at some other places, not only here.
     $form = parent::settingsForm($form, $form_state) + [
       '#type' => 'flickr_formatter_base',
       '#title' => t('Flickr_formatter base settings'),
@@ -168,7 +171,7 @@ class FlickrFieldFormatter extends FormatterBase implements ContainerFactoryPlug
       $third_party_settings = isset($third_party_settings['value']) ? $third_party_settings['value'] : $third_party_settings;
 
       // Define unique ID for usage in twig template eventually.
-      // Such as wrapper element id for bootstrap type of markup.
+      // Such as wrapper element's id for bootstrap template type for example.
       if (!empty($third_party_settings)) {
         $field_name = $this->fieldDefinition->getName();
         $parent_entity = $items->getEntity();
