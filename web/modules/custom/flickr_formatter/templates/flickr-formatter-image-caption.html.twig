@@ -1,0 +1,19 @@
+{#
+/**
+ * @file flickr-formatter-image-caption.html.twig
+ * Image caption for Flickr formatter.
+ *
+ * Available variables
+ * - caption: Associative array with the following properties retrieved from a remote API:
+ *   - title: Caption title
+ *   - owner: Owner/author of image.
+ *   - date: Post date
+ */
+#}
+
+{% if caption.title %}
+  <h5>{{ caption.title }}</h5>
+  {% if caption.owner %}
+    <p>by {{ caption.owner }} <em>uploaded on {{ caption.date|date(format='d M Y') }}</em></p>
+  {% endif %}
+{% endif %}

@@ -1,0 +1,10 @@
+.flickr-formatter-caption {
+  background-color: rgba(1, 1, 1, 0.4);
+}
+.flickr-formatter-control-icon {
+  background-color: rgba(1, 1, 1, 0.75);
+}
+
+.carousel-caption.flickr-formatter-caption {
+  left: 0;
+}

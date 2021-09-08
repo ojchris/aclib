@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @file
+ * Flickr formatter module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function flickr_formatter_theme() {
+  return [
+    'flickr_formatter_image' => [
+      'variables' => [
+        'image' => NULL,
+        'options' => [],
+        'attributes' => [],
+      ],
+    ],
+
+    'flickr_formatter_default'  => [
+      'variables' => [
+        'images' => [],
+        'options' => [],
+        'attributes' => [],
+      ],
+    ],
+
+    'flickr_formatter_image_caption' => [
+      'variables' => [
+        'caption' => NULL,
+        'attributes' => [],
+      ],
+    ],
+  ];
+
+}

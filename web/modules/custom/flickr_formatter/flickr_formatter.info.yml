@@ -1,0 +1,9 @@
+name: Flickr formatter
+description: 'Field formatter and CK Editor plugin for Flickr images. Supports Bootstrap 5 Carousel.'
+package: Flickr
+# configure: flickr_formatter.settings
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - flickr_api:flickr_api

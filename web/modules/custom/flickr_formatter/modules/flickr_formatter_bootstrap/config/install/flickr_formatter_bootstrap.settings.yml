@@ -1,0 +1,22 @@
+# Extend settings for base Flickr formatter module.
+bootstrap_grid:
+  label: 'Bootstrap grid'
+  options:
+    xs: null
+    sm: null
+    md: null
+    lg: null
+    xl: null
+    xxl: null
+bootstrap_carousel:
+  label: 'Bootstrap carousel'
+  options:
+    ride: null
+    interval: 5000
+    keyboard: null
+    navigation: null
+    indicators: null
+    pause: null
+    use_caption: null
+    wrap: null
+    effect: null

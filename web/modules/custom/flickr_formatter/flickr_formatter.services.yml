@@ -1,0 +1,4 @@
+services:
+  flickr_formatter.service:
+    class: Drupal\flickr_formatter\FlickrFormatterService
+    arguments: ["@config.factory", "@messenger", "@module_handler", "@flickr_api.helpers", "@flickr_api.photos", "@flickr_api.photosets", "@flickr_api.groups", "@flickr_api.galleries", "@flickr_api.people", "@flickr_api.tags"]

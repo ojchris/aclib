@@ -1,0 +1,18 @@
+{#
+/**
+ * @file flickr-formatter-image.html.twig
+ * Default template for Flickr formatter "Photo".
+ *
+ * Available variables
+ * - image: Renderable image previously prepared as theme_image.
+ * - attributes: A list of HTML attributes for the wrapper element.  
+ *
+ * @see template_preprocess_image().
+ */
+#}
+
+{% if image %}
+  <div{{attributes }}>
+    {{ image }}
+  </div>
+{% endif %}

@@ -1,0 +1,120 @@
+{#
+/**
+ * @file flickr-formatter-bootstrap-carousel.html.twig
+ * Bootstrap Grid for Flickr formatter.
+ *
+ * Available variables
+ * - images: An array of items, each containing following properties:
+ *   - image: Renderable image previously prepared as theme_image.
+ *   - caption: Image caption retrieved from remote API.
+ *   - remote_url: Remote Flickr page URL.
+ * - options: An associative array containing field formatter's settings as well as third party settings.
+ * - attributes: A list of HTML attributes for the wrapper element.
+ *
+ * @see template_preprocess_flickr_formatter_bootstrap_grid().
+ */
+#}
+
+{% if images[0] is not empty and images[0].image %}
+
+  {{ attach_library('flickr_formatter/styles') }}
+
+  {%
+    set container_attributes = {
+      class: [
+        'carousel',
+        options.effect ? options.effect,
+        options.classes ? options.classes
+      ],
+      id: options.id,
+      bs: {
+        'data-bs-interval': options.interval,
+        'data-bs-ride': options.ride ? 'carousel',
+        'data-bs-pause': options.pause ? 'hover' : 'false'
+      },
+      style: options.max_width ? 'max-width: ' ~ options.max_width ~ 'px'
+    }
+  %}
+
+  {% if options.title %}
+    <h3>{{ options.title }}</h3>
+  {% endif %}
+
+  <div{{ create_attribute({'class': container_attributes.class}).setAttribute('id', container_attributes.id) }}{% if container_attributes.style %} style="{{ container_attributes.style }}"{% endif %} {% for attr, value in container_attributes.bs %} {{attr}}="{{value}}"{% endfor %}>    
+
+    {# Indicators #}
+    {%  if options.indicators %}
+      <ol class="carousel-indicators">
+        {% for index, image in images %}
+          {%
+            set indicator_attributes = {
+              class: [
+               loop.first ? 'active'
+              ],
+              bs: {
+                'data-bs-target': '#' ~ options.id,
+                'data-bs-slide-to': index,
+                'aria-label': 'Slide ' ~ loop.index 
+              }
+            }
+          %}
+          <li{{ create_attribute({'class': indicator_attributes.class }) }} {% for attr, value in indicator_attributes.bs %}{{attr}}="{{value}}"{% endfor %}></li>
+        {% endfor %}
+      </ol>
+    {% endif %}
+
+    <div class="carousel-inner">
+      {% for image in images %}
+        {% if image.image %}
+          {%
+            set item_classes = [
+              'carousel-item',
+              loop.first ? 'active'
+            ]
+          %}
+  
+          {% if options.link %}
+            <a{{ create_attribute({'class': item_classes }).setAttribute('href', image.remote_url).setAttribute('target', '_blank') }}>
+          {% else %}
+            <div{{ create_attribute({'class': item_classes }) }}>
+          {% endif %}
+              
+          {{ image.image }}
+          
+          {% if image.caption %}
+            {%
+              set caption_classes = [
+                'carousel-caption',
+                'flickr-formatter-caption',
+                'w-100',
+              ]
+            %}
+            <div{{ create_attribute({'class': caption_classes}) }}>
+              {{ image.caption }}
+            </div> 
+          {% endif %}
+            
+          {% if options.link %}
+            </a>  
+          {% else %}
+            </div>
+          {% endif %} 
+
+        {% endif %}
+      {% endfor %}
+    </div>
+ 
+    {# Controls #}
+    {% if options.navigation %}
+      <button class="carousel-control-prev" type="button" data-bs-target="#{{ options.id }}" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon flickr-formatter-control-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">{{ 'Previous'|t }}</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#{{ options.id }}" data-bs-slide="next">
+        <span class="carousel-control-next-icon flickr-formatter-control-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">{{ 'Next'|t }}</span>
+      </button>
+    {% endif %}
+  </div>
+
+ {% endif %}

@@ -1,0 +1,43 @@
+{#
+/**
+ * @file flickr-formatter-bootstrap-grid.html.twig
+ * Bootstrap Grid for Flickr formatter.
+ *
+ * Available variables
+ * - images: An array of items, each containing following properties:
+ *   - image: Renderable image previously prepared as theme_image.
+ *   - caption: Image caption retrieved from remote API.
+ *   - remote_url: Remote Flickr page URL.
+ * - options: An associative array containing field formatter's settings as well as third party settings.
+ * - attributes: A list of HTML attributes for the wrapper element.
+ *
+ * @see template_preprocess_flickr_formatter_bootstrap_grid().
+ */
+#}
+
+{% if images[0] is not empty and images[0].image %}
+
+  {% if options.title %}
+    <h3>{{ options.title }}</h3>
+  {% endif %}
+
+  {%
+    set classes = [
+      'container',
+      'px-8',
+    ]
+  %}
+  
+  <div{{ attributes.addClass(classes).setAttribute('id', options.id) }}>
+    <div class="row">
+      {% for image in images %}
+        <div {{ row_attributes.addClass(options.row_class).addClass('gx-5', 'gy-5') }}>
+          {{ image.image }}
+          {% if image.caption %}
+            {{ image.caption }}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

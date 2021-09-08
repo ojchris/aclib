@@ -1,0 +1,40 @@
+{#
+/**
+ * @file flickr-formatter-default.html.twig
+ * Default template for Flickr formatter "Photosets".
+ *
+ * Available variables
+ * - images: An array of items, each containing following properties:
+ *   - image: Renderable image previously prepared as theme_image.
+ *   - caption: Image caption retrieved from remote API.
+ *   - remote_url: Remote Flickr page URL.
+ * - options: An associative array containing field formatter's settings as well as third party settings.
+ * - attributes: A list of HTML attributes for the wrapper element.
+ */
+#}
+
+{% if images[0] is not empty and images[0].image %}
+  {% for image in images %}
+    {% if image.image %}
+      <div{{attributes.addClass('flickr-formatter-image')}}>
+        {% if options.link %}
+          <a href="{{ image.remote_url}}" target="_blank">
+        {% else %}
+          <div>
+        {% endif %}
+      
+        {{ image.image }}
+      
+        {% if options.link %}
+          </a>
+        {% else %}
+          </div>
+        {% endif %}
+  
+         {% if image.caption %}
+          {{ image.caption }}
+        {% endif %}
+      </div>
+    {% endif %} 
+  {% endfor %}
+{% endif %}

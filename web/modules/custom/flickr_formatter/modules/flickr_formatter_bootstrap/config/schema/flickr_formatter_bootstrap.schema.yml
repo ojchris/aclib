@@ -1,0 +1,63 @@
+# Extend schema for base Flickr formatter module.
+field.formatter.third_party.flickr_field_formatter:
+  type: mapping
+  label: 'Bootstrap Flickr field formatter schema'
+  mapping:
+    bootstrap_grid:
+      type: mapping
+      label: 'Boostrap grid'
+      mapping: 
+        value:
+          type: mapping
+          label: 'Bootstrap grid options'
+          mapping: 
+            xs:
+              type: string
+              label: 'XS breakpoint'
+            sm:
+              type: string
+              label: 'SM breakpoint'
+            md:
+              type: string
+              label: 'MD breakpoint'
+            lg:
+              type: string
+              label: 'LG breakpoint'
+            xl:
+              type: string
+              label: 'XL breakpoint'
+            xxl:
+              type: string
+              label: 'XXL breakpoint'
+    bootstrap_carousel:
+      label: 'Boostrap carousel'
+      type: mapping
+      mapping:
+        value:
+          type: mapping
+          label: 'Bootstrap carousel options'
+          mapping:
+            ride:
+              type: boolean
+              label: 'Ride'
+            interval:
+              type: integer
+              label: 'Interval'
+            keyboard:
+              type: boolean
+              label: 'Keyboard'
+            navigation:
+              type: boolean
+              label: 'Navigation'
+            indicators:
+              type: boolean
+              label: 'Indicators'
+            pause:
+              type: boolean
+              label: 'Pause'
+            wrap:
+              type: boolean
+              label: 'Wrap'
+            effect:
+              type: string
+              label: 'effect'

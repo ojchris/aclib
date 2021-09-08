@@ -1,0 +1,110 @@
+<?php
+
+/**
+ * @file
+ * Flickr formatter Bootstrap module.
+ */
+
+use Drupal\Core\Field\FormatterInterface;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Template\Attribute;
+
+/**
+ * Implements hook_theme().
+ */
+function flickr_formatter_bootstrap_theme() {
+  return [
+    'flickr_formatter_bootstrap_grid'  => [
+      'variables' => [
+        'attributes' => [],
+        'images' => [],
+        'options' => [],
+      ],
+    ],
+    'flickr_formatter_bootstrap_carousel'  => [
+      'variables' => [
+        'attributes' => [],
+        'images' => [],
+        'options' => [],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Prepares variables for views grid templates.
+ *
+ * Default template: views-bootstrap-grid.html.twig.
+ *
+ * @param array $vars
+ *   An associative array containing:
+ *   - view: A ViewExecutable object.
+ *   - rows: The raw row data.
+ */
+function template_preprocess_flickr_formatter_bootstrap_grid(array &$vars) {
+  $vars['attributes']['class'][] = 'grid';
+  $default_options = \Drupal::service('config.factory')->get('flickr_formatter_bootstrap.settings')->getRawData();
+  $vars['row_attributes'] = new Attribute();
+  foreach ($vars['options'] as $option_id => $option) {
+    if (isset($default_options['bootstrap_grid']) && isset($default_options['bootstrap_grid']['options']) && in_array($option_id, array_keys($default_options['bootstrap_grid']['options']))) {
+      $vars['row_attributes']->addClass($option);
+    }
+  }
+}
+
+/**
+ * Implements hook_field_formatter_third_party_settings_form().
+ */
+function flickr_formatter_bootstrap_field_formatter_third_party_settings_form(FormatterInterface $plugin, FieldDefinitionInterface $field_definition, $view_mode, $form, FormStateInterface $form_state) {
+
+  $element['bootstrap_grid'] = [
+    '#type' => 'fieldset',
+    '#title' => t('Bootstrap Grid settings'),
+    '#description' => t('The most relevant <a href="https://getbootstrap.com/docs/5.1/layout/grid/#grid-options">Bootstrap Grid</a> options.'),
+    '#states' => [
+      'visible' => [
+        ':input[id="flickr-formatter-type"]' => ['!value' => 'photo'],
+        ':input[id="flickr-formatter-style"]' => ['value' => 'bootstrap_grid'],
+      ],
+    ],
+  ];
+
+  $bootstrap_grid_default_value = $plugin->getThirdPartySetting('flickr_formatter_bootstrap', 'bootstrap_grid', []);
+
+  $element['bootstrap_grid']['value'] = [
+    '#type' => 'flickr_formatter_bootstrap_grid',
+    '#default_value' => isset($bootstrap_grid_default_value['value']) ? $bootstrap_grid_default_value['value'] : [],
+  ];
+
+  $element['bootstrap_carousel'] = [
+    '#type' => 'fieldset',
+    '#title' => t('Bootstrap Carousel settings'),
+    '#description' => t('The most relevant <a href="https://getbootstrap.com/docs/5.1/components/carousel/#options">Bootstrap 5 Carousel</a> options.'),
+    '#states' => [
+      'visible' => [
+        ':input[id="flickr-formatter-type"]' => ['!value' => 'photo'],
+        ':input[id="flickr-formatter-style"]' => ['value' => 'bootstrap_carousel'],
+      ],
+    ],
+  ];
+
+  $bootstrap_carousel_default_value = $plugin->getThirdPartySetting('flickr_formatter_bootstrap', 'bootstrap_carousel', []);
+
+  $element['bootstrap_carousel']['value'] = [
+    '#type' => 'flickr_formatter_bootstrap_carousel',
+    '#default_value' => isset($bootstrap_carousel_default_value['value']) ? $bootstrap_carousel_default_value['value'] : [],
+  ];
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary_alter().
+ */
+/*
+function flickr_formatter_bootstrap_field_formatter_settings_summary_alter(&$summary, $context) {
+$summary[] = '';
+return $summary;
+}
+ */
