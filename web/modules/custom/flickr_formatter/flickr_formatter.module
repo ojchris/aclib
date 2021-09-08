@@ -10,6 +10,7 @@
  */
 function flickr_formatter_theme() {
   return [
+    // A single image formatter.
     'flickr_formatter_image' => [
       'variables' => [
         'image' => NULL,
@@ -17,7 +18,7 @@ function flickr_formatter_theme() {
         'attributes' => [],
       ],
     ],
-
+    // Default formatter for any group of images.
     'flickr_formatter_default'  => [
       'variables' => [
         'images' => [],
@@ -25,7 +26,7 @@ function flickr_formatter_theme() {
         'attributes' => [],
       ],
     ],
-
+    // A separate theme/template for image caption.
     'flickr_formatter_image_caption' => [
       'variables' => [
         'caption' => NULL,

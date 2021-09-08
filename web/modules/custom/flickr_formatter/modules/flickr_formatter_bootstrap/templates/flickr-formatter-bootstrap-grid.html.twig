@@ -31,12 +31,22 @@
   <div{{ attributes.addClass(classes).setAttribute('id', options.id) }}>
     <div class="row">
       {% for image in images %}
-        <div {{ row_attributes.addClass(options.row_class).addClass('gx-5', 'gy-5') }}>
-          {{ image.image }}
-          {% if image.caption %}
-            {{ image.caption }}
-          {% endif %}
-        </div>
+        {% if options.link %}
+          <a{{ row_attributes.addClass(options.row_class).addClass('gx-5', 'gy-5').setAttribute('href', image.remote_url).setAttribute('target', '_blank') }}>
+        {% else %}
+           <div{{ row_attributes.addClass(options.row_class).addClass('gx-5', 'gy-5') }}>
+        {% endif %}
+        
+        {{ image.image }}
+        {% if image.caption %}
+          {{ image.caption }}
+        {% endif %}
+       
+        {% if options.link %}
+           </a>
+        {% else %} 
+         </div>
+        {% endif %}
       {% endfor %}
     </div>
   </div>
