@@ -33,7 +33,7 @@ function flickr_formatter_bootstrap_theme() {
 }
 
 /**
- * Prepares variables for bootstrap grid template.
+ * Prepares variables for Bootstrap grid template.
  *
  * Default template: flickr-formatter-bootstrap-grid.html.twig.
  *
