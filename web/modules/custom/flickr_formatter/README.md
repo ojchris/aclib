@@ -29,13 +29,14 @@ INSTALLATION
    contributed Drupal module. Visit https://www.drupal.org/node/1897420 for
    further information.
  * Optionally install Flickr formatter Bootstrap sub-module for some of
-   available Bootstrap components for Photosets.  
-
+   available Bootstrap components for Photosets.
 
 CONFIGURATION
 -------------
 
-    1. Define new or use existing standard Text plain or Number field for
+    1. Go to "Configuration > Media > Flickr API Settings"
+       and enter your Flickr credentials, API key and Secret.
+    2. Define new or use existing standard Text plain or Number field for
        your content type. Flickr ID will be entered as a value of this field.
-    2. On "Manage Display" tab for the content type choose "Flickr"
+    3. On "Manage Display" tab for the content type choose "Flickr"
        as a formatter. Then click gear icon to set its settings and styles.
