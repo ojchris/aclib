@@ -37,6 +37,7 @@ permissions:
   - 'edit own image media'
   - 'edit own remote_video media'
   - 'edit own teaser_image media'
+  - 'override blog published option'
   - 'schedule publishing of nodes'
   - 'update any media'
   - 'update media'

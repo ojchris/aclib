@@ -16,6 +16,7 @@ entity_settings:
       custom_page: custom_page
       landing_page: landing_page
       page_: page_
+      reference_database: reference_database
     sort:
       field: _none
       direction: ASC
@@ -23,6 +24,6 @@ entity_settings:
     auto_create_bundle: custom_page
 queue_settings:
   min_size: 1
-  max_size: 6
+  max_size: 9
   act_as_queue: true
   reverse: false
