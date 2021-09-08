@@ -33,14 +33,14 @@ function flickr_formatter_bootstrap_theme() {
 }
 
 /**
- * Prepares variables for views grid templates.
+ * Prepares variables for bootstrap grid template.
  *
- * Default template: views-bootstrap-grid.html.twig.
+ * Default template: flickr-formatter-bootstrap-grid.html.twig.
  *
  * @param array $vars
  *   An associative array containing:
- *   - view: A ViewExecutable object.
- *   - rows: The raw row data.
+ *   - images: An array of available images.
+ *   - options: Associative array with optins retrieved from configuraation.
  */
 function template_preprocess_flickr_formatter_bootstrap_grid(array &$vars) {
   $vars['attributes']['class'][] = 'grid';
