@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.blog.field_body
     - field.field.node.blog.field_book
+    - field.field.node.blog.field_flickr_photoset
     - field.field.node.blog.field_home_page_image
     - field.field.node.blog.field_tags
     - field.field.node.blog.field_teaser
@@ -12,6 +13,8 @@ dependencies:
     - node.type.blog
   module:
     - entity_reference_revisions
+    - flickr_formatter
+    - flickr_formatter_bootstrap
     - text
     - user
 id: node.blog.default
@@ -28,15 +31,50 @@ content:
     third_party_settings: {  }
   field_book:
     type: entity_reference_revisions_entity_view
-    weight: 1
+    weight: 2
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
     region: content
+  field_flickr_photoset:
+    weight: 1
+    label: hidden
+    settings:
+      title: ''
+      size: c
+      caption: '1'
+      classes: ''
+      type: photosets
+      per_page: ''
+      style: bootstrap_carousel
+      max_width: 0
+      link: 0
+    third_party_settings:
+      flickr_formatter_bootstrap:
+        bootstrap_grid:
+          value:
+            xs: ''
+            sm: ''
+            md: ''
+            lg: ''
+            xl: ''
+            xxl: ''
+        bootstrap_carousel:
+          value:
+            interval: '5000'
+            navigation: '1'
+            indicators: '1'
+            effect: ''
+            ride: 0
+            keyboard: 0
+            pause: 0
+            wrap: 0
+    type: flickr_field_formatter
+    region: content
   field_tags:
-    weight: 2
+    weight: 3
     label: above
     settings:
       link: true
@@ -44,7 +82,7 @@ content:
     type: entity_reference_label
     region: content
   links:
-    weight: 3
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }

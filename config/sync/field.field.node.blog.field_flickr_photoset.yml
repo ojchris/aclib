@@ -1,0 +1,19 @@
+uuid: 115970b9-cc13-472e-bd2a-d2e8cf146fa1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_flickr_photoset
+    - node.type.blog
+id: node.blog.field_flickr_photoset
+field_name: field_flickr_photoset
+entity_type: node
+bundle: blog
+label: 'Flickr photoset'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

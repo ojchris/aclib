@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8a2ece847ebcb51f4330c407044b9704",
+    "content-hash": "871847c71f8b59e390d027228d924838",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2739,6 +2739,51 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/field_redirection",
                 "issues": "http://drupal.org/project/issues/field_redirection"
+            }
+        },
+        {
+            "name": "drupal/flickr_api",
+            "version": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/flickr_api.git",
+                "reference": "2725a3e5dbfbeef333fe94861025b8a8d31c42b2"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.3+0-dev",
+                    "datestamp": "1559740985",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "cbrody",
+                    "homepage": "https://www.drupal.org/user/240581"
+                },
+                {
+                    "name": "dakku",
+                    "homepage": "https://www.drupal.org/user/97634"
+                }
+            ],
+            "description": "Flickr API and Drupal integration.",
+            "homepage": "https://www.drupal.org/project/flickr_api",
+            "support": {
+                "source": "https://git.drupalcode.org/project/flickr_api"
             }
         },
         {

@@ -1,0 +1,22 @@
+title: null
+size: '-'
+max_width: null
+link: null
+caption: null
+classes: null
+type:
+  photo: Photo
+  photosets: 'Photo set'
+  groups: Groups
+  galleries: Galleries
+  people: People
+  tags: Tags
+per_page: null
+style:
+  default: '(Default) Linear'
+aspect:
+  square: Square
+  portrait: Portrait
+  landscape: Landscape
+_core:
+  default_config_hash: '-5YCvRH7AvNeJiA407Mouszd2VXTFL_ZprVeqlwg-sU'
