@@ -105,3 +105,11 @@ img.image-style-full-width-embedded {
 .layout__region--first {
   padding-right: 1rem;
 }
+
+// Add the close "X" to dialog boxes.
+.ui-dialog .ui-dialog-titlebar-close {
+  background-image: url(/core/misc/icons/000000/ex.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: transparent;
+}
