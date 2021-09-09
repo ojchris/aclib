@@ -21,7 +21,6 @@ use Drupal\flickr_formatter\FlickrFormatterService;
  *   id = "flickr_field_formatter",
  *   label = @Translation("Flickr"),
  *   field_types = {
- *     "integer",
  *     "string",
  *     "string_long"
  *   }
