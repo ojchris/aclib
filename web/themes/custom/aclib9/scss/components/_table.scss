@@ -1,4 +1,5 @@
-.field--type-text-long {
+.field--type-text-long,
+.field--type-text-with-summary {
   /* When making changes here, also make them in /scss/ckeditor.scss. */
   table {
     @include media-breakpoint-up(md) {
