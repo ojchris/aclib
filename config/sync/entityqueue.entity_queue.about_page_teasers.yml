@@ -1,0 +1,28 @@
+uuid: 349266d4-32ae-48e3-bcf6-88a8856f2d8b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: about_page_teasers
+label: 'About page teasers'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      blog: blog
+      custom_page: custom_page
+      page_: page_
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: blog
+queue_settings:
+  min_size: 0
+  max_size: 9
+  act_as_queue: true
+  reverse: false

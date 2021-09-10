@@ -1,0 +1,28 @@
+uuid: 984a5be2-8569-4308-86c4-f58ac6c6ecdf
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: download_page_teasers
+label: 'Download page teasers'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      blog: blog
+      landing_page: landing_page
+      page_: page_
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: blog
+queue_settings:
+  min_size: 0
+  max_size: 12
+  act_as_queue: true
+  reverse: false

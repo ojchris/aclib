@@ -1,0 +1,28 @@
+uuid: 1dced31d-23cd-4795-bfd9-d4c48e14b5d4
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: special_needs_teasers
+label: 'Special needs teasers'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      blog: blog
+      landing_page: landing_page
+      page_: page_
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: blog
+queue_settings:
+  min_size: 0
+  max_size: 9
+  act_as_queue: true
+  reverse: false

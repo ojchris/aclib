@@ -4,16 +4,20 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser_image
+    - entityqueue.entity_queue.about_page_teasers
+    - entityqueue.entity_queue.maker_space_teasers
+    - entityqueue.entity_queue.mission_and_values_teasers
     - entityqueue.entity_queue.research_page_teasers
+    - entityqueue.entity_queue.special_needs_teasers
   module:
     - entityqueue
     - node
     - user
     - views_bootstrap
 id: aclib_research_page_teasers
-label: 'ACLIB Research page teasers'
+label: 'ACLIB 3-column teasers'
 module: views
-description: 'Provides teaser content via the Research page teasers queue.'
+description: 'Provides teaser content via entity queues for Research, Maker space, Special needs, About, Mission & values pages.'
 tag: ''
 base_table: node_field_data
 base_field: nid
@@ -194,7 +198,7 @@ display:
   block_1:
     display_plugin: block
     id: block_1
-    display_title: Block
+    display_title: Research
     position: 1
     display_options:
       display_extenders: {  }
@@ -202,6 +206,7 @@ display:
       block_category: ACLIB
       allow:
         items_per_page: false
+      display_description: ''
     cache_metadata:
       max-age: -1
       contexts:
@@ -211,5 +216,161 @@ display:
         - user.permissions
       tags:
         - 'config:entityqueue.entity_queue.research_page_teasers'
+        - entity_field_info
+        - views_data
+  block_2:
+    display_plugin: block
+    id: block_2
+    display_title: 'Maker space'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      block_description: 'ACLIB Maker space teasers'
+      block_category: ACLIB
+      allow:
+        items_per_page: false
+      display_description: ''
+      title: 'ACLIB Maker space teasers'
+      defaults:
+        title: false
+        relationships: false
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: true
+          limit_queue: maker_space_teasers
+          entity_type: node
+          plugin_id: entity_queue
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:entityqueue.entity_queue.maker_space_teasers'
+        - entity_field_info
+        - views_data
+  block_3:
+    display_plugin: block
+    id: block_3
+    display_title: 'Special needs'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      block_description: 'ACLIB Special needs teasers'
+      block_category: ACLIB
+      allow:
+        items_per_page: false
+      display_description: ''
+      title: 'ACLIB Special needs teasers'
+      defaults:
+        title: false
+        relationships: false
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: true
+          limit_queue: special_needs_teasers
+          entity_type: node
+          plugin_id: entity_queue
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:entityqueue.entity_queue.special_needs_teasers'
+        - entity_field_info
+        - views_data
+  block_4:
+    display_plugin: block
+    id: block_4
+    display_title: About
+    position: 1
+    display_options:
+      display_extenders: {  }
+      block_description: 'ACLIB About teasers'
+      block_category: ACLIB
+      allow:
+        items_per_page: false
+      display_description: ''
+      title: 'ACLIB About teasers'
+      defaults:
+        title: false
+        relationships: false
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: true
+          limit_queue: about_page_teasers
+          entity_type: node
+          plugin_id: entity_queue
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:entityqueue.entity_queue.about_page_teasers'
+        - entity_field_info
+        - views_data
+  block_5:
+    display_plugin: block
+    id: block_5
+    display_title: 'Mission & Values'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      block_description: 'ACLIB Mission & Values teasers'
+      block_category: ACLIB
+      allow:
+        items_per_page: false
+      display_description: ''
+      title: 'ACLIB Mission & Values teasers'
+      defaults:
+        title: false
+        relationships: false
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: true
+          limit_queue: mission_and_values_teasers
+          entity_type: node
+          plugin_id: entity_queue
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:entityqueue.entity_queue.mission_and_values_teasers'
         - entity_field_info
         - views_data

@@ -1,0 +1,28 @@
+uuid: 58ce0607-6255-4b40-a559-712d3668dda7
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: mission_and_values_teasers
+label: 'Mission and values teasers'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      blog: blog
+      landing_page: landing_page
+      page_: page_
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: blog
+queue_settings:
+  min_size: 0
+  max_size: 9
+  act_as_queue: true
+  reverse: false
