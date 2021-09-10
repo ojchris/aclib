@@ -74,19 +74,20 @@
             border: none;
           }
         }
+        &.dropdown.active {
+          > .dropdown-toggle {
+            background-color: $accent-shade;
+          }
+        }
         &.dropdown.open {
           > .dropdown-toggle {
             color: $accent-shade;
+            background-color: $white;
           }
           > span.tb-megamenu-no-link:hover,
           > span.tb-megamenu-no-link:focus {
             color: $accent-shade;
             background-color: $white;
-          }
-        }
-        &.dropdown.active {
-          > .dropdown-toggle {
-            background-color: $accent-shade;
           }
         }
         @include media-breakpoint-up(lg) {  // Top level links on desktop.
