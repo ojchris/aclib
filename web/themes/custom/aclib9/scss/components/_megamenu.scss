@@ -78,7 +78,8 @@
           > .dropdown-toggle {
             color: $accent-shade;
           }
-          > span.tb-megamenu-no-link:hover {
+          > span.tb-megamenu-no-link:hover,
+          > span.tb-megamenu-no-link:focus {
             color: $accent-shade;
             background-color: $white;
           }
