@@ -20,7 +20,7 @@
         background-color: $accent-shade;
         border-color: $accent-shade;
         text-decoration: none;
-        &:hover {
+        &:hover, &:focus {
           background-color: $white;
           color: $accent-shade;
           > .ckeditor-accordion-toggle:before,
