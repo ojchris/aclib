@@ -27,6 +27,9 @@ a {
 
 h1 {
   font-weight: bold;
+  .field--name-title, strong {
+    font-weight: bolder;
+  }
 }
 
 .bg-inverse {
