@@ -1,0 +1,28 @@
+uuid: c80831be-9788-46d4-a3a5-6ac96ac5b115
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: homework_help_page_teasers
+label: 'Homework help page teasers'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      blog: blog
+      landing_page: landing_page
+      page_: page_
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: blog
+queue_settings:
+  min_size: 0
+  max_size: 9
+  act_as_queue: true
+  reverse: false
