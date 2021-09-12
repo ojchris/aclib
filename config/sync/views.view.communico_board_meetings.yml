@@ -976,7 +976,7 @@ display:
             label: ''
           granularity: second
           plugin_id: datetime
-      title: '<strong>All Board Meetings This Year</strong>'
+      title: 'All Board Meetings This Year'
       header:
         area:
           id: area
