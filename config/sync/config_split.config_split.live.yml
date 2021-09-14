@@ -6,7 +6,8 @@ id: live
 label: Live
 description: ''
 folder: ../config/config_split/live
-module: {  }
+module:
+  google_analytics: 0
 theme: {  }
 blacklist: {  }
 graylist:

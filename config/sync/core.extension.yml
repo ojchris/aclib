@@ -33,7 +33,6 @@ module:
   flickr_api: 0
   flickr_formatter: 0
   flickr_formatter_bootstrap: 0
-  google_analytics: 0
   gtranslate: 0
   help: 0
   history: 0

@@ -6,7 +6,8 @@ id: dev
 label: Dev
 description: ''
 folder: ../config/config_split/dev
-module: {  }
+module:
+  google_analytics: 0
 theme: {  }
 blacklist: {  }
 graylist:

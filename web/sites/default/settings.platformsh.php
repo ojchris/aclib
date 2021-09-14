@@ -40,9 +40,15 @@ if (isset($platformsh->branch)) {
   // Production type environment.
   if ($platformsh->branch == 'master' || $platformsh->onDedicated()) {
     $config['system.logging']['error_level'] = 'hide';
+    $config['config_split.config_split.local_development']['status'] = FALSE;
+    $config['config_split.config_split.dev']['status'] = FALSE;
+    $config['config_split.config_split.live']['status'] = TRUE;
   } // Development type environment.
   else {
     $config['system.logging']['error_level'] = 'verbose';
+    $config['config_split.config_split.local_development']['status'] = FALSE;
+    $config['config_split.config_split.dev']['status'] = TRUE;
+    $config['config_split.config_split.live']['status'] = FALSE;
   }
 }
 
