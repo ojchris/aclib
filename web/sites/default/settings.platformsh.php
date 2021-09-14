@@ -46,6 +46,7 @@ if (isset($platformsh->branch)) {
     $config['environment_indicator.indicator']['bg_color'] = 'red';  // green for local, yellow for Dev, red for Live.
     $config['environment_indicator.indicator']['fg_color'] = 'white';
     $config['environment_indicator.indicator']['name'] = 'Live environment';
+    $settings['config_readonly'] = TRUE;
   } // Development type environment.
   else {
     $config['system.logging']['error_level'] = 'verbose';
