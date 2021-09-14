@@ -5,8 +5,11 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser_image
     - entityqueue.entity_queue.about_page_teasers
+    - entityqueue.entity_queue.art_shows_page_teasers
+    - entityqueue.entity_queue.books_page_teasers
     - entityqueue.entity_queue.early_literacy_page_teasers
     - entityqueue.entity_queue.educators_parents_page_teasers
+    - entityqueue.entity_queue.genealogy_local_history_page_tea
     - entityqueue.entity_queue.homework_help_page_teasers
     - entityqueue.entity_queue.kids_page_teasers
     - entityqueue.entity_queue.locations_page_teasers
@@ -300,6 +303,123 @@ display:
         - user.permissions
       tags:
         - 'config:entityqueue.entity_queue.early_literacy_page_teasers'
+        - entity_field_info
+        - views_data
+  block_12:
+    display_plugin: block
+    id: block_12
+    display_title: Books
+    position: 1
+    display_options:
+      display_extenders: {  }
+      block_description: 'ACLIB Books teasers'
+      block_category: ACLIB
+      allow:
+        items_per_page: false
+      display_description: ''
+      title: 'ACLIB Books teasers'
+      defaults:
+        title: false
+        relationships: false
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: true
+          limit_queue: books_page_teasers
+          entity_type: node
+          plugin_id: entity_queue
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:entityqueue.entity_queue.books_page_teasers'
+        - entity_field_info
+        - views_data
+  block_13:
+    display_plugin: block
+    id: block_13
+    display_title: 'Art shows'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      block_description: 'ACLIB Art shows teasers'
+      block_category: ACLIB
+      allow:
+        items_per_page: false
+      display_description: ''
+      title: 'ACLIB Art shows teasers'
+      defaults:
+        title: false
+        relationships: false
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: true
+          limit_queue: art_shows_page_teasers
+          entity_type: node
+          plugin_id: entity_queue
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:entityqueue.entity_queue.art_shows_page_teasers'
+        - entity_field_info
+        - views_data
+  block_14:
+    display_plugin: block
+    id: block_14
+    display_title: 'Genealogy & Local History'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      block_description: 'ACLIB Genealogy & Local History teasers'
+      block_category: ACLIB
+      allow:
+        items_per_page: false
+      display_description: ''
+      title: 'ACLIB Genealogy & Local History teasers'
+      defaults:
+        title: false
+        relationships: false
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: true
+          limit_queue: genealogy_local_history_page_tea
+          entity_type: node
+          plugin_id: entity_queue
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:entityqueue.entity_queue.genealogy_local_history_page_tea'
         - entity_field_info
         - views_data
   block_2:

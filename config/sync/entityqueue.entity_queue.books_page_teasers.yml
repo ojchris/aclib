@@ -1,0 +1,28 @@
+uuid: 7c81aca7-511f-4ca6-becb-6671decbba97
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: books_page_teasers
+label: 'Books page teasers'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      blog: blog
+      landing_page: landing_page
+      page_: page_
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: blog
+queue_settings:
+  min_size: 0
+  max_size: 9
+  act_as_queue: true
+  reverse: false

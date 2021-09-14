@@ -1,0 +1,26 @@
+uuid: 7cf2ad64-2cde-4bd1-8073-cf6f91b9716f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: genealogy_local_history_page_tea
+label: 'Genealogy & Local History page teasers'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      reference_database: reference_database
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+queue_settings:
+  min_size: 0
+  max_size: 9
+  act_as_queue: true
+  reverse: false
