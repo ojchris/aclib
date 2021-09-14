@@ -43,7 +43,7 @@ content:
     label: hidden
     settings:
       title: ''
-      size: c
+      size: '-'
       caption: '1'
       classes: ''
       type: photosets
@@ -64,11 +64,11 @@ content:
         bootstrap_carousel:
           value:
             interval: '5000'
+            keyboard: '1'
             navigation: '1'
             indicators: '1'
             effect: ''
             ride: 0
-            keyboard: 0
             pause: 0
             wrap: 0
     type: flickr_field_formatter
