@@ -16,4 +16,11 @@ article.node {
       margin-left: 1rem;
     }
   }
+
+  // Hide the byline from nodes inserted into layouts via a custom block.
+  //.block-layout-builder.block-inline-blocknode-full-content-reference-bloc {
+  //  .node__meta {
+  //    display: none;
+  //  }
+  //}
 }

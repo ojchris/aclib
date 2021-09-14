@@ -1,0 +1,43 @@
+uuid: 7943b7f3-e70f-4588-9f01-02a140e9d07d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.node_full_content_reference_bloc
+    - field.field.block_content.node_full_content_reference_bloc.field_node
+  module:
+    - flickr_formatter_bootstrap
+id: block_content.node_full_content_reference_bloc.default
+targetEntityType: block_content
+bundle: node_full_content_reference_bloc
+mode: default
+content:
+  field_node:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: full
+      link: false
+    third_party_settings:
+      flickr_formatter_bootstrap:
+        bootstrap_grid:
+          value:
+            xs: ''
+            sm: ''
+            md: ''
+            lg: ''
+            xl: ''
+            xxl: ''
+        bootstrap_carousel:
+          value:
+            interval: '5000'
+            effect: ''
+            ride: 0
+            keyboard: 0
+            navigation: 0
+            indicators: 0
+            pause: 0
+            wrap: 0
+    type: entity_reference_entity_view
+    region: content
+hidden: {  }
