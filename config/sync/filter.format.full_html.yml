@@ -68,3 +68,10 @@ filters:
         full_width: full_width
         half_width: half_width
         quarter_width: quarter_width
+  filter_url:
+    id: filter_url
+    provider: filter
+    status: true
+    weight: 0
+    settings:
+      filter_url_length: 72

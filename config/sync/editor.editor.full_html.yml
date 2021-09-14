@@ -71,10 +71,10 @@ settings:
             - Indent
             - Outdent
   plugins:
+    stylescombo:
+      styles: "p.clear-float|Clear floats\r\na.btn.btn-primary|Button"
     language:
       language_list: un
-    stylescombo:
-      styles: 'p.clear-float|Clear floats'
 image_upload:
   status: true
   scheme: public

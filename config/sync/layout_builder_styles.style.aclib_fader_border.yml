@@ -1,0 +1,11 @@
+uuid: cc25e4a5-81cf-4622-a765-b3878e34a9a4
+langcode: en
+status: true
+dependencies: {  }
+id: aclib_fader_border
+label: 'ACLIB fader border'
+classes: aclib-fader-border
+type: component
+weight: 0
+block_restrictions: {  }
+layout_restrictions: {  }
