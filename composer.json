@@ -23,6 +23,7 @@
         "drupal/core-recommended": "^9.2",
         "drupal/draggableviews": "^2.0",
         "drupal/entityqueue": "^1.2",
+        "drupal/environment_indicator": "^4.0",
         "drupal/extlink": "^1.6",
         "drupal/field_group": "^3.1",
         "drupal/field_redirection": "^2.0",

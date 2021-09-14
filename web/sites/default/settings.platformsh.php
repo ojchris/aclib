@@ -42,13 +42,19 @@ if (isset($platformsh->branch)) {
     $config['system.logging']['error_level'] = 'hide';
     $config['config_split.config_split.local_development']['status'] = FALSE;
     $config['config_split.config_split.dev']['status'] = FALSE;
-    $config['config_split.config_split.live']['status'] = TRUE;
+    $config['config_split.config_split.live']['status'] = TRUE;// Environment Indicator
+    $config['environment_indicator.indicator']['bg_color'] = 'red';  // green for local, yellow for Dev, red for Live.
+    $config['environment_indicator.indicator']['fg_color'] = 'white';
+    $config['environment_indicator.indicator']['name'] = 'Live environment';
   } // Development type environment.
   else {
     $config['system.logging']['error_level'] = 'verbose';
     $config['config_split.config_split.local_development']['status'] = FALSE;
     $config['config_split.config_split.dev']['status'] = TRUE;
     $config['config_split.config_split.live']['status'] = FALSE;
+    $config['environment_indicator.indicator']['bg_color'] = 'yellow';  // green for local, yellow for Dev, red for Live.
+    $config['environment_indicator.indicator']['fg_color'] = 'white';
+    $config['environment_indicator.indicator']['name'] = 'Development environment';
   }
 }
 

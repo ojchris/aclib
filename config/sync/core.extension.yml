@@ -13,6 +13,7 @@ module:
   breakpoint: 0
   ckeditor: 0
   ckeditor_accordion: 0
+  color: 0
   config: 0
   config_filter: 0
   config_split: 0
@@ -25,6 +26,7 @@ module:
   editor: 0
   entity_reference_revisions: 0
   entityqueue: 0
+  environment_indicator: 0
   field: 0
   field_group: 0
   field_ui: 0

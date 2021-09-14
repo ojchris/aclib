@@ -39,6 +39,11 @@ $config['config_split.config_split.local_development']['status'] = TRUE;
 $config['config_split.config_split.dev']['status'] = FALSE;
 $config['config_split.config_split.live']['status'] = FALSE;
 
+// Environment Indicator
+$config['environment_indicator.indicator']['bg_color'] = 'green';  // green for local, yellow for Dev, red for Live.
+$config['environment_indicator.indicator']['fg_color'] = 'white';
+$config['environment_indicator.indicator']['name'] = 'Local';
+
 // Automatic Platform.sh settings.
 if (file_exists($app_root . '/' . $site_path . '/settings.platformsh.php')) {
   include $app_root . '/' . $site_path . '/settings.platformsh.php';
