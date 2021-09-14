@@ -35,6 +35,10 @@ $settings['config_sync_directory'] = '../config/sync';
 // Used by media_migration module. See its README.
 $settings['media_migration_embed_token_transform_destination_filter_plugin'] = 'media_embed';
 
+$config['config_split.config_split.local_development']['status'] = TRUE;
+$config['config_split.config_split.dev']['status'] = FALSE;
+$config['config_split.config_split.live']['status'] = FALSE;
+
 // Automatic Platform.sh settings.
 if (file_exists($app_root . '/' . $site_path . '/settings.platformsh.php')) {
   include $app_root . '/' . $site_path . '/settings.platformsh.php';

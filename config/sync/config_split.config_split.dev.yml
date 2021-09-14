@@ -1,0 +1,17 @@
+uuid: 5355e9c5-a67c-4746-8058-64920d6a895b
+langcode: en
+status: false
+dependencies: {  }
+id: dev
+label: Dev
+description: ''
+folder: ../config/config_split/dev
+module: {  }
+theme: {  }
+blacklist: {  }
+graylist:
+  - smtp.settings
+  - system.mail
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 0

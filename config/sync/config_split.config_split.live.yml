@@ -1,0 +1,17 @@
+uuid: 0d19af9c-9de5-438b-aba2-b512d94404c3
+langcode: en
+status: false
+dependencies: {  }
+id: live
+label: Live
+description: ''
+folder: ../config/config_split/live
+module: {  }
+theme: {  }
+blacklist: {  }
+graylist:
+  - smtp.settings
+  - system.mail
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 0
