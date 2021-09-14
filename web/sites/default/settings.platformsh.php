@@ -53,7 +53,7 @@ if (isset($platformsh->branch)) {
     $config['config_split.config_split.dev']['status'] = TRUE;
     $config['config_split.config_split.live']['status'] = FALSE;
     $config['environment_indicator.indicator']['bg_color'] = 'yellow';  // green for local, yellow for Dev, red for Live.
-    $config['environment_indicator.indicator']['fg_color'] = 'white';
+    $config['environment_indicator.indicator']['fg_color'] = 'black';
     $config['environment_indicator.indicator']['name'] = 'Development environment';
   }
 }
