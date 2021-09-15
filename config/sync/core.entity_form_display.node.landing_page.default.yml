@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.landing_page.field_body
+    - field.field.node.landing_page.field_book
     - field.field.node.landing_page.field_home_page_image
     - field.field.node.landing_page.field_tags
     - field.field.node.landing_page.field_teaser
@@ -11,11 +12,30 @@ dependencies:
     - field.field.node.landing_page.layout_builder__layout
     - node.type.landing_page
   module:
+    - field_group
     - maxlength
     - media_library
+    - paragraphs
     - path
     - scheduler
     - text
+third_party_settings:
+  field_group:
+    group_book_list:
+      children:
+        - field_book
+      parent_name: ''
+      weight: 6
+      format_type: details
+      region: content
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: 'Book List'
 id: node.landing_page.default
 targetEntityType: node
 bundle: landing_page
@@ -23,7 +43,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 7
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -34,6 +54,24 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
+  field_book:
+    weight: 7
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+    type: paragraphs
     region: content
   field_home_page_image:
     weight: 3
@@ -74,7 +112,7 @@ content:
     region: content
   path:
     type: path
-    weight: 11
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -82,17 +120,17 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 8
+    weight: 10
     region: content
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 12
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 10
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -100,14 +138,14 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 14
+    weight: 16
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 9
+    weight: 11
     region: content
     third_party_settings: {  }
   title:
@@ -123,7 +161,7 @@ content:
         maxlength_js_label: 'Title limited to @limit characters, remaining: <strong>@remaining</strong>'
   uid:
     type: entity_reference_autocomplete
-    weight: 6
+    weight: 8
     settings:
       match_operator: CONTAINS
       size: 60
@@ -133,7 +171,12 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 13
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  url_redirects:
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }

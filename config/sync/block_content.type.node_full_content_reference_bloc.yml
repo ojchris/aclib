@@ -1,8 +1,0 @@
-uuid: 193ee34a-fcc4-42e7-afe8-4b6af211c0ca
-langcode: en
-status: true
-dependencies: {  }
-id: node_full_content_reference_bloc
-label: 'Node (full content) reference block'
-revision: 0
-description: 'This block outputs the selected node using the "Full content" view mode.'
