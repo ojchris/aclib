@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.page_.field_body
     - field.field.node.page_.field_book
     - field.field.node.page_.field_home_page_image
+    - field.field.node.page_.field_publisher_description
     - field.field.node.page_.field_tags
     - field.field.node.page_.field_teaser
     - field.field.node.page_.field_teaser_image
@@ -22,18 +23,19 @@ third_party_settings:
   field_group:
     group_book_list:
       children:
+        - field_publisher_description
         - field_book
       parent_name: ''
       weight: 6
       format_type: details
       region: content
       format_settings:
-        show_empty_fields: false
+        description: ''
+        required_fields: true
         id: ''
         classes: ''
-        description: ''
+        show_empty_fields: false
         open: false
-        required_fields: true
       label: 'Book List'
 id: node.page_.default
 targetEntityType: node
@@ -55,7 +57,7 @@ content:
     type: text_textarea
     region: content
   field_book:
-    weight: 9
+    weight: 11
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -78,6 +80,14 @@ content:
       media_types: {  }
     third_party_settings: {  }
     type: media_library_widget
+    region: content
+  field_publisher_description:
+    weight: 10
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_tags:
     weight: 5
@@ -119,7 +129,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 10
+    weight: 9
     region: content
     third_party_settings: {  }
   publish_on:

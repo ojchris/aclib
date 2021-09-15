@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.page_.field_body
     - field.field.node.page_.field_book
     - field.field.node.page_.field_home_page_image
+    - field.field.node.page_.field_publisher_description
     - field.field.node.page_.field_tags
     - field.field.node.page_.field_teaser
     - field.field.node.page_.field_teaser_image
@@ -34,6 +35,14 @@ content:
       link: ''
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
+    region: content
+  field_publisher_description:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
   links:
     weight: 1

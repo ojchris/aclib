@@ -1,0 +1,19 @@
+uuid: 6bcd8723-12a0-4417-9737-bb4e8423108d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_publisher_description
+    - node.type.page_
+id: node.page_.field_publisher_description
+field_name: field_publisher_description
+entity_type: node
+bundle: page_
+label: 'Descriptions adapted from the publisher'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
