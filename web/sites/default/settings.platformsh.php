@@ -38,7 +38,7 @@ if ($platformsh->hasRelationship('database')) {
 // on development but not production.
 if (isset($platformsh->branch)) {
   // Production type environment.
-  if ($platformsh->branch == 'master' || $platformsh->onDedicated()) {
+  if ($platformsh->branch == 'main' || $platformsh->onDedicated()) {
     $config['system.logging']['error_level'] = 'hide';
     $config['config_split.config_split.local_development']['status'] = FALSE;
     $config['config_split.config_split.dev']['status'] = FALSE;

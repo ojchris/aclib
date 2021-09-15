@@ -145,6 +145,6 @@ crons:
     snapshot:
         spec: '50 3 * * *'
         cmd: |
-            if [ "$PLATFORM_BRANCH" = master ]; then
+            if [ "$PLATFORM_BRANCH" = main ]; then
                 platform snapshot:create --yes --no-wait
             fi
