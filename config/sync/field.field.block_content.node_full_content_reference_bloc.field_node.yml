@@ -1,0 +1,35 @@
+uuid: c24fe916-20c0-409b-83e6-b2790f22e7d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.node_full_content_reference_bloc
+    - field.storage.block_content.field_node
+    - node.type.blog
+    - node.type.page_
+    - node.type.press_release
+    - node.type.reference_database
+id: block_content.node_full_content_reference_bloc.field_node
+field_name: field_node
+entity_type: block_content
+bundle: node_full_content_reference_bloc
+label: Node
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      blog: blog
+      page_: page_
+      press_release: press_release
+      reference_database: reference_database
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: blog
+field_type: entity_reference
