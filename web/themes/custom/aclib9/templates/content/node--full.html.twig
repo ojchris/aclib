@@ -73,19 +73,20 @@
   ]
 %}
 <article{{ attributes.addClass(classes) }}>
-  <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
-    {{ content }}
+  <header>
     {% if display_submitted %}
       <div class="node__meta">
         {{ author_picture }}
         {% block submitted %}
           <em{{ author_attributes }}>
-            {% set changed_date = node.getChangedTime|format_date('aclib_date_only') %}
-            {% trans %}By {{ author_name }} on {{ changed_date }}{% endtrans %}
+            {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
           </em>
         {% endblock %}
         {{ metadata }}
       </div>
     {% endif %}
+  </header>
+  <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
+    {{ content }}
   </div>
 </article>
