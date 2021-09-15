@@ -21,7 +21,7 @@
 
 environment_variables:
   project_id: fg4e35jhtsaro
-  environment: master
+  environment: main
 
 auth_command:
   command: |
