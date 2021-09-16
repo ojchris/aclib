@@ -5,8 +5,8 @@ dependencies:
   config:
     - field.field.node.page_.field_body
     - field.field.node.page_.field_book
+    - field.field.node.page_.field_disclaimer
     - field.field.node.page_.field_home_page_image
-    - field.field.node.page_.field_publisher_description
     - field.field.node.page_.field_tags
     - field.field.node.page_.field_teaser
     - field.field.node.page_.field_teaser_image
@@ -28,7 +28,7 @@ content:
     type: text_default
     region: content
   field_book:
-    weight: 2
+    weight: 3
     label: above
     settings:
       view_mode: default
@@ -36,9 +36,9 @@ content:
     third_party_settings: {  }
     type: entity_reference_revisions_entity_view
     region: content
-  field_publisher_description:
-    weight: 3
-    label: above
+  field_disclaimer:
+    weight: 2
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }

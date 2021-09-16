@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.blog.field_body
     - field.field.node.blog.field_book
+    - field.field.node.blog.field_disclaimer
     - field.field.node.blog.field_flickr_photoset
     - field.field.node.blog.field_home_page_image
     - field.field.node.blog.field_tags
@@ -37,6 +38,14 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
+  field_disclaimer:
+    weight: 5
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
   field_flickr_photoset:
     weight: 1

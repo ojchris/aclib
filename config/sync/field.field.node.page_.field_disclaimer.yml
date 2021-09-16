@@ -1,0 +1,19 @@
+uuid: a154e18e-6cc2-426d-8210-07cb836d54bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_disclaimer
+    - node.type.page_
+id: node.page_.field_disclaimer
+field_name: field_disclaimer
+entity_type: node
+bundle: page_
+label: Disclaimer
+description: 'Please enter "Descriptions adapted from the publisher." if applicable to Book List here.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

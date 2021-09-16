@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser_image
     - field.field.node.landing_page.field_body
     - field.field.node.landing_page.field_book
+    - field.field.node.landing_page.field_disclaimer
     - field.field.node.landing_page.field_home_page_image
     - field.field.node.landing_page.field_tags
     - field.field.node.landing_page.field_teaser
@@ -36,6 +37,7 @@ content:
 hidden:
   field_body: true
   field_book: true
+  field_disclaimer: true
   field_home_page_image: true
   field_tags: true
   field_teaser: true

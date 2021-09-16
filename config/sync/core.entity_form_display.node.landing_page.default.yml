@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.landing_page.field_body
     - field.field.node.landing_page.field_book
+    - field.field.node.landing_page.field_disclaimer
     - field.field.node.landing_page.field_home_page_image
     - field.field.node.landing_page.field_tags
     - field.field.node.landing_page.field_teaser
@@ -72,6 +73,14 @@ content:
         duplicate: duplicate
     third_party_settings: {  }
     type: paragraphs
+    region: content
+  field_disclaimer:
+    weight: 26
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_home_page_image:
     weight: 3

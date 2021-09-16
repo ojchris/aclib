@@ -6,8 +6,8 @@ dependencies:
     - core.entity_view_mode.node.search_index
     - field.field.node.page_.field_body
     - field.field.node.page_.field_book
+    - field.field.node.page_.field_disclaimer
     - field.field.node.page_.field_home_page_image
-    - field.field.node.page_.field_publisher_description
     - field.field.node.page_.field_tags
     - field.field.node.page_.field_teaser
     - field.field.node.page_.field_teaser_image
@@ -70,4 +70,4 @@ content:
     third_party_settings: {  }
 hidden:
   field_book: true
-  field_publisher_description: true
+  field_disclaimer: true

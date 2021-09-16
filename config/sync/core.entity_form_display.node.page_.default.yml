@@ -5,8 +5,8 @@ dependencies:
   config:
     - field.field.node.page_.field_body
     - field.field.node.page_.field_book
+    - field.field.node.page_.field_disclaimer
     - field.field.node.page_.field_home_page_image
-    - field.field.node.page_.field_publisher_description
     - field.field.node.page_.field_tags
     - field.field.node.page_.field_teaser
     - field.field.node.page_.field_teaser_image
@@ -23,7 +23,7 @@ third_party_settings:
   field_group:
     group_book_list:
       children:
-        - field_publisher_description
+        - field_disclaimer
         - field_book
       parent_name: ''
       weight: 6
@@ -57,7 +57,7 @@ content:
     type: text_textarea
     region: content
   field_book:
-    weight: 11
+    weight: 12
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -74,20 +74,20 @@ content:
     third_party_settings: {  }
     type: paragraphs
     region: content
+  field_disclaimer:
+    weight: 11
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_home_page_image:
     weight: 3
     settings:
       media_types: {  }
     third_party_settings: {  }
     type: media_library_widget
-    region: content
-  field_publisher_description:
-    weight: 10
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
     region: content
   field_tags:
     weight: 5
@@ -154,7 +154,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 11
+    weight: 10
     region: content
     third_party_settings: {  }
   title:
