@@ -23,8 +23,8 @@ third_party_settings:
   field_group:
     group_book_list:
       children:
-        - field_disclaimer
         - field_book
+        - field_disclaimer
       parent_name: ''
       weight: 6
       format_type: details
@@ -75,7 +75,7 @@ content:
     type: paragraphs
     region: content
   field_disclaimer:
-    weight: 11
+    weight: 13
     settings:
       size: 60
       placeholder: ''

@@ -28,7 +28,7 @@ content:
     type: text_default
     region: content
   field_book:
-    weight: 3
+    weight: 2
     label: above
     settings:
       view_mode: default
@@ -37,7 +37,7 @@ content:
     type: entity_reference_revisions_entity_view
     region: content
   field_disclaimer:
-    weight: 2
+    weight: 3
     label: hidden
     settings:
       link_to_entity: false
