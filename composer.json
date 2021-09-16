@@ -34,6 +34,7 @@
         "drupal/honeypot": "^2.0",
         "drupal/image_widget_crop": "^2.3",
         "drupal/layout_builder_modal": "^1.1",
+        "drupal/layout_builder_restrictions": "^2.9",
         "drupal/layout_builder_styles": "^1.0@beta",
         "drupal/linkit": "^6.0@beta",
         "drupal/maxlength": "^1.0@RC",
