@@ -187,6 +187,7 @@ permissions:
   - 'update featured_refdb entityqueue'
   - 'update get_card entityqueue'
   - 'update learn_page_teasers entityqueue'
+  - 'update locations_page_teasers entityqueue'
   - 'update media'
   - 'update research_page_teasers entityqueue'
   - 'update secondary_home_page_stories entityqueue'
