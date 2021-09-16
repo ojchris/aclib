@@ -13,6 +13,23 @@ title: 'Homebound Delivery'
 description: 'Library patrons applying for homebound delivery.'
 category: ''
 elements: |-
+  intro:
+    '#type': processed_text
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#display_on': both
+    '#text': |
+      <p>Elderly and/or homebound residents of Alachua County&nbsp;can receive mail delivery of library materials. &nbsp;Please provide the information below to start the application process; once we've received this information we will send you some mail to finalize the application.<br />
+      <br />
+      If you would prefer to apply by phone or if you have any questions,&nbsp;you can also contact the Circulation Department at <a href="tel:13523343956">352-334-3956</a>.</p>
+    '#format': basic_html
   name:
     '#type': webform_name
     '#title': Name
