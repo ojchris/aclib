@@ -41,7 +41,7 @@ content:
     region: content
   field_disclaimer:
     weight: 3
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
