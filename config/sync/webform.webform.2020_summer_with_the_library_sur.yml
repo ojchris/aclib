@@ -12,7 +12,145 @@ id: 2020_summer_with_the_library_sur
 title: '2020 Summer with the Library Survey'
 description: ''
 category: ''
-elements: null
+elements: |-
+  intro:
+    '#type': processed_text
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#text': |
+      <p><strong>Thank you for participating in 2020 Summer with the Library! We'd love your feedback on the program to help us prepare and improve next year's experience. Please complete this short survey and you'll be entered into a drawing for a library swag bag.&nbsp;</strong></p>
+    '#format': basic_html
+  first_name:
+    '#type': textfield
+    '#title': 'First Name'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  last_name:
+    '#type': textfield
+    '#title': 'Last Name'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  email_address:
+    '#type': email
+    '#title': 'Email Address'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  how_many_people_in_your_household_participated_in_summer_with_th:
+    '#type': select
+    '#title': 'How many people in your household participated in Summer with the Library?'
+    '#options':
+      1-2: 1-2
+      3-4: 3-4
+      5+: 5+
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  how_did_you_learn_about_summer_with_the_library_:
+    '#type': select
+    '#title': 'How did you learn about Summer with the Library?'
+    '#options':
+      'At a library branch': 'At a library branch'
+      'Friend or family member': 'Friend or family member'
+      'Social media': 'Social media'
+      'Television ad': 'Television ad'
+      'Fun 4 Gator Kids': 'Fun 4 Gator Kids'
+      'Gainesville Sun': 'Gainesville Sun'
+      Other: Other
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  how_was_your_experience_using_beanstack_to_track_your_activities:
+    '#type': select
+    '#title': 'How was your experience using Beanstack to track your activities? '
+    '#options':
+      'Great, it was really easy.': 'Great, it was really easy.'
+      'Just OK.': 'Just OK.'
+      'Not good.': 'Not good.'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  will_you_participate_in_summer_with_the_library_next_year_:
+    '#type': radios
+    '#title': 'Will you participate in Summer with the Library next year?'
+    '#options':
+      Definitely!: Definitely!
+      Probably: Probably
+      Nope: Nope
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  how_can_we_improve_summer_with_the_library_:
+    '#type': textfield
+    '#title': 'How can we improve Summer with the Library? '
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
 css: ''
 javascript: ''
 settings:

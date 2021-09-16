@@ -12,7 +12,120 @@ id: media_request_form
 title: 'Media Request Form'
 description: ''
 category: ''
-elements: null
+elements: |-
+  first_name:
+    '#type': textfield
+    '#title': 'First Name'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  last_name:
+    '#type': textfield
+    '#title': 'Last Name'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  email_address:
+    '#type': email
+    '#title': 'Email Address'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  is_this_request_for_a_media_outlet_or_a_class_assignment_:
+    '#type': radios
+    '#title': 'Is this request for a media outlet or a class assignment?'
+    '#options':
+      ' Class assignment': ' Class assignment'
+      ' Media outlet': ' Media outlet'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  media_outlet:
+    '#type': textfield
+    '#title': 'Media Outlet'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  request:
+    '#type': checkboxes
+    '#title': Request
+    '#options':
+      'Phone interview': 'Phone interview'
+      ' Email interview': ' Email interview'
+      ' Video interview': ' Video interview'
+      ' Radio interview': ' Radio interview'
+      'Photograph library event or service': 'Photograph library event or service'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  deadline_for_interview:
+    '#type': date
+    '#title': 'Deadline for Interview'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  details:
+    '#type': textfield
+    '#title': Details
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
 css: ''
 javascript: ''
 settings:

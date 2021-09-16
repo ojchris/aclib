@@ -12,7 +12,114 @@ id: photo_audio_video_release
 title: 'Photo/Audio/Video Release'
 description: ''
 category: ''
-elements: null
+elements: |-
+  intro:
+    '#type': processed_text
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#text': |
+      <p>Library staff on occasion videotape, record or photograph events occurring in and around the Library, including programs in which you or your child may be participating.&nbsp; These photographs, audio and visual recordings may be used for various promotional activities and may appear in newspapers, magazines, flyers, brochures, radio, television and/or the Alachua County Library District's website: <a href="http://www.aclib.us">www.aclib.us</a> or on social media such as Facebook or Flickr.&nbsp; Photographs, audio and visual recordings may be used on a recurring basis such as broadcasting a Children's StoryTime on cable television or a photograph in a Library District brochure. Please read and sign the form below.</p>
+
+      <p>The undersigned, being of legal age, hereby consents and authorizes The Alachua County Library District to use and reproduce the photographs taken and produced in connection with the production described herein. I understand that my child's or my own image or voice may be broadcast or published as part of a promotional activity or media story.&nbsp; This release will be effective until I revoke it in writing.</p>
+    '#format': basic_html
+  first_name:
+    '#type': textfield
+    '#title': 'First Name'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  last_name:
+    '#type': textfield
+    '#title': 'Last Name'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  email_address:
+    '#type': email
+    '#title': 'Email Address'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  today_s_date:
+    '#type': date
+    '#title': 'Today''s Date'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  child_s_first_name_if_signing_for_a_minor_:
+    '#type': textfield
+    '#title': 'Child''s First Name (if signing for a minor)'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  child_s_last_name_if_signing_for_a_minor_:
+    '#type': textfield
+    '#title': 'Child''s Last Name (if signing for a minor)'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  email_a_copy:
+    '#type': checkbox
+    '#title': 'Email a copy'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
 css: ''
 javascript: ''
 settings:
