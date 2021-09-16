@@ -76,13 +76,13 @@
   <header>
     {{ title_prefix }}
     {% if label and not page %}
-        <a href="{{ url }}" rel="bookmark" class="fw-bold">{{ label }}</a>
+        <a href="/refdb/{{ node.id }}" rel="bookmark" class="fw-bold">{{ label }}</a>
     {% endif %}
     {{ title_suffix }}
   </header>
   <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
     {{ content }}
-    <a class="btn btn-primary" href="/refdb/{{ node.id }}">Access {{ label }}</a>
+    <a href="{{ url }}">Learn more about {{ label }}</a>
     {% if display_submitted %}
       <div class="node__meta">
         {{ author_picture }}
