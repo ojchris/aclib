@@ -32,7 +32,7 @@ content:
     third_party_settings: {  }
   field_book:
     type: entity_reference_revisions_entity_view
-    weight: 2
+    weight: 3
     label: hidden
     settings:
       view_mode: default
@@ -40,7 +40,7 @@ content:
     third_party_settings: {  }
     region: content
   field_disclaimer:
-    weight: 5
+    weight: 2
     label: above
     settings:
       link_to_entity: false
@@ -83,7 +83,7 @@ content:
     type: flickr_field_formatter
     region: content
   field_tags:
-    weight: 3
+    weight: 4
     label: above
     settings:
       link: true
@@ -91,7 +91,7 @@ content:
     type: entity_reference_label
     region: content
   links:
-    weight: 4
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }

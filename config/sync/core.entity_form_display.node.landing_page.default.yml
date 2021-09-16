@@ -24,6 +24,7 @@ third_party_settings:
   field_group:
     group_book_list:
       children:
+        - field_disclaimer
         - field_book
       parent_name: ''
       weight: 6
@@ -57,7 +58,7 @@ content:
     type: text_textarea
     region: content
   field_book:
-    weight: 7
+    weight: 9
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -75,7 +76,7 @@ content:
     type: paragraphs
     region: content
   field_disclaimer:
-    weight: 26
+    weight: 8
     settings:
       size: 60
       placeholder: ''
@@ -170,7 +171,7 @@ content:
         maxlength_js_label: 'Title limited to @limit characters, remaining: <strong>@remaining</strong>'
   uid:
     type: entity_reference_autocomplete
-    weight: 8
+    weight: 7
     settings:
       match_operator: CONTAINS
       size: 60
