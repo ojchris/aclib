@@ -1,0 +1,26 @@
+uuid: a20b2d03-99fa-4fed-af74-856b2aaa25cd
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: job_skills_page_database_only_te
+label: 'Job Skills page database-only teasers'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      reference_database: reference_database
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+queue_settings:
+  min_size: 0
+  max_size: 12
+  act_as_queue: true
+  reverse: false

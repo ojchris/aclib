@@ -1,0 +1,26 @@
+uuid: 07df5e68-5ea4-4446-8e3c-a2964fd1ef33
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: homework_help_page_database_only
+label: 'Homework Help page database-only teasers'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      reference_database: reference_database
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+queue_settings:
+  min_size: 0
+  max_size: 9
+  act_as_queue: true
+  reverse: false

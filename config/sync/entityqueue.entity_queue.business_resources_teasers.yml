@@ -1,0 +1,29 @@
+uuid: 63697927-9edd-4033-88a2-519d967e3526
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: business_resources_teasers
+label: 'Business resources teasers'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      blog: blog
+      landing_page: landing_page
+      page_: page_
+      reference_database: reference_database
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: blog
+queue_settings:
+  min_size: 0
+  max_size: 12
+  act_as_queue: true
+  reverse: false

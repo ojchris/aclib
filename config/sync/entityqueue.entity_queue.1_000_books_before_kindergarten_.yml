@@ -1,0 +1,29 @@
+uuid: 8b435788-cf37-4f9b-94f9-e25556b2a125
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: 1_000_books_before_kindergarten_
+label: '1,000 Books Before Kindergarten teasers'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      blog: blog
+      landing_page: landing_page
+      page_: page_
+      reference_database: reference_database
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: blog
+queue_settings:
+  min_size: 0
+  max_size: 9
+  act_as_queue: true
+  reverse: false

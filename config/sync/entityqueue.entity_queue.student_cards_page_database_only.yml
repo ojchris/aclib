@@ -1,0 +1,26 @@
+uuid: 22262c75-a8b8-4d3f-a604-5ff9e25e8684
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: student_cards_page_database_only
+label: 'Student Cards page database-only teasers'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      reference_database: reference_database
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+queue_settings:
+  min_size: 0
+  max_size: 9
+  act_as_queue: true
+  reverse: false

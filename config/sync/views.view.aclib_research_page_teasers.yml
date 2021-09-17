@@ -4,12 +4,14 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser_image
+    - entityqueue.entity_queue.1_000_books_before_kindergarten_
     - entityqueue.entity_queue.about_page_teasers
     - entityqueue.entity_queue.art_shows_page_teasers
     - entityqueue.entity_queue.books_page_teasers
     - entityqueue.entity_queue.early_literacy_page_teasers
     - entityqueue.entity_queue.educators_parents_page_teasers
     - entityqueue.entity_queue.genealogy_local_history_page_tea
+    - entityqueue.entity_queue.homework_help_page_database_only
     - entityqueue.entity_queue.homework_help_page_teasers
     - entityqueue.entity_queue.kids_page_teasers
     - entityqueue.entity_queue.locations_page_teasers
@@ -17,6 +19,8 @@ dependencies:
     - entityqueue.entity_queue.mission_and_values_teasers
     - entityqueue.entity_queue.research_page_teasers
     - entityqueue.entity_queue.special_needs_teasers
+    - entityqueue.entity_queue.student_cards_page_database_only
+    - entityqueue.entity_queue.student_library_card_teasers
     - entityqueue.entity_queue.teens_page_teasers
   module:
     - entityqueue
@@ -420,6 +424,162 @@ display:
         - user.permissions
       tags:
         - 'config:entityqueue.entity_queue.genealogy_local_history_page_tea'
+        - entity_field_info
+        - views_data
+  block_15:
+    display_plugin: block
+    id: block_15
+    display_title: 'Student library cards'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      block_description: 'ACLIB Student library cards teasers'
+      block_category: ACLIB
+      allow:
+        items_per_page: false
+      display_description: ''
+      title: 'ACLIB Student library cards teasers'
+      defaults:
+        title: false
+        relationships: false
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: true
+          limit_queue: student_library_card_teasers
+          entity_type: node
+          plugin_id: entity_queue
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:entityqueue.entity_queue.student_library_card_teasers'
+        - entity_field_info
+        - views_data
+  block_16:
+    display_plugin: block
+    id: block_16
+    display_title: '1,000 Books Before Kindergarten'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      block_description: 'ACLIB 1,000 Books Before Kindergarten teasers'
+      block_category: ACLIB
+      allow:
+        items_per_page: false
+      display_description: ''
+      title: 'ACLIB 1,000 Books Before Kindergarten teasers'
+      defaults:
+        title: false
+        relationships: false
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: true
+          limit_queue: 1_000_books_before_kindergarten_
+          entity_type: node
+          plugin_id: entity_queue
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:entityqueue.entity_queue.1_000_books_before_kindergarten_'
+        - entity_field_info
+        - views_data
+  block_17:
+    display_plugin: block
+    id: block_17
+    display_title: 'Homework Help page database-only'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      block_description: 'ACLIB Homework Help page database-only teasers'
+      block_category: ACLIB
+      allow:
+        items_per_page: false
+      display_description: ''
+      title: 'ACLIB Homework Help page database-only teasers'
+      defaults:
+        title: false
+        relationships: false
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: true
+          limit_queue: homework_help_page_database_only
+          entity_type: node
+          plugin_id: entity_queue
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:entityqueue.entity_queue.homework_help_page_database_only'
+        - entity_field_info
+        - views_data
+  block_18:
+    display_plugin: block
+    id: block_18
+    display_title: 'Student Cards page database-only'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      block_description: 'ACLIB Student Cards page database-only teasers'
+      block_category: ACLIB
+      allow:
+        items_per_page: false
+      display_description: ''
+      title: 'ACLIB Student Cards page database-only teasers'
+      defaults:
+        title: false
+        relationships: false
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: true
+          limit_queue: student_cards_page_database_only
+          entity_type: node
+          plugin_id: entity_queue
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:entityqueue.entity_queue.student_cards_page_database_only'
         - entity_field_info
         - views_data
   block_2:

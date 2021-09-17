@@ -1,0 +1,26 @@
+uuid: f5b9392f-7e32-4ab2-a83c-90e27036a318
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: business_resources_page_database
+label: 'Business Resources page database-only teasers'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      reference_database: reference_database
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+queue_settings:
+  min_size: 0
+  max_size: 12
+  act_as_queue: true
+  reverse: false
