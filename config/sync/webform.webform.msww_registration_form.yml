@@ -1,4 +1,4 @@
-uuid: 5b5ef941-ee8d-488a-8fb7-7759399e8d53
+uuid: 4223f943-9ab8-4d57-895b-1858b5f1b241
 langcode: en
 status: open
 dependencies: {  }
@@ -8,12 +8,104 @@ weight: 0
 uid: 1
 template: false
 archive: false
-id: 3d_printed_item_sign_up
-title: '3D Printed Item Sign-Up'
+id: msww_registration_form
+title: 'MSWW Registration Form'
 description: ''
 category: ''
 elements: |-
-  intro:
+  name:
+    '#type': textfield
+    '#title': Name
+    '#description': 'Please enter your First and Last Names'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  email_address:
+    '#type': email
+    '#title': 'Email Address'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  age_group:
+    '#type': select
+    '#title': 'Age Group'
+    '#options':
+      ' Child': ' Child'
+      Tween/Teen: Tween/Teen
+      ' Adult': ' Adult'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  are_you_a_new_or_returning_student_:
+    '#type': select
+    '#title': 'Are you a new or returning student?'
+    '#options':
+      ' New': ' New'
+      ' Returning': ' Returning'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  are_you_happy_with_your_house_placement_:
+    '#type': select
+    '#title': 'Are you happy with your house placement? '
+    '#options': yes_no
+    '#empty_option': 'No'
+    '#empty_value': 'No'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  if_you_wish_to_submit_a_photo_for_the_virtual_sorting_ceremony_y:
+    '#type': select
+    '#title': 'If you wish to submit a photo for the virtual Sorting Ceremony, you must complete a photo release form. Will you be submitting a photo?'
+    '#options': yes_no
+    '#empty_option': 'No'
+    '#empty_value': 'No'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  processed_text:
     '#type': processed_text
     '#access_create_roles':
       - authenticated
@@ -25,204 +117,8 @@ elements: |-
       - authenticated
       - anonymous
     '#text': |
-      <ul>
-      	<li>Each participant is limited to one 3D printed item</li>
-      	<li>If you have more than one child, please submit the webform for them individually</li>
-      	<li>Participant forms will be accepted <strong>while supplies lasts</strong></li>
-      	<li>Participants must pick up item at branch selected on this form or else forfeit the item</li>
-      	<li>Participants must pick up item by date selected or else forfeit the item</li>
-      </ul>
+      <p><strong>Thank you!&nbsp; Click the Submit button to complete your&nbsp;MSWW registration.</strong></p>
     '#format': basic_html
-  first_name:
-    '#type': textfield
-    '#title': 'First Name'
-    '#title_display': inline
-    '#required': true
-    '#access_create_roles':
-      - authenticated
-      - anonymous
-    '#access_update_roles':
-      - authenticated
-      - anonymous
-    '#access_view_roles':
-      - authenticated
-      - anonymous
-  last_name:
-    '#type': textfield
-    '#title': 'Last Name'
-    '#title_display': inline
-    '#required': true
-    '#access_create_roles':
-      - authenticated
-      - anonymous
-    '#access_update_roles':
-      - authenticated
-      - anonymous
-    '#access_view_roles':
-      - authenticated
-      - anonymous
-  telephone:
-    '#type': textfield
-    '#title': Telephone
-    '#title_display': inline
-    '#required': true
-    '#access_create_roles':
-      - authenticated
-      - anonymous
-    '#access_update_roles':
-      - authenticated
-      - anonymous
-    '#access_view_roles':
-      - authenticated
-      - anonymous
-  email:
-    '#type': email
-    '#title': Email
-    '#title_display': inline
-    '#required': true
-    '#access_create_roles':
-      - authenticated
-      - anonymous
-    '#access_update_roles':
-      - authenticated
-      - anonymous
-    '#access_view_roles':
-      - authenticated
-      - anonymous
-  preferred_method_of_communication:
-    '#type': radios
-    '#title': 'Preferred Method of Communication'
-    '#options':
-      ' Email': ' Email'
-      ' Telephone': ' Telephone'
-    '#required': true
-    '#access_create_roles':
-      - authenticated
-      - anonymous
-    '#access_update_roles':
-      - authenticated
-      - anonymous
-    '#access_view_roles':
-      - authenticated
-      - anonymous
-  select_your_item:
-    '#type': select
-    '#title': 'Select your item'
-    '#options':
-      ' Flexi-Rexi': ' Flexi-Rexi'
-      'Cell Phone Stand ': 'Cell Phone Stand '
-      'Velociraptor Business Card': 'Velociraptor Business Card'
-      ' Food Dice': ' Food Dice'
-      ' Bell Coin': ' Bell Coin'
-    '#required': true
-    '#access_create_roles':
-      - authenticated
-      - anonymous
-    '#access_update_roles':
-      - authenticated
-      - anonymous
-    '#access_view_roles':
-      - authenticated
-      - anonymous
-  select_your_color:
-    '#type': select
-    '#title': 'Select your color'
-    '#options':
-      ' Yellow': ' Yellow'
-      ' White': ' White'
-      ' Purple': ' Purple'
-      ' Black': ' Black'
-      ' Red': ' Red'
-    '#required': true
-    '#access_create_roles':
-      - authenticated
-      - anonymous
-    '#access_update_roles':
-      - authenticated
-      - anonymous
-    '#access_view_roles':
-      - authenticated
-      - anonymous
-  select_pick_up_branch:
-    '#type': select
-    '#title': 'Select pick-up branch'
-    '#options':
-      ' Alachua': ' Alachua'
-      ' Archer': ' Archer'
-      'Cone Park ': 'Cone Park '
-      ' Hawthorne': ' Hawthorne'
-      ' Headquarters': ' Headquarters'
-      'High Springs ': 'High Springs '
-      'Library Partnership': 'Library Partnership'
-      ' Micanopy': ' Micanopy'
-      ' Millhopper': ' Millhopper'
-      ' Newberry': ' Newberry'
-      ' Tower': ' Tower'
-      ' Waldo': ' Waldo'
-    '#required': true
-    '#access_create_roles':
-      - authenticated
-      - anonymous
-    '#access_update_roles':
-      - authenticated
-      - anonymous
-    '#access_view_roles':
-      - authenticated
-      - anonymous
-  select_pick_up_date_please_allow_for_two_weeks_:
-    '#type': date
-    '#title': 'Select pick-up date. Please allow for two weeks.'
-    '#title_display': inline
-    '#access_create_roles':
-      - authenticated
-      - anonymous
-    '#access_update_roles':
-      - authenticated
-      - anonymous
-    '#access_view_roles':
-      - authenticated
-      - anonymous
-    '#required': true
-  by_entering_your_name_below_and_having_your_parent_or_legal_guar:
-    '#type': textfield
-    '#title': 'By entering your name below and having your parent or legal guardian enter their name below, you agree to the rules and regulations above.'
-    '#required': true
-    '#access_create_roles':
-      - authenticated
-      - anonymous
-    '#access_update_roles':
-      - authenticated
-      - anonymous
-    '#access_view_roles':
-      - authenticated
-      - anonymous
-  signature_date:
-    '#type': date
-    '#title': 'Signature Date'
-    '#title_display': inline
-    '#required': true
-    '#access_create_roles':
-      - authenticated
-      - anonymous
-    '#access_update_roles':
-      - authenticated
-      - anonymous
-    '#access_view_roles':
-      - authenticated
-      - anonymous
-  name_of_parent_legal_guardian:
-    '#type': textfield
-    '#title': 'Name of parent/legal guardian'
-    '#required': true
-    '#access_create_roles':
-      - authenticated
-      - anonymous
-    '#access_update_roles':
-      - authenticated
-      - anonymous
-    '#access_view_roles':
-      - authenticated
-      - anonymous
 css: ''
 javascript: ''
 settings:

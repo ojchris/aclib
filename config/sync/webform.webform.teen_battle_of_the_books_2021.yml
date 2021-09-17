@@ -12,7 +12,87 @@ id: teen_battle_of_the_books_2021
 title: 'Teen Battle of the Books 2021'
 description: ''
 category: ''
-elements: null
+elements: |-
+  what_did_you_like_about_battle_of_the_books_:
+    '#type': textfield
+    '#title': 'What did you like about Battle of the Books?'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  what_would_make_battle_of_the_books_better_:
+    '#type': textfield
+    '#title': 'What would make Battle of the Books better?'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  what_did_you_think_of_playing_on_kahoot_:
+    '#type': textfield
+    '#title': 'What did you think of playing on Kahoot?'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  what_did_you_think_of_the_book_selection_:
+    '#type': textfield
+    '#title': 'What did you think of the book selection?'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  where_did_you_hear_about_battle_of_the_books_:
+    '#type': radios
+    '#title': 'Where did you hear about Battle of the Books?'
+    '#options':
+      'Participated in previous years': 'Participated in previous years'
+      'Library website': 'Library website'
+      'Social media': 'Social media'
+      'Library email newsletter': 'Library email newsletter'
+      Newspaper: Newspaper
+      Television: Television
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  other:
+    '#type': textfield
+    '#title': Other
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
 css: ''
 javascript: ''
 settings:
