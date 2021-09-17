@@ -1,0 +1,8 @@
+uuid: a24144d8-35da-4da5-8f56-6d36f931e837
+langcode: en
+status: true
+dependencies: {  }
+id: image_top
+label: 'Image top'
+revision: 0
+description: 'This block displays an image on top.'

@@ -1,0 +1,23 @@
+uuid: da093f1c-ce8e-4cac-9396-7a78a9082e18
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.image_top
+    - field.storage.block_content.field_title_link
+  module:
+    - link
+id: block_content.image_top.field_title_link
+field_name: field_title_link
+entity_type: block_content
+bundle: image_top
+label: 'Title link'
+description: 'Enter the path or URL the block title should link to.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

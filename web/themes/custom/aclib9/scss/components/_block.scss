@@ -3,3 +3,10 @@
   padding: 1rem;
   margin-bottom: 1rem;
 }
+
+// Styles for "Image top" custom block type.
+.block-image-top {
+  .field--name-field-image {
+    margin: 0;
+  }
+}

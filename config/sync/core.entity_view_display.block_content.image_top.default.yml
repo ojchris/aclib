@@ -1,0 +1,85 @@
+uuid: cf14f589-d732-460f-bb2e-604464f6e482
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.image_top
+    - field.field.block_content.image_top.field_body
+    - field.field.block_content.image_top.field_image
+    - field.field.block_content.image_top.field_title_link
+  module:
+    - flickr_formatter_bootstrap
+    - link
+    - text
+id: block_content.image_top.default
+targetEntityType: block_content
+bundle: image_top
+mode: default
+content:
+  field_body:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: full_width
+      link: false
+    third_party_settings:
+      flickr_formatter_bootstrap:
+        bootstrap_grid:
+          value:
+            xs: ''
+            sm: ''
+            md: ''
+            lg: ''
+            xl: ''
+            xxl: ''
+        bootstrap_carousel:
+          value:
+            interval: '5000'
+            effect: ''
+            ride: 0
+            keyboard: 0
+            navigation: 0
+            indicators: 0
+            pause: 0
+            wrap: 0
+    region: content
+  field_title_link:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      flickr_formatter_bootstrap:
+        bootstrap_grid:
+          value:
+            xs: ''
+            sm: ''
+            md: ''
+            lg: ''
+            xl: ''
+            xxl: ''
+        bootstrap_carousel:
+          value:
+            interval: '5000'
+            effect: ''
+            ride: 0
+            keyboard: 0
+            navigation: 0
+            indicators: 0
+            pause: 0
+            wrap: 0
+    type: link_separate
+    region: content
+hidden: {  }
