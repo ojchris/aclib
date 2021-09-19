@@ -2,27 +2,14 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  margin: 30px 0;
+  margin: 2rem 0;
   .book-cover {
-    min-width: 100px;
     img {
-      width: 100px;
-    }
-    @include media-breakpoint-up(sm) {
-      min-width: 200px;
-      img {
-        width: 200px;
-      }
-    }
-    @include media-breakpoint-up(md) {
-      min-width: 300px;
-      img {
-        width: 300px;
-      }
+      width: 100%;
     }
   }
   .book-detail {
-    margin-left: 1rem;
+    padding-left: 1rem;
     h3 {
       font-size: inherit;
       a {
