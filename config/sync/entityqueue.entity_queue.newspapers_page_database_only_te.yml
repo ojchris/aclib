@@ -1,0 +1,26 @@
+uuid: e250948b-9efa-4fcf-bc9e-e68fc395f4e5
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: newspapers_page_database_only_te
+label: 'Newspapers page database-only teasers'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      reference_database: reference_database
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+queue_settings:
+  min_size: 0
+  max_size: 9
+  act_as_queue: true
+  reverse: false

@@ -1,0 +1,26 @@
+uuid: 88eb8c10-0a28-4e8b-8690-8d92a44d2c5e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: magazines_page_database_only_tea
+label: 'Magazines page database-only teasers'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      reference_database: reference_database
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+queue_settings:
+  min_size: 0
+  max_size: 9
+  act_as_queue: false
+  reverse: false
