@@ -27,8 +27,9 @@
       'px-8',
     ]
   %}
-  
-  <div{{ attributes.addClass(classes).setAttribute('id', options.id) }}>
+  {% set style = options.max_width ? 'max-width: ' ~ options.max_width ~ 'px' %}
+
+  <div{{ attributes.addClass(classes).setAttribute('id', options.id) }} {% if style %} style="{{ style }}" {% endif %} {% for attr, value in options %} data-{{ attr|replace({'_': '-'}) }}="{{ value }}"{% endfor %}>
     <div class="row">
       {% for image in images %}
         <div{{ row_attributes.addClass(options.row_class).addClass('gx-5', 'gy-5') }}>

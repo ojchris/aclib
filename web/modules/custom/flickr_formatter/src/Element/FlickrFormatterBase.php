@@ -62,7 +62,7 @@ class FlickrFormatterBase extends FormElement {
     $element['max_width'] = [
       '#type' => 'checkbox',
       '#title' => t('Max width'),
-      '#description' => t('Automatically set max width for a parent container, based on Image size preset.'),
+      '#description' => t('Automatically set max width for a parent container, based on Image size preset. We probably do not want this one in case of "grid" kind of style.'),
       '#default_value' => $default_values['max_width'],
     ];
 
