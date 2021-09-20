@@ -55,6 +55,10 @@ elements: |-
       - anonymous
   note_about_books:
     '#type': webform_markup
+    '#states':
+      visible:
+        ':input[name="item_format"]':
+          filled: true
     '#access_create_roles':
       - authenticated
       - anonymous
