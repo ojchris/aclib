@@ -5,6 +5,7 @@ article.node {
 
   .field--type-image {
     margin: 0;
+    float: none;
   }
   .align-left {
     .field--type-image {
@@ -14,6 +15,12 @@ article.node {
   .align-right {
     .field--type-image {
       margin-left: 1rem;
+    }
+  }
+  .align-center {
+    .field--type-image {
+      float: none;
+      text-align: center;
     }
   }
 

@@ -15,7 +15,9 @@ entity_settings:
     target_bundles:
       blog: blog
       custom_page: custom_page
+      landing_page: landing_page
       page_: page_
+      reference_database: reference_database
     sort:
       field: _none
       direction: ASC

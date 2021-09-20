@@ -5,8 +5,11 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser_image
     - entityqueue.entity_queue.borrow_page_teasers
+    - entityqueue.entity_queue.business_resources_page_database
     - entityqueue.entity_queue.download_page_teasers
     - entityqueue.entity_queue.events_page_teasers
+    - entityqueue.entity_queue.job_skills_page_database_only_te
+    - entityqueue.entity_queue.job_skills_teasers
     - entityqueue.entity_queue.services_teasers
   module:
     - entityqueue
@@ -333,5 +336,122 @@ display:
         - user.permissions
       tags:
         - 'config:entityqueue.entity_queue.events_page_teasers'
+        - entity_field_info
+        - views_data
+  block_5:
+    display_plugin: block
+    id: block_5
+    display_title: 'Job Skills'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      block_description: 'ACLIB Job Skills page teasers'
+      block_category: ACLIB
+      allow:
+        items_per_page: false
+      display_description: ''
+      title: 'ACLIB Job Skills page teasers'
+      defaults:
+        title: false
+        relationships: false
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: true
+          limit_queue: job_skills_teasers
+          entity_type: node
+          plugin_id: entity_queue
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:entityqueue.entity_queue.job_skills_teasers'
+        - entity_field_info
+        - views_data
+  block_6:
+    display_plugin: block
+    id: block_6
+    display_title: 'Job Skills page database-only'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      block_description: 'ACLIB Job Skills page database-only teasers'
+      block_category: ACLIB
+      allow:
+        items_per_page: false
+      display_description: ''
+      title: 'ACLIB Job Skills page database-only teasers'
+      defaults:
+        title: false
+        relationships: false
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: true
+          limit_queue: job_skills_page_database_only_te
+          entity_type: node
+          plugin_id: entity_queue
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:entityqueue.entity_queue.job_skills_page_database_only_te'
+        - entity_field_info
+        - views_data
+  block_7:
+    display_plugin: block
+    id: block_7
+    display_title: 'Business Resources page database-only'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      block_description: 'ACLIB Business Resources page database-only teasers'
+      block_category: ACLIB
+      allow:
+        items_per_page: false
+      display_description: ''
+      title: 'ACLIB Business Resources page database-only teasers'
+      defaults:
+        title: false
+        relationships: false
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: true
+          limit_queue: business_resources_page_database
+          entity_type: node
+          plugin_id: entity_queue
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:entityqueue.entity_queue.business_resources_page_database'
         - entity_field_info
         - views_data

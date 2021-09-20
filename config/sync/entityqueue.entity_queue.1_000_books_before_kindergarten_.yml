@@ -1,11 +1,11 @@
-uuid: 0c959640-4a3e-4deb-91aa-75fa0d624a5d
+uuid: 8b435788-cf37-4f9b-94f9-e25556b2a125
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: kids_page_teasers
-label: 'Kids page teasers'
+id: 1_000_books_before_kindergarten_
+label: '1,000 Books Before Kindergarten teasers'
 handler: simple
 handler_configuration: {  }
 entity_settings:

@@ -1,11 +1,11 @@
-uuid: 0c959640-4a3e-4deb-91aa-75fa0d624a5d
+uuid: f5b9392f-7e32-4ab2-a83c-90e27036a318
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: kids_page_teasers
-label: 'Kids page teasers'
+id: business_resources_page_database
+label: 'Business Resources page database-only teasers'
 handler: simple
 handler_configuration: {  }
 entity_settings:
@@ -13,17 +13,14 @@ entity_settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
-      blog: blog
-      landing_page: landing_page
-      page_: page_
       reference_database: reference_database
     sort:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: blog
+    auto_create_bundle: ''
 queue_settings:
   min_size: 0
-  max_size: 9
+  max_size: 12
   act_as_queue: true
   reverse: false

@@ -12,7 +12,278 @@ id: virtual_teen_art_show_entry_form
 title: 'Virtual Teen Art Show Entry Form'
 description: ''
 category: ''
-elements: null
+elements: |-
+  intro:
+    '#type': processed_text
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#text': |
+      <h3>Rules and Regulations</h3>
+
+      <ul>
+      	<li>Entrants must be between the ages of 16-19. Each entrant is limited to three pieces of artwork.</li>
+      	<li>All artwork must be the original work of the entrant.</li>
+      	<li>Entries will be accepted from Mar. 20 through Apr. 16.&nbsp;</li>
+      	<li>A photo of all 3D artwork (paintings, drawings, etc.) in addition to the entry form should be sent to Samantha Noll at <a href="mailto:snoll@aclib.us">snoll@aclib.us</a>. Please include the title of the artwork(s) and artist's name in the email.</li>
+      	<li>Video entries should not run longer than five minutes and should contain captions for the hearing impaired. Video submissions must be submitted via email to Samantha Noll at <a href="mailto:snoll@aclib.us">snoll@aclib.us</a>. Please include the title of the video and artist’s name in the email. Videos can be sent as an mp4 or QuickTime file or can be uploaded to YouTube.</li>
+      	<li>Any videos containing music that belongs to someone else may be muted when/if they are shared on the library’s website or other social media sites.</li>
+      	<li>All entries must be accompanied by a completed Entry Form (This Entry Form will serve as a liability waiver and as a release&nbsp;allowing the Library to use and/or display the artist’s work). All artwork will be displayed on the library’s website, <a href="http://www.aclib.us">www.aclib.us</a>, and on the library’s affiliated social media sites, such as Facebook, Twitter, Instagram, Flickr or YouTube for the duration of the show and any extension thereof.</li>
+      	<li>Winners will be announced via the library’s website on Saturday, Apr. 24. Prizes will be given for the following: 1st, 2nd and 3rd Place with four Honorable Mentions, Best Logo, and four category winners. Decisions of the judges are final.</li>
+      	<li>Any questions or concerns can be sent to Samantha Noll via email at <a href="mailto:snoll@aclib.us">snoll@aclib.us</a> or by calling the Youth Services Department of the Headquarters Library at 352-334-3941.</li>
+      </ul>
+
+      <p>&nbsp;</p>
+
+      <h3>Ages 16-19<br />
+      &nbsp;</h3>
+    '#format': basic_html
+  first_and_last_name_of_artist_for_display_:
+    '#type': textfield
+    '#title': 'First and Last name of artist (for display)'
+    '#title_display': inline
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  age_on_march_20_2021:
+    '#type': textfield
+    '#title': 'Age on March 20, 2021'
+    '#title_display': inline
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  date_of_birth:
+    '#type': date
+    '#title': 'Date of Birth'
+    '#title_display': inline
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  school_attending:
+    '#type': textfield
+    '#title': 'School Attending'
+    '#title_display': inline
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  number_of_entries:
+    '#type': textfield
+    '#title': 'Number of entries'
+    '#title_display': inline
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  title_of_entry_1:
+    '#type': textfield
+    '#title': 'Title of Entry 1'
+    '#title_display': inline
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  media_for_entry_1:
+    '#type': textfield
+    '#title': 'Media for Entry 1'
+    '#title_display': inline
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  title_of_entry_2:
+    '#type': textfield
+    '#title': 'Title of Entry 2'
+    '#title_display': inline
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  media_for_entry_2:
+    '#type': textfield
+    '#title': 'Media for Entry 2'
+    '#title_display': inline
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  title_of_entry_3:
+    '#type': textfield
+    '#title': 'Title of Entry 3'
+    '#title_display': inline
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  media_for_entry_3:
+    '#type': textfield
+    '#title': 'Media for Entry 3'
+    '#title_display': inline
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  mailing_address:
+    '#type': textarea
+    '#title': 'Mailing Address'
+    '#title_display': inline
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  city:
+    '#type': textfield
+    '#title': City
+    '#title_display': inline
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  zip_code:
+    '#type': textfield
+    '#title': 'Zip Code'
+    '#title_display': inline
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  _telephone:
+    '#type': textfield
+    '#title': ' Telephone'
+    '#description': 'Please include the area code with your phone number: (xxx) xxx-xxx'
+    '#title_display': inline
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  email:
+    '#type': email
+    '#title': Email
+    '#title_display': inline
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  preferred_method_of_communication:
+    '#type': select
+    '#title': 'Preferred method of communication'
+    '#options':
+      ' Email': ' Email'
+      ' Phone': ' Phone'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
 css: ''
 javascript: ''
 settings:

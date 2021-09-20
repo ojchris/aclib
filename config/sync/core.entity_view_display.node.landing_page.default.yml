@@ -15,6 +15,7 @@ dependencies:
   module:
     - entity_reference_revisions
     - layout_builder
+    - layout_builder_restrictions
     - layout_discovery
     - text
     - user
@@ -69,47 +70,6 @@ third_party_settings:
               id: 'extra_field_block:node:landing_page:links'
             additional: {  }
             weight: 2
-          cf8f2d5d-cd90-45fc-b7b9-8357d542b3d2:
-            uuid: cf8f2d5d-cd90-45fc-b7b9-8357d542b3d2
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:landing_page:field_body'
-              formatter:
-                label: hidden
-                settings: {  }
-                third_party_settings: {  }
-                type: text_default
-            additional: {  }
-            weight: 3
-          87cd03b3-2a22-4781-b631-0bfca532a89d:
-            uuid: 87cd03b3-2a22-4781-b631-0bfca532a89d
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:landing_page:field_tags'
-              formatter:
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-                type: entity_reference_label
-            additional: {  }
-            weight: 4
-          f26784ba-9351-4857-bd4e-86755941c7e2:
-            uuid: f26784ba-9351-4857-bd4e-86755941c7e2
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'extra_field_block:node:landing_page:links'
-            additional: {  }
-            weight: 5
           d7f5fe16-623a-4fc8-9556-889c171fb09e:
             uuid: d7f5fe16-623a-4fc8-9556-889c171fb09e
             region: content
@@ -131,19 +91,141 @@ third_party_settings:
             uuid: 2d1f58df-8425-43e0-8f9e-916c8e913e54
             region: content
             configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
               id: 'field_block:node:landing_page:field_disclaimer'
+              label: Disclaimer
+              provider: layout_builder
+              label_display: '0'
               formatter:
-                label: above
+                label: hidden
+                type: string
                 settings:
                   link_to_entity: false
-                third_party_settings: {  }
-                type: string
-            additional: {  }
+                third_party_settings:
+                  flickr_formatter_bootstrap:
+                    bootstrap_grid:
+                      value:
+                        xs: ''
+                        sm: ''
+                        md: ''
+                        lg: ''
+                        xl: ''
+                        xxl: ''
+                    bootstrap_carousel:
+                      value:
+                        interval: '5000'
+                        effect: ''
+                        ride: 0
+                        keyboard: 0
+                        navigation: 0
+                        indicators: 0
+                        pause: 0
+                        wrap: 0
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+            additional:
+              layout_builder_styles_style: ''
             weight: 7
         third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      whitelisted_blocks:
+        core:
+          - page_title_block
+      blacklisted_blocks:
+        ACLIB:
+          - 'views_block:aclib_home_page_large-block_1'
+          - 'views_block:aclib_home_page_secondary-block_1'
+          - 'views_block:aclib_research_page_teasers-block_5'
+          - 'views_block:news-block_1'
+          - 'views_block:news-block_2'
+          - 'views_block:aclib_refdb_you_may_also_like-block_1'
+          - 'views_block:press_release-block_1'
+          - aclib_plugins_search_block
+        Accessibility:
+          - gtranslate_block
+        'Content fields':
+          - 'field_block:node:landing_page:uid'
+          - 'field_block:node:landing_page:created'
+          - 'field_block:node:landing_page:field_book'
+          - 'field_block:node:landing_page:changed'
+          - 'field_block:node:landing_page:type'
+          - 'field_block:node:landing_page:revision_default'
+          - 'field_block:node:landing_page:default_langcode'
+          - 'field_block:node:landing_page:field_disclaimer'
+          - 'field_block:node:landing_page:field_home_page_image'
+          - 'field_block:node:landing_page:nid'
+          - 'field_block:node:landing_page:langcode'
+          - 'extra_field_block:node:landing_page:links'
+          - 'field_block:node:landing_page:menu_link'
+          - 'field_block:node:landing_page:promote'
+          - 'field_block:node:landing_page:status'
+          - 'field_block:node:landing_page:publish_on'
+          - 'field_block:node:landing_page:revision_timestamp'
+          - 'field_block:node:landing_page:vid'
+          - 'field_block:node:landing_page:revision_log'
+          - 'field_block:node:landing_page:revision_translation_affected'
+          - 'field_block:node:landing_page:revision_uid'
+          - 'field_block:node:landing_page:sticky'
+          - 'field_block:node:landing_page:field_tags'
+          - 'field_block:node:landing_page:field_teaser'
+          - 'field_block:node:landing_page:field_teaser_image'
+          - 'field_block:node:landing_page:title'
+          - 'field_block:node:landing_page:unpublish_on'
+          - 'field_block:user:user:field_about'
+          - 'field_block:user:user:changed'
+          - 'field_block:user:user:created'
+          - 'field_block:user:user:default_langcode'
+          - 'field_block:user:user:mail'
+          - 'field_block:user:user:init'
+          - 'field_block:user:user:langcode'
+          - 'field_block:user:user:access'
+          - 'field_block:user:user:login'
+          - 'extra_field_block:user:user:member_for'
+          - 'field_block:user:user:name'
+          - 'field_block:user:user:user_picture'
+          - 'field_block:user:user:preferred_admin_langcode'
+          - 'field_block:user:user:preferred_langcode'
+          - 'field_block:user:user:roles'
+          - 'field_block:user:user:timezone'
+          - 'field_block:user:user:uid'
+          - 'field_block:user:user:status'
+        'Custom blocks':
+          - 'block_content:2f74131e-432d-489b-a2ff-37d9d94bedff'
+          - 'block_content:91a88f0d-50c2-4441-a02c-eabdb5488f4f'
+          - 'block_content:13c7023f-e270-4399-a52e-319fdd578970'
+          - 'block_content:b9359283-df16-4ce2-a369-f528074330b7'
+          - 'block_content:fa1d8571-f405-4a3c-bd0a-44d09428dc9b'
+          - 'block_content:94c42a95-178f-4f34-a011-3ca678beb9bc'
+          - 'block_content:257416aa-2fa0-4e43-a641-89f1218ae6b0'
+          - 'block_content:41e73038-92c4-44f0-9970-a058b9b9cca0'
+          - 'block_content:c23c0560-159b-41e7-ac55-e4df94071d8a'
+        Forms:
+          - search_form_block
+          - user_login_block
+        Help:
+          - help_block
+        'Lists (Views)':
+          - 'views_block:content_recent-block_1'
+          - 'views_block:who_s_online-who_s_online_block'
+        Menus:
+          - 'system_menu_block:admin'
+          - 'system_menu_block:footer'
+          - 'system_menu_block:main'
+          - shortcuts
+          - 'system_menu_block:tools'
+          - 'system_menu_block:account'
+      restricted_categories:
+        - 'Chaos Tools'
+        - System
+        - 'TB Mega Menu'
+        - User
+      allowed_layouts:
+        - layout_onecol
+        - layout_twocol_section
+        - layout_threecol_section
+        - layout_fourcol_section
 id: node.landing_page.default
 targetEntityType: node
 bundle: landing_page

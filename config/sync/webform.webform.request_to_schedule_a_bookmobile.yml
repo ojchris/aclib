@@ -12,7 +12,268 @@ id: request_to_schedule_a_bookmobile
 title: 'Request to Schedule a Bookmobile Visit'
 description: ''
 category: ''
-elements: null
+elements: |-
+  intro:
+    '#type': processed_text
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#text': |
+      <p>The Bookmobile may be available to make a special visit to your facility and/or participate in special events. &nbsp;To make such a request, please supply the following information:</p>
+    '#format': basic_html
+  name_of_your_event:
+    '#type': textfield
+    '#title': 'Name of your event'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  what_type_of_event_please_check_all_that_apply:
+    '#type': checkboxes
+    '#title': 'What type of event? Please check all that apply'
+    '#options':
+      'School visit': 'School visit'
+      ' Festival': ' Festival'
+      'Community event': 'Community event'
+      'Browsing & Checkout': 'Browsing & Checkout'
+      ' Parade': ' Parade'
+      ' Other': ' Other'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  tell_us_a_bit_about_your_event_for_example_is_there_any_special_:
+    '#type': textfield
+    '#title': 'Tell us a bit about your event. For example, is there any special theme? A special guest?'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  name_of_your_organization:
+    '#type': textfield
+    '#title': 'Name of your organization'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  your_organization_s_mailing_address:
+    '#type': textfield
+    '#title': 'Your organization''s mailing address'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  your_organization_or_event_s_contact_person:
+    '#type': textfield
+    '#title': 'Your organization or event''s contact person'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  contact_method:
+    '#type': select
+    '#title': 'Contact method'
+    '#options':
+      Email: Email
+      Phone: Phone
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  street_address_of_your_event:
+    '#type': textarea
+    '#title': 'Street address of your event'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  exact_location_at_your_address_where_you_would_like_the_bookmobi:
+    '#type': textfield
+    '#title': 'Exact location at your address where you would like the Bookmobile to park'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  processed_text:
+    '#type': processed_text
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#text': |
+      <p><strong>NOTE: The Bookmobiles are very large vehicles, 40-45' in length, and will need adequate space for parking and turnaround.</strong></p>
+    '#format': basic_html
+  do_you_foresee_any_problems_:
+    '#type': select
+    '#title': 'Do you foresee any problems?'
+    '#description': 'Staff must be able to enter and exit safely through the rear of the trailer. The public must be able to enter and exit safely through doors located on the passenger side of the trailer.'
+    '#options': yes_no
+    '#empty_option': 'No'
+    '#empty_value': 'No'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  date_you_would_like_the_bookmobile_to_visit:
+    '#type': date
+    '#title': 'Date you would like the Bookmobile to visit'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  what_time_does_your_event_start_:
+    '#type': webform_time
+    '#title': 'What time does your event start?'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#time_format': 'g:i A'
+  what_time_does_your_event_end_:
+    '#type': webform_time
+    '#title': 'What time does your event end?'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#time_format': 'g:i A'
+  what_time_would_you_like_the_bookmobile_to_arrive_:
+    '#type': webform_time
+    '#title': 'What time would you like the Bookmobile to arrive?'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#time_format': 'g:i A'
+  what_is_the_total_number_of_people_you_expect_to_visit_the_bookm:
+    '#type': textfield
+    '#title': 'What is the total number of people you expect to visit the Bookmobile?'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  will_visitors_be_boarding_in_organized_groups_such_as_classes_:
+    '#type': checkbox
+    '#title': 'Will visitors be boarding in organized groups (such as classes)?'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  is_there_anything_further_you_would_like_to_tell_us_about_your_o:
+    '#type': textarea
+    '#title': 'Is there anything further you would like to tell us about your organization or event, or any questions that you would like to ask us about the Bookmobile?'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
 css: ''
 javascript: ''
 settings:

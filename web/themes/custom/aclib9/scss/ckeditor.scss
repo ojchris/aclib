@@ -39,6 +39,27 @@ table {
   }
 }
 
+.field--type-image {
+  margin: 0;
+  float: none;
+}
+.align-left {
+  .field--type-image {
+    margin-right: 1rem;
+  }
+}
+.align-right {
+  .field--type-image {
+    margin-left: 1rem;
+  }
+}
+.align-center {
+  .field--type-image {
+    float: none;
+    text-align: center;
+  }
+}
+
 .clear-float {
   clear: both;
 }

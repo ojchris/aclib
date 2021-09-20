@@ -16,6 +16,7 @@ entity_settings:
       blog: blog
       landing_page: landing_page
       page_: page_
+      reference_database: reference_database
     sort:
       field: _none
       direction: ASC

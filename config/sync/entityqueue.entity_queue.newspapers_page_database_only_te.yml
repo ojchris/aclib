@@ -1,11 +1,11 @@
-uuid: 0c959640-4a3e-4deb-91aa-75fa0d624a5d
+uuid: e250948b-9efa-4fcf-bc9e-e68fc395f4e5
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: kids_page_teasers
-label: 'Kids page teasers'
+id: newspapers_page_database_only_te
+label: 'Newspapers page database-only teasers'
 handler: simple
 handler_configuration: {  }
 entity_settings:
@@ -13,15 +13,12 @@ entity_settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
-      blog: blog
-      landing_page: landing_page
-      page_: page_
       reference_database: reference_database
     sort:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: blog
+    auto_create_bundle: ''
 queue_settings:
   min_size: 0
   max_size: 9

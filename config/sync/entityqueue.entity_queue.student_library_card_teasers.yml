@@ -1,11 +1,11 @@
-uuid: 0c959640-4a3e-4deb-91aa-75fa0d624a5d
+uuid: 567d8f35-7fcd-487a-bb9f-cc7dffefd932
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: kids_page_teasers
-label: 'Kids page teasers'
+id: student_library_card_teasers
+label: 'Student library card teasers'
 handler: simple
 handler_configuration: {  }
 entity_settings:

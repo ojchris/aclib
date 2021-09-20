@@ -1,11 +1,11 @@
-uuid: 0c959640-4a3e-4deb-91aa-75fa0d624a5d
+uuid: 92c86409-289b-4c55-9bf1-8e1c896f29e3
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: kids_page_teasers
-label: 'Kids page teasers'
+id: job_skills_teasers
+label: 'Job skills teasers'
 handler: simple
 handler_configuration: {  }
 entity_settings:
@@ -24,6 +24,6 @@ entity_settings:
     auto_create_bundle: blog
 queue_settings:
   min_size: 0
-  max_size: 9
+  max_size: 12
   act_as_queue: true
   reverse: false
