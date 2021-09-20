@@ -1,0 +1,7 @@
+ckeditor_bs_grid.dialog:
+  path: '/flickr_formatter_bootstrap/dialog'
+  defaults:
+    _form: '\Drupal\flickr_formatter_bootstrap\Form\FlickrFormatterCkDialog'
+    _title: 'Bootstrap Dialog'
+  requirements:
+    _permission: 'access content'

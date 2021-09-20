@@ -17,7 +17,7 @@
 
 {% if images[0] is not empty and images[0].image %}
 
-  {{ attach_library('flickr_formatter/styles') }}
+{#   {{ attach_library('flickr_formatter/styles') }} #}
 
   {%
     set container_attributes = {
@@ -27,20 +27,37 @@
         options.classes ? options.classes
       ],
       id: options.id,
-      bs: {
-        'data-bs-interval': options.interval,
-        'data-bs-ride': options.ride ? 'carousel',
-        'data-bs-pause': options.pause ? 'hover' : 'false'
-      },
       style: options.max_width ? 'max-width: ' ~ options.max_width ~ 'px'
     }
   %}
+  
+  {% set bs_attributes = {} %}
+  {% for attr, value in options %} 
+    {% if attr == 'interval' %}
+       {% if options.ride %}
+        {% set bs_attributes =  bs_attributes|merge({'data-bs-interval': options.interval, 'data-bs-ride': 'carousel'}) %}
+       {% endif %}
+    {% elseif attr ==  'pause' %}
+      {% set pause = options.pause ? 'hover' : 'false' %}
+      {% set bs_attributes =  bs_attributes|merge({'data-bs-pause': pause }) %}
+    {% else %}
+      {% set attr_name = 'data-' ~ attr|replace({'_': '-'}) %}
+      {% set bs_attributes =  bs_attributes|merge({(attr_name): value }) %}
+    {% endif %}
+     
+  {% endfor %}   
+
 
   {% if options.title %}
     <h3>{{ options.title }}</h3>
   {% endif %}
 
-  <div{{ create_attribute({'class': container_attributes.class}).setAttribute('id', container_attributes.id) }}{% if container_attributes.style %} style="{{ container_attributes.style }}"{% endif %} {% for attr, value in container_attributes.bs %} {{attr}}="{{value}}"{% endfor %}>    
+{#   <div{{ create_attribute({'class': container_attributes.class}).setAttribute('id', container_attributes.id) }}{% if container_attributes.style %} style="{{ container_attributes.style }}"{% endif %} {% for attr, value in container_attributes.bs %} {{attr}}="{{value}}"{% endfor %}>  #}   
+ 
+{#    <div{{ create_attribute({'class': container_attributes.class}).setAttribute('id', container_attributes.id) }}{% if container_attributes.style %} style="{{ container_attributes.style }}"{% endif %} {% for attr, value in options %} data-{{ attr|replace({'_': '-'}) }}="{{ value }}"{% endfor %}>  #}
+
+  <div{{ create_attribute({'class': container_attributes.class}).setAttribute('id', container_attributes.id) }}{% if container_attributes.style %} style="{{ container_attributes.style }}"{% endif %} {% for attr, value in bs_attributes %} {{ attr }}="{{ value }}"{% endfor %}> 
+
 
     {# Indicators #}
     {%  if options.indicators %}
@@ -74,7 +91,8 @@
           %}
   
           {% if options.link %}
-            <a{{ create_attribute({'class': item_classes }).setAttribute('href', image.remote_url).setAttribute('target', '_blank') }}>
+            <div{{ create_attribute({'class': item_classes }) }}>
+             <a{{ create_attribute({'href': image.remote_url }).setAttribute('target', '_blank').addClass('text-light') }}>
           {% else %}
             <div{{ create_attribute({'class': item_classes }) }}>
           {% endif %}
@@ -86,6 +104,10 @@
               set caption_classes = [
                 'carousel-caption',
                 'flickr-formatter-caption',
+                'text-light',
+                'start-0',
+                'bg-secondary',
+                'opacity-75',
                 'w-100',
               ]
             %}
@@ -95,7 +117,7 @@
           {% endif %}
             
           {% if options.link %}
-            </a>  
+            </a></div>
           {% else %}
             </div>
           {% endif %} 
@@ -107,11 +129,11 @@
     {# Controls #}
     {% if options.navigation %}
       <button class="carousel-control-prev" type="button" data-bs-target="#{{ options.id }}" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon flickr-formatter-control-icon" aria-hidden="true"></span>
+        <span class="carousel-control-prev-icon flickr-formatter-control-icon bg-secondary" aria-hidden="true">&nbsp;</span>
         <span class="visually-hidden">{{ 'Previous'|t }}</span>
       </button>
       <button class="carousel-control-next" type="button" data-bs-target="#{{ options.id }}" data-bs-slide="next">
-        <span class="carousel-control-next-icon flickr-formatter-control-icon" aria-hidden="true"></span>
+        <span class="carousel-control-next-icon flickr-formatter-control-icon bg-secondary" aria-hidden="true">&nbsp;</span>
         <span class="visually-hidden">{{ 'Next'|t }}</span>
       </button>
     {% endif %}
