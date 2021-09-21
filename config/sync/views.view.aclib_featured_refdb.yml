@@ -192,7 +192,7 @@ display:
       block_description: 'ACLIB Featured RefDb'
       block_category: ACLIB
       allow:
-        items_per_page: false
+        items_per_page: true
     cache_metadata:
       max-age: -1
       contexts:
