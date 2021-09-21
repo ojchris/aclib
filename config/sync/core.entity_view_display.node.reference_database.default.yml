@@ -64,22 +64,6 @@ third_party_settings:
                 type: text_default
             additional: {  }
             weight: 1
-          bc0e28c2-41fa-4646-ad2c-152baf694d10:
-            uuid: bc0e28c2-41fa-4646-ad2c-152baf694d10
-            region: content
-            configuration:
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              id: 'field_block:node:reference_database:field_tags'
-              formatter:
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-                type: entity_reference_label
-            additional: {  }
-            weight: 2
           b34eac60-b5f4-45d8-99d3-b6819fb6b112:
             uuid: b34eac60-b5f4-45d8-99d3-b6819fb6b112
             region: content
@@ -98,14 +82,15 @@ third_party_settings:
             region: content
             configuration:
               id: 'inline_block:basic'
-              label: 'View all eSources'
+              label: 'View all Databases'
               provider: layout_builder
               label_display: '0'
               view_mode: full
               block_revision_id: 10
               block_serialized: null
               context_mapping: {  }
-            additional: {  }
+            additional:
+              layout_builder_styles_style: ''
             weight: 4
         third_party_settings: {  }
 id: node.reference_database.default
