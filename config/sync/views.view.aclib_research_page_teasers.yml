@@ -33,7 +33,7 @@ dependencies:
 id: aclib_research_page_teasers
 label: 'ACLIB 3-column teasers'
 module: views
-description: 'Provides teaser content via entity queues for Research, Maker space, Special needs, About, Mission & values pages.'
+description: 'Provides teaser content via entity queues for Research, Maker space, Special needs, About, Mission & values, and other pages.'
 tag: ''
 base_table: node_field_data
 base_field: nid
