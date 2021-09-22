@@ -30,4 +30,18 @@ article.node {
       display: none;
     }
   }
+
+  .flickr-formatter-inline {
+    background-color: $primary-shade;
+    .carousel-item {
+      float: none;
+      text-align: center;
+    }
+    .carousel-control-prev,
+    .carousel-control-next {
+      .bg-secondary {
+        background-color: $primary-shade;
+      }
+    }
+  }
 }
