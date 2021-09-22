@@ -58,7 +58,8 @@ elements: |-
     '#states':
       visible:
         ':input[name="item_format"]':
-          filled: true
+          value:
+            pattern: '^(Book|Large Print Book|Audiobook)$'
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -73,6 +74,10 @@ elements: |-
       Suggestions for physical books and books on CD will only be considered <strong>one month prior to the release date or later.</strong>
   note_about_music:
     '#type': webform_markup
+    '#states':
+      visible:
+        ':input[name="item_format"]':
+          value: 'Music CD'
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -87,6 +92,11 @@ elements: |-
       Suggestions for music CDs will be considered <strong>after the release date</strong>.
   note_about_ebooks_and_eaudiobooks:
     '#type': webform_markup
+    '#states':
+      visible:
+        ':input[name="item_format"]':
+          value:
+            pattern: ^(eBook|eAudiobook)$
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -104,6 +114,10 @@ elements: |-
       </ul>
   note_about_dvds:
     '#type': webform_markup
+    '#states':
+      visible:
+        ':input[name="item_format"]':
+          value: DVD
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -118,6 +132,11 @@ elements: |-
       Suggestions for DVDs will be considered <strong>after the release date</strong>.
   note_about_older_books:
     '#type': webform_markup
+    '#states':
+      visible:
+        ':input[name="item_format"]':
+          value:
+            pattern: '^(Book|Large Print Book)$'
     '#access_create_roles':
       - authenticated
       - anonymous
