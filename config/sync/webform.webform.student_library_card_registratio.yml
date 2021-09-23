@@ -341,5 +341,52 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers: {  }
+handlers:
+  email:
+    id: email
+    label: Email
+    notes: ''
+    handler_id: email
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: scs@aclib.us
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: eBranch@aclib.us
+      from_options: {  }
+      from_name: _default
+      subject: _default
+      body: _default
+      excluded_elements:
+        intro: intro
+        student_first_name: student_first_name
+        student_last_name: student_last_name
+        birthday: birthday
+        grade: grade
+        homeroom_teacher: homeroom_teacher
+        school: school
+        parent_or_guardian_first_name: parent_or_guardian_first_name
+        parent_or_guardian_last_name: parent_or_guardian_last_name
+        contact_email_address: contact_email_address
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
 variants: {  }

@@ -34,6 +34,7 @@ elements: |-
     '#type': webform_name
     '#title': Name
     '#description_display': before
+    '#required': true
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -44,15 +45,16 @@ elements: |-
       - authenticated
       - anonymous
     '#title__access': false
+    '#first__title': 'First name'
     '#first__required': true
     '#middle__access': false
+    '#last__title': 'Last name'
     '#last__required': true
     '#suffix__access': false
     '#degree__access': false
-    '#required': true
   phone:
     '#type': tel
-    '#title': Phone
+    '#title': 'Phone number'
     '#description_display': before
     '#required': true
     '#required_error': 'Phone is required.'
@@ -69,6 +71,7 @@ elements: |-
     '#type': webform_address
     '#title': 'Mailing Address'
     '#description': 'We&#39;ll complete the registration process by sending a postcard to this address. &nbsp;Future checkouts will also be sent to this address until/unless you need it changed.'
+    '#required': true
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -78,12 +81,12 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
+    '#address__title': 'Mailing Address'
     '#address__required': true
     '#city__required': true
     '#state_province__required': true
     '#postal_code__required': true
     '#country__access': false
-    '#required': true
   date_of_birth:
     '#type': date
     '#title': 'Date of Birth'
@@ -279,5 +282,47 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers: {  }
+handlers:
+  email:
+    id: email
+    label: Email
+    notes: ''
+    handler_id: email
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: eCirculation@aclib.us
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: _default
+      body: "<p>Submitted on {{ webform_token('[webform_submission:created]', webform_submission, [], options) }}</p>\r\n<p>Submitted by: {{ webform_token('[webform_submission:user]', webform_submission, [], options) }}</p>\r\n<p>Submitted values are:</p>\r\n{{ webform_token('[webform_submission:values]', webform_submission, [], options) }}\r\n"
+      excluded_elements:
+        intro: intro
+        name: name
+        phone: phone
+        mailing_address: mailing_address
+        date_of_birth: date_of_birth
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: true
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
 variants: {  }
