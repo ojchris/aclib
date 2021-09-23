@@ -212,6 +212,11 @@ elements: |-
       'Non-fiction (facts)': 'Non-fiction (facts)'
     '#required': true
     '#required_error': 'Type is required.'
+    '#states':
+      visible:
+        ':input[name="item_format"]':
+          value:
+            pattern: '^(Book|eBook|Large Print Book|Audiobook|eAudiobook)$'
     '#access_create_roles':
       - authenticated
       - anonymous
