@@ -364,17 +364,19 @@ class FlickrFormatterService {
       }
     }
 
-    $attributes = $this->processImageAttributes($photo, $size);
+    // This is a performance bottleneck!
+    // Not worth for a small gain on html standards subject.
+    // $attributes = $this->processImageAttributes($photo, $size);
 
     return [
       '#theme' => 'image',
       '#uri' => $this->flickrApi->helpers->photoImgUrl($photo, $size),
       '#alt' => $title,
       '#title' => $title,
-      '#width' => isset($attributes['width']) ? $attributes['width'] : NULL,
-      '#height' => isset($attributes['height']) ? $attributes['height'] : NULL,
+      //'#width' => isset($attributes['width']) ? $attributes['width'] : NULL,
+      //'#height' => isset($attributes['height']) ? $attributes['height'] : NULL,
       '#attributes' => [
-        'data-aspect' => isset($attributes['data-aspect']) ? $attributes['data-aspect'] : 'square',
+        //'data-aspect' => isset($attributes['data-aspect']) ? $attributes['data-aspect'] : 'square',
         'class' => ['img-fluid'],
       ],
     ];
