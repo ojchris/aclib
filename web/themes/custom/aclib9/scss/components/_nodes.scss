@@ -31,7 +31,8 @@ article.node {
     }
   }
 
-  .flickr-formatter-inline {
+  .flickr-formatter-inline,
+  .field--name-field-flickr-photoset {
     background-color: $primary-shade;
     .carousel-item {
       float: none;
