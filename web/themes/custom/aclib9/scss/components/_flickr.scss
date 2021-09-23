@@ -1,0 +1,32 @@
+.flickr-formatter-inline,
+.field--name-field-flickr-photoset {
+  background-color: $white;
+  .carousel-item {
+    float: none;
+    text-align: center;
+    .carousel-caption {
+      position: relative;
+      background-color: $white !important;
+      color: $accent-shade !important;
+    }
+  }
+  .carousel-control-prev,
+  .carousel-control-next {
+    .bg-secondary {
+      background-color: $accent-shade !important;
+      border-radius: 5px;
+    }
+  }
+  .carousel-indicators [data-bs-target] {
+    background-color: $accent-shade;
+  }
+}
+
+/* This needs to be outside of other rules for the hover stuff to work. */
+.carousel-control-prev,
+.carousel-control-next {
+  opacity: 1;
+  &:hover {
+    opacity: 0.5;
+  }
+}

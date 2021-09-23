@@ -30,20 +30,4 @@ article.node {
       display: none;
     }
   }
-
-  .flickr-formatter-inline,
-  .field--name-field-flickr-photoset {
-    background-color: $accent-shade;
-    border-radius: 5px;
-    .carousel-item {
-      float: none;
-      text-align: center;
-    }
-    .carousel-control-prev,
-    .carousel-control-next {
-      .bg-secondary {
-        background-color: $accent-shade;
-      }
-    }
-  }
 }
