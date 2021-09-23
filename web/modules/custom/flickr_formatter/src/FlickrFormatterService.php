@@ -371,10 +371,10 @@ class FlickrFormatterService {
       '#uri' => $this->flickrApi->helpers->photoImgUrl($photo, $size),
       '#alt' => $title,
       '#title' => $title,
-      '#width' => $attributes['width'],
-      '#height' => $attributes['height'],
+      '#width' => isset($attributes['width']) ? $attributes['width'] : NULL,
+      '#height' => isset($attributes['height']) ? $attributes['height'] : NULL,
       '#attributes' => [
-        'data-aspect' => $attributes['data-aspect'],
+        'data-aspect' => isset($attributes['data-aspect']) ? $attributes['data-aspect'] : 'square',
         'class' => ['img-fluid'],
       ],
     ];
