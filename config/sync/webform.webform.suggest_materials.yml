@@ -307,6 +307,11 @@ elements: |-
       Post: Post
     '#required': true
     '#required_error': 'Contact method is required.'
+    '#states':
+      visible:
+        ':input[name="item_format"]':
+          value:
+            pattern: '^(Book|Large Print Book|Audiobook|DVD|Music CD)$'
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -322,6 +327,11 @@ elements: |-
     '#description_display': before
     '#required': true
     '#required_error': 'Email address is required.'
+    '#states':
+      visible:
+        ':input[name="item_format"]':
+          value:
+            pattern: ^(eBook|eAudiobook)$
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -339,6 +349,10 @@ elements: |-
     '#description_display': before
     '#required': true
     '#required_error': 'Email address is required.'
+    '#states':
+      visible:
+        ':input[name="contact_method"]':
+          value: Email
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -350,12 +364,37 @@ elements: |-
       - anonymous
     '#confirm__title': 'Confirm Email Address'
     '#confirm__placeholder': 'Enter email address again to confirm.'
+  mailing_address_element:
+    '#type': webform_address
+    '#title': 'Mailing Address'
+    '#states':
+      visible:
+        ':input[name="contact_method"]':
+          value: Post
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#address__required': true
+    '#city__required': true
+    '#state_province__required': true
+    '#postal_code__required': true
   email_a_copy_checkbox:
     '#type': checkboxes
     '#title': 'Email a copy'
     '#description_display': before
     '#options':
       'Email this request to me': 'Email this request to me'
+    '#states':
+      visible:
+        ':input[name="item_format"]':
+          value:
+            pattern: '^(Book|Large Print Book|Audiobook|DVD|Music CD)$'
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -371,6 +410,11 @@ elements: |-
     '#description_display': before
     '#options':
       'Email this request to me': 'Email this request to me'
+    '#states':
+      visible:
+        ':input[name="item_format"]':
+          value:
+            pattern: ^(eBook|eAudiobook)$
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -380,22 +424,6 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
-  mailing_address_element:
-    '#type': webform_address
-    '#title': 'Mailing Address'
-    '#access_create_roles':
-      - authenticated
-      - anonymous
-    '#access_update_roles':
-      - authenticated
-      - anonymous
-    '#access_view_roles':
-      - authenticated
-      - anonymous
-    '#address__required': true
-    '#city__required': true
-    '#state_province__required': true
-    '#postal_code__required': true
   pickup_location:
     '#type': radios
     '#title': 'Pickup location'
@@ -417,6 +445,11 @@ elements: |-
       'Waldo Branch': 'Waldo Branch'
     '#required': true
     '#required_error': 'Pickup location is required.'
+    '#states':
+      visible:
+        ':input[name="item_format"]':
+          value:
+            pattern: '^(Book|Large Print Book|Audiobook|DVD|Music CD)$'
     '#access_create_roles':
       - authenticated
       - anonymous
