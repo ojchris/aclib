@@ -1,6 +1,9 @@
 .flickr-formatter-inline,
 .field--name-field-flickr-photoset {
   background-color: $white;
+  h2 {
+    text-align: center;
+  }
   .carousel-item {
     float: none;
     text-align: center;
