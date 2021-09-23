@@ -57,6 +57,7 @@ settings:
             - ShowBlocks
             - Maximize
             - Language
+            - flickr_formatter_bs_grid
         -
           name: 'Block Formatting'
           items:
@@ -75,6 +76,9 @@ settings:
       styles: "p.clear-float|Clear floats\r\na.btn.btn-primary|Button"
     language:
       language_list: un
+    flickr_formatter_bs_grid:
+      use_cdn: 1
+      cdn_url: 'https://cdn.jsdelivr.net/npm/bootstrap-4-grid@3.4.0/css/grid.min.css'
 image_upload:
   status: true
   scheme: public

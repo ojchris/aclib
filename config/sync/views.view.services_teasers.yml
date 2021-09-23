@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser_image
     - entityqueue.entity_queue.borrow_page_teasers
     - entityqueue.entity_queue.business_resources_page_database
+    - entityqueue.entity_queue.business_resources_teasers
     - entityqueue.entity_queue.download_page_teasers
     - entityqueue.entity_queue.events_page_teasers
     - entityqueue.entity_queue.job_skills_page_database_only_te
@@ -19,7 +20,7 @@ dependencies:
 id: services_teasers
 label: 'ACLIB 4-column teasers'
 module: views
-description: 'Provides teaser content via entity queues for Services, Borrow, Download, and Events pages.'
+description: 'Provides teaser content via entity queues for Services, Borrow, Download, and other pages.'
 tag: ''
 base_table: node_field_data
 base_field: nid
@@ -380,16 +381,16 @@ display:
   block_6:
     display_plugin: block
     id: block_6
-    display_title: 'Job Skills page database-only'
+    display_title: 'Job Skills database-only'
     position: 1
     display_options:
       display_extenders: {  }
-      block_description: 'ACLIB Job Skills page database-only teasers'
+      block_description: 'ACLIB Job Skills database-only teasers'
       block_category: ACLIB
       allow:
         items_per_page: false
       display_description: ''
-      title: 'ACLIB Job Skills page database-only teasers'
+      title: 'ACLIB Job Skills database-only teasers'
       defaults:
         title: false
         relationships: false
@@ -419,16 +420,16 @@ display:
   block_7:
     display_plugin: block
     id: block_7
-    display_title: 'Business Resources page database-only'
+    display_title: 'Business Resources database-only'
     position: 1
     display_options:
       display_extenders: {  }
-      block_description: 'ACLIB Business Resources page database-only teasers'
+      block_description: 'ACLIB Business Resources database-only teasers'
       block_category: ACLIB
       allow:
         items_per_page: false
       display_description: ''
-      title: 'ACLIB Business Resources page database-only teasers'
+      title: 'ACLIB Business Resources database-only teasers'
       defaults:
         title: false
         relationships: false
@@ -453,5 +454,44 @@ display:
         - user.permissions
       tags:
         - 'config:entityqueue.entity_queue.business_resources_page_database'
+        - entity_field_info
+        - views_data
+  block_8:
+    display_plugin: block
+    id: block_8
+    display_title: 'Business resources'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      block_description: 'ACLIB Business resources teasers'
+      block_category: ACLIB
+      allow:
+        items_per_page: false
+      display_description: ''
+      title: 'ACLIB Business resources teasers'
+      defaults:
+        title: false
+        relationships: false
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: true
+          limit_queue: business_resources_teasers
+          entity_type: node
+          plugin_id: entity_queue
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:entityqueue.entity_queue.business_resources_teasers'
         - entity_field_info
         - views_data

@@ -4,15 +4,16 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - entityqueue.entity_queue.business_resources_teasers
     - entityqueue.entity_queue.featured_refdb
   module:
     - entityqueue
     - node
     - user
 id: aclib_featured_refdb
-label: 'ACLIB Featured RefDb'
+label: 'ACLIB 1-column teasers'
 module: views
-description: 'Provides the large home page content via the Top home page story queue.'
+description: 'Provides 1-column teasers for reference databases and other pages.'
 tag: ''
 base_table: node_field_data
 base_field: nid
@@ -185,14 +186,15 @@ display:
   block_1:
     display_plugin: block
     id: block_1
-    display_title: Block
+    display_title: 'Reference databases'
     position: 1
     display_options:
       display_extenders: {  }
       block_description: 'ACLIB Featured RefDb'
       block_category: ACLIB
       allow:
-        items_per_page: false
+        items_per_page: true
+      display_description: ''
     cache_metadata:
       max-age: -1
       contexts:
@@ -202,5 +204,44 @@ display:
         - user.permissions
       tags:
         - 'config:entityqueue.entity_queue.featured_refdb'
+        - entity_field_info
+        - views_data
+  block_2:
+    display_plugin: block
+    id: block_2
+    display_title: 'Business Resources'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      block_description: 'ACLIB Business resources teasers (1-column)'
+      block_category: ACLIB
+      allow:
+        items_per_page: true
+      display_description: ''
+      title: 'ACLIB Business resources'
+      defaults:
+        title: false
+        relationships: false
+      relationships:
+        entityqueue_relationship:
+          id: entityqueue_relationship
+          table: node_field_data
+          field: entityqueue_relationship
+          relationship: none
+          group_type: group
+          admin_label: 'Content queue'
+          required: true
+          limit_queue: business_resources_teasers
+          entity_type: node
+          plugin_id: entity_queue
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:entityqueue.entity_queue.business_resources_teasers'
         - entity_field_info
         - views_data
