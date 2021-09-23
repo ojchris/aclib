@@ -237,6 +237,11 @@ elements: |-
       'Yes': 'Yes'
       'No': 'No'
     '#required': true
+    '#states':
+      visible:
+        ':input[name="device[select]"]':
+          value:
+            pattern: ^(Kindle|Nook|Other)$
     '#access_create_roles':
       - authenticated
       - anonymous
