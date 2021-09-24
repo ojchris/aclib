@@ -131,16 +131,3 @@ img.image-style-full-width-embedded {
   @include font-size($legend-font-size);
   font-weight: $legend-font-weight;
 }
-
-/*.form-required:after {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  margin: 0 0.3em;
-  content: "";
-  vertical-align: super;
-  background-image: url(/web/core/misc/icons/ee0000/required.svg);
-  background-repeat: no-repeat;
-  background-size: 6px 6px;
-}
-*/
