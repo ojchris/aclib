@@ -31,10 +31,10 @@ features:
   node_user_picture: 1
   comment_user_picture: true
   comment_user_verification: true
-  favicon: 1
+  favicon: 0
 logo:
   use_default: 0
-  path: themes/custom/aclib9/images/logo/acldlogo-2019-color-horz-outlines-440x120px.png
+  path: themes/custom/aclib9/images/logo/ACLDLogo-2019-Color-Horz-Outlines.svg
 favicon:
   use_default: 0
   path: ''

@@ -30,9 +30,9 @@
       style: options.max_width ? 'max-width: ' ~ options.max_width ~ 'px'
     }
   %}
-  
+
   {% set bs_attributes = {} %}
-  {% for attr, value in options %} 
+  {% for attr, value in options %}
     {% if attr == 'interval' %}
        {% if options.ride %}
         {% set bs_attributes =  bs_attributes|merge({'data-bs-interval': options.interval, 'data-bs-ride': 'carousel'}) %}
@@ -44,19 +44,19 @@
       {% set attr_name = 'data-' ~ attr|replace({'_': '-'}) %}
       {% set bs_attributes =  bs_attributes|merge({(attr_name): value }) %}
     {% endif %}
-     
-  {% endfor %}   
+
+  {% endfor %}
 
 
   {% if options.title %}
-    <h3>{{ options.title }}</h3>
+    <h2>{{ options.title }}</h2>
   {% endif %}
 
-{#   <div{{ create_attribute({'class': container_attributes.class}).setAttribute('id', container_attributes.id) }}{% if container_attributes.style %} style="{{ container_attributes.style }}"{% endif %} {% for attr, value in container_attributes.bs %} {{attr}}="{{value}}"{% endfor %}>  #}   
- 
+{#   <div{{ create_attribute({'class': container_attributes.class}).setAttribute('id', container_attributes.id) }}{% if container_attributes.style %} style="{{ container_attributes.style }}"{% endif %} {% for attr, value in container_attributes.bs %} {{attr}}="{{value}}"{% endfor %}>  #}
+
 {#    <div{{ create_attribute({'class': container_attributes.class}).setAttribute('id', container_attributes.id) }}{% if container_attributes.style %} style="{{ container_attributes.style }}"{% endif %} {% for attr, value in options %} data-{{ attr|replace({'_': '-'}) }}="{{ value }}"{% endfor %}>  #}
 
-  <div{{ create_attribute({'class': container_attributes.class}).setAttribute('id', container_attributes.id) }}{% if container_attributes.style %} style="{{ container_attributes.style }}"{% endif %} {% for attr, value in bs_attributes %} {{ attr }}="{{ value }}"{% endfor %}> 
+  <div{{ create_attribute({'class': container_attributes.class}).setAttribute('id', container_attributes.id) }}{% if container_attributes.style %} style="{{ container_attributes.style }}"{% endif %} {% for attr, value in bs_attributes %} {{ attr }}="{{ value }}"{% endfor %}>
 
 
     {# Indicators #}
@@ -71,7 +71,7 @@
               bs: {
                 'data-bs-target': '#' ~ options.id,
                 'data-bs-slide-to': index,
-                'aria-label': 'Slide ' ~ loop.index 
+                'aria-label': 'Slide ' ~ loop.index
               }
             }
           %}
@@ -89,16 +89,16 @@
               loop.first ? 'active'
             ]
           %}
-  
+
           {% if options.link %}
             <div{{ create_attribute({'class': item_classes }) }}>
              <a{{ create_attribute({'href': image.remote_url }).setAttribute('target', '_blank').addClass('text-light') }}>
           {% else %}
             <div{{ create_attribute({'class': item_classes }) }}>
           {% endif %}
-              
+
           {{ image.image }}
-          
+
           {% if image.caption %}
             {%
               set caption_classes = [
@@ -113,19 +113,19 @@
             %}
             <div{{ create_attribute({'class': caption_classes}) }}>
               {{ image.caption }}
-            </div> 
+            </div>
           {% endif %}
-            
+
           {% if options.link %}
             </a></div>
           {% else %}
             </div>
-          {% endif %} 
+          {% endif %}
 
         {% endif %}
       {% endfor %}
     </div>
- 
+
     {# Controls #}
     {% if options.navigation %}
       <button class="carousel-control-prev" type="button" data-bs-target="#{{ options.id }}" data-bs-slide="prev">

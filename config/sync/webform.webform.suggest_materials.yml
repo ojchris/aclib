@@ -212,6 +212,11 @@ elements: |-
       'Non-fiction (facts)': 'Non-fiction (facts)'
     '#required': true
     '#required_error': 'Type is required.'
+    '#states':
+      visible:
+        ':input[name="item_format"]':
+          value:
+            pattern: '^(Book|eBook|Large Print Book|Audiobook|eAudiobook)$'
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -297,7 +302,6 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
-    '#max': 14
   contact_method:
     '#type': radios
     '#title': 'How should we contact you?'
@@ -392,9 +396,9 @@ elements: |-
       'Email this request to me': 'Email this request to me'
     '#states':
       visible:
-        ':input[name="item_format"]':
+        ':input[name="contact_method"]':
           value:
-            pattern: '^(Book|Large Print Book|Audiobook|DVD|Music CD)$'
+            pattern: ^(Email)$
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -637,5 +641,42 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers: {  }
+handlers:
+  email:
+    id: email
+    label: Email
+    notes: ''
+    handler_id: email
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: opleil@aclib.us
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: eBranch@aclib.us
+      from_options: {  }
+      from_name: _default
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
 variants: {  }

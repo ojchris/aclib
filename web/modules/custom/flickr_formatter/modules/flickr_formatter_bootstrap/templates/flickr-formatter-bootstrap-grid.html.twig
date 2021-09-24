@@ -18,7 +18,7 @@
 {% if images[0] is not empty and images[0].image %}
 
   {% if options.title %}
-    <h3>{{ options.title }}</h3>
+    <h2>{{ options.title }}</h2>
   {% endif %}
 
   {%
@@ -39,19 +39,19 @@
           {% else %}
             <div>
           {% endif %}
-        
+
           {{ image.image }}
-          
+
           {% if options.link %}
             </a>
-          {% else %} 
+          {% else %}
             </div>
           {% endif %}
-         
+
           {% if image.caption %}
             {{ image.caption }}
           {% endif %}
-        </div> 
+        </div>
       {% endfor %}
     </div>
   </div>

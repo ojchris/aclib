@@ -92,6 +92,11 @@ elements: |-
     '#description_display': before
     '#required': true
     '#required_error': 'Library card number is required.'
+    '#states':
+      visible:
+        ':input[name="issue[select]"]':
+          value:
+            pattern: '^(Account|Download|Holds|OverDrive site)$'
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -101,12 +106,16 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
-    '#max': 14
   library_card_number_other:
     '#type': number
     '#title': 'Library card number'
     '#description': 'A 14-digit number with no spaces or dashes.'
     '#description_display': before
+    '#states':
+      visible:
+        ':input[name="issue[select]"]':
+          value:
+            pattern: ^(Other...)$
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -116,7 +125,6 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
-    '#max': 14
   format:
     '#type': select
     '#title': Format
@@ -129,6 +137,11 @@ elements: |-
       'eBook - PDF': 'eBook - PDF'
     '#required': true
     '#required_error': 'Format is required.'
+    '#states':
+      visible:
+        ':input[name="issue[select]"]':
+          value:
+            pattern: ^(Download)$
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -157,6 +170,11 @@ elements: |-
     '#type': textarea
     '#title': Titles
     '#description_display': before
+    '#states':
+      visible:
+        ':input[name="issue[select]"]':
+          value:
+            pattern: '^(Account|Download|Holds|OverDrive site)$'
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -171,6 +189,11 @@ elements: |-
     '#title': 'Error message'
     '#description': 'If you got an error message, please include it here.'
     '#description_display': before
+    '#states':
+      visible:
+        ':input[name="issue[select]"]':
+          value:
+            pattern: '^(Account|Download|Holds|OverDrive site)$'
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -191,6 +214,11 @@ elements: |-
       Nook: Nook
       Desktop/laptop: Desktop/laptop
     '#required': true
+    '#states':
+      visible:
+        ':input[name="issue[select]"]':
+          value:
+            pattern: ^(Download)$
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -209,6 +237,11 @@ elements: |-
       'Yes': 'Yes'
       'No': 'No'
     '#required': true
+    '#states':
+      visible:
+        ':input[name="device[select]"]':
+          value:
+            pattern: ^(Kindle|Nook|Other)$
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -225,6 +258,11 @@ elements: |-
     '#options':
       'Libby App': 'Libby App'
       'Kindle App': 'Kindle App'
+    '#states':
+      visible:
+        ':input[name="issue[select]"]':
+          value:
+            pattern: '^(Account|Download|Holds|OverDrive site)$'
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -242,6 +280,11 @@ elements: |-
       Chrome: Chrome
       Firefox: Firefox
       Safari: Safari
+    '#states':
+      visible:
+        ':input[name="issue[select]"]':
+          value:
+            pattern: '^(Account|Download|Holds|OverDrive site)$'
     '#access_create_roles':
       - authenticated
       - anonymous
