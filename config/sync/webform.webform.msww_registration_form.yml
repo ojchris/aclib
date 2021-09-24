@@ -89,6 +89,20 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
+  processed_text:
+    '#type': processed_text
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#text': |
+      <p><strong>Thank you!&nbsp; Click the Submit button to complete your&nbsp;MSWW registration.</strong></p>
+    '#format': basic_html
   if_you_wish_to_submit_a_photo_for_the_virtual_sorting_ceremony_y:
     '#type': select
     '#title': 'If you wish to submit a photo for the virtual Sorting Ceremony, you must complete a photo release form. Will you be submitting a photo?'
@@ -105,8 +119,10 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
-  processed_text:
-    '#type': processed_text
+  sorting_hat:
+    '#type': fieldset
+    '#title': 'Sorting Hat'
+    '#title_display': invisible
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -116,9 +132,6 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
-    '#text': |
-      <p><strong>Thank you!&nbsp; Click the Submit button to complete your&nbsp;MSWW registration.</strong></p>
-    '#format': basic_html
 css: ''
 javascript: ''
 settings:
