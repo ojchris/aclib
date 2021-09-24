@@ -1,0 +1,25 @@
+uuid: d53f9511-a5ec-42bb-9451-f2533d59bb63
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:257416aa-2fa0-4e43-a641-89f1218ae6b0'
+  module:
+    - block_content
+  theme:
+    - bartik
+id: bartik_megamenueventsleft
+theme: bartik
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:257416aa-2fa0-4e43-a641-89f1218ae6b0'
+settings:
+  id: 'block_content:257416aa-2fa0-4e43-a641-89f1218ae6b0'
+  label: 'Megamenu - Events left'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

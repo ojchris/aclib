@@ -679,4 +679,84 @@ handlers:
       sender_name: ''
       theme_name: ''
       parameters: {  }
+  email_a_copy:
+    id: email
+    label: 'Email A Copy'
+    notes: ''
+    handler_id: email_a_copy
+    status: true
+    conditions:
+      enabled:
+        ':input[name="email_a_copy_checkbox[Email this request to me]"]':
+          checked: true
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:email_address:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
+  email_a_copy_download_:
+    id: email
+    label: 'Email A Copy (download)'
+    notes: ''
+    handler_id: email_a_copy_download_
+    status: true
+    conditions:
+      enabled:
+        ':input[name="email_a_copy_checkbox_downloadable[Email this request to me]"]':
+          checked: true
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:email_address_downloadable_confirm:raw]'
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
 variants: {  }

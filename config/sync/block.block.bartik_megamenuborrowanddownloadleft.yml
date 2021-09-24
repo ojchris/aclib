@@ -1,0 +1,25 @@
+uuid: 5a9488fb-dcfe-4530-bf7c-2a690cd62207
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:94c42a95-178f-4f34-a011-3ca678beb9bc'
+  module:
+    - block_content
+  theme:
+    - bartik
+id: bartik_megamenuborrowanddownloadleft
+theme: bartik
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:94c42a95-178f-4f34-a011-3ca678beb9bc'
+settings:
+  id: 'block_content:94c42a95-178f-4f34-a011-3ca678beb9bc'
+  label: 'Megamenu - Borrow and Download left'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

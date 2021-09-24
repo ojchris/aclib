@@ -1,0 +1,25 @@
+uuid: aec83aed-21b9-46be-a97d-64df76496ffc
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:2f74131e-432d-489b-a2ff-37d9d94bedff'
+  module:
+    - block_content
+  theme:
+    - bartik
+id: bartik_footerlogo
+theme: bartik
+region: footer_third
+weight: 0
+provider: null
+plugin: 'block_content:2f74131e-432d-489b-a2ff-37d9d94bedff'
+settings:
+  id: 'block_content:2f74131e-432d-489b-a2ff-37d9d94bedff'
+  label: 'Footer - logo'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

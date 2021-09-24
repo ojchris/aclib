@@ -1,0 +1,20 @@
+uuid: 4d12cee2-314d-4f3f-9e48-e61df02a5cc7
+langcode: en
+status: true
+dependencies:
+  module:
+    - tb_megamenu
+  theme:
+    - bartik
+id: bartik_mainnavigation
+theme: bartik
+region: header
+weight: -8
+provider: null
+plugin: 'tb_megamenu_menu_block:main'
+settings:
+  id: 'tb_megamenu_menu_block:main'
+  label: 'TB Main navigation'
+  provider: tb_megamenu
+  label_display: '0'
+visibility: {  }
