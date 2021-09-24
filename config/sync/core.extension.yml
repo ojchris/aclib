@@ -1,4 +1,5 @@
 module:
+  webform_clientside_validation: -1
   aclib_communico: 0
   aclib_migrate: 0
   aclib_miscelleanous: 0
@@ -13,6 +14,8 @@ module:
   breakpoint: 0
   ckeditor: 0
   ckeditor_accordion: 0
+  clientside_validation: 0
+  clientside_validation_jquery: 0
   color: 0
   config: 0
   config_filter: 0
@@ -41,6 +44,7 @@ module:
   history: 0
   image: 0
   image_widget_crop: 0
+  inline_form_errors: 0
   layout_builder: 0
   layout_builder_modal: 0
   layout_builder_restrictions: 0
@@ -96,7 +100,6 @@ theme:
   bootstrap_barrio: 0
   aclib9: 0
   claro: 0
-  bartik: 0
 profile: standard
 _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
