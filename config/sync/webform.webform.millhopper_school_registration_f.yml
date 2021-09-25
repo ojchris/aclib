@@ -12,7 +12,391 @@ id: millhopper_school_registration_f
 title: 'Millhopper School Registration Form'
 description: ''
 category: ''
-elements: null
+elements: |-
+  name:
+    '#type': textfield
+    '#title': Name
+    '#description': 'Please enter your First and Last Names'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  email_address:
+    '#type': email
+    '#title': 'Email Address'
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  age_group:
+    '#type': radios
+    '#title': 'Age Group'
+    '#options':
+      Child: Child
+      Tween/Teen: Tween/Teen
+      Adult: Adult
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  are_you_a_new_or_returning_student_:
+    '#type': radios
+    '#title': 'Are you a new or returning student?'
+    '#options':
+      New: New
+      Returning: Returning
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  are_you_happy_with_your_house_placement_:
+    '#type': radios
+    '#title': 'Are you happy with your house placement?'
+    '#options': yes_no
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="are_you_a_new_or_returning_student_"]':
+          value: Returning
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  what_is_your_house_preference_:
+    '#type': radios
+    '#title': 'What is your House preference?'
+    '#options':
+      Gryffindor: Gryffindor
+      Hufflepuff: Hufflepuff
+      Ravenclaw: Ravenclaw
+      Slytherin: Slytherin
+      'I''d like to take the Sorting Hat quiz and let the Sorting Hat decide': 'I''d like to take the Sorting Hat quiz and let the Sorting Hat decide'
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="are_you_happy_with_your_house_placement_"]':
+          value: 'No'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  sorting_hat_section:
+    '#type': webform_markup
+    '#states':
+      visible:
+        - ':input[name="are_you_a_new_or_returning_student_"]':
+            value: New
+        - or
+        - ':input[name="what_is_your_house_preference_"]':
+            value: 'I''d like to take the Sorting Hat quiz and let the Sorting Hat decide'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#markup': '<strong>The Sorting Hat needs to ask you a few questions.</strong>'
+  you_have_an_important_decision_to_make_do_you_:
+    '#type': radios
+    '#title': 'You have an important decision to make. Do you:'
+    '#options':
+      ' “Go with your gut” and make the decision that “feels right” ': ' “Go with your gut” and make the decision that “feels right” '
+      ' Analyze the options, maybe make a pro/con list, and pick the option that will have the best outcome/fewest drawbacks.': ' Analyze the options, maybe make a pro/con list, and pick the option that will have the best outcome/fewest drawbacks.'
+    '#required': true
+    '#states':
+      visible:
+        - ':input[name="are_you_a_new_or_returning_student_"]':
+            value: New
+        - or
+        - ':input[name="what_is_your_house_preference_"]':
+            value: 'I''d like to take the Sorting Hat quiz and let the Sorting Hat decide'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  you_walk_into_a_room_and_your_friend_is_being_bullied_the_bully_:
+    '#type': radios
+    '#title': 'You walk into a room and your friend is being bullied. The bully leaves when you show up. Who do you go to first?'
+    '#options':
+      'Your Friend': 'Your Friend'
+      ' The Bully': ' The Bully'
+    '#required': true
+    '#states':
+      visible:
+        - ':input[name="are_you_a_new_or_returning_student_"]':
+            value: New
+        - or
+        - ':input[name="what_is_your_house_preference_"]':
+            value: 'I''d like to take the Sorting Hat quiz and let the Sorting Hat decide'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  do_you_have_a_house_preference_:
+    '#type': radios
+    '#title': 'Do you have a House preference?'
+    '#options':
+      ' Gryffindor': ' Gryffindor'
+      ' Hufflepuff': ' Hufflepuff'
+      ' Ravenclaw': ' Ravenclaw'
+      ' Slytherin': ' Slytherin'
+      'I’d prefer to let the Sorting Hat decide the best place for me': 'I’d prefer to let the Sorting Hat decide the best place for me'
+    '#required': true
+    '#states':
+      visible:
+        - ':input[name="are_you_a_new_or_returning_student_"]':
+            value: New
+        - or
+        - ':input[name="what_is_your_house_preference_"]':
+            value: 'I''d like to take the Sorting Hat quiz and let the Sorting Hat decide'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  please_let_us_know_if_you_are_registering_with_any_family_member:
+    '#type': textarea
+    '#title': 'Please let us know if you are registering with any family members, if you want to be placed in the same House as your family members, or any other information you would like for us to know. We will pass this information to the Sorting Hat.'
+    '#states':
+      visible:
+        - ':input[name="are_you_a_new_or_returning_student_"]':
+            value: New
+        - or
+        - ':input[name="what_is_your_house_preference_"]':
+            value: 'I''d like to take the Sorting Hat quiz and let the Sorting Hat decide'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  closing:
+    '#type': webform_markup
+    '#states':
+      visible:
+        ':input[name="are_you_a_new_or_returning_student_"]':
+          value: New
+        ':input[name="what_is_your_house_preference_"]':
+          value: 'I''d like to take the Sorting Hat quiz and let the Sorting Hat decide'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#markup': '<strong>Click the Submit button to complete your registration for MSWW.</strong>&nbsp;'
+  closing_markup_returning:
+    '#type': webform_markup
+    '#states':
+      visible:
+        - ':input[name="are_you_happy_with_your_house_placement_"]':
+            value: 'Yes'
+        - or
+        - ':input[name="what_is_your_house_preference_"]':
+            value:
+              pattern: ^(Gryffindor|Hufflepuff|Ravenclaw|Slytherin)$
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#markup': '<strong>Thank you!&nbsp; Click the Submit button to complete your&nbsp;MSWW registration.</strong>&nbsp;'
+  if_you_wish_to_submit_a_photo_for_the_virtual_sorting_ceremony_y:
+    '#type': radios
+    '#title': 'If you wish to submit a photo for the virtual Sorting Ceremony, you must complete a photo release form. Will you be submitting a photo?'
+    '#options': yes_no
+    '#required': true
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  intro_photo:
+    '#type': webform_markup
+    '#states':
+      visible:
+        ':input[name="if_you_wish_to_submit_a_photo_for_the_virtual_sorting_ceremony_y"]':
+          value: 'Yes'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#markup': |-
+      <p><strong>Photo/Audio/Video Release</strong></p>
+
+      <p>Library staff on occasion videotape, record or photograph events occurring in and around the Library, including programs in which you or your child may be participating. These photographs, audio and visual recordings may be used for various promotional activities and may appear in newspapers, magazines, flyers, brochures, radio, television and/or the Alachua County Library District&#39;s website: <a href="http://www.aclib.us" rel="noopener noreferrer" target="_blank">www.aclib.us</a> or on social media such as Facebook or Flickr. Photographs, audio and visual recordings may be used on a recurring basis such as broadcasting a Children&#39;s StoryTime on cable television or a photograph in a Library District brochure. Please read and sign the form below. The undersigned, being of legal age, hereby consents and authorizes The Alachua County Library District to use and reproduce the photographs taken and produced in connection with the production described herein. I understand that my child&#39;s or my own image or voice may be broadcast or published as part of a promotional activity or media story. This release will be effective until I revoke it in writing.</p>
+  first_name:
+    '#type': textfield
+    '#title': 'First Name'
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="if_you_wish_to_submit_a_photo_for_the_virtual_sorting_ceremony_y"]':
+          value: 'Yes'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  last_name:
+    '#type': textfield
+    '#title': 'Last Name'
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="if_you_wish_to_submit_a_photo_for_the_virtual_sorting_ceremony_y"]':
+          value: 'Yes'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  email_address_photo:
+    '#type': email
+    '#title': 'Email Address'
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="if_you_wish_to_submit_a_photo_for_the_virtual_sorting_ceremony_y"]':
+          '': ''
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  today_s_date:
+    '#type': date
+    '#title': 'Today''s Date'
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="if_you_wish_to_submit_a_photo_for_the_virtual_sorting_ceremony_y"]':
+          value: 'Yes'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  child_s_first_name_if_signing_for_a_minor_:
+    '#type': textfield
+    '#title': 'Child''s First Name (if signing for a minor)'
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="if_you_wish_to_submit_a_photo_for_the_virtual_sorting_ceremony_y"]':
+          value: 'Yes'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+  child_s_last_name_if_signing_for_a_minor_:
+    '#type': textfield
+    '#title': 'Child''s Last Name (if signing for a minor)'
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="if_you_wish_to_submit_a_photo_for_the_virtual_sorting_ceremony_y"]':
+          value: 'Yes'
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
 css: ''
 javascript: ''
 settings:
@@ -191,5 +575,42 @@ access:
     roles: {  }
     users: {  }
     permissions: {  }
-handlers: {  }
+handlers:
+  email:
+    id: email
+    label: Email
+    notes: ''
+    handler_id: email
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: opleil@aclib.us
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
 variants: {  }
