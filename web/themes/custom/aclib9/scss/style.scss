@@ -131,3 +131,9 @@ img.image-style-full-width-embedded {
   @include font-size($legend-font-size);
   font-weight: $legend-font-weight;
 }
+
+.webform-submission-form {
+  legend {
+    //font-size: 1rem;
+  }
+}
