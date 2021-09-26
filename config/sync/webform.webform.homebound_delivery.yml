@@ -300,11 +300,11 @@ handlers:
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: _default
+      from_mail: eBranch@aclib.us
       from_options: {  }
       from_name: _default
       subject: _default
-      body: "<p>Submitted on {{ webform_token('[webform_submission:created]', webform_submission, [], options) }}</p>\r\n<p>Submitted by: {{ webform_token('[webform_submission:user]', webform_submission, [], options) }}</p>\r\n<p>Submitted values are:</p>\r\n{{ webform_token('[webform_submission:values]', webform_submission, [], options) }}\r\n"
+      body: "<p>Submitted on {{ webform_token('[webform_submission:created]', webform_submission, [], options) }}</p>\r\n<p>Submitted by: {{ webform_token('[webform_submission:user]', webform_submission, [], options) }}</p>\r\n<p>Submitted values are:</p>\r\n{{ webform_token('[webform_submission:values]', webform_submission, [], options) }}\r\nwebform_submission\r\n[webform_submission:source-url]"
       excluded_elements:
         intro: intro
         name: name
@@ -313,7 +313,7 @@ handlers:
         date_of_birth: date_of_birth
       ignore_access: false
       exclude_empty: true
-      exclude_empty_checkbox: false
+      exclude_empty_checkbox: true
       exclude_attachments: false
       html: true
       attachments: false

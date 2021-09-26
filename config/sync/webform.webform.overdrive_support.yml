@@ -27,18 +27,17 @@ elements: |-
     '#text': |
       <p>If you're having trouble using OverDrive, you can fill out this form below to email us information about the problem.&nbsp;</p>
 
-      <p>If you'd like to ask us to add a downloadable eBook or audiobook (in EPUB, Kindle, and/or mp3 format), please fill out <a href="books/purchasesuggestion">our suggest materials form</a> to submit the suggestion to our collections development team.</p>
+      <p>If you'd like to ask us to add a downloadable eBook or audiobook (in EPUB, Kindle, and/or mp3 format), please fill out <a href="/suggest-materials">our suggest materials form</a> to submit the suggestion to our collections development team.</p>
 
       <p><strong>Please note:</strong> under Florida law, emails sent to government accounts are public records.</p>
 
-      <p>If you're uncomfortable emailing any of this info below, please feel free to call us at (352) 334-3939 during <a href="/node/1972">Headquarters Library business hours</a> instead.</p>
+      <p>If you're uncomfortable emailing any of this info below, please feel free to call us at (352) 334-3939 during <a href="/headquarters-library">Headquarters Library business hours</a> instead.</p>
     '#format': basic_html
   your_name:
-    '#type': textfield
+    '#type': webform_name
     '#title': 'Your name'
+    '#title_display': before
     '#description_display': before
-    '#required': true
-    '#required_error': 'Your name is required.'
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -48,9 +47,14 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
+    '#title__access': false
+    '#middle__access': false
+    '#suffix__access': false
+    '#degree__access': false
   your_email:
     '#type': webform_email_confirm
     '#title': 'Your email'
+    '#title_display': before
     '#description_display': before
     '#required': true
     '#required_error': 'Your email address is required.'
@@ -96,7 +100,7 @@ elements: |-
       visible:
         ':input[name="issue[select]"]':
           value:
-            pattern: '^(Account|Download|Holds|OverDrive site)$'
+            pattern: ^(Account|Download|Holds)$
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -106,16 +110,22 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
+    '#min': 22054000000000
+    '#max': 72054999999999
   library_card_number_other:
     '#type': number
     '#title': 'Library card number'
     '#description': 'A 14-digit number with no spaces or dashes.'
+    '#title_display': before
     '#description_display': before
     '#states':
       visible:
-        ':input[name="issue[select]"]':
-          value:
-            pattern: ^(Other...)$
+        - ':input[name="issue[select]"]':
+            value:
+              pattern: '^(OverDrive site)$'
+        - or
+        - ':input[name="issue[other]"]':
+            filled: true
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -125,16 +135,20 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
+    '#min': 22054000000000
+    '#max': 72054999999999
   format:
     '#type': select
     '#title': Format
+    '#description': 'What format are you having issues with?'
+    '#title_display': before
     '#description_display': before
     '#options':
-      'eAudiobook - MP3': 'eAudiobook - MP3'
-      'eBook - EPUB': 'eBook - EPUB'
-      'eBook - Kindle format': 'eBook - Kindle format'
       'eBook - OverDrive Read': 'eBook - OverDrive Read'
+      'eBook - Kindle format': 'eBook - Kindle format'
+      'eBook - EPUB': 'eBook - EPUB'
       'eBook - PDF': 'eBook - PDF'
+      'eAudiobook - MP3': 'eAudiobook - MP3'
     '#required': true
     '#required_error': 'Format is required.'
     '#states':
@@ -154,9 +168,11 @@ elements: |-
   description:
     '#type': textarea
     '#title': Description
-    '#description': 'Please describe the problem you&#39;ve run into.'
+    '#description': 'Please describe the problem you are having.'
+    '#title_display': before
     '#description_display': before
     '#required': true
+    '#required_error': 'This description field is required.'
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -169,7 +185,10 @@ elements: |-
   titles:
     '#type': textarea
     '#title': Titles
+    '#description': 'What title or titles are you having issues with?'
+    '#title_display': before
     '#description_display': before
+    '#maxlength': 500
     '#states':
       visible:
         ':input[name="issue[select]"]':
@@ -188,7 +207,9 @@ elements: |-
     '#type': textfield
     '#title': 'Error message'
     '#description': 'If you got an error message, please include it here.'
+    '#title_display': before
     '#description_display': before
+    '#maxlength': 200
     '#states':
       visible:
         ':input[name="issue[select]"]':
@@ -206,6 +227,7 @@ elements: |-
   device:
     '#type': webform_select_other
     '#title': Device
+    '#description': 'Please select the device you are having issues with.'
     '#description_display': before
     '#options':
       Android: Android
@@ -214,6 +236,7 @@ elements: |-
       Nook: Nook
       Desktop/laptop: Desktop/laptop
     '#required': true
+    '#required_error': 'The device you are using is required.'
     '#states':
       visible:
         ':input[name="issue[select]"]':
@@ -231,17 +254,22 @@ elements: |-
   is_your_device_a_tablet_:
     '#type': select
     '#title': 'Is your device a tablet?'
-    '#description': 'Is your device a Kindle Fire, Nook Color or Nook Tablet? (Can it run apps?)'
+    '#description': 'Is your device a Kindle Fire, Nook Color or Nook Tablet? (Does it have a color touch screen?&nbsp; Can it run apps?)'
+    '#title_display': before
     '#description_display': before
     '#options':
       'Yes': 'Yes'
       'No': 'No'
     '#required': true
+    '#required_error': 'Device tablet selection is required.'
     '#states':
       visible:
-        ':input[name="device[select]"]':
-          value:
-            pattern: ^(Kindle|Nook|Other)$
+        - ':input[name="device[select]"]':
+            value:
+              pattern: ^(Kindle|Nook)$
+        - or
+        - ':input[name="issue[other]"]':
+            filled: true
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -254,6 +282,8 @@ elements: |-
   software_app:
     '#type': webform_select_other
     '#title': 'Software / app'
+    '#description': 'Which app are you having issues with?'
+    '#title_display': before
     '#description_display': before
     '#options':
       'Libby App': 'Libby App'
@@ -262,7 +292,7 @@ elements: |-
       visible:
         ':input[name="issue[select]"]':
           value:
-            pattern: '^(Account|Download|Holds|OverDrive site)$'
+            pattern: ^(Account|Download|Holds)$
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -275,6 +305,8 @@ elements: |-
   browser:
     '#type': webform_select_other
     '#title': Browser
+    '#description': 'Please select the browser you are using.'
+    '#title_display': before
     '#description_display': before
     '#options':
       Chrome: Chrome
@@ -303,7 +335,7 @@ settings:
   ajax_effect: ''
   ajax_speed: null
   page: true
-  page_submit_path: ''
+  page_submit_path: /overdrive-support
   page_confirm_path: ''
   page_theme_name: ''
   form_title: both
@@ -490,7 +522,7 @@ handlers:
       cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
-      from_mail: _default
+      from_mail: eBranch@aclib.us
       from_options: {  }
       from_name: _default
       subject: 'OverDrive Support: [webform_submission:values:issue] [webform_submission:values:format] [webform_submission:values:device]'
@@ -499,34 +531,16 @@ handlers:
         processed_text: processed_text
       ignore_access: false
       exclude_empty: true
-      exclude_empty_checkbox: false
+      exclude_empty_checkbox: true
       exclude_attachments: false
       html: true
       attachments: false
       twig: false
       debug: false
-      reply_to: ''
+      reply_to: '[webform_submission:values:your_email:raw]'
       return_path: ''
       sender_mail: ''
       sender_name: ''
       theme_name: ''
       parameters: {  }
-  action:
-    id: action
-    label: Action
-    notes: ''
-    handler_id: action
-    status: true
-    conditions: {  }
-    weight: 0
-    settings:
-      states:
-        - completed
-      notes: ''
-      sticky: null
-      locked: null
-      data: ''
-      message: ''
-      message_type: status
-      debug: false
 variants: {  }

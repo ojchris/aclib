@@ -32,9 +32,12 @@ elements: |-
 
       <p>Thanks for participating.</p>
     '#format': basic_html
-  student_first_name:
-    '#type': textfield
-    '#title': 'Student First Name'
+  student_name:
+    '#type': webform_name
+    '#title': 'Student''s Name'
+    '#description': 'Please enter student&#39;s first and last name.'
+    '#title_display': before
+    '#description_display': before
     '#required': true
     '#access_create_roles':
       - authenticated
@@ -45,19 +48,12 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
-  student_last_name:
-    '#type': textfield
-    '#title': 'Student Last Name'
-    '#required': true
-    '#access_create_roles':
-      - authenticated
-      - anonymous
-    '#access_update_roles':
-      - authenticated
-      - anonymous
-    '#access_view_roles':
-      - authenticated
-      - anonymous
+    '#title__access': false
+    '#first__required': true
+    '#middle__title': 'Middle (optional)'
+    '#last__required': true
+    '#suffix__access': false
+    '#degree__access': false
   birthday:
     '#type': date
     '#title': Birthday
@@ -123,9 +119,12 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
-  parent_or_guardian_first_name:
-    '#type': textfield
-    '#title': 'Parent or Guardian First Name'
+  parent_s_or_guardian_s_name:
+    '#type': webform_name
+    '#title': 'Parent''s or Guardian''s Name'
+    '#description': 'Please enter parent&#39;s or guardian&#39;s name.'
+    '#title_display': before
+    '#description_display': before
     '#required': true
     '#access_create_roles':
       - authenticated
@@ -136,19 +135,12 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
-  parent_or_guardian_last_name:
-    '#type': textfield
-    '#title': 'Parent or Guardian Last Name'
-    '#required': true
-    '#access_create_roles':
-      - authenticated
-      - anonymous
-    '#access_update_roles':
-      - authenticated
-      - anonymous
-    '#access_view_roles':
-      - authenticated
-      - anonymous
+    '#title__access': false
+    '#first__required': true
+    '#middle__access': false
+    '#last__required': true
+    '#suffix__access': false
+    '#degree__access': false
   contact_email_address:
     '#type': textfield
     '#title': 'Contact eMail Address'
@@ -172,7 +164,7 @@ settings:
   ajax_effect: ''
   ajax_speed: null
   page: true
-  page_submit_path: ''
+  page_submit_path: /student-library-card-registration-form
   page_confirm_path: ''
   page_theme_name: ''
   form_title: both
@@ -366,18 +358,14 @@ handlers:
       body: _default
       excluded_elements:
         intro: intro
-        student_first_name: student_first_name
-        student_last_name: student_last_name
         birthday: birthday
         grade: grade
         homeroom_teacher: homeroom_teacher
         school: school
-        parent_or_guardian_first_name: parent_or_guardian_first_name
-        parent_or_guardian_last_name: parent_or_guardian_last_name
         contact_email_address: contact_email_address
       ignore_access: false
       exclude_empty: true
-      exclude_empty_checkbox: false
+      exclude_empty_checkbox: true
       exclude_attachments: false
       html: true
       attachments: false
