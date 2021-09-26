@@ -59,6 +59,7 @@
         "drupal/stage_file_proxy": "^1.1",
         "drupal/tb_megamenu": "^1.2",
         "drupal/termcase": "1.x-dev@dev",
+        "drupal/view_unpublished": "^1.0",
         "drupal/views_bootstrap": "^4.3",
         "drupal/webform": "^6.0",
         "drupal/xmlsitemap": "^1.0",
