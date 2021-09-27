@@ -633,16 +633,16 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: opleil@aclib.us
+      to_mail: tsrequest@aclib.us
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
-      bcc_mail: ''
+      bcc_mail: opleil@aclib.us
       bcc_options: {  }
       from_mail: eBranch@aclib.us
       from_options: {  }
       from_name: _default
-      subject: _default
+      subject: '[webform_submission:values:item_format:raw]'
       body: _default
       excluded_elements:
         summary_markup: summary_markup
