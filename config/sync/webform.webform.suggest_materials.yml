@@ -461,6 +461,66 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
+  contact_method_computed_twig:
+    '#type': webform_computed_twig
+    '#title': 'Contact Method Computed Twig'
+    '#title_display': invisible
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#display_on': view
+    '#template': |-
+      {% if data.contact_method %}
+      {{ "Contact method:" ~ data.contact_method }}
+      {% endif %}
+    '#whitespace': trim
+    '#hide_empty': true
+  mailing_address_element_computed_twig:
+    '#type': webform_computed_twig
+    '#title': 'Mailing Address Element Computed Twig'
+    '#title_display': invisible
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#display_on': view
+    '#template': |-
+      {% if data.mailing_address_element %}
+      {{ "Mailing address:" ~ data.mailing_address_element }}
+      {% endif %}
+    '#whitespace': trim
+    '#hide_empty': true
+  pickup_location_computed_twig:
+    '#type': webform_computed_twig
+    '#title': 'Pickup Location Computed Twig'
+    '#title_display': invisible
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#display_on': view
+    '#template': |-
+      {% if data.pickup_location %}
+      {{ "Pickup location:" ~ data.pickup_location }}
+      {% endif %}
+    '#whitespace': trim
+    '#hide_empty': true
 css: ''
 javascript: ''
 settings:
@@ -661,7 +721,7 @@ handlers:
       from_options: {  }
       from_name: _default
       subject: '[webform_submission:values:item_format:raw]'
-      body: "Title: [webform_submission:values:item_title]<br />\r\nAuthor: [webform_submission:values:item_author]<br />\r\nFormat: [webform_submission:values:item_format]<br />\r\nAudience: [webform_submission:values:item_audience]<br />\r\nType: [webform_submission:values:item_type]<br />\r\nDate: [webform_submission:values:item_date]<br />\r\nISBN/UPC: [webform_submission:values:isbn]<br />\r\nNotes: [webform_submission:values:other_notes]<br />\r\nYour name: [webform_submission:values:your_name]<br />\r\nLibrary card number: [webform_submission:values:library_card_number]<br />\r\nContact method: [webform_submission:values:contact_method]<br />\r\nEmail address: [webform_submission:values:email_address]&nbsp;<br />\r\nMailing address: [webform_submission:values:mailing_address_element]<br />\r\nEmail a copy: [webform_submission:values:email_a_copy_checkbox]&nbsp;<br />\r\nPickup location: [webform_submission:values:pickup_location]"
+      body: "Title: [webform_submission:values:item_title]<br />\r\nAuthor: [webform_submission:values:item_author]<br />\r\nFormat: [webform_submission:values:item_format]<br />\r\nAudience: [webform_submission:values:item_audience]<br />\r\nType: [webform_submission:values:item_type]<br />\r\nDate: [webform_submission:values:item_date]<br />\r\nISBN/UPC: [webform_submission:values:isbn]<br />\r\nNotes: [webform_submission:values:other_notes]<br />\r\nYour name: [webform_submission:values:your_name]<br />\r\nLibrary card number: [webform_submission:values:library_card_number]<br />\r\n[webform_submission:values:contact_method_computed_twig]<br />\r\nEmail address: [webform_submission:values:email_address]&nbsp;<br />\r\n[webform_submission:values:mailing_address_element_computed_twig]<br />\r\nEmail a copy: [webform_submission:values:email_a_copy_checkbox]&nbsp;<br />\r\n[webform_submission:values:pickup_location_computed_twig]"
       excluded_elements:
         summary_markup: summary_markup
         note_about_books: note_about_books
