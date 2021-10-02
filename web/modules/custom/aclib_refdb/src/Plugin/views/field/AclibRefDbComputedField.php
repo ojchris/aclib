@@ -90,11 +90,13 @@ class AclibRefDbComputedField extends FieldPluginBase {
     $patterns = $this->aclibService->getPatterns('pattern_matched');
     $count_data = $default_count_options + $patterns;
 
+    $datetime = $this->getParams();
+
     foreach ($count_data as $base_field => $options) {
       foreach ($options as $option_key => $option_label) {
         if ($this->options['property'] == $option_key) {
           $value = $option_key == 'overall' ? NULL : $option_key;
-          $query_count = $this->aclibService->defaultCountQuery($base_field, $nid, $value);
+          $query_count = $this->aclibService->defaultCountQuery($base_field, $nid, $datetime, $value);
         }
       }
     }
@@ -109,13 +111,15 @@ class AclibRefDbComputedField extends FieldPluginBase {
 
       $params = $this->options['group_type'] != 'group' ? ['function' => $this->options['group_type']] : [];
 
+      $datetime = $this->getParams();
+
       // Set first logic for Pattern matched type of fields, a special case.
       if (strpos($this->options['property'], '*') !== FALSE) {
         $patterns = $this->aclibService->getPatterns();
         if (!empty($patterns)) {
           foreach ($patterns as $pattern) {
             if ($pattern == $this->options['property']) {
-              $formula = $this->aclibService->queryCountProperty('pattern_matched', $pattern);
+              $formula = $this->aclibService->queryCountProperty('pattern_matched', $datetime, $pattern);
               $pattern_clean = 'patterns_' . str_replace('*', '', $pattern);
               $this->query->addOrderBy(NULL, $formula, $order, $pattern_clean, $params);
             }
@@ -128,13 +132,33 @@ class AclibRefDbComputedField extends FieldPluginBase {
         foreach ($internals as $property_key => $property) {
           if (in_array($this->options['property'], array_keys($property))) {
             $value = $this->options['property'] == 'overall' ? NULL : $this->options['property'];
-            $formula = $this->aclibService->queryCountProperty($property_key, $value);
+            $formula = $this->aclibService->queryCountProperty($property_key, $datetime, $value);
             $this->query->addOrderBy(NULL, $formula, $order, $this->options['property'], $params);
           }
         }
       }
       // $this->query->addTag('debug');
     }
+  }
+
+  /**
+   * Get Views filters values.
+   *
+   * @return array
+   *   An array containing start and end date strings.
+   */
+  protected function getParams() {
+    $datetime = [];
+    if (isset($_POST['datetime']) && isset($_POST['datetime']['min']) && isset($_POST['datetime']['max'])) {
+      $datetime = [$_POST['datetime']['min'], $_POST['datetime']['max']];
+    }
+    else {
+      $args = $this->aclibService->requestStack->query->all();
+      if (isset($args['datetime']) && isset($args['datetime']['min']) && isset($args['datetime']['max'])) {
+        $datetime = [$args['datetime']['min'], $args['datetime']['max']];
+      }
+    }
+    return $datetime;
   }
 
 }
