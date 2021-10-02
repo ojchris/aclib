@@ -521,6 +521,25 @@ elements: |-
       {% endif %}
     '#whitespace': trim
     '#hide_empty': true
+  type_computed_twig:
+    '#type': webform_computed_twig
+    '#title': 'Type Computed Twig'
+    '#title_display': invisible
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#display_on': view
+    '#template': |-
+      {% if data.item_type %}
+      {{ "Type:" ~ data.item_type }}
+      {% endif %}
+    '#hide_empty': true
 css: ''
 javascript: ''
 settings:
@@ -721,7 +740,7 @@ handlers:
       from_options: {  }
       from_name: _default
       subject: '[webform_submission:values:item_format:raw]'
-      body: "Title: [webform_submission:values:item_title]<br />\r\nAuthor: [webform_submission:values:item_author]<br />\r\nFormat: [webform_submission:values:item_format]<br />\r\nAudience: [webform_submission:values:item_audience]<br />\r\nType: [webform_submission:values:item_type]<br />\r\nDate: [webform_submission:values:item_date]<br />\r\nISBN/UPC: [webform_submission:values:isbn]<br />\r\nNotes: [webform_submission:values:other_notes]<br />\r\nYour name: [webform_submission:values:your_name]<br />\r\nLibrary card number: [webform_submission:values:library_card_number]<br />\r\n[webform_submission:values:contact_method_computed_twig]<br />\r\nEmail address: [webform_submission:values:email_address]&nbsp;<br />\r\n[webform_submission:values:mailing_address_element_computed_twig]<br />\r\nEmail a copy: [webform_submission:values:email_a_copy_checkbox]&nbsp;<br />\r\n[webform_submission:values:pickup_location_computed_twig]"
+      body: "Title: [webform_submission:values:item_title]<br />\r\nAuthor: [webform_submission:values:item_author]<br />\r\nFormat: [webform_submission:values:item_format]<br />\r\nAudience: [webform_submission:values:item_audience]<br />\r\n[webform_submission:values:type_computed_twig]<br />\r\nDate: [webform_submission:values:item_date]<br />\r\nISBN/UPC: [webform_submission:values:isbn]<br />\r\nNotes: [webform_submission:values:other_notes]<br />\r\nYour name: [webform_submission:values:your_name]<br />\r\nLibrary card number: [webform_submission:values:library_card_number]<br />\r\n[webform_submission:values:contact_method_computed_twig]<br />\r\nEmail address: [webform_submission:values:email_address]&nbsp;<br />\r\n[webform_submission:values:mailing_address_element_computed_twig]<br />\r\nEmail a copy: [webform_submission:values:email_a_copy_checkbox]&nbsp;<br />\r\n[webform_submission:values:pickup_location_computed_twig]"
       excluded_elements:
         summary_markup: summary_markup
         note_about_books: note_about_books
@@ -729,6 +748,9 @@ handlers:
         note_about_ebooks_and_eaudiobooks: note_about_ebooks_and_eaudiobooks
         note_about_dvds: note_about_dvds
         note_about_older_books: note_about_older_books
+        contact_method: contact_method
+        mailing_address_element: mailing_address_element
+        pickup_location: pickup_location
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: true
