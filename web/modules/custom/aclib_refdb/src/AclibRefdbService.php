@@ -299,7 +299,7 @@ class AclibRefdbService {
       $this->logAccess($data);
 
       // Return redirect.
-      return $this->doRedirect($external_url_value);
+      return $this->doRedirect($external_url_value, TRUE);
     }
   }
 
