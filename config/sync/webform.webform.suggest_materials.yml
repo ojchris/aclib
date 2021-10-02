@@ -26,9 +26,9 @@ elements: |-
       - anonymous
     '#markup': |-
       <ul>
-      	<li>All decisions for purchases are in accordance with the library&rsquo;s <a href="https://www.aclib.us/collection-development-policy#selection_process">Collection Development policy</a>, including the <a href="/collection-development-policy#selection_process">Materials Selection Process</a>.</li>
-      	<li><strong>Please <a href="http://catalog.aclib.us/">check the&nbsp;catalog</a>&nbsp;to be sure we don&rsquo;t own the title before you request it.</strong></li>
-      	<li>Each library card holder may suggest up to five titles each week (Monday through Sunday).</li>
+      	<li><span style="color:darkred">All decisions for purchases are in accordance with the library&rsquo;s <a href="https://www.aclib.us/collection-development-policy#selection_process">Collection Development policy</a>, including the <a href="/collection-development-policy#selection_process">Materials Selection Process</a>.</span></li>
+      	<li><span style="color:darkred"><strong>Please <a href="http://catalog.aclib.us/">check the&nbsp;catalog</a>&nbsp;to be sure we don&rsquo;t own the title before you request it.</strong></span></li>
+      	<li><span style="color:darkred">Each library card holder may suggest up to five titles each week (Monday through Sunday).</span></li>
       </ul>
   item_format:
     '#type': radios
@@ -37,10 +37,10 @@ elements: |-
     '#description_display': before
     '#options':
       Book: Book
-      eBook: 'eBook (Downloadable)'
+      'eBook (Downloadable)': 'eBook (Downloadable)'
       'Large Print Book': 'Large Print Book'
       Audiobook: 'Audiobook (Book on CD)'
-      eAudiobook: 'eAudiobook (Downloadable)'
+      'eAudiobook (Downloadable)': 'eAudiobook (Downloadable)'
       DVD: DVD
       'Music CD': 'Music CD'
     '#required': true
@@ -70,8 +70,8 @@ elements: |-
       - authenticated
       - anonymous
     '#markup': |-
-      <strong>Note about release date:</strong><br />
-      Suggestions for physical books and books on CD will only be considered <strong>one month prior to the release date or later.</strong>
+      <span style="color:darkred"><strong>Note about release date:</strong><br />
+      Suggestions for physical books and books on CD will only be considered <strong>one month prior to the release date or later.</strong></span>
   note_about_music:
     '#type': webform_markup
     '#states':
@@ -88,15 +88,21 @@ elements: |-
       - authenticated
       - anonymous
     '#markup': |-
-      <strong>Note about Music CD suggestions:</strong><br />
-      Suggestions for music CDs will be considered <strong>after the release date</strong>.
+      <span style="color:darkred"><strong>Note about Music CD suggestions:</strong><br />
+        Suggestions for music CDs will be considered <strong>after the release date</strong>.</span>
   note_about_ebooks_and_eaudiobooks:
     '#type': webform_markup
     '#states':
       visible:
-        ':input[name="item_format"]':
-          value:
-            pattern: ^(eBook|eAudiobook)$
+        - ':input[name="item_format"]':
+            value:
+              pattern: ^(eBook|eAudiobook)$
+        - or
+        - ':input[name="item_format"]':
+            value: 'eBook (Downloadable)'
+        - or
+        - ':input[name="item_format"]':
+            value: 'eAudiobook (Downloadable)'
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -107,11 +113,11 @@ elements: |-
       - authenticated
       - anonymous
     '#markup': |-
-      <strong>Note about eBooks and eAudiobooks</strong>
+      <span style="color:darkred"><strong>Note about eBooks and eAudiobooks</strong>
       <ul>
       	<li>Suggestions for eBooks and eAudiobooks will be considered <strong>after the release date</strong>.</li>
       	<li>Note that some publishers do not make items available to libraries on the release date, or at all.</li>
-      </ul>
+        </ul></span>
   note_about_dvds:
     '#type': webform_markup
     '#states':
@@ -128,8 +134,8 @@ elements: |-
       - authenticated
       - anonymous
     '#markup': |-
-      <strong>Note about DVDs:</strong><br />
-      Suggestions for DVDs will be considered <strong>after the release date</strong>.
+      <span style="color:darkred"><strong>Note about DVDs:</strong><br />
+        Suggestions for DVDs will be considered <strong>after the release date</strong>.</span>
   note_about_older_books:
     '#type': webform_markup
     '#states':
@@ -147,8 +153,8 @@ elements: |-
       - authenticated
       - anonymous
     '#markup': |-
-      <strong>Note about older books:</strong><br />
-      For older print titles, published for six months or more, an <a href="/ill">inter-library loan request</a> is often a better option.
+      <span style="color:darkred"><strong>Note about older books:</strong><br />
+        For older print titles, published for six months or more, an <a href="/ill">inter-library loan request</a> is often a better option.</span>
   item_title:
     '#type': textfield
     '#title': Title
@@ -214,9 +220,15 @@ elements: |-
     '#required_error': 'Type is required.'
     '#states':
       visible:
-        ':input[name="item_format"]':
-          value:
-            pattern: '^(Book|eBook|Large Print Book|Audiobook|eAudiobook)$'
+        - ':input[name="item_format"]':
+            value:
+              pattern: '^(Book|eBook|Large Print Book|Audiobook|eAudiobook)$'
+        - or
+        - ':input[name="item_format"]':
+            value: 'eBook (Downloadable)'
+        - or
+        - ':input[name="item_format"]':
+            value: 'eAudiobook (Downloadable)'
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -229,7 +241,7 @@ elements: |-
   item_date:
     '#type': textfield
     '#title': Date
-    '#description': 'Publication date for books or release date for other formats. Please only suggest materials scheduled for release within the next month or that are already released.'
+    '#description': 'Publication date for books or release date for other formats: Please only suggest materials scheduled for release within the next month or that are already released.'
     '#description_display': before
     '#maxlength': 50
     '#access_create_roles':
@@ -244,7 +256,7 @@ elements: |-
   isbn:
     '#type': textfield
     '#title': ISBN/UPC
-    '#description': 'The ISBN (for books) or UPC (for DVDs and music CDs) is the best identifier to make certain the Library purchases the correct item.&nbsp;'
+    '#description': 'The ISBN (for books) or UPC (for DVDs and music CDs) is the best identifier to make certain the library purchases the correct item.&nbsp;'
     '#description_display': before
     '#maxlength': 100
     '#access_create_roles':
@@ -271,12 +283,13 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
-  name:
-    '#type': textfield
+  your_name:
+    '#type': webform_name
     '#title': 'Your name'
+    '#description': 'Please enter your first and last name.'
+    '#title_display': before
     '#description_display': before
     '#required': true
-    '#required_error': 'Your name is required.'
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -286,6 +299,12 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
+    '#title__access': false
+    '#first__required': true
+    '#middle__access': false
+    '#last__required': true
+    '#suffix__access': false
+    '#degree__access': false
   library_card_number:
     '#type': number
     '#title': 'Library card number'
@@ -302,6 +321,8 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
+    '#min': 22054000000000
+    '#max': 72054999999999
   contact_method:
     '#type': radios
     '#title': 'How should we contact you?'
@@ -325,38 +346,27 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
-  email_address_downloadable_confirm:
-    '#type': webform_email_confirm
-    '#title': 'Email Address'
-    '#description_display': before
-    '#required': true
-    '#required_error': 'Email address is required.'
-    '#states':
-      visible:
-        ':input[name="item_format"]':
-          value:
-            pattern: ^(eBook|eAudiobook)$
-    '#access_create_roles':
-      - authenticated
-      - anonymous
-    '#access_update_roles':
-      - authenticated
-      - anonymous
-    '#access_view_roles':
-      - authenticated
-      - anonymous
-    '#confirm__title': 'Confirm Email Address'
-    '#confirm__placeholder': 'Enter email address again to confirm.'
   email_address:
     '#type': webform_email_confirm
     '#title': 'Email Address'
+    '#description': 'Please enter your email address.'
     '#description_display': before
     '#required': true
     '#required_error': 'Email address is required.'
     '#states':
       visible:
-        ':input[name="contact_method"]':
-          value: Email
+        - ':input[name="contact_method"]':
+            value: Email
+        - or
+        - ':input[name="item_format"]':
+            value:
+              pattern: ^(eBook|eAudiobook)$
+        - or
+        - ':input[name="item_format"]':
+            value: 'eBook (Downloadable)'
+        - or
+        - ':input[name="item_format"]':
+            value: 'eAudiobook (Downloadable)'
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -371,6 +381,9 @@ elements: |-
   mailing_address_element:
     '#type': webform_address
     '#title': 'Mailing Address'
+    '#description': 'Please enter your mailing address.'
+    '#title_display': before
+    '#description_display': before
     '#states':
       visible:
         ':input[name="contact_method"]':
@@ -388,6 +401,7 @@ elements: |-
     '#city__required': true
     '#state_province__required': true
     '#postal_code__required': true
+    '#country__access': false
   email_a_copy_checkbox:
     '#type': checkboxes
     '#title': 'Email a copy'
@@ -396,29 +410,13 @@ elements: |-
       'Email this request to me': 'Email this request to me'
     '#states':
       visible:
-        ':input[name="contact_method"]':
-          value:
-            pattern: ^(Email)$
-    '#access_create_roles':
-      - authenticated
-      - anonymous
-    '#access_update_roles':
-      - authenticated
-      - anonymous
-    '#access_view_roles':
-      - authenticated
-      - anonymous
-  email_a_copy_checkbox_downloadable:
-    '#type': checkboxes
-    '#title': 'Email a copy'
-    '#description_display': before
-    '#options':
-      'Email this request to me': 'Email this request to me'
-    '#states':
-      visible:
-        ':input[name="item_format"]':
-          value:
-            pattern: ^(eBook|eAudiobook)$
+        - ':input[name="contact_method"]':
+            value:
+              pattern: ^(Email)$
+        - or
+        - ':input[name="item_format"]':
+            value:
+              pattern: ^(eBook|eAudiobook)$
     '#access_create_roles':
       - authenticated
       - anonymous
@@ -437,9 +435,8 @@ elements: |-
       'Headquarters Library': 'Headquarters Library'
       'Alachua Branch': 'Alachua Branch'
       'Archer Branch': 'Archer Branch'
-      'Bookmobile & Homebound': 'Bookmobile & Homebound'
       'Cone Park Branch': 'Cone Park Branch'
-      Hawthorne: 'Hawthorne Branch'
+      'Hawthorne Branch': 'Hawthorne Branch'
       'High Springs Branch': 'High Springs Branch'
       'Library Partnership Branch': 'Library Partnership Branch'
       'Micanopy Branch': 'Micanopy Branch'
@@ -447,6 +444,7 @@ elements: |-
       'Newberry Branch': 'Newberry Branch'
       'Tower Road Branch': 'Tower Road Branch'
       'Waldo Branch': 'Waldo Branch'
+      'Bookmobile & Homebound': 'Bookmobile & Homebound'
     '#required': true
     '#required_error': 'Pickup location is required.'
     '#states':
@@ -463,6 +461,85 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
+  contact_method_computed_twig:
+    '#type': webform_computed_twig
+    '#title': 'Contact Method Computed Twig'
+    '#title_display': invisible
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#display_on': view
+    '#template': |-
+      {% if data.contact_method %}
+      {{ "Contact method:" ~ data.contact_method }}
+      {% endif %}
+    '#whitespace': trim
+    '#hide_empty': true
+  mailing_address_element_computed_twig:
+    '#type': webform_computed_twig
+    '#title': 'Mailing Address Element Computed Twig'
+    '#title_display': invisible
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#display_on': view
+    '#template': |-
+      {% if data.mailing_address_element %}
+      {{ "Mailing address:" ~ data.mailing_address_element }}
+      {% endif %}
+    '#whitespace': trim
+    '#hide_empty': true
+  pickup_location_computed_twig:
+    '#type': webform_computed_twig
+    '#title': 'Pickup Location Computed Twig'
+    '#title_display': invisible
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#display_on': view
+    '#template': |-
+      {% if data.pickup_location %}
+      {{ "Pickup location:" ~ data.pickup_location }}
+      {% endif %}
+    '#whitespace': trim
+    '#hide_empty': true
+  type_computed_twig:
+    '#type': webform_computed_twig
+    '#title': 'Type Computed Twig'
+    '#title_display': invisible
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#display_on': view
+    '#template': |-
+      {% if data.item_type %}
+      {{ "Type:" ~ data.item_type }}
+      {% endif %}
+    '#hide_empty': true
 css: ''
 javascript: ''
 settings:
@@ -472,7 +549,7 @@ settings:
   ajax_effect: ''
   ajax_speed: null
   page: true
-  page_submit_path: ''
+  page_submit_path: /suggest-materials
   page_confirm_path: ''
   page_theme_name: ''
   form_title: both
@@ -653,7 +730,56 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: opleil@aclib.us
+      to_mail: tsrequest@aclib.us
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: opleil@aclib.us
+      bcc_options: {  }
+      from_mail: eBranch@aclib.us
+      from_options: {  }
+      from_name: _default
+      subject: '[webform_submission:values:item_format:raw]'
+      body: "Title: [webform_submission:values:item_title]<br />\r\nAuthor: [webform_submission:values:item_author]<br />\r\nFormat: [webform_submission:values:item_format]<br />\r\nAudience: [webform_submission:values:item_audience]<br />\r\n[webform_submission:values:type_computed_twig]<br />\r\nDate: [webform_submission:values:item_date]<br />\r\nISBN/UPC: [webform_submission:values:isbn]<br />\r\nNotes: [webform_submission:values:other_notes]<br />\r\nYour name: [webform_submission:values:your_name]<br />\r\nLibrary card number: [webform_submission:values:library_card_number]<br />\r\n[webform_submission:values:contact_method_computed_twig]<br />\r\nEmail address: [webform_submission:values:email_address]&nbsp;<br />\r\n[webform_submission:values:mailing_address_element_computed_twig]<br />\r\nEmail a copy: [webform_submission:values:email_a_copy_checkbox]&nbsp;<br />\r\n[webform_submission:values:pickup_location_computed_twig]"
+      excluded_elements:
+        summary_markup: summary_markup
+        note_about_books: note_about_books
+        note_about_music: note_about_music
+        note_about_ebooks_and_eaudiobooks: note_about_ebooks_and_eaudiobooks
+        note_about_dvds: note_about_dvds
+        note_about_older_books: note_about_older_books
+        contact_method: contact_method
+        mailing_address_element: mailing_address_element
+        pickup_location: pickup_location
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: true
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      theme_name: ''
+      parameters: {  }
+  email_a_copy:
+    id: email
+    label: 'Email A Copy'
+    notes: ''
+    handler_id: email_a_copy
+    status: true
+    conditions:
+      enabled:
+        ':input[name="email_a_copy_checkbox[Email this request to me]"]':
+          checked: true
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: '[webform_submission:values:email_address:raw]'
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
@@ -667,7 +793,7 @@ handlers:
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
-      exclude_empty_checkbox: false
+      exclude_empty_checkbox: true
       exclude_attachments: false
       html: true
       attachments: false

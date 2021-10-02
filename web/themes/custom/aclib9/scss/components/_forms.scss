@@ -1,0 +1,19 @@
+.form-item--error-message {
+  color: red;
+}
+
+/* Position the error message for radio buttons. */
+.js-form-type-radio {
+  position: relative;
+  .form-item--error-message {
+    position: absolute;
+    left: 10em;
+  }
+}
+
+/* Position the required asterisk. */
+.form-required::after {
+  width: 1rem;
+  height: 1rem;
+  vertical-align: top;
+}

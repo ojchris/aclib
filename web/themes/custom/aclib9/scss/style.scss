@@ -10,7 +10,7 @@ Description: Bootstrap 4 with Sass
 -------------------------------------------------*/
 
 body {
-    background: $white;
+  background: $white;
 }
 
 
@@ -20,6 +20,7 @@ body {
 a {
   color: $accent-shade;
   text-decoration: underline;
+
   &:hover {
     text-decoration: none;
   }
@@ -27,53 +28,56 @@ a {
 
 h1 {
   font-weight: 900;
-  .field--name-title, strong {
+
+  .field--name-title,
+  strong {
     font-weight: 900;
   }
 }
 
 .bg-inverse {
-    background: $primary-shade !important;
+  background: $primary-shade !important;
 }
 
 .site-footer {
-    background: $accent-shade !important;
+  background: $accent-shade !important;
 }
 
 .menu--main li a {
-    color: $primary-shade;
+  color: $primary-shade;
 }
 
 .menu--account li a {
-    color: $primary-shade;
+  color: $primary-shade;
 }
 
 .site-name-slogan a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .card-group img {
-    margin: 0;
-    width: 100%;
-    height: auto;
+  margin: 0;
+  width: 100%;
+  height: auto;
 }
 
 .card-group .field--type-image {
-    margin: 0
+  margin: 0
 }
 
 .slick {
-    width: 100%;
+  width: 100%;
 }
 
 .slick>div {
-    margin: 0 15px;
+  margin: 0 15px;
 }
 
 .path-frontpage {
   .node__content {
     margin-top: 0;
   }
+
   #block-aclib9-page-title {
     display: none;
   }
@@ -95,9 +99,11 @@ img.image-style-full-width-embedded {
 // Layout builder tweaks to match Bootstrap breakpoints.
 //@media screen and (min-width: 40em) {
 .layout--twocol-section {
-  &.layout--twocol-section--33-67 > .layout__region--first,
-  &.layout--twocol-section--67-33 > .layout__region--second {
+
+  &.layout--twocol-section--33-67>.layout__region--first,
+  &.layout--twocol-section--67-33>.layout__region--second {
     flex: 0 1 100%;
+
     @include media-breakpoint-up(md) {
       flex: 0 1 33%;
     }
@@ -115,4 +121,24 @@ img.image-style-full-width-embedded {
   background-repeat: no-repeat;
   background-position: center center;
   background-color: transparent;
+}
+
+//make the label font size match the legend
+#webform-submission-suggest-materials-add-form fieldset.form-type-textfield label,
+#webform-submission-suggest-materials-add-form fieldset.form-type-number label,
+#webform-submission-suggest-materials-add-form fieldset.form-type-email label,
+#webform-submission-suggest-materials-add-form fieldset.form-type-select label {
+  @include font-size($legend-font-size);
+  font-weight: $legend-font-weight;
+}
+
+.webform-submission-form {
+  legend {
+    //font-size: 1rem;
+  }
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  color: $white;
 }
