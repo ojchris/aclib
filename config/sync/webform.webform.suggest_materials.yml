@@ -461,6 +461,25 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
+  type_computed_twig:
+    '#type': webform_computed_twig
+    '#title': 'Type Computed Twig'
+    '#title_display': invisible
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#display_on': view
+    '#template': |-
+      {% if data.item_type %}
+      {{ "Type: " ~ data.item_type }}
+      {% endif %}
+    '#hide_empty': true
   contact_method_computed_twig:
     '#type': webform_computed_twig
     '#title': 'Contact Method Computed Twig'
@@ -477,7 +496,7 @@ elements: |-
     '#display_on': view
     '#template': |-
       {% if data.contact_method %}
-      {{ "Contact method:" ~ data.contact_method }}
+      {{ "Contact method: " ~ data.contact_method }}
       {% endif %}
     '#whitespace': trim
     '#hide_empty': true
@@ -497,7 +516,7 @@ elements: |-
     '#display_on': view
     '#template': |-
       {% if data.mailing_address_element %}
-      {{ "Mailing address:" ~ data.mailing_address_element }}
+      {{ "Mailing address: " ~ data.mailing_address_element }}
       {% endif %}
     '#whitespace': trim
     '#hide_empty': true
@@ -517,28 +536,9 @@ elements: |-
     '#display_on': view
     '#template': |-
       {% if data.pickup_location %}
-      {{ "Pickup location:" ~ data.pickup_location }}
+      {{ "Pickup location: " ~ data.pickup_location }}
       {% endif %}
     '#whitespace': trim
-    '#hide_empty': true
-  type_computed_twig:
-    '#type': webform_computed_twig
-    '#title': 'Type Computed Twig'
-    '#title_display': invisible
-    '#access_create_roles':
-      - authenticated
-      - anonymous
-    '#access_update_roles':
-      - authenticated
-      - anonymous
-    '#access_view_roles':
-      - authenticated
-      - anonymous
-    '#display_on': view
-    '#template': |-
-      {% if data.item_type %}
-      {{ "Type:" ~ data.item_type }}
-      {% endif %}
     '#hide_empty': true
 css: ''
 javascript: ''
