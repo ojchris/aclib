@@ -516,7 +516,8 @@ elements: |-
     '#display_on': view
     '#template': |-
       {% if data.mailing_address_element %}
-      {{ "Mailing address: " ~ data.mailing_address_element }}
+      {{ "Mailing address: " ~ data.mailing_address_element.address ~ " " ~ data.mailing_address_element.address_2 ~ ", " ~ data.mailing_address_element.city ~ ", " ~ data.mailing_address_element.state_province ~ " " ~ data.mailing_address_element.postal_code
+      }}
       {% endif %}
     '#whitespace': trim
     '#hide_empty': true
