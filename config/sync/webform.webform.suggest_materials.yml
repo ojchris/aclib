@@ -791,7 +791,11 @@ handlers:
       from_name: _default
       subject: _default
       body: _default
-      excluded_elements: {  }
+      excluded_elements:
+        type_computed_twig: type_computed_twig
+        contact_method_computed_twig: contact_method_computed_twig
+        mailing_address_element_computed_twig: mailing_address_element_computed_twig
+        pickup_location_computed_twig: pickup_location_computed_twig
       ignore_access: false
       exclude_empty: true
       exclude_empty_checkbox: true
