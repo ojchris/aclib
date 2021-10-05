@@ -10,7 +10,7 @@ libraries:
   - aclib9/global-styling
 libraries-override:
   bootstrap_barrio/global-styling: false
-  bootstrap_barrio/file: false
+#  bootstrap_barrio/file: false
 ckeditor_stylesheets:
   - css/ckeditor.css
 regions:

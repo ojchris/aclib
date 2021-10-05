@@ -17,26 +17,26 @@
 
 {% if images[0] is not empty and images[0].image %}
 
-{#   {{ attach_library('flickr_formatter/styles') }} #}
+  {#   {{ attach_library('flickr_formatter/styles') }} #}
 
   {%
     set container_attributes = {
-      class: [
-        'carousel',
-        options.effect ? options.effect,
-        options.classes ? options.classes
-      ],
-      id: options.id,
-      style: options.max_width ? 'max-width: ' ~ options.max_width ~ 'px'
-    }
+    class: [
+      'carousel',
+      options.effect ? options.effect,
+      options.classes ? options.classes
+    ],
+    id: options.id,
+    style: options.max_width ? 'max-width: ' ~ options.max_width ~ 'px'
+  }
   %}
 
   {% set bs_attributes = {} %}
   {% for attr, value in options %}
     {% if attr == 'interval' %}
-       {% if options.ride %}
+      {% if options.ride %}
         {% set bs_attributes =  bs_attributes|merge({'data-bs-interval': options.interval, 'data-bs-ride': 'carousel'}) %}
-       {% endif %}
+      {% endif %}
     {% elseif attr ==  'pause' %}
       {% set pause = options.pause ? 'hover' : 'false' %}
       {% set bs_attributes =  bs_attributes|merge({'data-bs-pause': pause }) %}
@@ -52,91 +52,91 @@
     <h2>{{ options.title }}</h2>
   {% endif %}
 
-{#   <div{{ create_attribute({'class': container_attributes.class}).setAttribute('id', container_attributes.id) }}{% if container_attributes.style %} style="{{ container_attributes.style }}"{% endif %} {% for attr, value in container_attributes.bs %} {{attr}}="{{value}}"{% endfor %}>  #}
+  {#   <div{{ create_attribute({'class': container_attributes.class}).setAttribute('id', container_attributes.id) }}{% if container_attributes.style %} style="{{ container_attributes.style }}"{% endif %} {% for attr, value in container_attributes.bs %} {{attr}}="{{value}}"{% endfor %}>  #}
 
-{#    <div{{ create_attribute({'class': container_attributes.class}).setAttribute('id', container_attributes.id) }}{% if container_attributes.style %} style="{{ container_attributes.style }}"{% endif %} {% for attr, value in options %} data-{{ attr|replace({'_': '-'}) }}="{{ value }}"{% endfor %}>  #}
+  {#    <div{{ create_attribute({'class': container_attributes.class}).setAttribute('id', container_attributes.id) }}{% if container_attributes.style %} style="{{ container_attributes.style }}"{% endif %} {% for attr, value in options %} data-{{ attr|replace({'_': '-'}) }}="{{ value }}"{% endfor %}>  #}
 
   <div{{ create_attribute({'class': container_attributes.class}).setAttribute('id', container_attributes.id) }}{% if container_attributes.style %} style="{{ container_attributes.style }}"{% endif %} {% for attr, value in bs_attributes %} {{ attr }}="{{ value }}"{% endfor %}>
 
 
-    {# Indicators #}
-    {%  if options.indicators %}
-      <ol class="carousel-indicators">
-        {% for index, image in images %}
-          {%
-            set indicator_attributes = {
-              class: [
-               loop.first ? 'active'
-              ],
-              bs: {
-                'data-bs-target': '#' ~ options.id,
-                'data-bs-slide-to': index,
-                'aria-label': 'Slide ' ~ loop.index
-              }
-            }
-          %}
-          <li{{ create_attribute({'class': indicator_attributes.class }) }} {% for attr, value in indicator_attributes.bs %}{{attr}}="{{value}}"{% endfor %}></li>
-        {% endfor %}
-      </ol>
-    {% endif %}
-
-    <div class="carousel-inner">
-      {% for image in images %}
-        {% if image.image %}
-          {%
-            set item_classes = [
-              'carousel-item',
-              loop.first ? 'active'
-            ]
-          %}
-
-          {% if options.link %}
-            <div{{ create_attribute({'class': item_classes }) }}>
-             <a{{ create_attribute({'href': image.remote_url }).setAttribute('target', '_blank').addClass('text-light') }}>
-          {% else %}
-            <div{{ create_attribute({'class': item_classes }) }}>
-          {% endif %}
-
-          {{ image.image }}
-
-          {% if image.caption %}
-            {%
-              set caption_classes = [
-                'carousel-caption',
-                'flickr-formatter-caption',
-                'text-light',
-                'start-0',
-                'bg-secondary',
-                'opacity-75',
-                'w-100',
-              ]
-            %}
-            <div{{ create_attribute({'class': caption_classes}) }}>
-              {{ image.caption }}
-            </div>
-          {% endif %}
-
-          {% if options.link %}
-            </a></div>
-          {% else %}
-            </div>
-          {% endif %}
-
-        {% endif %}
+  {# Indicators #}
+  {%  if options.indicators %}
+    <ol class="carousel-indicators">
+      {% for index, image in images %}
+        {%
+          set indicator_attributes = {
+          class: [
+            loop.first ? 'active'
+          ],
+          bs: {
+            'data-bs-target': '#' ~ options.id,
+            'data-bs-slide-to': index,
+            'aria-label': 'Slide ' ~ loop.index
+          }
+        }
+        %}
+        <li{{ create_attribute({'class': indicator_attributes.class }) }} {% for attr, value in indicator_attributes.bs %}{{attr}}="{{value}}"{% endfor %}></li>
       {% endfor %}
-    </div>
+    </ol>
+  {% endif %}
 
-    {# Controls #}
-    {% if options.navigation %}
-      <button class="carousel-control-prev" type="button" data-bs-target="#{{ options.id }}" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon flickr-formatter-control-icon bg-secondary" aria-hidden="true">&nbsp;</span>
-        <span class="visually-hidden">{{ 'Previous'|t }}</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#{{ options.id }}" data-bs-slide="next">
-        <span class="carousel-control-next-icon flickr-formatter-control-icon bg-secondary" aria-hidden="true">&nbsp;</span>
-        <span class="visually-hidden">{{ 'Next'|t }}</span>
-      </button>
+  <div class="carousel-inner">
+  {% for image in images %}
+    {% if image.image %}
+      {%
+        set item_classes = [
+        'carousel-item',
+        loop.first ? 'active'
+      ]
+      %}
+
+      {% if options.link %}
+        <div{{ create_attribute({'class': item_classes }) }}>
+        <a{{ create_attribute({'href': image.remote_url }).setAttribute('target', '_blank').addClass('text-light') }}>
+      {% else %}
+        <div{{ create_attribute({'class': item_classes }) }}>
+      {% endif %}
+
+      {{ image.image }}
+
+      {% if image.caption %}
+        {%
+          set caption_classes = [
+          'carousel-caption',
+          'flickr-formatter-caption',
+          'text-light',
+          'start-0',
+          'bg-secondary',
+          'opacity-75',
+          'w-100',
+        ]
+        %}
+        <div{{ create_attribute({'class': caption_classes}) }}>
+          {{ image.caption }}
+        </div>
+      {% endif %}
+
+      {% if options.link %}
+        </a></div>
+      {% else %}
+        </div>
+      {% endif %}
+
     {% endif %}
+  {% endfor %}
   </div>
 
- {% endif %}
+  {# Controls #}
+  {% if options.navigation %}
+    <button class="carousel-control-prev" type="button" data-bs-target="#{{ options.id }}" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon flickr-formatter-control-icon bg-secondary" aria-hidden="true">&nbsp;</span>
+      <span class="visually-hidden">{{ 'Previous'|t }}</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#{{ options.id }}" data-bs-slide="next">
+      <span class="carousel-control-next-icon flickr-formatter-control-icon bg-secondary" aria-hidden="true">&nbsp;</span>
+      <span class="visually-hidden">{{ 'Next'|t }}</span>
+    </button>
+  {% endif %}
+  </div>
+
+{% endif %}
