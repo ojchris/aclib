@@ -242,26 +242,6 @@ elements: |-
       - authenticated
       - anonymous
     '#markup': '<strong>Click the Submit button to complete your registration for MSWW.</strong>&nbsp;'
-  closing_markup_returning:
-    '#type': webform_markup
-    '#states':
-      visible:
-        - ':input[name="are_you_happy_with_your_house_placement_"]':
-            value: 'Yes'
-        - or
-        - ':input[name="what_is_your_house_preference_"]':
-            value:
-              pattern: ^(Gryffindor|Hufflepuff|Ravenclaw|Slytherin)$
-    '#access_create_roles':
-      - authenticated
-      - anonymous
-    '#access_update_roles':
-      - authenticated
-      - anonymous
-    '#access_view_roles':
-      - authenticated
-      - anonymous
-    '#markup': '<strong>Thank you!&nbsp; Click the Submit button to complete your&nbsp;MSWW registration.</strong>&nbsp;'
   if_you_wish_to_submit_a_photo_for_the_virtual_sorting_ceremony_y:
     '#type': radios
     '#title': 'If you wish to submit a photo for the virtual Sorting Ceremony, you must complete a photo release form. Will you be submitting a photo?'
@@ -350,6 +330,7 @@ elements: |-
     '#type': date
     '#title': 'Today''s Date'
     '#required': true
+    '#required_error': 'Today''s date must be today''s date.'
     '#states':
       visible:
         ':input[name="if_you_wish_to_submit_a_photo_for_the_virtual_sorting_ceremony_y"]':
@@ -363,10 +344,11 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
+    '#date_date_min': today
+    '#date_date_max': today
   child_s_first_name_if_signing_for_a_minor_:
     '#type': textfield
     '#title': 'Child''s First Name (if signing for a minor)'
-    '#required': true
     '#states':
       visible:
         ':input[name="if_you_wish_to_submit_a_photo_for_the_virtual_sorting_ceremony_y"]':
@@ -383,7 +365,6 @@ elements: |-
   child_s_last_name_if_signing_for_a_minor_:
     '#type': textfield
     '#title': 'Child''s Last Name (if signing for a minor)'
-    '#required': true
     '#states':
       visible:
         ':input[name="if_you_wish_to_submit_a_photo_for_the_virtual_sorting_ceremony_y"]':
@@ -397,6 +378,26 @@ elements: |-
     '#access_view_roles':
       - authenticated
       - anonymous
+  closing_markup_returning:
+    '#type': webform_markup
+    '#states':
+      visible:
+        - ':input[name="are_you_happy_with_your_house_placement_"]':
+            value: 'Yes'
+        - or
+        - ':input[name="what_is_your_house_preference_"]':
+            value:
+              pattern: ^(Gryffindor|Hufflepuff|Ravenclaw|Slytherin)$
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#markup': '<strong>Thank you!&nbsp; Click the Submit button to complete your&nbsp;MSWW registration.</strong>&nbsp;'
 css: ''
 javascript: ''
 settings:
@@ -406,7 +407,7 @@ settings:
   ajax_effect: ''
   ajax_speed: null
   page: true
-  page_submit_path: ''
+  page_submit_path: /form/millhopper-school-registration-form
   page_confirm_path: ''
   page_theme_name: ''
   form_title: both
