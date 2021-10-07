@@ -3,11 +3,13 @@
 namespace Drupal\aclib_refdb\Plugin\views\field;
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Datetime\DrupalDateTime;
 
 use Drupal\views\Plugin\views\field\FieldPluginBase;
 use Drupal\views\ViewExecutable;
 use Drupal\views\Plugin\views\display\DisplayPluginBase;
 use Drupal\views\ResultRow;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 
 /**
  * Field handler for properties calculations.
@@ -113,6 +115,8 @@ class AclibRefDbComputedField extends FieldPluginBase {
 
       $datetime = $this->getParams();
 
+      $table = $this->view->storage->get('base_table');
+
       // Set first logic for Pattern matched type of fields, a special case.
       if (strpos($this->options['property'], '*') !== FALSE) {
         $patterns = $this->aclibService->getPatterns();
@@ -131,9 +135,12 @@ class AclibRefDbComputedField extends FieldPluginBase {
         $internals = $this->aclibService->defaultCountOptions();
         foreach ($internals as $property_key => $property) {
           if (in_array($this->options['property'], array_keys($property))) {
-            $value = $this->options['property'] == 'overall' ? NULL : $this->options['property'];
-            $formula = $this->aclibService->queryCountProperty($property_key, $datetime, $value);
-            $this->query->addOrderBy(NULL, $formula, $order, $this->options['property'], $params);
+            // $value = $this->options['property'] == 'overall' ? NULL : $this->options['property'];
+            $formula = $this->aclibService->queryCountProperty($property_key, $datetime, $this->options['property']);
+            // $this->query->addField(NULL, $formula, 'count_property');
+            // $this->query->groupby = [];
+            // $this->query->addOrderBy(NULL, 'count_property', $order, 'count_property', ['function' => 'SUM', 'aggregate' => TRUE]);
+            $this->query->addOrderBy(NULL, $formula, $order, $this->options['property']);
           }
         }
       }
@@ -150,14 +157,26 @@ class AclibRefDbComputedField extends FieldPluginBase {
   protected function getParams() {
     $datetime = [];
     if (isset($_POST['datetime']) && isset($_POST['datetime']['min']) && isset($_POST['datetime']['max'])) {
-      $datetime = [$_POST['datetime']['min'], $_POST['datetime']['max']];
+      $min = $_POST['datetime']['min'] . 'T04:00:00';
+      $max = $_POST['datetime']['max'] . 'T23:59:59';
     }
     else {
       $args = $this->aclibService->requestStack->query->all();
       if (isset($args['datetime']) && isset($args['datetime']['min']) && isset($args['datetime']['max'])) {
-        $datetime = [$args['datetime']['min'], $args['datetime']['max']];
+        $min = $args['datetime']['min'] . 'T04:00:00';
+        $max = $args['datetime']['max'] . 'T23:59:59';
       }
     }
+
+    $default_timezone = $this->aclibService->config->get('system.date')->get('timezone');
+    $timezone = isset($default_timezone['default']) ? $default_timezone['default'] : $this->aclibService::DEFAULT_TIMEZONE;
+
+    $start_datetime = new DrupalDateTime($min, new \DateTimeZone($timezone));
+    $datetime[] = $start_datetime->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, $timezone);
+
+    $end_datetime = new DrupalDateTime($max . '+ 4 hours', new \DateTimeZone($timezone));
+    $datetime[] = $end_datetime->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, $timezone);
+
     return $datetime;
   }
 

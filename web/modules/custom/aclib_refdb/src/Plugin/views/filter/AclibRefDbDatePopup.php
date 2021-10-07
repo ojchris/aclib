@@ -79,7 +79,7 @@ class AclibRefDbDatePopup extends Date {
    * {@inheritdoc}
    */
   protected function opBetween($field) {
-    
+
     // Essential for EST timezone to work.
     $this->calculateOffset = FALSE;
 

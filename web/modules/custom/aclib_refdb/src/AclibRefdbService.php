@@ -344,7 +344,6 @@ class AclibRefdbService {
     if (!empty($patterns_matched)) {
       $patterns_matched_array = preg_split('/\r\n|[\r\n]/', $patterns_matched);
       if (!empty($patterns_matched_array)) {
-        // ksm($parent_label);
         if ($parent_label) {
           $patterns[$parent_label] = [];
         }
@@ -475,9 +474,7 @@ class AclibRefdbService {
   public function defaultCountQuery(string $base_field, int $nid, array $dates = [], $value = NULL) {
     $aclib_refdb_storage = $this->entityTypeManager->getStorage('aclib_refdb_logs');
     $aclib_refdb_storage_count = $aclib_refdb_storage->getQuery()->condition('nid', $nid);
-    // $aclib_refdb_storage_count
     // ->aggregate('nid', 'COUNT')->count();
-    // ->addTag('debug')
     if (!empty($dates)) {
       $aclib_refdb_storage_count->condition('datetime', $dates, 'BETWEEN');
     }
@@ -487,6 +484,7 @@ class AclibRefdbService {
     }
     $aclib_refdb_storage_count->groupBy('nid');
 
+    // $aclib_refdb_storage_count->addTag('debug');
     return $aclib_refdb_storage_count->count();
   }
 
@@ -503,13 +501,25 @@ class AclibRefdbService {
    * @rerurn string - SQL query string
    */
   public function queryCountProperty(string $field_name, array $dates = [], $value = NULL) {
-    $query_string = "(SELECT COUNT(aclib_refdb_logs." . $field_name . ") FROM aclib_refdb_logs WHERE aclib_refdb_logs.nid = node_field_data_aclib_refdb_logs.nid";
+
+    $query_string = "(SELECT COUNT(DISTINCT(aclib_refdb_logs." . $field_name . ")) FROM aclib_refdb_logs WHERE aclib_refdb_logs.nid = node_field_data_aclib_refdb_logs.nid";
     /*
     if (!empty($dates)) {
-    $query_string .= " AND (aclib_refdb_logs.datetime BETWEEN " . $dates[0] . " AND " . $dates[1] .")";
+    $query_string .= " AND DATE_FORMAT(aclib_refdb_logs.datetime, '%Y-%m-%d\T%H:%i:%s') BETWEEN ('" . $dates[0] . "' AND '" . $dates[1] ."')";
     }
      */
-    $query_string .= !$value ? ")" : " AND aclib_refdb_logs." . $field_name . " = '" . $value . "')";
+    if ($field_name == 'location') {
+      if ($value == 'overall') {
+        $query_string .= " AND aclib_refdb_logs." . $field_name . " IN ('internal', 'external'))";
+      }
+      else {
+        $query_string .= " AND aclib_refdb_logs." . $field_name . " IN ('" . $value . "'))";
+      }
+    }
+    else {
+      $query_string .= !$value ? ")" : " AND aclib_refdb_logs." . $field_name . " = '" . $value . "')";
+    }
+
     return $query_string;
   }
 
