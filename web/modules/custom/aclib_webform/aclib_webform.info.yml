@@ -1,0 +1,7 @@
+name: ACLIB Webform
+description: 'Custom code related to webforms.'
+package: ACLIB
+type: module
+core_version_requirement: ^8.8 || ^9
+dependencies:
+  - webform:webform
