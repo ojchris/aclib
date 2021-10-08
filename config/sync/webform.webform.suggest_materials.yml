@@ -1,7 +1,9 @@
 uuid: 84d88938-8301-43ad-bdbc-a52b2e3de7eb
 langcode: en
 status: open
-dependencies: {  }
+dependencies:
+  module:
+    - aclib_webform
 open: null
 close: null
 weight: 0
@@ -731,7 +733,7 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: tsrequest@aclib.us
+      to_mail: opleil@aclib.us
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
@@ -810,4 +812,13 @@ handlers:
       sender_name: ''
       theme_name: ''
       parameters: {  }
+  limit_submissions:
+    id: aclib_webform_expire_validator
+    label: 'Limit submissions'
+    notes: ''
+    handler_id: limit_submissions
+    status: true
+    conditions: {  }
+    weight: 0
+    settings: {  }
 variants: {  }
