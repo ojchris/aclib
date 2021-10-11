@@ -76,7 +76,10 @@
         }
         &.dropdown.active {
           > .dropdown-toggle {
-            background-color: $accent-shade;
+            background-color: $white;
+            @include media-breakpoint-up(lg) { // Desktop.
+              background-color: $accent-shade;
+            }
           }
         }
         &.dropdown.open {
