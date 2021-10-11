@@ -15,6 +15,20 @@ title: 'Suggest Materials'
 description: 'Library patron purchase suggestions.'
 category: ''
 elements: |-
+  processed_text:
+    '#type': processed_text
+    '#access_create_roles':
+      - authenticated
+      - anonymous
+    '#access_update_roles':
+      - authenticated
+      - anonymous
+    '#access_view_roles':
+      - authenticated
+      - anonymous
+    '#text': |
+      <p style="color:darkred"><em><strong>Our Suggest Materials form is undergoing maintenance. If you receive an error, please try again later.</strong></em></p>
+    '#format': full_html
   summary_markup:
     '#type': webform_markup
     '#access_create_roles':
