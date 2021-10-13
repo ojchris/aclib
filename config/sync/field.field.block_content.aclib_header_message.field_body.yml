@@ -1,0 +1,21 @@
+uuid: f5028d96-c826-4d1e-95f5-52a893889d3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.aclib_header_message
+    - field.storage.block_content.field_body
+  module:
+    - text
+id: block_content.aclib_header_message.field_body
+field_name: field_body
+entity_type: block_content
+bundle: aclib_header_message
+label: Body
+description: 'Text will be output with a dark red color, centered, and bold.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

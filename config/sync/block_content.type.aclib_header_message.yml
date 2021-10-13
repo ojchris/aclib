@@ -1,0 +1,8 @@
+uuid: d634bee6-c9d1-4b31-b0a6-d5af0811bf68
+langcode: en
+status: true
+dependencies: {  }
+id: aclib_header_message
+label: 'ACLIB header message'
+revision: 0
+description: 'Use this to create a notification message for the home page.'

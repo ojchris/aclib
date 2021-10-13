@@ -1,0 +1,12 @@
+uuid: d1b80fa2-23dc-4559-84c8-b077efc773af
+langcode: en
+status: true
+dependencies: {  }
+id: aclib_header_notification
+label: 'ACLIB header notification'
+classes: aclib-header-notification
+type: component
+weight: 0
+block_restrictions:
+  - 'inline_block:aclib_header_message'
+layout_restrictions: {  }

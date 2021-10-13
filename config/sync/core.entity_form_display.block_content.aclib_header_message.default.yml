@@ -1,0 +1,31 @@
+uuid: 64fa4741-f2b5-49c8-8312-be2fdda40e72
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.aclib_header_message
+    - field.field.block_content.aclib_header_message.field_body
+  module:
+    - text
+id: block_content.aclib_header_message.default
+targetEntityType: block_content
+bundle: aclib_header_message
+mode: default
+content:
+  field_body:
+    weight: 26
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

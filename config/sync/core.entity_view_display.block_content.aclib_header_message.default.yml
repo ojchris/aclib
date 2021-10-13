@@ -1,0 +1,22 @@
+uuid: 1742373f-fa51-443f-9a6d-3f1299f6aecd
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.aclib_header_message
+    - field.field.block_content.aclib_header_message.field_body
+  module:
+    - text
+id: block_content.aclib_header_message.default
+targetEntityType: block_content
+bundle: aclib_header_message
+mode: default
+content:
+  field_body:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }
