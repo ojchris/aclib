@@ -658,7 +658,7 @@ settings:
   draft_pending_multiple_message: ''
   confirmation_type: page
   confirmation_title: ''
-  confirmation_message: ''
+  confirmation_message: "<p>If we purchase the requested item, a hold will be placed for you, unless it is an&nbsp;eBook or other digital item (you will be notified so you can place your request once the vendor loads the order).</p>\r\n\r\n<p>We cannot guarantee you will be first in the hold queue because others may have suggested the same title.</p>\r\n\r\n<p>We will notify you if we do not select the requested item for the collection.</p>"
   confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
@@ -747,7 +747,7 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: opleil@aclib.us
+      to_mail: tsrequest@aclib.us
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
