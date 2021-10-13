@@ -27,6 +27,7 @@ class AclibWebformExpireHandler extends WebformHandlerBase {
 
   use StringTranslationTrait;
 
+  // Define maximum number of submissions per week.
   const LIMIT = 5;
 
   /**
@@ -36,9 +37,10 @@ class AclibWebformExpireHandler extends WebformHandlerBase {
     if ($card_number = $form_state->getValue('library_card_number')) {
       $webform = $webform_submission->getWebform();
       if ($webform instanceof WebformInterface) {
-        $results = $this->query($webform->id(), $card_number);
-        if ($results > static::LIMIT) {
+        $results = $this->query($webform->id(), (int) $card_number);
+        if ($results >= static::LIMIT) {
           $form_state->setErrorByName('library_card_number', $this->t('You reached your maximum of five titles per week.'));
+          return;
         }
       }
     }
@@ -74,25 +76,25 @@ class AclibWebformExpireHandler extends WebformHandlerBase {
     $start_date = new DrupalDateTime($first_day_string);
     $start_date->setTime(4, 0, 0);
 
+    // Timezone fix.
     $end_date = new DrupalDateTime($last_day_string);
     $end_date->setTime(03, 59, 59);
 
-    $query = \Drupal::service('database')->select('webform_submission', 's');
-    $query->join('webform_submission_data', 'd', 's.webform_id = d.webform_id AND s.created >= :start AND s.created <= :end', [
+    $query = \Drupal::service('database')->select('webform_submission_data', 'd');
+    $query->join('webform_submission', 's', '(d.sid= s.sid AND d.webform_id = s.webform_id AND s.created > :start AND s.created <= :end)', [
       ':start' => $start_date->getTimestamp(),
       ':end' => $end_date->getTimestamp(),
     ]);
 
     // Return count result.
     return $query->fields('d', ['sid'])
-      ->condition('s.webform_id', $webform_id, '=')
       ->condition('d.name', 'library_card_number', '=')
       ->condition('d.value', $card_number, '=')
       ->groupBy('d.sid')
+      ->distinct()
       ->countQuery()
       ->execute()
       ->fetchField();
-
   }
 
 }
