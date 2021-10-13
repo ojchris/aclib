@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "19dcd3581189001d05002d0c6b3f34ba",
+    "content-hash": "74a176b728ab67d40bbb0a435f7b8277",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1497,29 +1497,26 @@
         },
         {
             "name": "drupal/cacheexclude",
-            "version": "1.0.0",
+            "version": "dev-1.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/cacheexclude.git",
-                "reference": "8.x-1.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/cacheexclude-8.x-1.0.zip",
-                "reference": "8.x-1.0",
-                "shasum": "c1cf86bdfb9d4b882cbbe22cb6d0b37f15442893"
+                "reference": "81d5816e1d92837867852713713683070e430340"
             },
             "require": {
                 "drupal/core": "^8 || ^9"
             },
             "type": "drupal-module",
             "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
                 "drupal": {
-                    "version": "8.x-1.0",
-                    "datestamp": "1603086551",
+                    "version": "8.x-1.1-alpha1+3-dev",
+                    "datestamp": "1603086083",
                     "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -10803,6 +10800,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/better_formats": 20,
+        "drupal/cacheexclude": 20,
         "drupal/clientside_validation": 5,
         "drupal/config_readonly": 10,
         "drupal/layout_builder_styles": 10,
