@@ -81,7 +81,7 @@ class AclibWebformExpireHandler extends WebformHandlerBase {
     $end_date->setTime(03, 59, 59);
 
     $query = \Drupal::service('database')->select('webform_submission_data', 'd');
-    $query->join('webform_submission', 's', '(d.sid= s.sid AND d.webform_id = s.webform_id AND s.created > :start AND s.created <= :end)', [
+    $query->join('webform_submission', 's', '(d.sid= s.sid AND d.webform_id = s.webform_id AND s.created >= :start AND s.created <= :end)', [
       ':start' => $start_date->getTimestamp(),
       ':end' => $end_date->getTimestamp(),
     ]);
