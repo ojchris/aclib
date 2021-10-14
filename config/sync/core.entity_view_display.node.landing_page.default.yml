@@ -189,6 +189,8 @@ third_party_settings:
           - 'field_block:user:user:timezone'
           - 'field_block:user:user:uid'
           - 'field_block:user:user:status'
+        'Custom block types':
+          - image_top
         'Custom blocks':
           - 'block_content:2f74131e-432d-489b-a2ff-37d9d94bedff'
           - 'block_content:91a88f0d-50c2-4441-a02c-eabdb5488f4f'
