@@ -1,0 +1,9 @@
+cacheexclude_list: '/refdb/*'
+cacheexclude_node_types:
+  blog: 0
+  communico_events: 0
+  custom_page: 0
+  landing_page: 0
+  page_: 0
+  press_release: 0
+  reference_database: 0
