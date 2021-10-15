@@ -1,7 +1,6 @@
 module:
   webform_clientside_validation: -1
   aclib_communico: 0
-  aclib_migrate: 0
   aclib_miscelleanous: 0
   aclib_plugins: 0
   aclib_refdb: 0
@@ -56,15 +55,9 @@ module:
   maxlength: 0
   media: 0
   media_library: 0
-  media_migration: 0
-  media_migration_tools: 0
   menu_link_attributes: 0
   menu_link_content: 0
   menu_ui: 0
-  migrate: 0
-  migrate_drupal: 0
-  migrate_plus: 0
-  migrate_tools: 0
   node: 0
   options: 0
   override_node_options: 0
@@ -79,7 +72,6 @@ module:
   search: 0
   shortcut: 0
   simple_responsive_table: 0
-  smart_sql_idmap: 0
   smtp: 0
   system: 0
   taxonomy: 0
