@@ -27,7 +27,7 @@ elements: |-
       - authenticated
       - anonymous
     '#text': |
-      <p style="color:darkred"><em><strong>Our Suggest Materials form is undergoing maintenance. If you receive an error, please try again later.</strong></em></p>
+      <p style="color:darkred"><em><strong></strong></em></p>
     '#format': full_html
   summary_markup:
     '#type': webform_markup
@@ -431,8 +431,10 @@ elements: |-
               pattern: ^(Email)$
         - or
         - ':input[name="item_format"]':
-            value:
-              pattern: ^(eBook|eAudiobook)$
+            value: 'eBook (Downloadable)'
+        - or
+        - ':input[name="item_format"]':
+            value: 'eAudiobook (Downloadable)'
     '#access_create_roles':
       - authenticated
       - anonymous
