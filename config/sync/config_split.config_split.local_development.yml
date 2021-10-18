@@ -7,7 +7,6 @@ label: 'Local development'
 description: ''
 folder: ../config/config_split/local
 module:
-  config_devel: 0
   devel: 0
   stage_file_proxy: 0
 theme: {  }
