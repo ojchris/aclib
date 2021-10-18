@@ -109,8 +109,7 @@
         },
         "patches": {
             "drupal/tb_megamenu": {
-                "Mobile TB Megamenu not working with Bootstrap Barrio (Bootstrap 5)": "https://www.drupal.org/files/issues/2021-08-05/bootstrap5-3219876-5.patch",
-                "Site Inaccessible after updating to 1.4": "https://www.drupal.org/files/issues/2021-09-23/issue-3238650-10.diff"
+                "Mobile TB Megamenu not working with Bootstrap Barrio (Bootstrap 5)": "https://www.drupal.org/files/issues/2021-08-05/bootstrap5-3219876-5.patch"
             },
             "drupal/termcase": {
                 "Drupal 9 compatibility issues": "https://www.drupal.org/files/issues/2021-08-11/3227648-2.patch",
