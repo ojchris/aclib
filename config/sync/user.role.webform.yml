@@ -11,4 +11,5 @@ permissions:
   - 'access toolbar'
   - 'access webform help'
   - 'access webform submission user'
+  - 'view any webform submission'
   - 'view the administration theme'
