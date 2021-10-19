@@ -9,12 +9,10 @@ db:
     configuration:
       schemas:
         - main
-        - drupal7
       endpoints:
         mysql:
           default_schema: main
           privileges:
             main: admin
-            drupal7: admin
 cache:
     type: redis:6.0
