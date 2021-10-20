@@ -345,17 +345,17 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: opleil@aclib.us
+      to_mail: scs@aclib.us
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
-      bcc_mail: ''
+      bcc_mail: opleil@aclib.us
       bcc_options: {  }
       from_mail: eBranch@aclib.us
       from_options: {  }
       from_name: _default
       subject: _default
-      body: "Submitted on [webform_submission:created]<br />\r\nSubmitted by: [webform_submission:user]<br />\r\nSubmitted values are:<br />\r\n[webform_submission:values]<br />\r\nAccess submission at:&nbsp;<a href=\"javascript:void(0);\" title=\"Insert this token into your form\">[webform_submission:token-view-url]</a><br />\r\n&nbsp;"
+      body: "Submitted on [webform_submission:created]<br />\r\nSubmitted by: [webform_submission:user]<br />\r\nSubmitted values are:<br />\r\n[webform_submission:values]<br />\r\nPlease login first at www.aclib.us/user before accessing the link below.<br />\r\nAccess submission at:&nbsp;<a href=\"javascript:void(0);\" title=\"Insert this token into your form\">[webform_submission:token-view-url]</a><br />\r\n&nbsp;"
       excluded_elements:
         intro: intro
         birthday: birthday
