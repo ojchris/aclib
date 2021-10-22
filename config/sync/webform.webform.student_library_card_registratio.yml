@@ -28,7 +28,7 @@ elements: |-
     '#text': |
       <p>If you are an Alachua County Public School student or a P.K. Yonge student&nbsp;and you did not already receive an email or letter with your Student Library Card information, please use the form below to register for your card.&nbsp;Once you submit this form, Alachua County Library District staff will create a student card for you and notify you about your new card via email.</p>
 
-      <p>If you haven't received an email with you student card information within&nbsp;7 school days&nbsp;of completing this form, please email <a href="https://www.dev-54ta5gq-p7ixfu4s2nvte.us-2.platformsh.site/studentcards@aclib.us">studentcards@aclib.us</a> with your name and the date you completed the form.&nbsp;Don't hesitate to&nbsp;email us with any other questions too!</p>
+      <p>If you haven't received an email with you student card information within&nbsp;7 school days&nbsp;of completing this form, please email <a href="mailto:StudentCards@aclib.us">StudentCards@aclib.us</a> with your name and the date you completed the form.&nbsp;Don't hesitate to&nbsp;email us with any other questions too!</p>
 
       <p>Thanks for participating.</p>
     '#format': basic_html
@@ -345,7 +345,7 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: scs@aclib.us
+      to_mail: StudentCards@aclib.us
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
@@ -355,7 +355,7 @@ handlers:
       from_options: {  }
       from_name: _default
       subject: _default
-      body: "Submitted on [webform_submission:created]<br />\r\nSubmitted by: [webform_submission:user]<br />\r\nSubmitted values are:<br />\r\n[webform_submission:values]<br />\r\nPlease login first at www.aclib.us/user before accessing the link below.<br />\r\nAccess submission at:&nbsp;<a href=\"javascript:void(0);\" title=\"Insert this token into your form\">[webform_submission:token-view-url]</a><br />\r\n&nbsp;"
+      body: "Submitted on [webform_submission:created]<br />\r\nSubmitted by: [webform_submission:user]<br />\r\nSubmitted values are:<br />\r\n[webform_submission:values]<br />\r\nAccess submission at:&nbsp;<a href=\"javascript:void(0);\" title=\"Insert this token into your form\">[webform_submission:token-view-url]</a><br />\r\n&nbsp;"
       excluded_elements:
         intro: intro
         birthday: birthday
