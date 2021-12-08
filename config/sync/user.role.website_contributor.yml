@@ -40,6 +40,7 @@ permissions:
   - 'edit own webform'
   - 'update media'
   - 'use text format basic_html'
+  - 'use text format full_html'
   - 'use text format restricted_html'
   - 'view own unpublished content'
   - 'view own unpublished media'
