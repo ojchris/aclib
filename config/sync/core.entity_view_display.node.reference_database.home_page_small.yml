@@ -1,0 +1,79 @@
+uuid: 7ef8129c-3f43-480c-8bb6-d1d5a68a998c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.home_page_small
+    - field.field.node.reference_database.body
+    - field.field.node.reference_database.field_external_url
+    - field.field.node.reference_database.field_home_page_image
+    - field.field.node.reference_database.field_hq_only
+    - field.field.node.reference_database.field_internal_only
+    - field.field.node.reference_database.field_internal_url
+    - field.field.node.reference_database.field_require_signon
+    - field.field.node.reference_database.field_tags
+    - field.field.node.reference_database.field_teaser
+    - field.field.node.reference_database.field_teaser_image
+    - node.type.reference_database
+  module:
+    - flickr_formatter_bootstrap
+    - layout_builder
+    - user
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: false
+id: node.reference_database.home_page_small
+targetEntityType: node
+bundle: reference_database
+mode: home_page_small
+content:
+  field_teaser:
+    type: basic_string
+    weight: 1
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_teaser_image:
+    type: entity_reference_entity_view
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings:
+      flickr_formatter_bootstrap:
+        bootstrap_grid:
+          value:
+            xs: ''
+            sm: ''
+            md: ''
+            lg: ''
+            xl: ''
+            xxl: ''
+        bootstrap_carousel:
+          value:
+            interval: '5000'
+            effect: ''
+            ride: 0
+            keyboard: 0
+            navigation: 0
+            indicators: 0
+            pause: 0
+            wrap: 0
+  links:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_external_url: true
+  field_home_page_image: true
+  field_hq_only: true
+  field_internal_only: true
+  field_internal_url: true
+  field_require_signon: true
+  field_tags: true

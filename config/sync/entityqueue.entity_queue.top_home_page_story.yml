@@ -18,6 +18,7 @@ entity_settings:
       landing_page: landing_page
       page_: page_
       press_release: press_release
+      reference_database: reference_database
     sort:
       field: _none
       direction: ASC

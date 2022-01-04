@@ -18,6 +18,7 @@ dependencies:
     - views.view.aclib_refdb_you_may_also_like
   module:
     - layout_builder
+    - layout_builder_restrictions
     - layout_discovery
     - text
     - user
@@ -93,6 +94,13 @@ third_party_settings:
               layout_builder_styles_style: ''
             weight: 4
         third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      whitelisted_blocks: {  }
+      blacklisted_blocks: {  }
+      restricted_categories: {  }
+      allowed_layouts: {  }
 id: node.reference_database.default
 targetEntityType: node
 bundle: reference_database
