@@ -2,8 +2,8 @@ uuid: 82547d12-874c-4901-b5f1-31181aef8fa6
 langcode: en
 status: true
 dependencies: {  }
-id: image_crop
 label: 'Image crop'
+id: image_crop
 description: 'Used by embedded media in WYSIWYG fields.'
 aspect_ratio: ''
 soft_limit_width: null

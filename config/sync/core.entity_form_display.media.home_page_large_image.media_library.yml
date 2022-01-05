@@ -15,29 +15,29 @@ bundle: home_page_large_image
 mode: media_library
 content:
   field_media_image:
+    type: image_widget_crop
     weight: 5
+    region: content
     settings:
-      show_default_crop: true
-      warn_multiple_usages: true
+      progress_indicator: throbber
       preview_image_style: crop_home_page_image
       crop_preview_image_style: crop_home_page_image
-      progress_indicator: throbber
       crop_list:
         - home_page_image_crop
       crop_types_required:
         - home_page_image_crop
+      warn_multiple_usages: true
       show_crop_area: false
+      show_default_crop: true
     third_party_settings: {  }
-    type: image_widget_crop
-    region: content
   name:
     type: string_textfield
+    weight: 0
+    region: content
     settings:
       size: 60
       placeholder: ''
-    weight: 0
     third_party_settings: {  }
-    region: content
 hidden:
   created: true
   path: true

@@ -4,9 +4,9 @@ status: open
 dependencies:
   module:
     - aclib_webform
+weight: 0
 open: null
 close: null
-weight: 0
 uid: 1
 template: false
 archive: false
@@ -573,9 +573,9 @@ settings:
   page_theme_name: ''
   form_title: both
   form_submit_once: false
-  form_exception_message: ''
   form_open_message: ''
   form_close_message: ''
+  form_exception_message: ''
   form_previous_submissions: true
   form_confidential: false
   form_confidential_message: ''
@@ -585,16 +585,16 @@ settings:
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
-  form_reset: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
   form_disable_inline_errors: false
   form_required: false
-  form_unsaved: false
-  form_disable_back: false
-  form_submit_back: false
   form_autofocus: false
   form_details_toggle: false
+  form_reset: false
   form_access_denied: default
   form_access_denied_title: ''
   form_access_denied_message: ''
@@ -606,7 +606,12 @@ settings:
   share_title: true
   share_page_body_attributes: {  }
   submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
   submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
   submission_views: {  }
   submission_views_replace: {  }
   submission_user_columns: {  }
@@ -615,11 +620,6 @@ settings:
   submission_access_denied_title: ''
   submission_access_denied_message: ''
   submission_access_denied_attributes: {  }
-  submission_exception_message: ''
-  submission_locked_message: ''
-  submission_excluded_elements: {  }
-  submission_exclude_empty: false
-  submission_exclude_empty_checkbox: false
   previous_submission_message: ''
   previous_submissions_message: ''
   autofill: false
@@ -630,13 +630,13 @@ settings:
   wizard_progress_percentage: false
   wizard_progress_link: false
   wizard_progress_states: false
-  wizard_auto_forward: true
-  wizard_auto_forward_hide_next_button: false
-  wizard_keyboard: true
   wizard_start_label: ''
   wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
   wizard_next_button_label: ''
@@ -659,9 +659,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: page
+  confirmation_url: ''
   confirmation_title: ''
   confirmation_message: "<p>If we purchase the requested item, a hold will be placed for you, unless it is an&nbsp;eBook or other digital item (you will be notified so you can place your request once the vendor loads the order).</p>\r\n\r\n<p>We cannot guarantee you will be first in the hold queue because others may have suggested the same title.</p>\r\n\r\n<p>We will notify you if we do not select the requested item for the collection.</p>"
-  confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -740,9 +740,9 @@ access:
 handlers:
   email:
     id: email
+    handler_id: email
     label: Email
     notes: ''
-    handler_id: email
     status: true
     conditions: {  }
     weight: 0
@@ -751,13 +751,17 @@ handlers:
         - completed
       to_mail: tsrequest@aclib.us
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: opleil@aclib.us
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: eBranch@aclib.us
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: '[webform_submission:values:item_format:raw]'
       body: "Title: [webform_submission:values:item_title]<br />\r\nAuthor: [webform_submission:values:item_author]<br />\r\nFormat: [webform_submission:values:item_format]<br />\r\nAudience: [webform_submission:values:item_audience]<br />\r\n[webform_submission:values:type_computed_twig]<br />\r\nDate: [webform_submission:values:item_date]<br />\r\nISBN/UPC: [webform_submission:values:isbn]<br />\r\nNotes: [webform_submission:values:other_notes]<br />\r\nYour name: [webform_submission:values:your_name]<br />\r\nLibrary card number: [webform_submission:values:library_card_number]<br />\r\n[webform_submission:values:contact_method_computed_twig]<br />\r\nEmail address: [webform_submission:values:email_address]&nbsp;<br />\r\n[webform_submission:values:mailing_address_element_computed_twig]<br />\r\nEmail a copy: [webform_submission:values:email_a_copy_checkbox]&nbsp;<br />\r\n[webform_submission:values:pickup_location_computed_twig]"
       excluded_elements:
@@ -777,18 +781,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   email_a_copy:
     id: email
+    handler_id: email_a_copy
     label: 'Email A Copy'
     notes: ''
-    handler_id: email_a_copy
     status: true
     conditions:
       enabled:
@@ -800,13 +800,17 @@ handlers:
         - completed
       to_mail: '[webform_submission:values:email_address:raw]'
       to_options: {  }
-      cc_mail: ''
-      cc_options: {  }
       bcc_mail: ''
       bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
       from_mail: eBranch@aclib.us
       from_options: {  }
       from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
       subject: _default
       body: _default
       excluded_elements:
@@ -821,18 +825,14 @@ handlers:
       html: true
       attachments: false
       twig: false
-      debug: false
-      reply_to: ''
-      return_path: ''
-      sender_mail: ''
-      sender_name: ''
       theme_name: ''
       parameters: {  }
+      debug: false
   limit_submissions:
     id: aclib_webform_expire_validator
+    handler_id: limit_submissions
     label: 'Limit submissions'
     notes: ''
-    handler_id: limit_submissions
     status: true
     conditions: {  }
     weight: 0

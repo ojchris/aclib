@@ -21,8 +21,8 @@ dependencies:
     - user
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
 id: node.reference_database.home_page_small
 targetEntityType: node
 bundle: reference_database
@@ -30,15 +30,13 @@ mode: home_page_small
 content:
   field_teaser:
     type: basic_string
-    weight: 1
-    region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 1
+    region: content
   field_teaser_image:
     type: entity_reference_entity_view
-    weight: 0
-    region: content
     label: hidden
     settings:
       view_mode: teaser
@@ -63,11 +61,13 @@ content:
             indicators: 0
             pause: 0
             wrap: 0
-  links:
-    weight: 2
+    weight: 0
     region: content
+  links:
     settings: {  }
     third_party_settings: {  }
+    weight: 2
+    region: content
 hidden:
   body: true
   field_external_url: true

@@ -12,21 +12,21 @@ dependencies:
     - layout_builder
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
 id: media.home_page_large_image.home_page
 targetEntityType: media
 bundle: home_page_large_image
 mode: home_page
 content:
   field_media_image:
-    label: visually_hidden
-    weight: 0
-    settings:
-      image_style: crop_home_page_image
-      image_link: ''
-    third_party_settings: {  }
     type: image
+    label: visually_hidden
+    settings:
+      image_link: ''
+      image_style: crop_home_page_image
+    third_party_settings: {  }
+    weight: 0
     region: content
 hidden:
   created: true

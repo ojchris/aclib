@@ -18,56 +18,56 @@ dependencies:
     - user
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
 id: node.page_.search_index
 targetEntityType: node
 bundle: page_
 mode: search_index
 content:
   field_body:
-    weight: 0
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 0
     region: content
   field_home_page_image:
     type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
     weight: 4
     region: content
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
   field_tags:
-    weight: 1
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 1
     region: content
   field_teaser:
     type: basic_string
-    weight: 3
-    region: content
     label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 3
+    region: content
   field_teaser_image:
     type: entity_reference_label
-    weight: 5
-    region: content
     label: above
     settings:
       link: true
     third_party_settings: {  }
-  links:
-    weight: 2
+    weight: 5
     region: content
+  links:
     settings: {  }
     third_party_settings: {  }
+    weight: 2
+    region: content
 hidden:
   field_book: true
   field_disclaimer: true

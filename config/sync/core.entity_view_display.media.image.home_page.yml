@@ -17,12 +17,12 @@ bundle: image
 mode: home_page
 content:
   field_media_image:
+    type: image
     label: visually_hidden
     settings:
-      image_style: crop_home_page_image
       image_link: ''
+      image_style: crop_home_page_image
     third_party_settings: {  }
-    type: image
     weight: 1
     region: content
 hidden:

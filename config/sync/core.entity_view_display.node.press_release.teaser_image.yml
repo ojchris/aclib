@@ -20,8 +20,8 @@ dependencies:
     - user
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
 id: node.press_release.teaser_image
 targetEntityType: node
 bundle: press_release
@@ -29,13 +29,13 @@ mode: teaser_image
 content:
   field_teaser_image:
     type: entity_reference_entity_view
-    weight: 0
-    region: content
     label: hidden
     settings:
-      link: true
       view_mode: default
+      link: true
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   body: true
   field_alt_contact_email: true

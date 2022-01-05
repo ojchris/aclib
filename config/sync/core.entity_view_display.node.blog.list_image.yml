@@ -18,8 +18,8 @@ dependencies:
     - user
 third_party_settings:
   layout_builder:
-    allow_custom: false
     enabled: false
+    allow_custom: false
 id: node.blog.list_image
 targetEntityType: node
 bundle: blog
@@ -27,20 +27,20 @@ mode: list_image
 content:
   field_teaser:
     type: basic_string
-    weight: 1
-    region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 1
+    region: content
   field_teaser_image:
     type: entity_reference_entity_view
-    weight: 0
-    region: content
     label: hidden
     settings:
       view_mode: quarter_width
       link: false
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   field_body: true
   field_book: true

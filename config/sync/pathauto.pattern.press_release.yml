@@ -11,12 +11,12 @@ pattern: '/news/press-releases/[node:title]'
 selection_criteria:
   40b9155d-abd2-47ef-b8e5-8b4e00f37a69:
     id: node_type
-    bundles:
-      press_release: press_release
     negate: false
+    uuid: 40b9155d-abd2-47ef-b8e5-8b4e00f37a69
     context_mapping:
       node: node
-    uuid: 40b9155d-abd2-47ef-b8e5-8b4e00f37a69
+    bundles:
+      press_release: press_release
 selection_logic: and
 weight: -5
 relationships: {  }

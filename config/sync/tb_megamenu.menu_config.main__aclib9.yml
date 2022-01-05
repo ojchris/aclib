@@ -2,10 +2,10 @@ uuid: 50e7ad71-f4c2-4ecb-8718-fdcb842956eb
 langcode: en
 status: true
 dependencies:
-  menu:
-    - main
   theme:
     - aclib9
+  menu:
+    - main
 id: main__aclib9
 menu: main
 theme: aclib9

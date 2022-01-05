@@ -24,35 +24,35 @@ bundle: press_release
 mode: default
 content:
   body:
-    weight: 2
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 2
     region: content
   field_contact_email:
-    weight: 3
+    type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    weight: 3
     region: content
   field_contact_name:
-    weight: 1
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 1
     region: content
   field_date:
-    weight: 0
+    type: datetime_default
     label: hidden
     settings:
       timezone_override: ''
       format_type: aclib_date_only
     third_party_settings: {  }
-    type: datetime_default
+    weight: 0
     region: content
 hidden:
   field_alt_contact_email: true

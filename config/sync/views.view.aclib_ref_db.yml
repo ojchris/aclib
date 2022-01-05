@@ -22,11 +22,306 @@ base_table: aclib_refdb_logs
 base_field: nid
 display:
   default:
-    display_plugin: default
     id: default
     display_title: Default
+    display_plugin: default
     position: 0
     display_options:
+      title: 'ACLIB Ref DB'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: nid
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+          label: Title
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: true
+          group_column: value
+          group_columns:
+            value: value
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        computed_2:
+          id: computed_2
+          table: aclib_refdb_logs
+          field: computed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: aclib_refdb_logs
+          plugin_id: aclib_refdb_computed_field
+          label: Overall
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          set_precision: false
+          precision: 0
+          decimal: .
+          separator: ','
+          format_plural: false
+          format_plural_string: !!binary MQNAY291bnQ=
+          prefix: ''
+          suffix: ''
+          property: overall
+        computed:
+          id: computed
+          table: aclib_refdb_logs
+          field: computed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: aclib_refdb_logs
+          plugin_id: aclib_refdb_computed_field
+          label: Internal
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          property: internal
+        computed_1:
+          id: computed_1
+          table: aclib_refdb_logs
+          field: computed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: aclib_refdb_logs
+          plugin_id: aclib_refdb_computed_field
+          label: External
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          property: external
+        patterns_2205400:
+          id: patterns_2205400
+          table: aclib_refdb_logs
+          field: computed
+          entity_type: aclib_refdb_logs
+          plugin_id: aclib_refdb_computed_field
+          label: '2205400*******'
+          alter:
+            text: 'No results found or error occured'
+          class: Drupal\aclib_refdb\Plugin\views\field\AclibRefDbComputedField
+          property: '2205400*******'
+        patterns_5205400:
+          id: patterns_5205400
+          table: aclib_refdb_logs
+          field: computed
+          entity_type: aclib_refdb_logs
+          plugin_id: aclib_refdb_computed_field
+          label: '5205400*******'
+          alter:
+            text: 'No results found or error occured'
+          class: Drupal\aclib_refdb\Plugin\views\field\AclibRefDbComputedField
+          property: '5205400*******'
+        patterns_7205400:
+          id: patterns_7205400
+          table: aclib_refdb_logs
+          field: computed
+          entity_type: aclib_refdb_logs
+          plugin_id: aclib_refdb_computed_field
+          label: '7205400*******'
+          alter:
+            text: 'No results found or error occured'
+          class: Drupal\aclib_refdb\Plugin\views\field\AclibRefDbComputedField
+          property: '7205400*******'
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 50
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
+      exposed_form:
+        type: input_required
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select dates and click on Apply to see results.'
+          text_input_required_format: basic_html
       access:
         type: role
         options:
@@ -40,47 +335,83 @@ display:
           results_lifespan_custom: 0
           output_lifespan: 0
           output_lifespan_custom: 0
-      query:
-        type: views_query
-        options:
-          disable_sql_rewrite: false
-          distinct: false
-          replica: false
-          query_comment: ''
-          query_tags: {  }
-      exposed_form:
-        type: input_required
-        options:
-          submit_button: Apply
-          reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-          text_input_required: 'Select dates and click on Apply to see results.'
-          text_input_required_format: basic_html
-      pager:
-        type: full
-        options:
-          items_per_page: 50
-          offset: 0
-          id: 0
-          total_pages: null
-          tags:
-            previous: '‹ Previous'
-            next: 'Next ›'
-            first: '« First'
-            last: 'Last »'
+      empty: {  }
+      sorts:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: nid
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+          order: ASC
           expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
-          quantity: 9
+            label: ''
+            field_identifier: title
+          exposed: false
+      arguments: {  }
+      filters:
+        datetime:
+          id: datetime
+          table: aclib_refdb_logs
+          field: datetime
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: aclib_refdb_logs
+          entity_field: datetime
+          plugin_id: datetime
+          operator: between
+          value:
+            min: '-1 month'
+            max: '-1 month'
+            value: now
+            type: offset
+          group: 1
+          exposed: true
+          expose:
+            operator_id: datetime_op
+            label: 'Filter by dates'
+            description: 'Select start and end dates.'
+            use_operator: false
+            operator: datetime_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: datetime
+            required: true
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              administrator: '0'
+              ebranch: '0'
+              marketing: '0'
+              website_editor: '0'
+              content_editor: '0'
+              content_contributor: '0'
+              guest_contributor: '0'
+              webform_editor: '0'
+              webform: '0'
+              anonymous: '0'
+              website_contributor: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       style:
         type: views_bootstrap_table
         options:
@@ -173,345 +504,14 @@ display:
           inline: {  }
           separator: ''
           hide_empty: false
-      fields:
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: nid
-          group_type: group
-          admin_label: ''
-          label: Title
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: true
-          group_column: value
-          group_columns:
-            value: value
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          entity_type: node
-          entity_field: title
-          plugin_id: field
-        computed_2:
-          id: computed_2
-          table: aclib_refdb_logs
-          field: computed
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: Overall
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          set_precision: false
-          precision: 0
-          decimal: .
-          separator: ','
-          format_plural: false
-          format_plural_string: !!binary MQNAY291bnQ=
-          prefix: ''
-          suffix: ''
-          property: overall
-          entity_type: aclib_refdb_logs
-          plugin_id: aclib_refdb_computed_field
-        computed:
-          id: computed
-          table: aclib_refdb_logs
-          field: computed
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: Internal
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          property: internal
-          entity_type: aclib_refdb_logs
-          plugin_id: aclib_refdb_computed_field
-        computed_1:
-          id: computed_1
-          table: aclib_refdb_logs
-          field: computed
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: External
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          property: external
-          entity_type: aclib_refdb_logs
-          plugin_id: aclib_refdb_computed_field
-        patterns_2205400:
-          id: patterns_2205400
-          table: aclib_refdb_logs
-          field: computed
-          class: Drupal\aclib_refdb\Plugin\views\field\AclibRefDbComputedField
-          property: '2205400*******'
-          alter:
-            text: 'No results found or error occured'
-          label: '2205400*******'
-          entity_type: aclib_refdb_logs
-          plugin_id: aclib_refdb_computed_field
-        patterns_5205400:
-          id: patterns_5205400
-          table: aclib_refdb_logs
-          field: computed
-          class: Drupal\aclib_refdb\Plugin\views\field\AclibRefDbComputedField
-          property: '5205400*******'
-          alter:
-            text: 'No results found or error occured'
-          label: '5205400*******'
-          entity_type: aclib_refdb_logs
-          plugin_id: aclib_refdb_computed_field
-        patterns_7205400:
-          id: patterns_7205400
-          table: aclib_refdb_logs
-          field: computed
-          class: Drupal\aclib_refdb\Plugin\views\field\AclibRefDbComputedField
-          property: '7205400*******'
-          alter:
-            text: 'No results found or error occured'
-          label: '7205400*******'
-          entity_type: aclib_refdb_logs
-          plugin_id: aclib_refdb_computed_field
-      filters:
-        datetime:
-          id: datetime
-          table: aclib_refdb_logs
-          field: datetime
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: between
-          value:
-            min: '-1 month'
-            max: '-1 month'
-            value: now
-            type: offset
-          group: 1
-          exposed: true
-          expose:
-            operator_id: datetime_op
-            label: 'Filter by dates'
-            description: 'Select start and end dates.'
-            use_operator: false
-            operator: datetime_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: datetime
-            required: true
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              administrator: '0'
-              ebranch: '0'
-              marketing: '0'
-              website_editor: '0'
-              content_editor: '0'
-              content_contributor: '0'
-              guest_contributor: '0'
-              webform_editor: '0'
-              webform: '0'
-              anonymous: '0'
-              website_contributor: '0'
-            placeholder: ''
-            min_placeholder: ''
-            max_placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          entity_type: aclib_refdb_logs
-          entity_field: datetime
-          plugin_id: datetime
-      sorts:
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: nid
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          entity_type: node
-          entity_field: title
-          plugin_id: standard
-      title: 'ACLIB Ref DB'
-      header: {  }
-      footer: {  }
-      empty: {  }
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {  }
       relationships:
         nid:
           id: nid
@@ -520,14 +520,15 @@ display:
           relationship: none
           group_type: group
           admin_label: 'Reference DB node'
-          required: true
           entity_type: aclib_refdb_logs
           entity_field: nid
           plugin_id: standard
-      arguments: {  }
-      display_extenders: {  }
+          required: true
       use_ajax: true
       group_by: true
+      header: {  }
+      footer: {  }
+      display_extenders: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -538,9 +539,9 @@ display:
         - user.roles
       tags: {  }
   page_1:
-    display_plugin: page
     id: page_1
     display_title: Page
+    display_plugin: page
     position: 1
     display_options:
       display_extenders: {  }
@@ -549,11 +550,11 @@ display:
         type: normal
         title: 'Reference database access'
         description: ''
-        expanded: false
-        parent: system.admin_reports
         weight: 50
-        context: '0'
+        expanded: false
         menu_name: admin
+        parent: system.admin_reports
+        context: '0'
     cache_metadata:
       max-age: -1
       contexts:

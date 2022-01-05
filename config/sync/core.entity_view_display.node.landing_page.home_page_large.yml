@@ -21,20 +21,20 @@ bundle: landing_page
 mode: home_page_large
 content:
   field_home_page_image:
-    weight: 0
+    type: entity_reference_entity_view
     label: hidden
     settings:
       view_mode: home_page
       link: false
     third_party_settings: {  }
-    type: entity_reference_entity_view
+    weight: 0
     region: content
   field_teaser:
-    weight: 1
+    type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    weight: 1
     region: content
 hidden:
   field_body: true

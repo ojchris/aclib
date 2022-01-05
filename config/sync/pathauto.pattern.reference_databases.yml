@@ -11,12 +11,12 @@ pattern: '/databases/[node:title]'
 selection_criteria:
   010172ae-212f-4c8c-ba96-324366265213:
     id: node_type
-    bundles:
-      reference_database: reference_database
     negate: false
+    uuid: 010172ae-212f-4c8c-ba96-324366265213
     context_mapping:
       node: node
-    uuid: 010172ae-212f-4c8c-ba96-324366265213
+    bundles:
+      reference_database: reference_database
 selection_logic: and
 weight: -5
 relationships: {  }

@@ -17,8 +17,8 @@ plugin: 'block_content:257416aa-2fa0-4e43-a641-89f1218ae6b0'
 settings:
   id: 'block_content:257416aa-2fa0-4e43-a641-89f1218ae6b0'
   label: 'Megamenu - Events left'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full

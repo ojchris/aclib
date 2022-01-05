@@ -1,7 +1,38 @@
 uuid: 597b976a-95b9-4463-af00-5de264dce2b4
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - core.entity_view_display.node.landing_page.default
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.restricted_html
+    - media.type.home_page_large_image
+    - media.type.image
+    - media.type.remote_video
+    - media.type.teaser_image
+    - node.type.blog
+    - node.type.custom_page
+    - node.type.landing_page
+    - node.type.page_
+    - node.type.press_release
+    - node.type.reference_database
+    - taxonomy.vocabulary.tags
+  module:
+    - contextual
+    - entityqueue
+    - filter
+    - layout_builder
+    - media
+    - node
+    - override_node_options
+    - redirect
+    - scheduler
+    - system
+    - taxonomy
+    - toolbar
+    - view_unpublished
+    - webform
 id: marketing
 label: Marketing
 weight: -8

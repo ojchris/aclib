@@ -1,7 +1,16 @@
 uuid: 2d9a0845-b322-42cf-ade3-e2fa51b32109
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.restricted_html
+  module:
+    - filter
+    - node
+    - system
+    - toolbar
+    - webform
 id: webform_editor
 label: 'Webform Editor'
 weight: -3

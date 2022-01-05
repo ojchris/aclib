@@ -21,15 +21,15 @@ content:
     weight: 1
     region: content
     settings:
-      show_default_crop: true
-      warn_multiple_usages: true
+      progress_indicator: throbber
       preview_image_style: media_library
       crop_preview_image_style: large
-      progress_indicator: throbber
       crop_list:
         - image_crop
       crop_types_required: {  }
+      warn_multiple_usages: true
       show_crop_area: false
+      show_default_crop: true
     third_party_settings: {  }
 hidden:
   created: true

@@ -6,6 +6,6 @@ id: aclib_fader_border
 label: 'ACLIB fader border'
 classes: aclib-fader-border
 type: component
-weight: 0
 block_restrictions: {  }
 layout_restrictions: {  }
+weight: 0

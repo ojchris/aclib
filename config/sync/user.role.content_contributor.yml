@@ -1,7 +1,23 @@
 uuid: 47daa7a0-1c6e-48f0-8df9-333cc73c3db2
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.restricted_html
+    - media.type.home_page_large_image
+    - media.type.image
+    - media.type.remote_video
+    - media.type.teaser_image
+    - node.type.blog
+    - taxonomy.vocabulary.tags
+  module:
+    - filter
+    - media
+    - node
+    - system
+    - taxonomy
+    - toolbar
 id: content_contributor
 label: 'Content Contributor'
 weight: -4

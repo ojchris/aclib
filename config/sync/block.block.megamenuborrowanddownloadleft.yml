@@ -17,8 +17,8 @@ plugin: 'block_content:94c42a95-178f-4f34-a011-3ca678beb9bc'
 settings:
   id: 'block_content:94c42a95-178f-4f34-a011-3ca678beb9bc'
   label: 'Megamenu - Borrow and Download left'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full

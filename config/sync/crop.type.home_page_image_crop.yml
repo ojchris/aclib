@@ -2,8 +2,8 @@ uuid: 7b5d2344-ef08-4f77-a352-3545fe7909d1
 langcode: en
 status: true
 dependencies: {  }
-id: home_page_image_crop
 label: 'Home page image crop'
+id: home_page_image_crop
 description: 'Used by "Home page image" fields.'
 aspect_ratio: '8:3'
 soft_limit_width: null

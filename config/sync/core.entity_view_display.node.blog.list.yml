@@ -22,24 +22,24 @@ mode: list
 content:
   field_teaser:
     type: basic_string
-    weight: 1
-    region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 1
+    region: content
   field_teaser_image:
     type: entity_reference_label
-    weight: 0
-    region: content
     label: hidden
     settings:
       link: true
     third_party_settings: {  }
-  links:
-    weight: 2
+    weight: 0
     region: content
+  links:
     settings: {  }
     third_party_settings: {  }
+    weight: 2
+    region: content
 hidden:
   field_body: true
   field_book: true

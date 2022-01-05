@@ -5,6 +5,7 @@ dependencies: {  }
 id: dev
 label: Dev
 description: ''
+weight: 0
 folder: ../config/config_split/dev
 module:
   google_analytics: 0
@@ -15,4 +16,3 @@ graylist:
   - system.mail
 graylist_dependents: true
 graylist_skip_equal: true
-weight: 0

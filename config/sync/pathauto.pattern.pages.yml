@@ -11,14 +11,14 @@ pattern: '/[node:title]'
 selection_criteria:
   c7024670-da67-4654-a451-afd8620b59d9:
     id: node_type
+    negate: false
+    uuid: c7024670-da67-4654-a451-afd8620b59d9
+    context_mapping:
+      node: node
     bundles:
       custom_page: custom_page
       landing_page: landing_page
       page_: page_
-    negate: false
-    context_mapping:
-      node: node
-    uuid: c7024670-da67-4654-a451-afd8620b59d9
 selection_logic: and
 weight: -5
 relationships: {  }

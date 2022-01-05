@@ -1,3 +1,6 @@
+_core:
+  default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE
+langcode: en
 uuid: b7d09463-8c85-4fe4-bdb0-404053ad8797
 name: 'Alachua County Library District'
 mail: manello@gmail.com
@@ -8,8 +11,5 @@ page:
   front: /node/1884
 admin_compact_mode: false
 weight_select_max: 100
-langcode: en
 default_langcode: en
-_core:
-  default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE
 mail_notification: ''

@@ -26,61 +26,12 @@ base_table: node_field_data
 base_field: nid
 display:
   default:
-    display_plugin: default
     id: default
     display_title: Default
+    display_plugin: default
     position: 0
     display_options:
-      access:
-        type: perm
-        options:
-          perm: 'access content'
-      cache:
-        type: tag
-        options: {  }
-      query:
-        type: views_query
-        options:
-          disable_sql_rewrite: false
-          distinct: false
-          replica: false
-          query_comment: ''
-          query_tags: {  }
-      exposed_form:
-        type: basic
-        options:
-          submit_button: Apply
-          reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-      pager:
-        type: full
-        options:
-          items_per_page: 50
-          offset: 0
-          id: 0
-          total_pages: null
-          tags:
-            previous: ‹‹
-            next: ››
-            first: '« First'
-            last: 'Last »'
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
-          quantity: 9
-      style:
-        type: table
-      row:
-        type: fields
+      title: 'All Board Meetings This Year'
       fields:
         title:
           id: title
@@ -89,6 +40,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
           label: Meeting
           exclude: false
           alter:
@@ -144,9 +98,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: node
-          entity_field: title
-          plugin_id: field
         field_communico_event_id:
           id: field_communico_event_id
           table: node__field_communico_event_id
@@ -154,6 +105,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -210,7 +162,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_venue_type:
           id: field_venue_type
           table: node__field_venue_type
@@ -218,6 +169,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -273,7 +225,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_external_description:
           id: field_external_description
           table: node__field_external_description
@@ -281,6 +232,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -336,7 +288,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_external_location:
           id: field_external_location
           table: node__field_external_location
@@ -344,6 +295,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -399,7 +351,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_external_room:
           id: field_external_room
           table: node__field_external_room
@@ -407,6 +358,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -462,7 +414,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_start_date:
           id: field_start_date
           table: node__field_start_date
@@ -470,6 +421,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -526,7 +478,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_location:
           id: field_location
           table: node__field_location
@@ -534,6 +485,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -589,7 +541,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_room:
           id: field_room
           table: node__field_room
@@ -597,6 +548,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -652,7 +604,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_communico_modified:
           id: field_communico_modified
           table: node__field_communico_modified
@@ -660,6 +611,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -715,7 +667,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         nothing:
           id: nothing
           table: views
@@ -723,6 +674,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: custom
           label: 'Date and Time'
           exclude: false
           alter:
@@ -764,7 +716,6 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
-          plugin_id: custom
         nothing_1:
           id: nothing_1
           table: views
@@ -772,6 +723,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: custom
           label: Location
           exclude: false
           alter:
@@ -813,30 +765,84 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
-          plugin_id: custom
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 50
+          total_pages: null
+          id: 0
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
+      sorts:
+        field_start_date_value:
+          id: field_start_date_value
+          table: node__field_start_date
+          field: field_start_date_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: field_start_date_value
+          exposed: false
+          granularity: second
+      arguments: {  }
       filters:
         status:
-          value: '1'
+          id: status
           table: node_field_data
           field: status
-          plugin_id: boolean
           entity_type: node
           entity_field: status
-          id: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
           expose:
             operator: ''
             operator_limit_selection: false
             operator_list: {  }
-          group: 1
         type:
           id: type
           table: node_field_data
           field: type
-          value:
-            communico_events: communico_events
           entity_type: node
           entity_field: type
           plugin_id: bundle
+          value:
+            communico_events: communico_events
           expose:
             operator_limit_selection: false
             operator_list: {  }
@@ -847,6 +853,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: datetime
           operator: between
           value:
             min: '2021-10-01 00:00:01'
@@ -869,9 +876,9 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            placeholder: ''
             min_placeholder: ''
             max_placeholder: ''
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -884,7 +891,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: datetime
         field_communico_modified_value:
           id: field_communico_modified_value
           table: node__field_communico_modified
@@ -892,6 +898,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: string
           operator: '!='
           value: rescheduled
           group: 1
@@ -923,7 +930,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: string
         field_private_event_value:
           id: field_private_event_value
           table: node__field_private_event
@@ -931,6 +937,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: boolean
           operator: '='
           value: '0'
           group: 1
@@ -961,22 +968,19 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: boolean
-      sorts:
-        field_start_date_value:
-          id: field_start_date_value
-          table: node__field_start_date
-          field: field_start_date_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          order: ASC
-          exposed: false
-          expose:
-            label: ''
-          granularity: second
-          plugin_id: datetime
-      title: 'All Board Meetings This Year'
+      style:
+        type: table
+      row:
+        type: fields
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {  }
+      relationships: {  }
       header:
         area:
           id: area
@@ -985,16 +989,13 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: text
           empty: false
-          tokenize: false
           content:
             value: "<p>This fiscal year's scheduled meetings of the Alachua County Library District's Governing Board, Board of Trustees, Pension Board of Trustees, and Joint Board Sessions are listed below. Fiscal years run from October 1 to September 30.</p>\r\n\r\n<p>Agendas for the <strong>Governing Boards, Pension Board of Trustees,</strong> and <strong>Board of Trustees</strong>  meetings are posted at least seven days before the meeting on the event pages and can be accessed by clicking on individual event dates and times.</p>\r\n\r\n"
             format: basic_html
-          plugin_id: text
+          tokenize: false
       footer: {  }
-      empty: {  }
-      relationships: {  }
-      arguments: {  }
       display_extenders: {  }
     cache_metadata:
       max-age: -1
@@ -1015,9 +1016,9 @@ display:
         - 'config:field.storage.node.field_start_date'
         - 'config:field.storage.node.field_venue_type'
   page_1:
-    display_plugin: page
     id: page_1
     display_title: Page
+    display_plugin: page
     position: 1
     display_options:
       display_extenders: {  }

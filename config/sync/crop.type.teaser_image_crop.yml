@@ -2,8 +2,8 @@ uuid: 3ef3d0b2-28de-48fa-93be-47588b534572
 langcode: en
 status: true
 dependencies: {  }
-id: teaser_image_crop
 label: 'Teaser image crop'
+id: teaser_image_crop
 description: 'Used by "Teaser Image" fields.'
 aspect_ratio: '3:2'
 soft_limit_width: null

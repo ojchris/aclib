@@ -5,6 +5,7 @@ dependencies: {  }
 id: local_development
 label: 'Local development'
 description: ''
+weight: 0
 folder: ../config/config_split/local
 module:
   devel: 0
@@ -14,4 +15,3 @@ blacklist: {  }
 graylist: {  }
 graylist_dependents: true
 graylist_skip_equal: true
-weight: 0

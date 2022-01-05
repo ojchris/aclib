@@ -2,11 +2,11 @@ uuid: 73d2bcd8-f2ad-4a71-8505-f5415b9fb0be
 langcode: en
 status: true
 dependencies:
+  module:
+    - media
   enforced:
     module:
       - media_library
-  module:
-    - media
 _core:
   default_config_hash: pkq0uj-IoqEQRBOP_ddUDV0ZJ-dKQ_fLcppsEDF2UO8
 id: media.media_library

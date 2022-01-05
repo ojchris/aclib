@@ -13,7 +13,7 @@ bundle: node_full_content_reference_bloc
 mode: default
 content:
   field_node:
-    weight: 0
+    type: entity_reference_entity_view
     label: hidden
     settings:
       view_mode: full
@@ -38,6 +38,6 @@ content:
             indicators: 0
             pause: 0
             wrap: 0
-    type: entity_reference_entity_view
+    weight: 0
     region: content
 hidden: {  }

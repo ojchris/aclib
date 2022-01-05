@@ -17,8 +17,8 @@ plugin: 'block_content:41e73038-92c4-44f0-9970-a058b9b9cca0'
 settings:
   id: 'block_content:41e73038-92c4-44f0-9970-a058b9b9cca0'
   label: 'Megamenu - Research and Learn left'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full

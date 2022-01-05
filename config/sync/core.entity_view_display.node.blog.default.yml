@@ -25,30 +25,30 @@ mode: default
 content:
   field_body:
     type: text_default
-    weight: 0
-    region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
   field_book:
     type: entity_reference_revisions_entity_view
-    weight: 2
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    weight: 2
     region: content
   field_disclaimer:
-    weight: 3
+    type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 3
     region: content
   field_flickr_photoset:
-    weight: 1
+    type: flickr_field_formatter
     label: hidden
     settings:
       title: ''
@@ -80,21 +80,21 @@ content:
             ride: 0
             pause: 0
             wrap: 0
-    type: flickr_field_formatter
+    weight: 1
     region: content
   field_tags:
-    weight: 4
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 4
     region: content
   links:
-    weight: 5
-    region: content
     settings: {  }
     third_party_settings: {  }
+    weight: 5
+    region: content
 hidden:
   field_home_page_image: true
   field_teaser: true

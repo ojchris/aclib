@@ -1,7 +1,12 @@
 uuid: fb1326f9-91eb-477f-9f00-e883213e3efe
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - node
+    - system
+    - toolbar
+    - webform
 id: webform
 label: Webform
 weight: -2

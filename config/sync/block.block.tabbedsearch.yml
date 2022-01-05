@@ -15,8 +15,8 @@ plugin: aclib_plugins_search_block
 settings:
   id: aclib_plugins_search_block
   label: ''
-  provider: aclib_plugins
   label_display: visible
+  provider: aclib_plugins
   labels:
     - Catalog
     - Site

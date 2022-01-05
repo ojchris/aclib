@@ -17,8 +17,8 @@ plugin: 'block_content:13c7023f-e270-4399-a52e-319fdd578970'
 settings:
   id: 'block_content:13c7023f-e270-4399-a52e-319fdd578970'
   label: 'Footer - social media'
-  provider: block_content
   label_display: '0'
+  provider: block_content
   status: true
   info: ''
   view_mode: full
