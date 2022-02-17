@@ -27,11 +27,11 @@ elements: |-
     '#text': |
       <p>If you're having trouble using OverDrive, you can fill out this form below to email us information about the problem.&nbsp;</p>
 
+      <p><strong>Please note: the default PIN/Password is your birth year (for example: 1999), but if you have an email on your record, you can reset it on the <a href="https://www.aclib.us/my-account">main account page</a> using the <a href="https://catalog.aclib.us/logon.aspx?forgotPassword=1&amp;ctx=1.1033.0.0.6">Forgot your PIN or password?" link</a>.</strong></p>
+
       <p>If you'd like to ask us to add a downloadable eBook or audiobook (in EPUB, Kindle, and/or mp3 format), please fill out <a href="/suggest-materials">our suggest materials form</a> to submit the suggestion to our collections development team.</p>
 
-      <p><strong>Please note:</strong> under Florida law, emails sent to government accounts are public records.</p>
-
-      <p>If you're uncomfortable emailing any of this info below, please feel free to call us at (352) 334-3939 during <a href="/headquarters-library">Headquarters Library business hours</a> instead.</p>
+      <p>Under Florida law, emails sent to government accounts are public records. If you're uncomfortable emailing any of this info below, please feel free to call us at <a href="+13523343940">352-334-3940</a> during <a href="/headquarters-library">Headquarters Library business hours</a> instead.</p>
     '#format': basic_html
   your_name:
     '#type': webform_name
