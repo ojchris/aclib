@@ -98,3 +98,19 @@ function aclib9_theme_suggestions_block_alter(array &$suggestions, array $variab
   }
 
 }
+
+/**
+ * Implements hook_preprocess. 
+ */
+function aclib9_preprocess_block__block_content_image_top(&$variables) {
+  $url = $variables['content']['field_title_link'][0]['#url'];
+  if ($url->isExternal()) {
+    $variables['aclib_title_field_link'] = $url;
+  }
+  else if ($url->isRouted()) {
+    $variables['aclib_title_field_link'] = $url->toString();
+  }
+  else {
+    $variables['aclib_title_field_link'] = NULL;
+  }
+}

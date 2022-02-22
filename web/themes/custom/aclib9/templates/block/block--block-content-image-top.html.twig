@@ -43,14 +43,10 @@
       {{ content.field_image }}
       {{ title_prefix }}
       {% if label %}
-        {% if content.field_title_link.0['#url'].external %}
-          <a href="{{ content.field_title_link.0['#url'] }}">
+        {% if aclib_title_field_link %}
+          <a href="{{ aclib_title_field_link }}">
             <h2{{ title_attributes }}>{{ label }}</h2>
           </a>
-        {% elseif content.field_title_link.0['#url'].routeName %}
-          <a href="{{ path(content.field_title_link.0['#url'].routeName, content.field_title_link.0['#url'].routeParameters) }}">
-          <h2{{ title_attributes }}>{{ label }}</h2>
-        </a>
         {% else %}
           <h2{{ title_attributes }}>{{ label }}</h2>
         {% endif %}
