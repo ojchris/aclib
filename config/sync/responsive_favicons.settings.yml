@@ -1,4 +1,4 @@
-path: favicons
+path: /sites/default/files/favicons
 tags:
   - '<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">'
   - '<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">'
@@ -10,3 +10,4 @@ tags:
 remove_default: 1
 _core:
   default_config_hash: HwbPAleld8fGYWEBocmgnJpHIFH5k4-fdA0eRR2nMKU
+path_type: path
