@@ -1,0 +1,28 @@
+uuid: 925ae38f-d5b2-439c-9eb4-6243472543b1
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: library_of_things
+label: 'Library of Things teasers'
+handler: simple
+handler_configuration: {  }
+entity_settings:
+  target_type: node
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      blog: blog
+      landing_page: landing_page
+      page_: page_
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: landing_page
+queue_settings:
+  min_size: 0
+  max_size: 8
+  act_as_queue: true
+  reverse: false
