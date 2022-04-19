@@ -157,9 +157,9 @@ display:
           default_row_class: true
           uses_fields: false
           col_xs: none
-          col_sm: col-sm-6
-          col_md: col-md-3
-          col_lg: none
+          col_sm: none
+          col_md: col-md-6
+          col_lg: col-lg-3
           col_xl: none
       row:
         type: 'entity:node'
