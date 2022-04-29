@@ -38,11 +38,17 @@
     },
     
     toggleCollapsed: function(element, submenu, index, context) {
-	  var self = this;
-	  element.attr('role', 'button');
-	  submenu.addClass('visually-hidden');
-	  element.on('click', function(e) {
+      var self = this;
+      element.attr('role', 'button');
+      submenu.addClass('visually-hidden').addClass('opacity-0').css('transition', 'opacity .3s ease-in');
+      element.on('click', function(e) {
         submenu.toggleClass('visually-hidden');
+        if (submenu.hasClass('visually-hidden')) {
+          submenu.removeClass('opacity-100').addClass('opacity-0');
+        }
+        else {
+          submenu.removeClass('opacity-0').addClass('opacity-100');
+        }
         self.mapSiblings($(e.target).parent().siblings(), index, context);
       });
 	},
@@ -51,7 +57,8 @@
    	  siblings.each(function(index, sibling) {
 	    var siblingChild = $(sibling).find('.tb-megamenu-submenu');
 	    if (siblingChild.length) {
-		  siblingChild.addClass('visually-hidden');
+          siblingChild.addClass('visually-hidden');
+          siblingChild.removeClass('opacity-100').addClass('opacity-0');
 	    } 
 	  });
     }
