@@ -1,0 +1,38 @@
+{% set linkAttributes = link['attributes'] %}
+{% if ( link['url'] is defined and link['url'] is not empty ) %}
+  {% set tag = "a" %}
+{% else  %}
+  {% set tag = 'span' %}
+  {% set linkAttributes = linkAttributes.addClass('tb-megamenu-no-link').setAttribute('tabindex', '0') %}
+  {% if submenu is empty %}
+    {% set linkAttributes = linkAttributes.addClass('tb-megamenu-no-submenu') %}
+  {% endif %}
+{% endif %}
+<li {{ attributes }} >
+  {% if tag == 'a' %}
+    <{{ tag }} href="{{ link['url'] }}" {{ link['attributes'] }}>
+  {% else %}
+    <{{ tag }}{{ link['attributes'] }}>
+  {% endif %}
+    
+{% if item_config['xicon'] %}
+      <i class="{{ item_config['xicon'] }}"></i>
+    {% endif %}
+    {{ link.title_translate }}
+   {% if level == 1 and section == 'frontend' %}
+     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="visually-hidden caret-trigger caret-trigger-on bi bi-caret-up-fill" viewBox="0 0 16 16">
+       <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+     </svg>
+     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="caret-trigger caret-trigger-off bi bi-caret-down-fill" viewBox="0 0 16 16">
+       <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+     </svg>
+   {% endif %}
+    {% if submenu and block_config['auto-arrow'] %}
+      <span class="caret"></span>
+    {% endif %}
+    {% if item_config['caption'] %}
+      <span class="mega-caption">{{ item_config['caption'] }}</span>
+    {% endif %}
+  </{{ tag }}>
+  {{ submenu }}
+</li>
