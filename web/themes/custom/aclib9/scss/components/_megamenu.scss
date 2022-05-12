@@ -35,13 +35,18 @@
       }
       .nav > li {  // Top level links on mobile.
         width: 100%;
+        
+        span.dropdown-toggle {
+          cursor: pointer;
+        }
+        
         span.dropdown-toggle:after {
           display: none;  // Hide the dropdown caret.
           @include media-breakpoint-up(lg) { // Desktop.
             display: inline-block;
           }
         }
-
+        
         span.tb-megamenu-no-link {
           border: none;
           color: $accent-shade;
@@ -117,9 +122,13 @@
 
         .dropdown-menu {  // Submenu links in all responsive modes.
           border-bottom: 1px solid $black;
+          -webkit-transition: opacity .3s ease-in;
+          transition: opacity .3s ease-in;
           @include media-breakpoint-up(lg) {
             border: 0;
             border-radius: 0 0 3px 3px;
+            -webkit-transition: inherit;
+            transition: inherit;
           }
           background-color: $white;
           box-shadow: none;
@@ -179,6 +188,7 @@
 }
 
 .caret-trigger {
+  pointer-events: none;
   @include media-breakpoint-up(lg) { 
     display: none;
   }
@@ -191,16 +201,5 @@
 .caret-trigger-on {
   margin-top: -2px;  
 }
-
-
-/* Media queries */
-/*
-@media only screen and (min-width: 880px) {
-
-  .caret-trigger {
-    display: none;
-  }
-}
-*/
 
 
