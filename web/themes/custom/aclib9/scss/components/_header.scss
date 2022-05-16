@@ -10,22 +10,33 @@ header {
     .region-top-header {
       flex: auto;
       text-align: left;
-      @include media-breakpoint-up(md) {
+      @include media-breakpoint-up(lg) {
         flex: none;
         text-align: center;
       }
     }
     .region-secondary-menu {
       flex: auto;
+      @include media-breakpoint-up(md) {
+        flex: 100%;
+      }
+      @include media-breakpoint-up(lg) {
+        flex: auto;
+      }
       nav {
         padding-left: 0;
         padding-right: 0;
-        @include media-breakpoint-up(md) {
+        @include media-breakpoint-up(lg) {
           padding-left: inherit;
         }
         ul {
           justify-content: space-around;
           @include media-breakpoint-up(md) {
+            justify-content: space-between;
+            padding-left: 1rem;
+            padding-right: 1rem;
+          }    
+          @include media-breakpoint-up(lg) {
             justify-content: flex-end;
           }
           &.clearfix::after {
@@ -37,7 +48,7 @@ header {
             padding-left: 0;
             padding-right: 0;
             text-decoration: underline;
-            @include media-breakpoint-up(md) {
+            @include media-breakpoint-up(lg) {
               padding-left: 1em;
             }
             // Bootstrap Barrio adds an icon to some nav links by default. This

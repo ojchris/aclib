@@ -15,19 +15,12 @@
       background-image: none;
       border: 1px solid $white;
       z-index: 100;
-      @include media-breakpoint-up(md) {
-        top: -4px; // 15px;
-      }
     }
 
     .nav-collapse {
       background: $white;
       top: -40px;
-      box-shadow: 2px 0.5rem 0.5rem rgb(0 0 0 / 18%), -2px 0.5rem 0.5rem rgb(0 0 0 / 18%); // 1rem 1rem 1rem rgba(0, 0, 0, 0.175);
-      @include media-breakpoint-up(md) {
-        top: 40px;
-        margin-top: 0;
-      }
+      box-shadow: 2px 0.5rem 0.5rem rgb(0 0 0 / 18%), -2px -2px 0.5rem rgb(0 0 0 / 18%);
       @include media-breakpoint-up(lg) {
         top: 27px;
         background: $accent-shade;
@@ -159,7 +152,7 @@
             background: none;
           }
           @include media-breakpoint-up(lg) {
-            box-shadow: 1rem 1rem 1rem rgb(0 0 0 / 18%), -2px 0.5rem 0.5rem rgb(0 0 0 / 18%); // 1rem 1rem 1rem rgba(0, 0, 0, 0.175);
+            box-shadow: 1rem 1rem 1rem rgb(0 0 0 / 18%), -2px 0.5rem 0.5rem rgb(0 0 0 / 18%);
             
             li > a {
               margin-left: 5px;
