@@ -25,7 +25,7 @@ entity_settings:
     auto_create: false
     auto_create_bundle: blog
 queue_settings:
-  min_size: 1
-  max_size: 12
+  min_size: 3
+  max_size: 24
   act_as_queue: true
   reverse: false
