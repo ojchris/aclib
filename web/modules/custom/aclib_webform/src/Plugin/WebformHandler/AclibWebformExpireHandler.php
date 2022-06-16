@@ -2,10 +2,14 @@
 
 namespace Drupal\aclib_webform\Plugin\WebformHandler;
 
+use Drupal\Core\Render\Element\RenderCallbackInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Datetime\DateHelper;
+
+use Drupal\Component\Utility\Number as NumberUtility;
+
 use Drupal\webform\WebformInterface;
 use Drupal\webform\Plugin\WebformHandlerBase;
 use Drupal\webform\WebformSubmissionInterface;
@@ -23,23 +27,116 @@ use Drupal\webform\WebformSubmissionInterface;
  *   submission = \Drupal\webform\Plugin\WebformHandlerInterface::SUBMISSION_OPTIONAL,
  * )
  */
-class AclibWebformExpireHandler extends WebformHandlerBase {
+class AclibWebformExpireHandler extends WebformHandlerBase implements RenderCallbackInterface {
 
   use StringTranslationTrait;
 
   // Define maximum number of submissions per week.
   const LIMIT = 5;
+  // Define constant error for library card field.
+  const DEFAULT_ERROR = 'Please enter a valid library card number.';
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function trustedCallbacks() {
+    return ['libraryCardNumberPreRender'];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function alterForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission) {
+    if (isset($form['elements']['library_card_number']) && isset($form['elements']['library_card_number']['#element_validate'])) {
+      // Use our custom validtion instead of
+      // default one for Number render element.
+      $form['elements']['library_card_number']['#element_validate'] = [
+        [static::class, 'validateLibraryCardNumber'],
+      ];
+      $form['elements']['library_card_number']['#pre_render'][] = [
+        static::class, 'libraryCardNumberPreRender',
+      ];
+    }
+  }
+
+  /**
+   * Custom pre_render callback for library card element.
+   *
+   * Replace attributes used by clientside_validation module.
+   *
+   * @param array $element
+   *   Library card form element.
+   *
+   * @return array
+   *   Library card form element.
+   */
+  public static function libraryCardNumberPreRender(array $element) {
+    $element['#attributes']['data-msg-min'] = t('@default', ['@default' => static::DEFAULT_ERROR]);
+    $element['#attributes']['data-msg-max'] = t('@default', ['@default' => static::DEFAULT_ERROR]);
+    return $element;
+  }
+
+  /**
+   * Custom validation method for library card number element.
+   *
+   * Basically we just change min and max validation strings.
+   *
+   * @param array $element
+   *   Library card form element.
+   * @param Drupal\Core\Form\FormStateInterface $form_state
+   *   FormState object.
+   * @param array $complete_form
+   *   A whole webform array.
+   *
+   * @see \Drupal\Core\Render\Element\Number
+   */
+  public static function validateLibraryCardNumber(array &$element, FormStateInterface $form_state, array &$complete_form) {
+
+    $value = $element['#value'];
+    if ($value === '') {
+      return;
+    }
+
+    $name = empty($element['#title']) ? $element['#parents'][0] : $element['#title'];
+
+    // Ensure the input is numeric.
+    if (!is_numeric($value)) {
+      $form_state->setError($element, t('%name must be a number.', ['%name' => $name]));
+      return;
+    }
+
+    // Ensure that the input is greater than the #min property, if set.
+    if (isset($element['#min']) && $value < $element['#min']) {
+      $form_state->setError($element, t('@default', ['@default' => static::DEFAULT_ERROR]));
+    }
+
+    // Ensure that the input is less than the #max property, if set.
+    if (isset($element['#max']) && $value > $element['#max']) {
+      $form_state->setError($element, t('@default', ['@default' => static::DEFAULT_ERROR]));
+    }
+
+    if (isset($element['#step']) && strtolower($element['#step']) != 'any') {
+      // Check that the input is an allowed multiple of #step (offset by #min if
+      // #min is set).
+      $offset = $element['#min'] ?? 0.0;
+
+      if (!NumberUtility::validStep($value, $element['#step'], $offset)) {
+        $form_state->setError($element, t('%name is not a valid number.', ['%name' => $name]));
+      }
+    }
+  }
 
   /**
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state, WebformSubmissionInterface $webform_submission) {
+
     if ($card_number = $form_state->getValue('library_card_number')) {
       $webform = $webform_submission->getWebform();
       if ($webform instanceof WebformInterface) {
         $results = $this->query($webform->id(), (int) $card_number);
         if ($results >= static::LIMIT) {
-          $form_state->setErrorByName('library_card_number', $this->t('You reached your maximum of five titles per week.'));
+          $form_state->setErrorByName('library_card_number', $this->t('You reached your maximum of @num titles per week.', ['@num' => static::LIMIT]));
           return;
         }
       }
