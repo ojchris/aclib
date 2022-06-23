@@ -6,8 +6,7 @@ use Drupal\Core\Render\Element\RenderCallbackInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Datetime\DrupalDateTime;
-use Drupal\Core\Datetime\DateHelper;
-
+// use Drupal\Core\Datetime\DateHelper;.
 use Drupal\Component\Utility\Number as NumberUtility;
 
 use Drupal\webform\WebformInterface;
@@ -159,6 +158,8 @@ class AclibWebformExpireHandler extends WebformHandlerBase implements RenderCall
    */
   protected function query($webform_id, $card_number) {
 
+    /*
+    // Old version with "current week" and timezone settings.
     $day_of_week = (int) DateHelper::dayOfWeek('now');
 
     $first_day = $day_of_week - 1;
@@ -176,6 +177,10 @@ class AclibWebformExpireHandler extends WebformHandlerBase implements RenderCall
     // Timezone fix.
     $end_date = new DrupalDateTime($last_day_string);
     $end_date->setTime(03, 59, 59);
+     */
+
+    $start_date = new DrupalDateTime('-7 days');
+    $end_date = new DrupalDateTime('now');
 
     $query = \Drupal::service('database')->select('webform_submission_data', 'd');
     $query->join('webform_submission', 's', '(d.sid= s.sid AND d.webform_id = s.webform_id AND s.created >= :start AND s.created <= :end)', [
