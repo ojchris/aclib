@@ -812,7 +812,7 @@ handlers:
       sender_mail: ''
       sender_name: ''
       subject: _default
-      body: _default
+      body: "<p>Submitted on [webform_submission:created]</p>\r\n\r\n<p>Submitted values are:</p>\r\n[webform_submission:values]"
       excluded_elements:
         type_computed_twig: type_computed_twig
         contact_method_computed_twig: contact_method_computed_twig
