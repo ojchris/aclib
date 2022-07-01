@@ -4,14 +4,204 @@ status: true
 dependencies:
   config:
     - field.field.node.custom_page.field_body
+    - field.field.node.custom_page.field_book
+    - field.field.node.custom_page.field_disclaimer
     - field.field.node.custom_page.field_home_page_image
     - field.field.node.custom_page.field_tags
     - field.field.node.custom_page.field_teaser
     - field.field.node.custom_page.field_teaser_image
     - node.type.custom_page
   module:
+    - entity_reference_revisions
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_discovery
     - text
     - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          67df81c2-ce6e-4efe-baf8-4de6b98876ec:
+            uuid: 67df81c2-ce6e-4efe-baf8-4de6b98876ec
+            region: content
+            configuration:
+              id: 'field_block:node:custom_page:field_body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          76cabdf4-7be2-4959-afd3-0eb59c855c94:
+            uuid: 76cabdf4-7be2-4959-afd3-0eb59c855c94
+            region: content
+            configuration:
+              id: 'field_block:node:custom_page:field_tags'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          da2dcbb8-20a9-42ed-b587-f75b62c29631:
+            uuid: da2dcbb8-20a9-42ed-b587-f75b62c29631
+            region: content
+            configuration:
+              id: 'extra_field_block:node:custom_page:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 2
+            additional: {  }
+          a2a26893-e19e-486f-b522-cf17deb1d4a8:
+            uuid: a2a26893-e19e-486f-b522-cf17deb1d4a8
+            region: content
+            configuration:
+              id: 'field_block:node:custom_page:field_book'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_revisions_entity_view
+                label: above
+                settings:
+                  view_mode: default
+                  link: ''
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          ee26af7c-66ce-4e59-ba16-3954fb981318:
+            uuid: ee26af7c-66ce-4e59-ba16-3954fb981318
+            region: content
+            configuration:
+              id: 'field_block:node:custom_page:field_disclaimer'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - 'bootstrap_layout_builder:blb_col_1'
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
+        - 'bootstrap_layout_builder:blb_col_4'
+      blacklisted_blocks:
+        ACLIB:
+          - 'views_block:aclib_home_page_large-block_1'
+          - 'views_block:aclib_home_page_secondary-block_1'
+          - 'views_block:aclib_research_page_teasers-block_5'
+          - 'views_block:news-block_1'
+          - 'views_block:news-block_2'
+          - 'views_block:aclib_refdb_you_may_also_like-block_1'
+          - 'views_block:press_release-block_1'
+          - aclib_plugins_search_block
+        Accessibility:
+          - gtranslate_block
+        'Content fields':
+          - 'field_block:node:custom_page:uid'
+          - 'field_block:node:custom_page:created'
+          - 'field_block:node:custom_page:changed'
+          - 'field_block:node:custom_page:type'
+          - 'field_block:node:custom_page:revision_default'
+          - 'field_block:node:custom_page:default_langcode'
+          - 'field_block:node:custom_page:field_home_page_image'
+          - 'field_block:node:custom_page:nid'
+          - 'field_block:node:custom_page:langcode'
+          - 'extra_field_block:node:custom_page:links'
+          - 'field_block:node:custom_page:menu_link'
+          - 'field_block:node:custom_page:promote'
+          - 'field_block:node:custom_page:status'
+          - 'field_block:node:custom_page:publish_on'
+          - 'field_block:node:custom_page:revision_timestamp'
+          - 'field_block:node:custom_page:vid'
+          - 'field_block:node:custom_page:revision_log'
+          - 'field_block:node:custom_page:revision_translation_affected'
+          - 'field_block:node:custom_page:revision_uid'
+          - 'field_block:node:custom_page:sticky'
+          - 'field_block:node:custom_page:field_tags'
+          - 'field_block:node:custom_page:field_teaser'
+          - 'field_block:node:custom_page:field_teaser_image'
+          - 'field_block:node:custom_page:title'
+          - 'field_block:node:custom_page:unpublish_on'
+          - 'field_block:user:user:field_about'
+          - 'field_block:user:user:changed'
+          - 'field_block:user:user:created'
+          - 'field_block:user:user:default_langcode'
+          - 'field_block:user:user:mail'
+          - 'field_block:user:user:init'
+          - 'field_block:user:user:langcode'
+          - 'field_block:user:user:access'
+          - 'field_block:user:user:login'
+          - 'extra_field_block:user:user:member_for'
+          - 'field_block:user:user:name'
+          - 'field_block:user:user:user_picture'
+          - 'field_block:user:user:preferred_admin_langcode'
+          - 'field_block:user:user:preferred_langcode'
+          - 'field_block:user:user:roles'
+          - 'field_block:user:user:timezone'
+          - 'field_block:user:user:uid'
+          - 'field_block:user:user:status'
+        'Custom block types':
+          - image_top
+        'Custom blocks':
+          - 'block_content:2f74131e-432d-489b-a2ff-37d9d94bedff'
+          - 'block_content:91a88f0d-50c2-4441-a02c-eabdb5488f4f'
+          - 'block_content:13c7023f-e270-4399-a52e-319fdd578970'
+          - 'block_content:b9359283-df16-4ce2-a369-f528074330b7'
+          - 'block_content:fa1d8571-f405-4a3c-bd0a-44d09428dc9b'
+          - 'block_content:94c42a95-178f-4f34-a011-3ca678beb9bc'
+          - 'block_content:257416aa-2fa0-4e43-a641-89f1218ae6b0'
+          - 'block_content:41e73038-92c4-44f0-9970-a058b9b9cca0'
+          - 'block_content:c23c0560-159b-41e7-ac55-e4df94071d8a'
+        Forms:
+          - search_form_block
+          - user_login_block
+        Help:
+          - help_block
+        'Lists (Views)':
+          - 'views_block:content_recent-block_1'
+          - 'views_block:who_s_online-who_s_online_block'
+        Menus:
+          - 'system_menu_block:admin'
+          - 'system_menu_block:footer'
+          - 'system_menu_block:main'
+          - shortcuts
+          - 'system_menu_block:tools'
+          - 'system_menu_block:account'
+      whitelisted_blocks:
+        core:
+          - page_title_block
+      restricted_categories:
+        - 'Chaos Tools'
+        - System
+        - 'TB Mega Menu'
+        - User
 id: node.custom_page.default
 targetEntityType: node
 bundle: custom_page
@@ -23,6 +213,23 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_book:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_disclaimer:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
     region: content
   field_tags:
     type: entity_reference_label

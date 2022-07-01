@@ -5,10 +5,13 @@ dependencies:
   config:
     - core.entity_view_mode.node.home_page_small
     - field.field.node.custom_page.field_body
+    - field.field.node.custom_page.field_book
+    - field.field.node.custom_page.field_disclaimer
     - field.field.node.custom_page.field_home_page_image
     - field.field.node.custom_page.field_tags
     - field.field.node.custom_page.field_teaser
     - field.field.node.custom_page.field_teaser_image
+    - field.field.node.custom_page.layout_builder__layout
     - node.type.custom_page
   module:
     - user
@@ -35,6 +38,9 @@ content:
     region: content
 hidden:
   field_body: true
+  field_book: true
+  field_disclaimer: true
   field_home_page_image: true
   field_tags: true
+  layout_builder__layout: true
   links: true
