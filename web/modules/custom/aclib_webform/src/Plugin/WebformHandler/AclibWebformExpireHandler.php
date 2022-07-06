@@ -135,7 +135,7 @@ class AclibWebformExpireHandler extends WebformHandlerBase implements RenderCall
       if ($webform instanceof WebformInterface) {
         $results = $this->query($webform->id(), (int) $card_number);
         if ($results >= static::LIMIT) {
-          $form_state->setErrorByName('library_card_number', $this->t('You reached your maximum of @num titles per week.', ['@num' => static::LIMIT]));
+          $form_state->setErrorByName('library_card_number', $this->t('You reached your maximum of @num titles per 7-day period.', ['@num' => static::LIMIT]));
           return;
         }
       }
