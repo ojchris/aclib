@@ -44,7 +44,7 @@ elements: |-
       <ul>
       	<li><span style="color:darkred">All decisions for purchases are in accordance with the library&rsquo;s <a href="/collection-development-and-maintenance-policy">Collection Development policy</a>, including the <a href="/collection-development-and-maintenance-policy#selection_process">Materials Selection Process</a>.</span></li>
       	<li><span style="color:darkred"><strong>Please <a href="http://catalog.aclib.us/">check the&nbsp;catalog</a>&nbsp;to be sure we don&rsquo;t own the title before you request it.</strong></span></li>
-      	<li><span style="color:darkred">Each library card holder may suggest up to five titles each week (Monday through Sunday).</span></li>
+      	<li><span style="color:darkred">Each library card holder may suggest up to five (5)&nbsp;titles per 7-day period.</span></li>
       </ul>
   item_format:
     '#type': radios
@@ -324,7 +324,7 @@ elements: |-
   library_card_number:
     '#type': number
     '#title': 'Library card number'
-    '#description': 'A 14-digit number with no spaces or dashes. (Limit five requests per week per library card.)'
+    '#description': '<span style="font-size:12.0pt"><span style="font-family:&quot;Calibri&quot;,sans-serif">The number on the back of your library card with no spaces.</span></span> (Limit of five &#39;5&#39; requests per 7-day period per library card.)'
     '#description_display': before
     '#required': true
     '#required_error': 'Library card number is required.'
