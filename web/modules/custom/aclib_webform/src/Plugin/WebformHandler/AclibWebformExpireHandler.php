@@ -179,7 +179,9 @@ class AclibWebformExpireHandler extends WebformHandlerBase implements RenderCall
     $end_date->setTime(03, 59, 59);
      */
 
-    $start_date = new DrupalDateTime('-7 days');
+    // Changed to 6 days - see OA5879
+    //$start_date = new DrupalDateTime('-7 days');
+    $start_date = new DrupalDateTime('-6 days');
     $end_date = new DrupalDateTime('now');
 
     $query = \Drupal::service('database')->select('webform_submission_data', 'd');
