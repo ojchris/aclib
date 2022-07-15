@@ -248,3 +248,4 @@ hidden:
   field_home_page_image: true
   field_teaser: true
   field_teaser_image: true
+  layout_builder__layout: true
