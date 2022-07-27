@@ -244,7 +244,7 @@ elements: |-
     '#markup': '<strong>Click the Submit button to complete your registration for MSWW.</strong>&nbsp;'
   if_you_wish_to_submit_a_photo_for_the_virtual_sorting_ceremony_y:
     '#type': radios
-    '#title': 'If you wish to submit a photo for the virtual Sorting Ceremony, you must complete a photo release form. Will you be submitting a photo?'
+    '#title': 'If you wish to submit a photo of yourself during the course of our school year, you must complete a photo release form. Will you be submitting a photo?'
     '#options': yes_no
     '#required': true
     '#access_create_roles':
