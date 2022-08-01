@@ -67,8 +67,6 @@ settings:
   plugins:
     stylescombo:
       styles: 'p.clear-float|Clear floats'
-    language:
-      language_list: un
 image_upload:
   status: true
   scheme: public

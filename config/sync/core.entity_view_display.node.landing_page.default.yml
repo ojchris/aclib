@@ -139,6 +139,11 @@ third_party_settings:
         - 'bootstrap_layout_builder:blb_col_2'
         - 'bootstrap_layout_builder:blb_col_3'
         - 'bootstrap_layout_builder:blb_col_4'
+      restricted_categories:
+        - 'Chaos Tools'
+        - System
+        - 'TB Mega Menu'
+        - User
       blacklisted_blocks:
         ACLIB:
           - 'views_block:aclib_home_page_large-block_1'
@@ -225,11 +230,6 @@ third_party_settings:
       whitelisted_blocks:
         core:
           - page_title_block
-      restricted_categories:
-        - 'Chaos Tools'
-        - System
-        - 'TB Mega Menu'
-        - User
 id: node.landing_page.default
 targetEntityType: node
 bundle: landing_page

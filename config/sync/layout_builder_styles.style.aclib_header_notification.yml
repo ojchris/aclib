@@ -6,6 +6,7 @@ id: aclib_header_notification
 label: 'ACLIB header notification'
 classes: aclib-header-notification
 type: component
+group: null
 block_restrictions:
   - 'inline_block:aclib_header_message'
 layout_restrictions: {  }
