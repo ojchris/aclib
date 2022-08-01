@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c28263c88aab2568f9262a1f43cf26d5",
+    "content-hash": "8827663201610e237dc27b2f75e53eae",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2010,16 +2010,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "9.4.3",
+            "version": "9.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "7b1a403c093c7abc89ef3df1a6b05bdb19b3ffad"
+                "reference": "7522be4ba7f6c1f0b09b7fb37a657d7a50b36f44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/7b1a403c093c7abc89ef3df1a6b05bdb19b3ffad",
-                "reference": "7b1a403c093c7abc89ef3df1a6b05bdb19b3ffad",
+                "url": "https://api.github.com/repos/drupal/core/zipball/7522be4ba7f6c1f0b09b7fb37a657d7a50b36f44",
+                "reference": "7522be4ba7f6c1f0b09b7fb37a657d7a50b36f44",
                 "shasum": ""
             },
             "require": {
@@ -2071,124 +2071,6 @@
             "conflict": {
                 "drush/drush": "<8.1.10",
                 "symfony/http-foundation": "4.4.42"
-            },
-            "replace": {
-                "drupal/action": "self.version",
-                "drupal/aggregator": "self.version",
-                "drupal/automated_cron": "self.version",
-                "drupal/ban": "self.version",
-                "drupal/bartik": "self.version",
-                "drupal/basic_auth": "self.version",
-                "drupal/big_pipe": "self.version",
-                "drupal/block": "self.version",
-                "drupal/block_content": "self.version",
-                "drupal/book": "self.version",
-                "drupal/breakpoint": "self.version",
-                "drupal/ckeditor": "self.version",
-                "drupal/ckeditor5": "self.version",
-                "drupal/claro": "self.version",
-                "drupal/classy": "self.version",
-                "drupal/color": "self.version",
-                "drupal/comment": "self.version",
-                "drupal/config": "self.version",
-                "drupal/config_translation": "self.version",
-                "drupal/contact": "self.version",
-                "drupal/content_moderation": "self.version",
-                "drupal/content_translation": "self.version",
-                "drupal/contextual": "self.version",
-                "drupal/core-annotation": "self.version",
-                "drupal/core-assertion": "self.version",
-                "drupal/core-bridge": "self.version",
-                "drupal/core-class-finder": "self.version",
-                "drupal/core-datetime": "self.version",
-                "drupal/core-dependency-injection": "self.version",
-                "drupal/core-diff": "self.version",
-                "drupal/core-discovery": "self.version",
-                "drupal/core-event-dispatcher": "self.version",
-                "drupal/core-file-cache": "self.version",
-                "drupal/core-file-security": "self.version",
-                "drupal/core-filesystem": "self.version",
-                "drupal/core-front-matter": "self.version",
-                "drupal/core-gettext": "self.version",
-                "drupal/core-graph": "self.version",
-                "drupal/core-http-foundation": "self.version",
-                "drupal/core-php-storage": "self.version",
-                "drupal/core-plugin": "self.version",
-                "drupal/core-proxy-builder": "self.version",
-                "drupal/core-render": "self.version",
-                "drupal/core-serialization": "self.version",
-                "drupal/core-transliteration": "self.version",
-                "drupal/core-utility": "self.version",
-                "drupal/core-uuid": "self.version",
-                "drupal/core-version": "self.version",
-                "drupal/datetime": "self.version",
-                "drupal/datetime_range": "self.version",
-                "drupal/dblog": "self.version",
-                "drupal/dynamic_page_cache": "self.version",
-                "drupal/editor": "self.version",
-                "drupal/entity_reference": "self.version",
-                "drupal/field": "self.version",
-                "drupal/field_layout": "self.version",
-                "drupal/field_ui": "self.version",
-                "drupal/file": "self.version",
-                "drupal/filter": "self.version",
-                "drupal/forum": "self.version",
-                "drupal/hal": "self.version",
-                "drupal/help": "self.version",
-                "drupal/help_topics": "self.version",
-                "drupal/history": "self.version",
-                "drupal/image": "self.version",
-                "drupal/inline_form_errors": "self.version",
-                "drupal/jsonapi": "self.version",
-                "drupal/language": "self.version",
-                "drupal/layout_builder": "self.version",
-                "drupal/layout_discovery": "self.version",
-                "drupal/link": "self.version",
-                "drupal/locale": "self.version",
-                "drupal/media": "self.version",
-                "drupal/media_library": "self.version",
-                "drupal/menu_link_content": "self.version",
-                "drupal/menu_ui": "self.version",
-                "drupal/migrate": "self.version",
-                "drupal/migrate_drupal": "self.version",
-                "drupal/migrate_drupal_multilingual": "self.version",
-                "drupal/migrate_drupal_ui": "self.version",
-                "drupal/minimal": "self.version",
-                "drupal/mysql": "self.version",
-                "drupal/node": "self.version",
-                "drupal/olivero": "self.version",
-                "drupal/options": "self.version",
-                "drupal/page_cache": "self.version",
-                "drupal/path": "self.version",
-                "drupal/path_alias": "self.version",
-                "drupal/pgsql": "self.version",
-                "drupal/quickedit": "self.version",
-                "drupal/rdf": "self.version",
-                "drupal/responsive_image": "self.version",
-                "drupal/rest": "self.version",
-                "drupal/search": "self.version",
-                "drupal/serialization": "self.version",
-                "drupal/settings_tray": "self.version",
-                "drupal/seven": "self.version",
-                "drupal/shortcut": "self.version",
-                "drupal/sqlite": "self.version",
-                "drupal/standard": "self.version",
-                "drupal/stark": "self.version",
-                "drupal/statistics": "self.version",
-                "drupal/syslog": "self.version",
-                "drupal/system": "self.version",
-                "drupal/taxonomy": "self.version",
-                "drupal/telephone": "self.version",
-                "drupal/text": "self.version",
-                "drupal/toolbar": "self.version",
-                "drupal/tour": "self.version",
-                "drupal/tracker": "self.version",
-                "drupal/update": "self.version",
-                "drupal/user": "self.version",
-                "drupal/views": "self.version",
-                "drupal/views_ui": "self.version",
-                "drupal/workflows": "self.version",
-                "drupal/workspaces": "self.version"
             },
             "type": "drupal-core",
             "extra": {
@@ -2262,9 +2144,9 @@
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
             "support": {
-                "source": "https://github.com/drupal/core/tree/9.4.3"
+                "source": "https://github.com/drupal/core/tree/9.4.4"
             },
-            "time": "2022-07-20T15:11:38+00:00"
+            "time": "2022-07-28T19:27:35+00:00"
         },
         {
             "name": "drupal/core-composer-scaffold",
@@ -2318,16 +2200,16 @@
         },
         {
             "name": "drupal/core-recommended",
-            "version": "9.4.3",
+            "version": "9.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-recommended.git",
-                "reference": "ff8662af0a5963a88ea856e9786e17a51f8e640c"
+                "reference": "e0cb3cb6aac8ff9f23f2d1f37e69626e42d03781"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/ff8662af0a5963a88ea856e9786e17a51f8e640c",
-                "reference": "ff8662af0a5963a88ea856e9786e17a51f8e640c",
+                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/e0cb3cb6aac8ff9f23f2d1f37e69626e42d03781",
+                "reference": "e0cb3cb6aac8ff9f23f2d1f37e69626e42d03781",
                 "shasum": ""
             },
             "require": {
@@ -2336,12 +2218,12 @@
                 "doctrine/annotations": "~1.13.2",
                 "doctrine/lexer": "~1.2.3",
                 "doctrine/reflection": "~1.2.3",
-                "drupal/core": "9.4.3",
+                "drupal/core": "9.4.4",
                 "egulias/email-validator": "~3.2",
                 "guzzlehttp/guzzle": "~6.5.8",
                 "guzzlehttp/promises": "~1.5.1",
                 "guzzlehttp/psr7": "~1.9.0",
-                "laminas/laminas-diactoros": "~2.11.0",
+                "laminas/laminas-diactoros": "~2.11.1",
                 "laminas/laminas-escaper": "~2.9.0",
                 "laminas/laminas-feed": "~2.17.0",
                 "laminas/laminas-stdlib": "~3.7.1",
@@ -2398,9 +2280,9 @@
             ],
             "description": "Core and its dependencies with known-compatible minor versions. Require this project INSTEAD OF drupal/core.",
             "support": {
-                "source": "https://github.com/drupal/core-recommended/tree/9.4.3"
+                "source": "https://github.com/drupal/core-recommended/tree/9.4.4"
             },
-            "time": "2022-07-20T15:11:38+00:00"
+            "time": "2022-07-28T19:27:35+00:00"
         },
         {
             "name": "drupal/crop",
@@ -3821,78 +3703,6 @@
             }
         },
         {
-            "name": "drupal/media_migration",
-            "version": "1.0.0-alpha12",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/media_migration.git",
-                "reference": "8.x-1.0-alpha12"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/media_migration-8.x-1.0-alpha12.zip",
-                "reference": "8.x-1.0-alpha12",
-                "shasum": "d700eaa802df21de73f1d2bd054f50b6738c643c"
-            },
-            "require": {
-                "drupal/core": "^8.8 || ^9",
-                "drupal/migrate_plus": "^4.2 || ^5",
-                "drupal/smart_sql_idmap": "^1.0-beta1"
-            },
-            "require-dev": {
-                "drupal/entity_embed": "^1",
-                "drupal/linkit": "^5.0.0-beta11 || ^6.0.0-beta2",
-                "drupal/migrate_tools": "^4.1 || ^5",
-                "drupal/migrate_upgrade": "^3",
-                "drush/drush": "^9 || ^10"
-            },
-            "suggest": {
-                "drupal/entity_embed": "Allows entities to be embedded using a text editor.",
-                "drupal/file_entity": "Extends Drupal file entities to be fieldable and viewable.",
-                "drupal/linkit": "Provides an easy interface for internal and external linking with wysiwyg editors.",
-                "drupal/linkit_media_library": "Create links from media library.",
-                "drupal/media_migration_tools": "Media Migration supporting module for Migrate Tools"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "8.x-1.0-alpha12",
-                    "datestamp": "1629376283",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Alpha releases are not covered by Drupal security advisories."
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "huzooka",
-                    "homepage": "https://www.drupal.org/user/281301"
-                },
-                {
-                    "name": "juampynr",
-                    "homepage": "https://www.drupal.org/user/682736"
-                },
-                {
-                    "name": "slv_",
-                    "homepage": "https://www.drupal.org/user/826088"
-                }
-            ],
-            "description": "Provides a Drupal 7 to 8 media migration.",
-            "homepage": "https://www.drupal.org/project/media_migration",
-            "keywords": [
-                "Drupal"
-            ],
-            "support": {
-                "source": "https://git.drupalcode.org/project/media_migration",
-                "issues": "https://www.drupal.org/project/issues/media_migration"
-            }
-        },
-        {
             "name": "drupal/menu_link_attributes",
             "version": "1.2.0",
             "source": {
@@ -4814,56 +4624,6 @@
             "homepage": "https://www.drupal.org/project/site_verify",
             "support": {
                 "source": "https://git.drupalcode.org/project/site_verify"
-            }
-        },
-        {
-            "name": "drupal/smart_sql_idmap",
-            "version": "1.1.0-beta1",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/smart_sql_idmap.git",
-                "reference": "1.1.0-beta1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/smart_sql_idmap-1.1.0-beta1.zip",
-                "reference": "1.1.0-beta1",
-                "shasum": "48f8875281552d3617132b22142c782ed9b399ea"
-            },
-            "require": {
-                "drupal/core": "^8.8 || ^9",
-                "drupal/migrate": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "1.1.0-beta1",
-                    "datestamp": "1628857390",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "huzooka",
-                    "homepage": "https://www.drupal.org/user/281301"
-                }
-            ],
-            "description": "A SQL id map for migrations with long plugin IDs",
-            "homepage": "https://www.drupal.org/project/smart_sql_idmap",
-            "keywords": [
-                "Drupal",
-                "Migration"
-            ],
-            "support": {
-                "source": "https://git.drupalcode.org/project/smart_sql_idmap",
-                "issues": "https://www.drupal.org/project/issues/smart_sql_idmap"
             }
         },
         {
@@ -11133,7 +10893,6 @@
         "drupal/layout_builder_styles": 10,
         "drupal/linkit": 10,
         "drupal/maxlength": 5,
-        "drupal/media_migration": 15,
         "drupal/site_verify": 20,
         "drupal/termcase": 20
     },
