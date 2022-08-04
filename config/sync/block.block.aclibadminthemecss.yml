@@ -1,0 +1,30 @@
+uuid: 4556190d-0305-4065-b04e-401d06741843
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:3044cfc6-67b3-49b9-babd-f1b05047387b'
+  module:
+    - block_content
+    - system
+  theme:
+    - claro
+id: aclibadminthemecss
+theme: claro
+region: help
+weight: 0
+provider: null
+plugin: 'block_content:3044cfc6-67b3-49b9-babd-f1b05047387b'
+settings:
+  id: 'block_content:3044cfc6-67b3-49b9-babd-f1b05047387b'
+  label: 'ACLIB Admin theme CSS'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /admin/reports/aclib-refdb
