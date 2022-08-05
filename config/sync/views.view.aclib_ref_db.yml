@@ -320,7 +320,7 @@ display:
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
-          text_input_required: 'Select dates and click on Apply to see results.'
+          text_input_required: 'Select start and end dates and click on Apply to see results.'
           text_input_required_format: basic_html
       access:
         type: role
@@ -375,7 +375,7 @@ display:
           expose:
             operator_id: datetime_op
             label: 'Filter by dates'
-            description: 'Select start and end dates.'
+            description: ''
             use_operator: false
             operator: datetime_op
             operator_limit_selection: false
@@ -390,13 +390,13 @@ display:
               ebranch: '0'
               marketing: '0'
               website_editor: '0'
+              website_contributor: '0'
               content_editor: '0'
               content_contributor: '0'
-              guest_contributor: '0'
               webform_editor: '0'
               webform: '0'
+              guest_contributor: '0'
               anonymous: '0'
-              website_contributor: '0'
             min_placeholder: ''
             max_placeholder: ''
             placeholder: ''
