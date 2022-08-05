@@ -48,7 +48,7 @@
         "drupal/override_node_options": "^2.6",
         "drupal/paragraphs": "^1.12",
         "drupal/pathauto": "^1.8",
-        "drupal/porterstemmer": "^1.1",
+        "drupal/porterstemmer": "^2.0",
         "drupal/r4032login": "^2.1",
         "drupal/redirect": "^1.6",
         "drupal/redis": "^1.5",
