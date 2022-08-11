@@ -184,9 +184,10 @@ class AclibCommunicoQueueWorker extends QueueWorkerBase implements ContainerFact
           if ($drupal_field_name == 'field_external_description') {
             if (!is_null($field)) {
               $field = trim(strip_tags($field));
-              if (strlen($field > 250)) {
+              $field = str_ireplace('&nbsp;', ' ', $field);
+              if (strlen($field) > 250) {
                 // Trim this field in case it is too long.
-                preg_replace('/\s+?(\S+)?$/', '', substr($field, 0, 250));
+                $field = preg_replace('/\s+?(\S+)?$/', '', substr($field, 0, 250));
               }
             }
           }
