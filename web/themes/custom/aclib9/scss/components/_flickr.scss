@@ -4,13 +4,17 @@
   h2 {
     text-align: center;
   }
-  .carousel-item {
-    float: none;
-    text-align: center;
-    .carousel-caption {
-      position: relative;
-      background-color: $white !important;
-      color: $accent-shade !important;
+  .carousel-inner {
+    height: 30em;
+    .carousel-item {
+      float: none;
+      height: 30em;
+      text-align: center;
+      .carousel-caption {
+        position: relative;
+        background-color: $white !important;
+        color: $accent-shade !important;
+      }
     }
   }
   .carousel-control-prev,
