@@ -298,7 +298,7 @@ handlers:
       to_options: {  }
       bcc_mail: opleil@aclib.us
       bcc_options: {  }
-      cc_mail: ''
+      cc_mail: tle@aclib.us
       cc_options: {  }
       from_mail: eBranch@aclib.us
       from_options: {  }
