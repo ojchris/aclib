@@ -5,15 +5,18 @@
     text-align: center;
   }
   .carousel-inner {
-    height: 30em;
     .carousel-item {
-      float: none;
-      height: 30em;
       text-align: center;
+      img.img-fluid {
+        margin-bottom: 1rem;
+      }
       .carousel-caption {
         position: relative;
-        background-color: $white !important;
+        background-color: transparent !important;
         color: $accent-shade !important;
+        .text-light {
+          color: inherit !important;  
+        }
       }
     }
   }
@@ -23,6 +26,9 @@
       background-color: $accent-shade !important;
       border-radius: 5px;
     }
+  }
+  .carousel-indicators {
+    transform: translateY(1.5rem);   
   }
   .carousel-indicators [data-bs-target] {
     background-color: $accent-shade;

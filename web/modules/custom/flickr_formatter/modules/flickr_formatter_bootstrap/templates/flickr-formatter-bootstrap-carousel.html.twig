@@ -92,7 +92,7 @@
 
       {% if options.link %}
         <div{{ create_attribute({'class': item_classes }) }}>
-        <a{{ create_attribute({'href': image.remote_url }).setAttribute('target', '_blank').addClass('text-light') }}>
+        <a{{ create_attribute({'href': image.remote_url }).setAttribute('target', '_blank') }}>
       {% else %}
         <div{{ create_attribute({'class': item_classes }) }}>
       {% endif %}
@@ -104,7 +104,6 @@
           set caption_classes = [
           'carousel-caption',
           'flickr-formatter-caption',
-          'text-light',
           'start-0',
           'bg-secondary',
           'opacity-75',
