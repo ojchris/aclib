@@ -5,15 +5,23 @@
     text-align: center;
   }
   .carousel-inner {
+    display: flex;
+    align-items: center;
+    height: var(--slide-height, 500px);
+    margin-bottom: 2rem;
     .carousel-item {
       text-align: center;
-      img.img-fluid {
-        margin-bottom: 1rem;
+      &.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
       .carousel-caption {
         position: relative;
         background-color: transparent !important;
         color: $accent-shade !important;
+        margin-top: 1rem;
         .text-light {
           color: inherit !important;  
         }
@@ -26,9 +34,6 @@
       background-color: $accent-shade !important;
       border-radius: 5px;
     }
-  }
-  .carousel-indicators {
-    transform: translateY(1.5rem);   
   }
   .carousel-indicators [data-bs-target] {
     background-color: $accent-shade;
