@@ -1,0 +1,4 @@
+base:
+  version: VERSION
+  js:
+    js/flickr_formatter_bootstrap.js: {}
