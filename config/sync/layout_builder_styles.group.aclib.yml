@@ -1,0 +1,10 @@
+uuid: 1817a4ac-b6ec-49b7-a107-5bdc7987f56a
+langcode: en
+status: true
+dependencies: {  }
+id: aclib
+label: ACLIB
+multiselect: multiple
+form_type: checkboxes
+required: false
+weight: 0
