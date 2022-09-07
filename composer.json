@@ -126,7 +126,7 @@
                 "non-existent service path.alias_manager": "https://www.drupal.org/files/issues/2021-09-01/cacheexclude-3201844-path_alias-manager-16.patch"
             },
             "drupal/bootstrap_styles": {
-                "Color contrast dark theme": "./patches/color_contrast_dark_theme-3277708.patch"
+                "Color contrast dark theme": "./patches/color_contrast_dark_theme-3277708-7.patch"
             }
         }
     },

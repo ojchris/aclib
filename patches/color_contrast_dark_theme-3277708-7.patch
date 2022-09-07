@@ -1,5 +1,5 @@
 diff --git a/css/themes/dark.css b/css/themes/dark.css
-index 3e6ca76..7d00ec6 100644
+index 3e6ca76..5914873 100644
 --- a/css/themes/dark.css
 +++ b/css/themes/dark.css
 @@ -1196,7 +1196,7 @@
@@ -42,7 +42,18 @@ index 3e6ca76..7d00ec6 100644
  }
  
  #drupal-off-canvas .dropbutton-widget {
-@@ -1669,14 +1667,15 @@
+@@ -1493,6 +1491,10 @@
+   width: 100%;
+ }
+ 
++#drupal-off-canvas .visually-hidden {
++  opacity: inherit;  
++}
++
+ @media not all and (min-resolution: 0.001dpcm) {
+   @supports (-webkit-appearance: none) and (display: flow-root) {
+     #drupal-off-canvas .form-item {
+@@ -1669,14 +1671,15 @@
  }
  
  #drupal-off-canvas .inline-block-create-button {
@@ -60,7 +71,7 @@ index 3e6ca76..7d00ec6 100644
  }
  
  #drupal-off-canvas .inline-block-create-button:before {
-@@ -1688,7 +1687,7 @@
+@@ -1688,7 +1691,7 @@
    top: 50%;
    display: block;
    margin-top: -1rem;
