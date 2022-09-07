@@ -151,3 +151,11 @@ img.image-style-full-width-embedded {
 .nav-tabs .nav-item.show .nav-link {
   color: $white;
 }
+
+/* OA ticket: https://projects.drupaleasy.com/alachua-county-library-district/drupal-9-migration/hidden-contrast-elements */
+.visually-hidden,
+div.field--label-visually_hidden,
+#block-footerlogo .field--label-hidden a {
+  color: #FFFFFF;
+  background: #000066;
+}
