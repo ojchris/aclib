@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed20473916b0509296da514ee6cf9b52",
+    "content-hash": "574430af1280c9cc0b4731b058d291f2",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1509,17 +1509,11 @@
         },
         {
             "name": "drupal/bootstrap_styles",
-            "version": "1.0.3",
+            "version": "dev-1.0.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/bootstrap_styles.git",
-                "reference": "1.0.3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/bootstrap_styles-1.0.3.zip",
-                "reference": "1.0.3",
-                "shasum": "e40341a006dbfc4237ac3f4e18884c7402291829"
+                "reference": "52ae94c66e6e9d4b45d61e510479093294cba01e"
             },
             "require": {
                 "drupal/core": "^8.7.7 || ^9",
@@ -1528,12 +1522,15 @@
             },
             "type": "drupal-module",
             "extra": {
+                "branch-alias": {
+                    "dev-1.0.x": "1.0.x-dev"
+                },
                 "drupal": {
-                    "version": "1.0.3",
-                    "datestamp": "1610598452",
+                    "version": "1.0.3+69-dev",
+                    "datestamp": "1622147152",
                     "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -10942,10 +10939,18 @@
             "time": "2019-10-17T18:05:24+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "drupal/bootstrap_styles",
+            "version": "1.0.9999999.9999999-dev",
+            "alias": "1.0",
+            "alias_normalized": "1.0.0.0"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/better_formats": 20,
+        "drupal/bootstrap_styles": 20,
         "drupal/cacheexclude": 20,
         "drupal/clientside_validation": 5,
         "drupal/config_readonly": 10,
