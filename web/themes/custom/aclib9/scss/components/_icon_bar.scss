@@ -21,7 +21,6 @@
     }
     a {
       width: 50%;
-      text-align: right;
       @include media-breakpoint-up(md) {
         width: auto;
       }
