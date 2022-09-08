@@ -60,7 +60,7 @@
         "drupal/smtp": "^1.0",
         "drupal/stage_file_proxy": "^1.1",
         "drupal/tb_megamenu": "^1.2",
-        "drupal/termcase": "1.x-dev@dev",
+        "drupal/termcase": "^1.0",
         "drupal/view_unpublished": "^1.0",
         "drupal/views_bootstrap": "^4.3",
         "drupal/webform": "^6.0",
@@ -126,7 +126,7 @@
                 "non-existent service path.alias_manager": "https://www.drupal.org/files/issues/2021-09-01/cacheexclude-3201844-path_alias-manager-16.patch"
             },
             "drupal/bootstrap_styles": {
-                "Color contrast dark theme": "./patches/color_contrast_dark_theme-3277708-7.patch"
+                "Color contrast dark theme": "./patches/color_contrast_dark_theme-3277708-9.patch"
             }
         }
     },

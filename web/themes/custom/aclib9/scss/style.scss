@@ -153,8 +153,8 @@ img.image-style-full-width-embedded {
 }
 
 /* OA ticket: https://projects.drupaleasy.com/alachua-county-library-district/drupal-9-migration/hidden-contrast-elements */
-.visually-hidden,
-div.field--label-visually_hidden,
+.path-frontpage .visually-hidden,
+.path-frontpage div.field--label-visually_hidden,
 #block-footerlogo .field--label-hidden a {
   color: #FFFFFF;
   background: #000066;
