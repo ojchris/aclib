@@ -1,7 +1,77 @@
 diff --git a/css/themes/dark.css b/css/themes/dark.css
-index 3e6ca76..5914873 100644
+index 3e6ca76..a6c6169 100644
 --- a/css/themes/dark.css
 +++ b/css/themes/dark.css
+@@ -109,7 +109,7 @@
+ 
+ #layout-builder-modal a,
+ #layout-builder-modal .link {
+-  color: #41A5FF;
++  color: #FFFFFF;
+   font-family: inherit;
+ }
+ 
+@@ -160,7 +160,7 @@
+ }
+ 
+ #layout-builder-modal button.link {
+-  color: #383A40;
++  color: #CCCCCC;
+ }
+ 
+ #layout-builder-modal button.link:hover,
+@@ -172,9 +172,9 @@
+ #layout-builder-modal input[type="submit"].button {
+   margin: 1rem 0 0 0;
+   padding: 11px 20px;
+-  color: #383A40;
++  color: #FFFFFF;
+   border-radius: 8px;
+-  background: #26A5FF;
++  background: transparent;
+   font-weight: normal;
+   font-family: inherit;
+   border: 0;
+@@ -186,15 +186,15 @@
+ #layout-builder-modal input[type="submit"].button:hover,
+ #layout-builder-modal input[type="submit"].button:focus,
+ #layout-builder-modal input[type="submit"].button:active {
+-  color: #383A40;
+-  background: #008ef2;
++  color: #FFFFFF;
++  background: transparent;
+ }
+ 
+ #layout-builder-modal button.button--primary,
+ #layout-builder-modal input[type="submit"].button--primary {
+-  color: #383A40;
+-  background: #26A5FF;
+-  border: 0;
++  color: #FFFFFF;
++  background: transparent;
++  border: 2px solid #CCCCCC;
+   text-align: center;
+ }
+ 
+@@ -202,8 +202,8 @@
+ #layout-builder-modal input[type="submit"].button--primary:hover,
+ #layout-builder-modal input[type="submit"].button--primary:focus,
+ #layout-builder-modal input[type="submit"].button--primary:active {
+-  color: #383A40;
+   background: #008ef2;
++  border-color: transparent;
+ }
+ 
+ #layout-builder-modal .button:disabled,
+@@ -394,7 +394,7 @@
+ #layout-builder-modal .description,
+ #layout-builder-modal .form-item .description,
+ #layout-builder-modal .details-description {
+-  color: rgba(255, 255, 255, 0.5);
++  color: #CCCCCC !important;
+   font-size: .875rem;
+   margin-top: .25rem;
+   margin-bottom: 1rem;
 @@ -1196,7 +1196,7 @@
  
  #drupal-off-canvas a,
@@ -11,7 +81,46 @@ index 3e6ca76..5914873 100644
    font-family: inherit;
  }
  
-@@ -1392,8 +1392,7 @@
+@@ -1273,15 +1273,15 @@
+ #drupal-off-canvas input[type="submit"].button:hover,
+ #drupal-off-canvas input[type="submit"].button:focus,
+ #drupal-off-canvas input[type="submit"].button:active {
+-  color: #383A40;
+-  background: #008ef2;
++  color: #FFFFFF;
++  background: transparent;
+ }
+ 
+ #drupal-off-canvas button.button--primary,
+ #drupal-off-canvas input[type="submit"].button--primary {
+-  color: #383A40;
+-  background: #26A5FF;
+-  border: 0;
++  color: #FFFFFF;
++  background: transparent;
++  border: 2px solid #CCCCCC;
+   text-align: center;
+ }
+ 
+@@ -1289,15 +1289,15 @@
+ #drupal-off-canvas input[type="submit"].button--primary:hover,
+ #drupal-off-canvas input[type="submit"].button--primary:focus,
+ #drupal-off-canvas input[type="submit"].button--primary:active {
+-  color: #383A40;
+   background: #008ef2;
++  border-color: transparent;
+ }
+ 
+ #drupal-off-canvas .button:disabled,
+ #drupal-off-canvas .button:disabled:active,
+ #drupal-off-canvas .button.is-disabled,
+ #drupal-off-canvas .button.is-disabled:active {
+-  color: #5c5c5c;
++  color: #FFFFFF;
+   background: #555;
+ }
+ 
+@@ -1392,18 +1392,17 @@
  }
  
  #drupal-off-canvas summary[aria-expanded='true'], #drupal-off-canvas summary:hover, #drupal-off-canvas summary:focus {
@@ -21,7 +130,10 @@ index 3e6ca76..5914873 100644
  }
  
  #drupal-off-canvas summary[aria-expanded='true']:after, #drupal-off-canvas summary:hover:after, #drupal-off-canvas summary:focus:after {
-@@ -1402,8 +1401,8 @@
+-  border-right-color: #26A5FF;
+-  border-bottom-color: #26A5FF;
++  border-right-color: #FFFFFF;
++  border-bottom-color: #FFFFFF;
  }
  
  #drupal-off-canvas details[open] > summary {
@@ -42,6 +154,15 @@ index 3e6ca76..5914873 100644
  }
  
  #drupal-off-canvas .dropbutton-widget {
+@@ -1481,7 +1479,7 @@
+ #drupal-off-canvas .description,
+ #drupal-off-canvas .form-item .description,
+ #drupal-off-canvas .details-description {
+-  color: rgba(255, 255, 255, 0.5);
++  color: #CCCCCC !important;
+   font-size: .875rem;
+   margin-top: .25rem;
+   margin-bottom: 1rem;
 @@ -1493,6 +1491,10 @@
    width: 100%;
  }
@@ -53,7 +174,15 @@ index 3e6ca76..5914873 100644
  @media not all and (min-resolution: 0.001dpcm) {
    @supports (-webkit-appearance: none) and (display: flow-root) {
      #drupal-off-canvas .form-item {
-@@ -1669,14 +1671,15 @@
+@@ -1660,7 +1662,6 @@
+   height: auto;
+   cursor: pointer;
+   text-align: center;
+-  border: 0 !important;
+   border-radius: 8px;
+   font-size: 1rem;
+   font-weight: normal;
+@@ -1669,14 +1670,17 @@
  }
  
  #drupal-off-canvas .inline-block-create-button {
@@ -61,17 +190,19 @@ index 3e6ca76..5914873 100644
 -  background: #26A5FF !important;
 +  color: #FFFFFF !important;
 +  background: transparent !important;
++  border: 2px solid #CCCCCC !important;
    padding: 15px 2rem !important;
    margin: 20px auto !important;
  }
  
  #drupal-off-canvas .inline-block-create-button:hover {
++  color: #FFFFFF !important;
    background: #008ef2 !important;
 +  border-color: transparent !important;
  }
  
  #drupal-off-canvas .inline-block-create-button:before {
-@@ -1688,7 +1691,7 @@
+@@ -1688,7 +1692,7 @@
    top: 50%;
    display: block;
    margin-top: -1rem;
@@ -80,3 +211,21 @@ index 3e6ca76..5914873 100644
    background-size: contain;
  }
  
+@@ -2091,7 +2095,7 @@
+ #drupal-off-canvas .fieldgroup.blb_container_type .fieldset-wrapper > div > div input:checked + label,
+ #layout-builder-modal .fieldgroup.blb_container_type .fieldset-wrapper > div > div input:checked + label {
+   font-weight: bold;
+-  color: #41A5FF;
++  color: #FFFFFF;
+   background-color: #5C606B;
+ }
+ 
+@@ -2233,7 +2237,7 @@
+ #drupal-off-canvas .fieldgroup.blb_gutter_type .fieldset-wrapper > div > div input:checked + label,
+ #layout-builder-modal .fieldgroup.blb_gutter_type .fieldset-wrapper > div > div input:checked + label {
+   font-weight: bold;
+-  color: #41A5FF;
++  color: #FFFFFF;
+ }
+ 
+ #drupal-off-canvas .fieldgroup.blb_gutter_type .fieldset-wrapper > div > div input:checked + label .input-icon:after,
