@@ -139,11 +139,69 @@ third_party_settings:
         - 'bootstrap_layout_builder:blb_col_2'
         - 'bootstrap_layout_builder:blb_col_3'
         - 'bootstrap_layout_builder:blb_col_4'
-      restricted_categories:
-        - 'Chaos Tools'
-        - System
-        - 'TB Mega Menu'
-        - User
+      denylisted_blocks: {  }
+      allowlisted_blocks:
+        ACLIB:
+          - 'views_block:aclib_research_page_teasers-block_16'
+          - 'views_block:aclib_research_page_teasers-block_4'
+          - 'views_block:aclib_research_page_teasers-block_13'
+          - 'views_block:aclib_research_page_teasers-block_12'
+          - 'views_block:services_teasers-block_2'
+          - 'views_block:services_teasers-block_7'
+          - 'views_block:aclib_research_page_teasers-block_11'
+          - 'views_block:aclib_research_page_teasers-block_10'
+          - 'views_block:services_teasers-block_4'
+          - 'views_block:aclib_featured_refdb-block_1'
+          - 'views_block:aclib_research_page_teasers-block_14'
+          - 'views_block:aclib_get_a_library_card-block_1'
+          - 'views_block:aclib_home_page_large-block_1'
+          - 'views_block:aclib_home_page_secondary-block_1'
+          - 'views_block:aclib_research_page_teasers-block_17'
+          - 'views_block:services_teasers-block_6'
+          - 'views_block:aclib_research_page_teasers-block_9'
+          - 'views_block:aclib_research_page_teasers-block_8'
+          - 'views_block:aclib_learn_page_teasers-block_1'
+          - 'views_block:services_teasers-block_9'
+          - 'views_block:aclib_research_page_teasers-block_6'
+          - 'views_block:aclib_research_page_teasers-block_20'
+          - 'views_block:aclib_research_page_teasers-block_2'
+          - 'views_block:news-block_2'
+          - 'views_block:aclib_research_page_teasers-block_21'
+          - 'views_block:aclib_refdbs_a_z-block_1'
+          - 'views_block:aclib_research_page_teasers-block_1'
+          - 'views_block:services_teasers-block_1'
+          - 'views_block:aclib_research_page_teasers-block_3'
+          - 'views_block:aclib_research_page_teasers-block_15'
+          - 'views_block:aclib_research_page_teasers-block_19'
+          - 'views_block:press_release-block_1'
+        Accessibility: {  }
+        'Chaos Tools': {  }
+        'Content fields':
+          - 'field_block:node:landing_page:field_body'
+          - 'field_block:node:landing_page:field_book'
+        'Custom block types':
+          - aclib_header_message
+          - basic
+          - node_full_content_reference_bloc
+        'Custom blocks':
+          - 'block_content:2862a6d2-bbfb-4aef-8649-1f457835d102'
+          - 'block_content:7d3f0a97-ccb1-47c2-8354-a8497e2c3137'
+          - 'block_content:fa1d8571-f405-4a3c-bd0a-44d09428dc9b'
+        Forms: {  }
+        Help: {  }
+        'Inline blocks':
+          - 'inline_block:aclib_header_message'
+          - 'inline_block:basic'
+          - 'inline_block:node_full_content_reference_bloc'
+        'Lists (Views)': {  }
+        Menus: {  }
+        System: {  }
+        'TB Mega Menu': {  }
+        User: {  }
+        Webform:
+          - webform_block
+        core: {  }
+      restricted_categories: {  }
       blacklisted_blocks:
         ACLIB:
           - 'views_block:aclib_home_page_large-block_1'

@@ -14,6 +14,7 @@ entity_settings:
   handler_settings:
     target_bundles:
       blog: blog
+      custom_page: custom_page
       landing_page: landing_page
       page_: page_
     sort:
