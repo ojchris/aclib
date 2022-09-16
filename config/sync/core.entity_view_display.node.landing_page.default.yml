@@ -131,10 +131,6 @@ third_party_settings:
     allowed_block_categories: {  }
     entity_view_mode_restriction:
       allowed_layouts:
-        - layout_onecol
-        - layout_twocol_section
-        - layout_threecol_section
-        - layout_fourcol_section
         - 'bootstrap_layout_builder:blb_col_1'
         - 'bootstrap_layout_builder:blb_col_2'
         - 'bootstrap_layout_builder:blb_col_3'
